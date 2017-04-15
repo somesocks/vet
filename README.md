@@ -1,4 +1,4 @@
-# Vet
+# vet
 A Javascript library for data validation.
 
 <a name="Vet"></a>
@@ -360,9 +360,9 @@ Builds a function to check an object against a schema object
 A schema object consists of an object with child object, functions, and values
 The schema matching process is this:
 1) For each child in the schema object, match it against the corresponding child in the value to be checked
-2a) If the schema child is a function, treat it as a validator function
-2b) If the schema child is an object, recursively call the schema matching
-2c) If the schema child is anything else, check for strict equality
+2) If the schema child is a function, treat it as a validator function
+3) If the schema child is an object, recursively call the schema matching
+4) If the schema child is anything else, check for strict equality
 
 **Kind**: static method of <code>[Object](#Vet.Object)</code>  
 **Returns**: a validator function that takes in a value val, and returns true if val matches the object schema  
@@ -662,3 +662,4 @@ A function builder to optionally check a value
 | Param | Description |
 | --- | --- |
 | validator | a validator function |
+
