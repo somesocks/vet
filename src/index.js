@@ -1,5 +1,7 @@
+/** @namespace Vet */
 
-const Valid = Object.assign(
+
+const Vet = Object.assign(
 	{},
 	require('./base'),
 	{
@@ -12,11 +14,34 @@ const Valid = Object.assign(
 	}
 );
 
-Valid.isArray = Valid.Array.isArray;
-Valid.isBoolean = Valid.Boolean.isBoolean;
-Valid.isFunction = Valid.Function.isFunction;
-Valid.isNumber = Valid.Number.isNumber;
-Valid.isObject = Valid.Object.isObject;
-Valid.isString = Valid.String.isString;
+/**
+* alias for Vet.Array.isArray
+*/
+Vet.isArray = Vet.Array.isArray;
 
-module.exports = Valid;
+/**
+* alias for Vet.Boolean.isBoolean
+*/
+Vet.isBoolean = Vet.Boolean.isBoolean;
+
+/**
+* alias for Vet.Function.isFunction
+*/
+Vet.isFunction = Vet.Function.isFunction;
+
+/**
+* alias for Vet.Number.isNumber
+*/
+Vet.isNumber = Vet.Number.isNumber;
+
+/**
+* alias for Vet.Object.isObject
+*/
+Vet.isObject = Vet.Object.isObject;
+
+/**
+* alias for Vet.String.isString
+*/
+Vet.isString = Vet.String.isString;
+
+module.exports = Vet;

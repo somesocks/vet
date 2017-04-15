@@ -1,3 +1,6 @@
+/**
+* @namespace Vet.Number
+*/
 
 module.exports = {
 	isInteger: require('./isInteger'),

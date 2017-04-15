@@ -1,3 +1,6 @@
+/**
+* @namespace Vet.String
+*/
 
 module.exports = {
 	isEmpty: require('./isEmpty'),

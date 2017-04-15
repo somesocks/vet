@@ -1,3 +1,6 @@
+/**
+@namespace Vet.Array
+*/
 
 module.exports = {
 	isArray: require('./isArray'),

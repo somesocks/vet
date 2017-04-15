@@ -1,3 +1,6 @@
+/**
+* @namespace Vet.Boolean
+*/
 
 module.exports = {
 	isBoolean: require('./isBoolean'),
