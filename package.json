@@ -1,0 +1,35 @@
+{
+  "name": "vet",
+  "version": "0.1.0",
+  "description": "A Javascript library for data validation",
+  "main": "dist/vet.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/somesocks/vet.git"
+  },
+  "keywords": [
+    "validator",
+    "validation"
+  ],
+  "author": "James Larsen (somesocks@gmail.com)",
+  "license": "Apache v2",
+  "bugs": {
+    "url": "https://github.com/somesocks/vet/issues"
+  },
+  "homepage": "https://github.com/somesocks/vet",
+  "devDependencies": {
+	  "babel": "^6.23.0",
+      "babel-core": "^6.14.0",
+      "babel-eslint": "^7.2.1",
+      "babel-loader": "^6.2.5",
+      "babel-preset-es2015": "^6.14.0",
+      "eslint": "^3.19.0",
+      "eslint-config-airbnb": "^14.1.0",
+      "eslint-plugin-import": "^2.2.0",
+      "eslint-plugin-jsx-a11y": "^4.0.0",
+      "eslint-plugin-react": "^6.10.3",
+      "mocha": "^3.2.0",
+      "webpack": "^1.14.0"
+  }
+}
