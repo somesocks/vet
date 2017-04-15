@@ -1,6 +1,8 @@
 
 module.exports = {
 	isBoolean: require('./isBoolean'),
-	isTrue: require('./isTrue'),
 	isFalse: require('./isFalse'),
+	isFalsy: require('./isFalsy'),
+	isTrue: require('./isTrue'),
+	isTruthy: require('./isTruthy'),
 };
