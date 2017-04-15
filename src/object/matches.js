@@ -25,7 +25,9 @@ const matchesSchema = (schema, object) => {
 
 /**
 * Builds a function to check an object against a schema object
+*
 * A schema object consists of an object with child object, functions, and values
+*
 * The schema matching process is this:
 * 1) For each child in the schema object, match it against the corresponding child in the value to be checked
 * 2) If the schema child is a function, treat it as a validator function

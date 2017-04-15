@@ -31,6 +31,7 @@ const matchesSchemaExact = (schema, object) => {
 
 /**
 * Builds a function to check an object against a schema object
+*
 * This function works similarly to Vet.Object.matches,
 * but it also checks to make sure every value in the object to check
 * has a corresponding validator in the schema
