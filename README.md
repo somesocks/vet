@@ -1,5 +1,5 @@
 # vet
-A Javascript library for data validation.
+A 10kB Javascript library for data validation.
 
 <a name="Vet"></a>
 
@@ -13,6 +13,13 @@ A Javascript library for data validation.
     * [.isNumber](#Vet.isNumber)
     * [.isObject](#Vet.isObject)
     * [.isString](#Vet.isString)
+    * [.array](#Vet.array)
+    * [.boolean](#Vet.boolean)
+    * [.function](#Vet.function)
+    * [.number](#Vet.number)
+    * [.object](#Vet.object)
+    * [.string](#Vet.string)
+    * [.utils](#Vet.utils)
     * [.Array](#Vet.Array) : <code>object</code>
         * [.isArray](#Vet.Array.isArray) ⇒
         * [.isArrayOf(val)](#Vet.Array.isArrayOf) ⇒
@@ -46,6 +53,8 @@ A Javascript library for data validation.
         * [.isProbablyURL(val)](#Vet.String.isProbablyURL) ⇒
         * [.isString(val)](#Vet.String.isString) ⇒
         * [.matches(regex)](#Vet.String.matches) ⇒
+    * [.Utils](#Vet.Utils) : <code>object</code>
+        * [.assert(validator, message)](#Vet.Utils.assert) ⇒
     * [.equals(eq)](#Vet.equals) ⇒
     * [.exists(val)](#Vet.exists) ⇒
     * [.isOneOf(...eq)](#Vet.isOneOf) ⇒
@@ -95,6 +104,48 @@ alias for Vet.Object.isObject
 
 ### Vet.isString
 alias for Vet.String.isString
+
+**Kind**: static property of <code>[Vet](#Vet)</code>  
+<a name="Vet.array"></a>
+
+### Vet.array
+alias for Vet.Array
+
+**Kind**: static property of <code>[Vet](#Vet)</code>  
+<a name="Vet.boolean"></a>
+
+### Vet.boolean
+alias for Vet.Boolean
+
+**Kind**: static property of <code>[Vet](#Vet)</code>  
+<a name="Vet.function"></a>
+
+### Vet.function
+alias for Vet.Function
+
+**Kind**: static property of <code>[Vet](#Vet)</code>  
+<a name="Vet.number"></a>
+
+### Vet.number
+alias for Vet.Number
+
+**Kind**: static property of <code>[Vet](#Vet)</code>  
+<a name="Vet.object"></a>
+
+### Vet.object
+alias for Vet.Object
+
+**Kind**: static property of <code>[Vet](#Vet)</code>  
+<a name="Vet.string"></a>
+
+### Vet.string
+alias for Vet.String
+
+**Kind**: static property of <code>[Vet](#Vet)</code>  
+<a name="Vet.utils"></a>
+
+### Vet.utils
+alias for Vet.Utils
 
 **Kind**: static property of <code>[Vet](#Vet)</code>  
 <a name="Vet.Array"></a>
@@ -497,6 +548,26 @@ Builds a function that checks to see if a value matches a regular expression
 | Param | Description |
 | --- | --- |
 | regex | the regular expression to check against |
+
+<a name="Vet.Utils"></a>
+
+### Vet.Utils : <code>object</code>
+**Kind**: static namespace of <code>[Vet](#Vet)</code>  
+<a name="Vet.Utils.assert"></a>
+
+#### Utils.assert(validator, message) ⇒
+Wraps a validator, and throws an error if it returns false.
+
+This is useful for some libraries (like React) that expect
+assertion-style validation.
+
+**Kind**: static method of <code>[Utils](#Vet.Utils)</code>  
+**Returns**: a function that returns null if the arguments pass validation, or throws an error if they do not  
+
+| Param | Description |
+| --- | --- |
+| validator | the validator to wrap |
+| message | an optional message string to pass into the error |
 
 <a name="Vet.equals"></a>
 

@@ -5,12 +5,13 @@ const Vet = Object.assign(
 	{},
 	require('./base'),
 	{
-		Array: require('./array'),
 		Boolean: require('./boolean'),
-		Function: require('./function'),
 		Number: require('./number'),
-		Object: require('./object'),
 		String: require('./string'),
+		Function: require('./function'),
+		Array: require('./array'),
+		Object: require('./object'),
+		Utils: require('./utils'),
 	}
 );
 
@@ -43,5 +44,41 @@ Vet.isObject = Vet.Object.isObject;
 * alias for Vet.String.isString
 */
 Vet.isString = Vet.String.isString;
+
+
+/**
+* alias for Vet.Array
+*/
+Vet.array = Vet.Array;
+
+/**
+* alias for Vet.Boolean
+*/
+Vet.boolean = Vet.Boolean;
+
+/**
+* alias for Vet.Function
+*/
+Vet.function = Vet.Function;
+
+/**
+* alias for Vet.Number
+*/
+Vet.number = Vet.Number;
+
+/**
+* alias for Vet.Object
+*/
+Vet.object = Vet.Object;
+
+/**
+* alias for Vet.String
+*/
+Vet.string = Vet.String;
+
+/**
+* alias for Vet.Utils
+*/
+Vet.utils = Vet.Utils;
 
 module.exports = Vet;
