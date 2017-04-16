@@ -45,6 +45,10 @@ Vet.isObject = Vet.Object.isObject;
 */
 Vet.isString = Vet.String.isString;
 
+/**
+* alias for Vet.Utils.assert
+*/
+Vet.assert = Vet.Utils.assert;
 
 /**
 * alias for Vet.Array

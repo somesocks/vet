@@ -13,6 +13,7 @@ A 10kB Javascript library for data validation.
     * [.isNumber](#Vet.isNumber)
     * [.isObject](#Vet.isObject)
     * [.isString](#Vet.isString)
+    * [.assert](#Vet.assert)
     * [.array](#Vet.array)
     * [.boolean](#Vet.boolean)
     * [.function](#Vet.function)
@@ -104,6 +105,12 @@ alias for Vet.Object.isObject
 
 ### Vet.isString
 alias for Vet.String.isString
+
+**Kind**: static property of <code>[Vet](#Vet)</code>  
+<a name="Vet.assert"></a>
+
+### Vet.assert
+alias for Vet.Utils.assert
 
 **Kind**: static property of <code>[Vet](#Vet)</code>  
 <a name="Vet.array"></a>
