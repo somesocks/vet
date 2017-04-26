@@ -55,7 +55,9 @@ A 10kB Javascript library for data validation.
         * [.isString(val)](#Vet.String.isString) ⇒
         * [.matches(regex)](#Vet.String.matches) ⇒
     * [.Utils](#Vet.Utils) : <code>object</code>
+        * [.accepts(func, validator, message)](#Vet.Utils.accepts) ⇒
         * [.assert(validator, message)](#Vet.Utils.assert) ⇒
+        * [.returns(func, validator, message)](#Vet.Utils.returns) ⇒
     * [.equals(eq)](#Vet.equals) ⇒
     * [.exists(val)](#Vet.exists) ⇒
     * [.isOneOf(...eq)](#Vet.isOneOf) ⇒
@@ -560,6 +562,26 @@ Builds a function that checks to see if a value matches a regular expression
 
 ### Vet.Utils : <code>object</code>
 **Kind**: static namespace of <code>[Vet](#Vet)</code>  
+
+* [.Utils](#Vet.Utils) : <code>object</code>
+    * [.accepts(func, validator, message)](#Vet.Utils.accepts) ⇒
+    * [.assert(validator, message)](#Vet.Utils.assert) ⇒
+    * [.returns(func, validator, message)](#Vet.Utils.returns) ⇒
+
+<a name="Vet.Utils.accepts"></a>
+
+#### Utils.accepts(func, validator, message) ⇒
+Wraps a function in a validator which checks its arguments, and throws an error if the arguments are bad.
+
+**Kind**: static method of <code>[Utils](#Vet.Utils)</code>  
+**Returns**: a wrapped function that throws an error if the arguments do not pass validation  
+
+| Param | Description |
+| --- | --- |
+| func | the function to wrap |
+| validator | the validator function.  This gets passed the arguments as an array |
+| message | an optional message string to pass into the error thrown |
+
 <a name="Vet.Utils.assert"></a>
 
 #### Utils.assert(validator, message) ⇒
@@ -575,6 +597,20 @@ assertion-style validation.
 | --- | --- |
 | validator | the validator to wrap |
 | message | an optional message string to pass into the error |
+
+<a name="Vet.Utils.returns"></a>
+
+#### Utils.returns(func, validator, message) ⇒
+Wraps a function in a validator which checks its return value, and throws an error if the return value is bad.
+
+**Kind**: static method of <code>[Utils](#Vet.Utils)</code>  
+**Returns**: a wrapped function that throws an error if the return value doed not pass validation  
+
+| Param | Description |
+| --- | --- |
+| func | the function to wrap |
+| validator | the validator function.  This gets passed the return value |
+| message | an optional message string to pass into the error thrown |
 
 <a name="Vet.equals"></a>
 
