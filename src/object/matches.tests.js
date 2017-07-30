@@ -4,6 +4,7 @@ const matches = require('./matches');
 const isString = require('src/string/isString');
 const isNumber = require('src/number/isNumber');
 const isBoolean = require('src/boolean/isBoolean');
+const optional = require('src/base/optional');
 
 const TESTS = [
 	{
@@ -11,6 +12,50 @@ const TESTS = [
 			name: 'Test User',
 			age: 10,
 			verified: true,
+		},
+
+		expected: true,
+	},
+
+	{
+		input: {
+			name: 'Test User',
+			age: 10,
+			verified: true,
+			optional: true,
+		},
+
+		expected: true,
+	},
+
+	{
+		input: {
+			name: 'Test User',
+			age: 10,
+			verified: true,
+			optional: false,
+		},
+
+		expected: true,
+	},
+
+	{
+		input: {
+			name: 'Test User',
+			age: 10,
+			verified: true,
+			optional: null,
+		},
+
+		expected: true,
+	},
+
+	{
+		input: {
+			name: 'Test User',
+			age: 10,
+			verified: true,
+			optional: undefined,
 		},
 
 		expected: true,
@@ -66,6 +111,7 @@ describe('Object.matches', () => {
 		name: isString,
 		age: isNumber,
 		verified: isBoolean,
+		optional: optional(isBoolean),
 	});
 
 	TESTS.forEach((test) => {

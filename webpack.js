@@ -11,11 +11,12 @@ const plugins = [
 
 const CONFIG = {
 	entry: {
-		'vet.js': [ './src/' ],
+		'Vet': [ './src/' ],
 	},
 	output: {
 		path: DIST_DIR,
-		filename: '[name]',
+		filename: 'vet.js',
+		library: '[name]',
 		libraryTarget: 'umd',
 	},
 	module: {
