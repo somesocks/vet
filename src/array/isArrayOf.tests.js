@@ -1,6 +1,7 @@
 /* eslint-env mocha */
 
-const isArrayOf = require('./isArrayOf');
+const Vet = require('../../dist');
+const { isArrayOf } = Vet.Array;
 
 const TESTS = [
 	{ input: [ 'a string' ], expected: true },

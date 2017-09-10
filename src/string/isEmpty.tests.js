@@ -1,6 +1,7 @@
 /* eslint-env mocha */
 
-const isEmpty = require('./isEmpty');
+const Vet = require('../../dist');
+const { isEmpty } = Vet.String;
 
 const TESTS = [
 	{ input: '', expected: true },

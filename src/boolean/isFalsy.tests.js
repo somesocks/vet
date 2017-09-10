@@ -1,6 +1,7 @@
 /* eslint-env mocha */
 
-const isFalsy = require('./isFalsy');
+const Vet = require('../../dist');
+const { isFalsy } = Vet.Boolean;
 
 const TESTS = [
 	{ input: false, expected: true },

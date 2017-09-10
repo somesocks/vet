@@ -1,6 +1,7 @@
 /* eslint-env mocha */
 
-const isProbablyDataURL = require('./isProbablyDataURL');
+const Vet = require('../../dist');
+const { isProbablyDataURL } = Vet.String;
 
 const TESTS = [
 	{ input: `data:text/plain;charset=utf-8;base64,MTIz`, expected: true },

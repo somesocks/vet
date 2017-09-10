@@ -1,6 +1,7 @@
 /* eslint-env mocha */
 
-const isLength = require('./isLength');
+const Vet = require('../../dist');
+const { isLength } = Vet.String;
 
 const TESTS = [
 	{ input: '12', expected: true },

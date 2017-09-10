@@ -1,6 +1,7 @@
 /* eslint-env mocha */
 
-const equals = require('./equals');
+const Vet = require('../../dist');
+const { equals } = Vet;
 
 const TESTS = [
 	{ input: true, expected: true },

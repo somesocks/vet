@@ -1,6 +1,7 @@
 /* eslint-env mocha */
 
-const isOneOf = require('./isOneOf');
+const Vet = require('../../dist');
+const { isOneOf } = Vet;
 
 const TESTS = [
 	{ input: true, expected: true },

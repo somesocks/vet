@@ -1,6 +1,7 @@
 /* eslint-env mocha */
 
-const optional = require('./optional');
+const Vet = require('../../dist');
+const { optional } = Vet;
 
 const TESTS = [
 	{ input: 'a string', expected: true },

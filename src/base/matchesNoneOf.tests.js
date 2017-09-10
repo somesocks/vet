@@ -1,6 +1,7 @@
 /* eslint-env mocha */
 
-const matchesNoneOf = require('./matchesNoneOf');
+const Vet = require('../../dist');
+const { matchesNoneOf } = Vet;
 
 const TESTS = [
 	{ input: false, expected: true },

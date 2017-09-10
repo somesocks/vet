@@ -1,9 +1,9 @@
 /* eslint-env mocha */
 
-const accepts = require('./accepts');
-
-const matches = require('src/object/matches');
-const isString = require('src/string/isString');
+const Vet = require('../../dist');
+const { isString } = Vet;
+const { matches } = Vet.Object;
+const { accepts } = Vet.Utils;
 
 const TESTS = [
 	{ input: undefined, expected: true },

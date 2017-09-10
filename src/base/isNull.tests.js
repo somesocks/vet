@@ -1,6 +1,7 @@
 /* eslint-env mocha */
 
-const isNull = require('./isNull');
+const Vet = require('../../dist');
+const { isNull } = Vet;
 
 const TESTS = [
 	{ input: null, expected: true },

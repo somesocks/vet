@@ -42,6 +42,7 @@ A 10kB Javascript library for data validation.
         * [.isZero(val)](#Vet.Number.isZero) ⇒
     * [.Object](#Vet.Object) : <code>object</code>
         * [.isObject(val)](#Vet.Object.isObject) ⇒
+        * [.isObjectOf(validator)](#Vet.Object.isObjectOf) ⇒
         * [.matchesExact(schema)](#Vet.Object.matchesExact) ⇒
         * [.matches(schema)](#Vet.Object.matches) ⇒
     * [.String](#Vet.String) : <code>object</code>
@@ -383,6 +384,7 @@ Checks to see if a value is zero
 
 * [.Object](#Vet.Object) : <code>object</code>
     * [.isObject(val)](#Vet.Object.isObject) ⇒
+    * [.isObjectOf(validator)](#Vet.Object.isObjectOf) ⇒
     * [.matchesExact(schema)](#Vet.Object.matchesExact) ⇒
     * [.matches(schema)](#Vet.Object.matches) ⇒
 
@@ -397,6 +399,19 @@ Checks to see if a value is an object
 | Param | Description |
 | --- | --- |
 | val | the value to check |
+
+<a name="Vet.Object.isObjectOf"></a>
+
+#### Object.isObjectOf(validator) ⇒
+Builds an object validator that checks the properties of the object
+NOTE: This only checks enumerable properties
+
+**Kind**: static method of <code>[Object](#Vet.Object)</code>  
+**Returns**: a function that returns true if the value is an object, and all of the object properties pass the validator  
+
+| Param | Description |
+| --- | --- |
+| validator | the validator function run against the array children |
 
 <a name="Vet.Object.matchesExact"></a>
 

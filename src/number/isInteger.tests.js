@@ -1,6 +1,7 @@
 /* eslint-env mocha */
 
-const isInteger = require('./isInteger');
+const Vet = require('../../dist');
+const { isInteger } = Vet.Number;
 
 const TESTS = [
 	{ input: Number.MIN_SAFE_INTEGER, expected: true },

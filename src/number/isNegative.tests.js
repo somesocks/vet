@@ -1,6 +1,8 @@
 /* eslint-env mocha */
 
-const isNegative = require('./isNegative');
+const Vet = require('../../dist');
+const { isNegative } = Vet.Number;
+
 
 const TESTS = [
 	{ input: Number.MIN_SAFE_INTEGER, expected: true },

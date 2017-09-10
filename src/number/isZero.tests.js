@@ -1,6 +1,7 @@
 /* eslint-env mocha */
 
-const isZero = require('./isZero');
+const Vet = require('../../dist');
+const { isZero } = Vet.Number;
 
 const TESTS = [
 	{ input: 0, expected: true },

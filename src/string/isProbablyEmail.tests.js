@@ -1,6 +1,7 @@
 /* eslint-env mocha */
 
-const isProbablyEmail = require('./isProbablyEmail');
+const Vet = require('../../dist');
+const { isProbablyEmail } = Vet.String;
 
 const TESTS = [
 	{ input: 'tester@gmail.com', expected: true },

@@ -1,10 +1,9 @@
 /* eslint-env mocha */
 
-const matches = require('./matches');
-const isString = require('src/string/isString');
-const isNumber = require('src/number/isNumber');
-const isBoolean = require('src/boolean/isBoolean');
-const optional = require('src/base/optional');
+const Vet = require('../../dist');
+const { isString, isNumber, isBoolean, optional } = Vet;
+const { matches } = Vet.Object;
+
 
 const TESTS = [
 	{

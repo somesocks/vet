@@ -1,6 +1,7 @@
 /* eslint-env mocha */
 
-const isNotUndefined = require('./isNotUndefined');
+const Vet = require('../../dist');
+const { isNotUndefined } = Vet;
 
 const TESTS = [
 	{ input: false, expected: true },

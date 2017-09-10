@@ -1,6 +1,7 @@
 /* eslint-env mocha */
 
-const isFunction = require('./isFunction');
+const Vet = require('../../dist');
+const { isFunction } = Vet.Function;
 
 const TESTS = [
 	{ input: () => {}, expected: true },

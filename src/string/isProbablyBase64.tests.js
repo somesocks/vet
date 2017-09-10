@@ -1,6 +1,7 @@
 /* eslint-env mocha */
 
-const isProbablyBase64 = require('./isProbablyBase64');
+const Vet = require('../../dist');
+const { isProbablyBase64 } = Vet.String;
 
 const TESTS = [
 	{ input: 'MQ==', expected: true },

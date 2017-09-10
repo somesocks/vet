@@ -1,8 +1,8 @@
 /* eslint-env mocha */
 
-const returns = require('./returns');
-
-const isString = require('src/string/isString');
+const Vet = require('../../dist');
+const { isString } = Vet;
+const { returns } = Vet.Utils;
 
 const TESTS = [
 	{ input: undefined, expected: true },

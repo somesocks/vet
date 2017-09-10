@@ -12,7 +12,7 @@ build:
 	mkdir -p ./dist
 	NODE_MODULES=. webpack --config=./webpack.js
 
-test:
+test: build
 	(export NODE_PATH=./; find ./src -name '*.tests.js' | xargs mocha --timeout 10000 $(ARGS))
 
 docs:

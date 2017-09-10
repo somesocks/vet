@@ -1,6 +1,7 @@
 /* eslint-env mocha */
 
-const isProbablyURL = require('./isProbablyURL');
+const Vet = require('../../dist');
+const { isProbablyURL } = Vet.String;
 
 const TESTS = [
 	{ input: 'http://www.test.com', expected: true },

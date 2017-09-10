@@ -1,6 +1,7 @@
 /* eslint-env mocha */
 
-const isObject = require('./isObject');
+const Vet = require('../../dist');
+const { isObject } = Vet.Object;
 
 const TESTS = [
 	{ input: {}, expected: true },

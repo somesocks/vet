@@ -1,6 +1,7 @@
 /* eslint-env mocha */
 
-const matchesAllOf = require('./matchesAllOf');
+const Vet = require('../../dist');
+const { matchesAllOf } = Vet;
 
 const TESTS = [
 	{ input: 'a string', expected: true },
