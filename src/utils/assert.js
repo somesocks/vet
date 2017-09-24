@@ -11,7 +11,7 @@
 */
 const assert = (validator, message) => (...args) => {
 	if(validator(...args)) {
-		return;
+		return true;
 	} else {
 		throw new Error(message || 'Vet assertion error!');
 	}
