@@ -1,4 +1,6 @@
 
+const messageBuilder = (log) => (typeof log === 'function' ? log : ((...args) => log));
+
 /**
 * Wraps a function in a validator which checks its arguments, and throws an error if the arguments are bad.
 *
@@ -8,12 +10,18 @@
 * @returns a wrapped function that throws an error if the arguments do not pass validation
 * @memberof Vet.Utils
 */
-const accepts = (func, validator, message) => (...args) => {
-	if(validator(args)) {
-		return func(...args);
-	} else {
-		throw new Error(message || 'Vet.utils.accepts error!');
-	}
+const accepts = (func, validator, message) => {
+	message = messageBuilder(message || 'Vet.utils.accepts error!');
+
+	const wrapper = (...args) => {
+		if(validator(args)) {
+			return func(...args);
+		} else {
+			throw new Error(message(...args));
+		}
+	};
+
+	return wrapper;
 };
 
 module.exports = accepts;

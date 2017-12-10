@@ -11,6 +11,7 @@ const Vet = Object.assign(
 		Function: require('./function'),
 		Array: require('./array'),
 		Object: require('./object'),
+		Date: require('./date'),
 		Utils: require('./utils'),
 	}
 );
@@ -79,6 +80,11 @@ Vet.object = Vet.Object;
 * alias for Vet.String
 */
 Vet.string = Vet.String;
+
+/**
+* alias for Vet.Date
+*/
+Vet.date = Vet.Date;
 
 /**
 * alias for Vet.Utils

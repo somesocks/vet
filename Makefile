@@ -3,7 +3,7 @@
 
 
 help:
-	@echo "Makefile for simple-validator"
+	@echo "Makefile for Vet"
 	@echo "	make build - make a new build"
 	@echo "	make test - run the test cases against the build"
 	@echo " make docs - build the docs"

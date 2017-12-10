@@ -20,6 +20,7 @@ A 10kB Javascript library for data validation.
     * [.number](#Vet.number)
     * [.object](#Vet.object)
     * [.string](#Vet.string)
+    * [.date](#Vet.date)
     * [.utils](#Vet.utils)
     * [.Array](#Vet.Array) : <code>object</code>
         * [.isArray](#Vet.Array.isArray) ⇒
@@ -31,6 +32,8 @@ A 10kB Javascript library for data validation.
         * [.isFalsy(val)](#Vet.Boolean.isFalsy) ⇒
         * [.isTrue(val)](#Vet.Boolean.isTrue) ⇒
         * [.isTruthy(val)](#Vet.Boolean.isTruthy) ⇒
+    * [.Date](#Vet.Date) : <code>object</code>
+        * [.isDate(val)](#Vet.Date.isDate) ⇒
     * [.Function](#Vet.Function) : <code>object</code>
         * [.isFunction(val)](#Vet.Function.isFunction) ⇒
     * [.Number](#Vet.Number) : <code>object</code>
@@ -152,6 +155,12 @@ alias for Vet.Object
 alias for Vet.String
 
 **Kind**: static property of <code>[Vet](#Vet)</code>  
+<a name="Vet.date"></a>
+
+### Vet.date
+alias for Vet.Date
+
+**Kind**: static property of <code>[Vet](#Vet)</code>  
 <a name="Vet.utils"></a>
 
 ### Vet.utils
@@ -271,6 +280,22 @@ Checks to see if a value is loosely true (truthy)
 
 **Kind**: static method of <code>[Boolean](#Vet.Boolean)</code>  
 **Returns**: true if the value loosely true  
+
+| Param | Description |
+| --- | --- |
+| val | the value to check |
+
+<a name="Vet.Date"></a>
+
+### Vet.Date : <code>object</code>
+**Kind**: static namespace of <code>[Vet](#Vet)</code>  
+<a name="Vet.Date.isDate"></a>
+
+#### Date.isDate(val) ⇒
+Checks to see if a value is a Date
+
+**Kind**: static method of <code>[Date](#Vet.Date)</code>  
+**Returns**: true if the value is a Date  
 
 | Param | Description |
 | --- | --- |
