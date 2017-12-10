@@ -19,7 +19,7 @@ const returns = (func, validator, message) => {
 		if(validator(result)) {
 			return result;
 		} else {
-			throw new Error(message(...args));
+			throw new Error(message(result));
 		}
 	};
 
