@@ -14,7 +14,7 @@ const accepts = (func, validator, message) => {
 	message = messageBuilder(message || 'Vet.utils.accepts error!');
 
 	const wrapper = (...args) => {
-		if(validator(args)) {
+		if(validator(...args)) {
 			return func(...args);
 		} else {
 			throw new Error(message(...args));

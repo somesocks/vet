@@ -33,7 +33,7 @@ describe('Utils.accepts', () => {
 
 	const NOP = () => {};
 
-	const wrapper = accepts(NOP, matches([ isString ]));
+	const wrapper = accepts(NOP, isString);
 
 	const validator = threwError(wrapper);
 
