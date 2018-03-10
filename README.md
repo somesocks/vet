@@ -10,13 +10,16 @@
 - Import individual validators!
 ```
   const isString = require('vet').strings.isString;
+
 	const isString2 = require('vet/dist/strings/isStirng');
 ```
 
 - Now with assertReact, for compatibility!
 ```
 	const vet = require('vet');
+
 	const { optional, isString, matchesOneOf } = vet;
+
 	const { isArrayOf } = vet.arrays;
 
 	Thing = (props) => { ... };
