@@ -1,9 +1,9 @@
 /**
-* @namespace Vet.Utils
+* @namespace vet.utils
 */
 
 module.exports = {
-	accepts: require('./accepts'),
-	assert: require('./assert'),
-	returns: require('./returns'),
+	accepts: require('./accepts.export'),
+	assert: require('./assert.export'),
+	returns: require('./returns.export'),
 };

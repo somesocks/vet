@@ -1,6 +1,6 @@
 /* eslint-env mocha */
 
-const Vet = require('../../dist');
+const Vet = require('../../dist/vet');
 const { isString } = Vet;
 const { assert } = Vet.Utils;
 
@@ -28,9 +28,9 @@ describe('Utils.assert', () => {
 		} catch (e) {
 			return true;
 		}
-	}
+	};
 
-	const validator = threwError(assert(isString))
+	const validator = threwError(assert(isString));
 
 	TESTS.forEach((test) => {
 		it(

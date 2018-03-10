@@ -1,6 +1,6 @@
 /* eslint-env mocha */
 
-const Vet = require('../../dist');
+const Vet = require('../../dist/vet');
 const { isString } = Vet;
 const { returns } = Vet.Utils;
 
@@ -28,7 +28,7 @@ describe('Utils.returns', () => {
 		} catch (e) {
 			return true;
 		}
-	}
+	};
 
 	const PASS = (a) => a;
 

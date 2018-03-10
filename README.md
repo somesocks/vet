@@ -1,462 +1,402 @@
 # vet
-A 10kB Javascript library for data validation.
+-A tiny JS library for data validation!
 
-<a name="Vet"></a>
+-50 different validation helpers!
 
-## Vet : <code>object</code>
+# New!
+
+- Now with smaller build!
+
+- Import individual validators!
+```
+  const isString = require('vet').strings.isString;
+	const isString2 = require('vet/dist/strings/isStirng');
+```
+
+- Now with assertReact, for compatibility!
+```
+	const vet = require('vet');
+	const { optional, isString, matchesOneOf } = vet;
+	const { isArrayOf } = vet.arrays;
+
+	Thing = (props) => { ... };
+
+	Thing.propTypes = {
+		vals: assertReact(matchesOneOf(isString, isArrayOf(isString))), // fancy!
+	}
+
+```
+
+- Relicensed under MIT license!
+
+# API
+
+<a name="vet"></a>
+
+## vet : <code>object</code>
 **Kind**: global namespace  
 
-* [Vet](#Vet) : <code>object</code>
-    * [.isArray](#Vet.isArray)
-    * [.isBoolean](#Vet.isBoolean)
-    * [.isFunction](#Vet.isFunction)
-    * [.isNumber](#Vet.isNumber)
-    * [.isObject](#Vet.isObject)
-    * [.isString](#Vet.isString)
-    * [.assert](#Vet.assert)
-    * [.array](#Vet.array)
-    * [.boolean](#Vet.boolean)
-    * [.function](#Vet.function)
-    * [.number](#Vet.number)
-    * [.object](#Vet.object)
-    * [.string](#Vet.string)
-    * [.date](#Vet.date)
-    * [.utils](#Vet.utils)
-    * [.Array](#Vet.Array) : <code>object</code>
-        * [.isArray](#Vet.Array.isArray) ⇒
-        * [.isArrayOf(val)](#Vet.Array.isArrayOf) ⇒
-        * [.isLength(len)](#Vet.Array.isLength) ⇒
-    * [.Boolean](#Vet.Boolean) : <code>object</code>
-        * [.isBoolean(val)](#Vet.Boolean.isBoolean) ⇒
-        * [.isFalse(val)](#Vet.Boolean.isFalse) ⇒
-        * [.isFalsy(val)](#Vet.Boolean.isFalsy) ⇒
-        * [.isTrue(val)](#Vet.Boolean.isTrue) ⇒
-        * [.isTruthy(val)](#Vet.Boolean.isTruthy) ⇒
-    * [.Date](#Vet.Date) : <code>object</code>
-        * [.isDate(val)](#Vet.Date.isDate) ⇒
-    * [.Function](#Vet.Function) : <code>object</code>
-        * [.isFunction(val)](#Vet.Function.isFunction) ⇒
-    * [.Number](#Vet.Number) : <code>object</code>
-        * [.isInteger](#Vet.Number.isInteger) ⇒
-        * [.isNegative(val)](#Vet.Number.isNegative) ⇒
-        * [.isNonZero(val)](#Vet.Number.isNonZero) ⇒
-        * [.isNumber(val)](#Vet.Number.isNumber) ⇒
-        * [.isPositive(val)](#Vet.Number.isPositive) ⇒
-        * [.isZero(val)](#Vet.Number.isZero) ⇒
-    * [.Object](#Vet.Object) : <code>object</code>
-        * [.isObject(val)](#Vet.Object.isObject) ⇒
-        * [.isObjectOf(validator)](#Vet.Object.isObjectOf) ⇒
-        * [.matchesExact(schema)](#Vet.Object.matchesExact) ⇒
-        * [.matches(schema)](#Vet.Object.matches) ⇒
-    * [.String](#Vet.String) : <code>object</code>
-        * [.isEmpty(val)](#Vet.String.isEmpty) ⇒
-        * [.isLength(len)](#Vet.String.isLength) ⇒
-        * [.isNotEmpty(val)](#Vet.String.isNotEmpty) ⇒
-        * [.isProbablyBase64(val)](#Vet.String.isProbablyBase64) ⇒
-        * [.isProbablyDataURL(val)](#Vet.String.isProbablyDataURL) ⇒
-        * [.isProbablyEmail(val)](#Vet.String.isProbablyEmail) ⇒
-        * [.isProbablyURL(val)](#Vet.String.isProbablyURL) ⇒
-        * [.isString(val)](#Vet.String.isString) ⇒
-        * [.matches(regex)](#Vet.String.matches) ⇒
-    * [.Utils](#Vet.Utils) : <code>object</code>
-        * [.accepts(func, validator, message)](#Vet.Utils.accepts) ⇒
-        * [.assert(validator, message)](#Vet.Utils.assert) ⇒
-        * [.returns(func, validator, message)](#Vet.Utils.returns) ⇒
-    * [.equals(eq)](#Vet.equals) ⇒
-    * [.exists(val)](#Vet.exists) ⇒
-    * [.isOneOf(...eq)](#Vet.isOneOf) ⇒
-    * [.isNotNull(val)](#Vet.isNotNull) ⇒
-    * [.isNotNullOrUndefined(val)](#Vet.isNotNullOrUndefined) ⇒
-    * [.isNotUndefined(val)](#Vet.isNotUndefined) ⇒
-    * [.isNull(val)](#Vet.isNull) ⇒
-    * [.isNullOrUndefined(val)](#Vet.isNullOrUndefined) ⇒
-    * [.isOneOf(...eq)](#Vet.isOneOf) ⇒
-    * [.isUndefined(val)](#Vet.isUndefined) ⇒
-    * [.matchesAllOf(...validators)](#Vet.matchesAllOf) ⇒
-    * [.matchesNoneOf(...validators)](#Vet.matchesNoneOf) ⇒
-    * [.matchesOneOf(...validators)](#Vet.matchesOneOf) ⇒
-    * [.optional(validator)](#Vet.optional) ⇒
+* [vet](#vet) : <code>object</code>
+    * [.arrays](#vet.arrays) : <code>object</code>
+        * [.isArray](#vet.arrays.isArray) ⇒
+        * [.isArrayOf(val)](#vet.arrays.isArrayOf) ⇒
+        * [.isLength(len)](#vet.arrays.isLength) ⇒
+    * [.booleans](#vet.booleans) : <code>object</code>
+        * [.isBoolean(val)](#vet.booleans.isBoolean) ⇒
+        * [.isFalse(val)](#vet.booleans.isFalse) ⇒
+        * [.isFalsy(val)](#vet.booleans.isFalsy) ⇒
+        * [.isTrue(val)](#vet.booleans.isTrue) ⇒
+        * [.isTruthy(val)](#vet.booleans.isTruthy) ⇒
+    * [.dates](#vet.dates) : <code>object</code>
+        * [.isDate(val)](#vet.dates.isDate) ⇒
+    * [.functions](#vet.functions) : <code>object</code>
+        * [.isFunction(val)](#vet.functions.isFunction) ⇒
+    * [.numbers](#vet.numbers) : <code>object</code>
+        * [.isFinite(val)](#vet.numbers.isFinite) ⇒
+        * [.isInteger(val)](#vet.numbers.isInteger) ⇒
+        * [.isNegative(val)](#vet.numbers.isNegative) ⇒
+        * [.isNonZero(val)](#vet.numbers.isNonZero) ⇒
+        * [.isNumber(val)](#vet.numbers.isNumber) ⇒
+        * [.isPositive(val)](#vet.numbers.isPositive) ⇒
+        * [.isZero(val)](#vet.numbers.isZero) ⇒
+    * [.objects](#vet.objects) : <code>object</code>
+        * [.isObject(val)](#vet.objects.isObject) ⇒
+        * [.isObjectOf(validator)](#vet.objects.isObjectOf) ⇒
+        * [.matchesExact(schema)](#vet.objects.matchesExact) ⇒
+        * [.matches(schema)](#vet.objects.matches) ⇒
+    * [.strings](#vet.strings) : <code>object</code>
+        * [.isEmpty(val)](#vet.strings.isEmpty) ⇒
+        * [.isLength(len)](#vet.strings.isLength) ⇒
+        * [.isNotEmpty(val)](#vet.strings.isNotEmpty) ⇒
+        * [.isProbablyBase64(val)](#vet.strings.isProbablyBase64) ⇒
+        * [.isProbablyDataURL(val)](#vet.strings.isProbablyDataURL) ⇒
+        * [.isProbablyEmail(val)](#vet.strings.isProbablyEmail) ⇒
+        * [.isProbablyURL(val)](#vet.strings.isProbablyURL) ⇒
+        * [.isString(val)](#vet.strings.isString) ⇒
+        * [.matches(regex)](#vet.strings.matches) ⇒
+    * [.utils](#vet.utils) : <code>object</code>
+        * [.accepts(func, validator, message)](#vet.utils.accepts) ⇒
+        * [.assert(validator, message)](#vet.utils.assert) ⇒
+        * [.module.exports(validator, message)](#vet.utils.module.exports) ⇒
+        * [.returns(func, validator, message)](#vet.utils.returns) ⇒
+    * [.equals(eq)](#vet.equals) ⇒
+    * [.exists(val)](#vet.exists) ⇒
+    * [.isOneOf(...eq)](#vet.isOneOf) ⇒
+    * [.isNotNull(val)](#vet.isNotNull) ⇒
+    * [.isNotNullOrUndefined(val)](#vet.isNotNullOrUndefined) ⇒
+    * [.isNotUndefined(val)](#vet.isNotUndefined) ⇒
+    * [.isNull(val)](#vet.isNull) ⇒
+    * [.isNullOrUndefined(val)](#vet.isNullOrUndefined) ⇒
+    * [.isOneOf(...eq)](#vet.isOneOf) ⇒
+    * [.isUndefined(val)](#vet.isUndefined) ⇒
+    * [.matchesAllOf(...validators)](#vet.matchesAllOf) ⇒
+    * [.matchesNoneOf(...validators)](#vet.matchesNoneOf) ⇒
+    * [.matchesOneOf(...validators)](#vet.matchesOneOf) ⇒
+    * [.optional(validator)](#vet.optional) ⇒
 
-<a name="Vet.isArray"></a>
+<a name="vet.arrays"></a>
 
-### Vet.isArray
-alias for Vet.Array.isArray
+### vet.arrays : <code>object</code>
+**Kind**: static namespace of [<code>vet</code>](#vet)  
 
-**Kind**: static property of <code>[Vet](#Vet)</code>  
-<a name="Vet.isBoolean"></a>
+* [.arrays](#vet.arrays) : <code>object</code>
+    * [.isArray](#vet.arrays.isArray) ⇒
+    * [.isArrayOf(val)](#vet.arrays.isArrayOf) ⇒
+    * [.isLength(len)](#vet.arrays.isLength) ⇒
 
-### Vet.isBoolean
-alias for Vet.Boolean.isBoolean
+<a name="vet.arrays.isArray"></a>
 
-**Kind**: static property of <code>[Vet](#Vet)</code>  
-<a name="Vet.isFunction"></a>
-
-### Vet.isFunction
-alias for Vet.Function.isFunction
-
-**Kind**: static property of <code>[Vet](#Vet)</code>  
-<a name="Vet.isNumber"></a>
-
-### Vet.isNumber
-alias for Vet.Number.isNumber
-
-**Kind**: static property of <code>[Vet](#Vet)</code>  
-<a name="Vet.isObject"></a>
-
-### Vet.isObject
-alias for Vet.Object.isObject
-
-**Kind**: static property of <code>[Vet](#Vet)</code>  
-<a name="Vet.isString"></a>
-
-### Vet.isString
-alias for Vet.String.isString
-
-**Kind**: static property of <code>[Vet](#Vet)</code>  
-<a name="Vet.assert"></a>
-
-### Vet.assert
-alias for Vet.Utils.assert
-
-**Kind**: static property of <code>[Vet](#Vet)</code>  
-<a name="Vet.array"></a>
-
-### Vet.array
-alias for Vet.Array
-
-**Kind**: static property of <code>[Vet](#Vet)</code>  
-<a name="Vet.boolean"></a>
-
-### Vet.boolean
-alias for Vet.Boolean
-
-**Kind**: static property of <code>[Vet](#Vet)</code>  
-<a name="Vet.function"></a>
-
-### Vet.function
-alias for Vet.Function
-
-**Kind**: static property of <code>[Vet](#Vet)</code>  
-<a name="Vet.number"></a>
-
-### Vet.number
-alias for Vet.Number
-
-**Kind**: static property of <code>[Vet](#Vet)</code>  
-<a name="Vet.object"></a>
-
-### Vet.object
-alias for Vet.Object
-
-**Kind**: static property of <code>[Vet](#Vet)</code>  
-<a name="Vet.string"></a>
-
-### Vet.string
-alias for Vet.String
-
-**Kind**: static property of <code>[Vet](#Vet)</code>  
-<a name="Vet.date"></a>
-
-### Vet.date
-alias for Vet.Date
-
-**Kind**: static property of <code>[Vet](#Vet)</code>  
-<a name="Vet.utils"></a>
-
-### Vet.utils
-alias for Vet.Utils
-
-**Kind**: static property of <code>[Vet](#Vet)</code>  
-<a name="Vet.Array"></a>
-
-### Vet.Array : <code>object</code>
-**Kind**: static namespace of <code>[Vet](#Vet)</code>  
-
-* [.Array](#Vet.Array) : <code>object</code>
-    * [.isArray](#Vet.Array.isArray) ⇒
-    * [.isArrayOf(val)](#Vet.Array.isArrayOf) ⇒
-    * [.isLength(len)](#Vet.Array.isLength) ⇒
-
-<a name="Vet.Array.isArray"></a>
-
-#### Array.isArray ⇒
+#### arrays.isArray ⇒
 Checks to see if a value is an array
 
-**Kind**: static constant of <code>[Array](#Vet.Array)</code>  
+**Kind**: static property of [<code>arrays</code>](#vet.arrays)  
 **Returns**: true if the value is an array  
 
 | Param | Description |
 | --- | --- |
 | val | the value to check |
 
-<a name="Vet.Array.isArrayOf"></a>
+<a name="vet.arrays.isArrayOf"></a>
 
-#### Array.isArrayOf(val) ⇒
+#### arrays.isArrayOf(val) ⇒
 Builds an array validator that checks the children of the array
 
-**Kind**: static method of <code>[Array](#Vet.Array)</code>  
+**Kind**: static method of [<code>arrays</code>](#vet.arrays)  
 **Returns**: a function that returns true if the value is an array, and all of the children pass the validator  
 
 | Param | Description |
 | --- | --- |
 | val | the validator function run against the array children |
 
-<a name="Vet.Array.isLength"></a>
+<a name="vet.arrays.isLength"></a>
 
-#### Array.isLength(len) ⇒
+#### arrays.isLength(len) ⇒
 Builds an array length checker
 
-**Kind**: static method of <code>[Array](#Vet.Array)</code>  
+**Kind**: static method of [<code>arrays</code>](#vet.arrays)  
 **Returns**: a function that returns true if the value is an array of length len  
 
 | Param | Description |
 | --- | --- |
 | len | the length the array shouldbe |
 
-<a name="Vet.Boolean"></a>
+<a name="vet.booleans"></a>
 
-### Vet.Boolean : <code>object</code>
-**Kind**: static namespace of <code>[Vet](#Vet)</code>  
+### vet.booleans : <code>object</code>
+**Kind**: static namespace of [<code>vet</code>](#vet)  
 
-* [.Boolean](#Vet.Boolean) : <code>object</code>
-    * [.isBoolean(val)](#Vet.Boolean.isBoolean) ⇒
-    * [.isFalse(val)](#Vet.Boolean.isFalse) ⇒
-    * [.isFalsy(val)](#Vet.Boolean.isFalsy) ⇒
-    * [.isTrue(val)](#Vet.Boolean.isTrue) ⇒
-    * [.isTruthy(val)](#Vet.Boolean.isTruthy) ⇒
+* [.booleans](#vet.booleans) : <code>object</code>
+    * [.isBoolean(val)](#vet.booleans.isBoolean) ⇒
+    * [.isFalse(val)](#vet.booleans.isFalse) ⇒
+    * [.isFalsy(val)](#vet.booleans.isFalsy) ⇒
+    * [.isTrue(val)](#vet.booleans.isTrue) ⇒
+    * [.isTruthy(val)](#vet.booleans.isTruthy) ⇒
 
-<a name="Vet.Boolean.isBoolean"></a>
+<a name="vet.booleans.isBoolean"></a>
 
-#### Boolean.isBoolean(val) ⇒
+#### booleans.isBoolean(val) ⇒
 Checks to see if a value is a boolean
 
-**Kind**: static method of <code>[Boolean](#Vet.Boolean)</code>  
+**Kind**: static method of [<code>booleans</code>](#vet.booleans)  
 **Returns**: true if the value is a boolean  
 
 | Param | Description |
 | --- | --- |
 | val | the value to check |
 
-<a name="Vet.Boolean.isFalse"></a>
+<a name="vet.booleans.isFalse"></a>
 
-#### Boolean.isFalse(val) ⇒
+#### booleans.isFalse(val) ⇒
 Checks to see if a value is strictly false
 
-**Kind**: static method of <code>[Boolean](#Vet.Boolean)</code>  
+**Kind**: static method of [<code>booleans</code>](#vet.booleans)  
 **Returns**: true if the value is strictly false  
 
 | Param | Description |
 | --- | --- |
 | val | the value to check |
 
-<a name="Vet.Boolean.isFalsy"></a>
+<a name="vet.booleans.isFalsy"></a>
 
-#### Boolean.isFalsy(val) ⇒
+#### booleans.isFalsy(val) ⇒
 Checks to see if a value is loosely false (falsy)
 
-**Kind**: static method of <code>[Boolean](#Vet.Boolean)</code>  
+**Kind**: static method of [<code>booleans</code>](#vet.booleans)  
 **Returns**: true if the value is loosely false  
 
 | Param | Description |
 | --- | --- |
 | val | the value to check |
 
-<a name="Vet.Boolean.isTrue"></a>
+<a name="vet.booleans.isTrue"></a>
 
-#### Boolean.isTrue(val) ⇒
+#### booleans.isTrue(val) ⇒
 Checks to see if a value is strictly true
 
-**Kind**: static method of <code>[Boolean](#Vet.Boolean)</code>  
+**Kind**: static method of [<code>booleans</code>](#vet.booleans)  
 **Returns**: true if the value is strictly true  
 
 | Param | Description |
 | --- | --- |
 | val | the value to check |
 
-<a name="Vet.Boolean.isTruthy"></a>
+<a name="vet.booleans.isTruthy"></a>
 
-#### Boolean.isTruthy(val) ⇒
+#### booleans.isTruthy(val) ⇒
 Checks to see if a value is loosely true (truthy)
 
-**Kind**: static method of <code>[Boolean](#Vet.Boolean)</code>  
+**Kind**: static method of [<code>booleans</code>](#vet.booleans)  
 **Returns**: true if the value loosely true  
 
 | Param | Description |
 | --- | --- |
 | val | the value to check |
 
-<a name="Vet.Date"></a>
+<a name="vet.dates"></a>
 
-### Vet.Date : <code>object</code>
-**Kind**: static namespace of <code>[Vet](#Vet)</code>  
-<a name="Vet.Date.isDate"></a>
+### vet.dates : <code>object</code>
+**Kind**: static namespace of [<code>vet</code>](#vet)  
+<a name="vet.dates.isDate"></a>
 
-#### Date.isDate(val) ⇒
+#### dates.isDate(val) ⇒
 Checks to see if a value is a Date
 
-**Kind**: static method of <code>[Date](#Vet.Date)</code>  
+**Kind**: static method of [<code>dates</code>](#vet.dates)  
 **Returns**: true if the value is a Date  
 
 | Param | Description |
 | --- | --- |
 | val | the value to check |
 
-<a name="Vet.Function"></a>
+<a name="vet.functions"></a>
 
-### Vet.Function : <code>object</code>
-**Kind**: static namespace of <code>[Vet](#Vet)</code>  
-<a name="Vet.Function.isFunction"></a>
+### vet.functions : <code>object</code>
+**Kind**: static namespace of [<code>vet</code>](#vet)  
+<a name="vet.functions.isFunction"></a>
 
-#### Function.isFunction(val) ⇒
+#### functions.isFunction(val) ⇒
 Checks to see if a value is a function
 
-**Kind**: static method of <code>[Function](#Vet.Function)</code>  
+**Kind**: static method of [<code>functions</code>](#vet.functions)  
 **Returns**: true if the value is a function  
 
 | Param | Description |
 | --- | --- |
 | val | the value to check |
 
-<a name="Vet.Number"></a>
+<a name="vet.numbers"></a>
 
-### Vet.Number : <code>object</code>
-**Kind**: static namespace of <code>[Vet](#Vet)</code>  
+### vet.numbers : <code>object</code>
+**Kind**: static namespace of [<code>vet</code>](#vet)  
 
-* [.Number](#Vet.Number) : <code>object</code>
-    * [.isInteger](#Vet.Number.isInteger) ⇒
-    * [.isNegative(val)](#Vet.Number.isNegative) ⇒
-    * [.isNonZero(val)](#Vet.Number.isNonZero) ⇒
-    * [.isNumber(val)](#Vet.Number.isNumber) ⇒
-    * [.isPositive(val)](#Vet.Number.isPositive) ⇒
-    * [.isZero(val)](#Vet.Number.isZero) ⇒
+* [.numbers](#vet.numbers) : <code>object</code>
+    * [.isFinite(val)](#vet.numbers.isFinite) ⇒
+    * [.isInteger(val)](#vet.numbers.isInteger) ⇒
+    * [.isNegative(val)](#vet.numbers.isNegative) ⇒
+    * [.isNonZero(val)](#vet.numbers.isNonZero) ⇒
+    * [.isNumber(val)](#vet.numbers.isNumber) ⇒
+    * [.isPositive(val)](#vet.numbers.isPositive) ⇒
+    * [.isZero(val)](#vet.numbers.isZero) ⇒
 
-<a name="Vet.Number.isInteger"></a>
+<a name="vet.numbers.isFinite"></a>
 
-#### Number.isInteger ⇒
+#### numbers.isFinite(val) ⇒
+Checks to see if a value is a finite number
+
+**Kind**: static method of [<code>numbers</code>](#vet.numbers)  
+**Returns**: true if the value is a finite number  
+
+| Param | Description |
+| --- | --- |
+| val | the value to check |
+
+<a name="vet.numbers.isInteger"></a>
+
+#### numbers.isInteger(val) ⇒
 Checks to see if a value is an integer
 
-**Kind**: static constant of <code>[Number](#Vet.Number)</code>  
+**Kind**: static method of [<code>numbers</code>](#vet.numbers)  
 **Returns**: true if the value is an integer  
 
 | Param | Description |
 | --- | --- |
 | val | the value to check |
 
-<a name="Vet.Number.isNegative"></a>
+<a name="vet.numbers.isNegative"></a>
 
-#### Number.isNegative(val) ⇒
+#### numbers.isNegative(val) ⇒
 Checks to see if a value is a negative number
 
-**Kind**: static method of <code>[Number](#Vet.Number)</code>  
+**Kind**: static method of [<code>numbers</code>](#vet.numbers)  
 **Returns**: true if the value is a negative number  
 
 | Param | Description |
 | --- | --- |
 | val | the value to check |
 
-<a name="Vet.Number.isNonZero"></a>
+<a name="vet.numbers.isNonZero"></a>
 
-#### Number.isNonZero(val) ⇒
+#### numbers.isNonZero(val) ⇒
 Checks to see if a value is a nonzero number
 
-**Kind**: static method of <code>[Number](#Vet.Number)</code>  
+**Kind**: static method of [<code>numbers</code>](#vet.numbers)  
 **Returns**: true if the value is a nonzero number  
 
 | Param | Description |
 | --- | --- |
 | val | the value to check |
 
-<a name="Vet.Number.isNumber"></a>
+<a name="vet.numbers.isNumber"></a>
 
-#### Number.isNumber(val) ⇒
+#### numbers.isNumber(val) ⇒
 Checks to see if a value is a number
 
-**Kind**: static method of <code>[Number](#Vet.Number)</code>  
+**Kind**: static method of [<code>numbers</code>](#vet.numbers)  
 **Returns**: true if the value is a number  
 
 | Param | Description |
 | --- | --- |
 | val | the value to check |
 
-<a name="Vet.Number.isPositive"></a>
+<a name="vet.numbers.isPositive"></a>
 
-#### Number.isPositive(val) ⇒
+#### numbers.isPositive(val) ⇒
 Checks to see if a value is a positive number
 
-**Kind**: static method of <code>[Number](#Vet.Number)</code>  
+**Kind**: static method of [<code>numbers</code>](#vet.numbers)  
 **Returns**: true if the value is a positive number  
 
 | Param | Description |
 | --- | --- |
 | val | the value to check |
 
-<a name="Vet.Number.isZero"></a>
+<a name="vet.numbers.isZero"></a>
 
-#### Number.isZero(val) ⇒
+#### numbers.isZero(val) ⇒
 Checks to see if a value is zero
 
-**Kind**: static method of <code>[Number](#Vet.Number)</code>  
+**Kind**: static method of [<code>numbers</code>](#vet.numbers)  
 **Returns**: true if the value is zero  
 
 | Param | Description |
 | --- | --- |
 | val | the value to check |
 
-<a name="Vet.Object"></a>
+<a name="vet.objects"></a>
 
-### Vet.Object : <code>object</code>
-**Kind**: static namespace of <code>[Vet](#Vet)</code>  
+### vet.objects : <code>object</code>
+**Kind**: static namespace of [<code>vet</code>](#vet)  
 
-* [.Object](#Vet.Object) : <code>object</code>
-    * [.isObject(val)](#Vet.Object.isObject) ⇒
-    * [.isObjectOf(validator)](#Vet.Object.isObjectOf) ⇒
-    * [.matchesExact(schema)](#Vet.Object.matchesExact) ⇒
-    * [.matches(schema)](#Vet.Object.matches) ⇒
+* [.objects](#vet.objects) : <code>object</code>
+    * [.isObject(val)](#vet.objects.isObject) ⇒
+    * [.isObjectOf(validator)](#vet.objects.isObjectOf) ⇒
+    * [.matchesExact(schema)](#vet.objects.matchesExact) ⇒
+    * [.matches(schema)](#vet.objects.matches) ⇒
 
-<a name="Vet.Object.isObject"></a>
+<a name="vet.objects.isObject"></a>
 
-#### Object.isObject(val) ⇒
+#### objects.isObject(val) ⇒
 Checks to see if a value is an object
 
-**Kind**: static method of <code>[Object](#Vet.Object)</code>  
+**Kind**: static method of [<code>objects</code>](#vet.objects)  
 **Returns**: true if the value is an object  
 
 | Param | Description |
 | --- | --- |
 | val | the value to check |
 
-<a name="Vet.Object.isObjectOf"></a>
+<a name="vet.objects.isObjectOf"></a>
 
-#### Object.isObjectOf(validator) ⇒
+#### objects.isObjectOf(validator) ⇒
 Builds an object validator that checks the properties of the object
 NOTE: This only checks enumerable properties
 
-**Kind**: static method of <code>[Object](#Vet.Object)</code>  
+**Kind**: static method of [<code>objects</code>](#vet.objects)  
 **Returns**: a function that returns true if the value is an object, and all of the object properties pass the validator  
 
 | Param | Description |
 | --- | --- |
 | validator | the validator function run against the array children |
 
-<a name="Vet.Object.matchesExact"></a>
+<a name="vet.objects.matchesExact"></a>
 
-#### Object.matchesExact(schema) ⇒
+#### objects.matchesExact(schema) ⇒
 Builds a function to check an object against a schema object
 
 This function works similarly to Vet.Object.matches,
 but it also checks to make sure every value in the object to check
 has a corresponding validator in the schema
 
-**Kind**: static method of <code>[Object](#Vet.Object)</code>  
+**Kind**: static method of [<code>objects</code>](#vet.objects)  
 **Returns**: a validator function that takes in a value val, and returns true if val matches the object schema exactly  
 
 | Param | Description |
 | --- | --- |
 | schema | the object schema to check |
 
-<a name="Vet.Object.matches"></a>
+<a name="vet.objects.matches"></a>
 
-#### Object.matches(schema) ⇒
+#### objects.matches(schema) ⇒
 Builds a function to check an object against a schema object
 
 A schema object consists of an object with child object, functions, and values
@@ -467,153 +407,154 @@ The schema matching process is this:
 3) If the schema child is an object, recursively call the schema matching
 4) If the schema child is anything else, check for strict equality
 
-**Kind**: static method of <code>[Object](#Vet.Object)</code>  
+**Kind**: static method of [<code>objects</code>](#vet.objects)  
 **Returns**: a validator function that takes in a value val, and returns true if val matches the object schema  
 
 | Param | Description |
 | --- | --- |
 | schema | the object schema to check |
 
-<a name="Vet.String"></a>
+<a name="vet.strings"></a>
 
-### Vet.String : <code>object</code>
-**Kind**: static namespace of <code>[Vet](#Vet)</code>  
+### vet.strings : <code>object</code>
+**Kind**: static namespace of [<code>vet</code>](#vet)  
 
-* [.String](#Vet.String) : <code>object</code>
-    * [.isEmpty(val)](#Vet.String.isEmpty) ⇒
-    * [.isLength(len)](#Vet.String.isLength) ⇒
-    * [.isNotEmpty(val)](#Vet.String.isNotEmpty) ⇒
-    * [.isProbablyBase64(val)](#Vet.String.isProbablyBase64) ⇒
-    * [.isProbablyDataURL(val)](#Vet.String.isProbablyDataURL) ⇒
-    * [.isProbablyEmail(val)](#Vet.String.isProbablyEmail) ⇒
-    * [.isProbablyURL(val)](#Vet.String.isProbablyURL) ⇒
-    * [.isString(val)](#Vet.String.isString) ⇒
-    * [.matches(regex)](#Vet.String.matches) ⇒
+* [.strings](#vet.strings) : <code>object</code>
+    * [.isEmpty(val)](#vet.strings.isEmpty) ⇒
+    * [.isLength(len)](#vet.strings.isLength) ⇒
+    * [.isNotEmpty(val)](#vet.strings.isNotEmpty) ⇒
+    * [.isProbablyBase64(val)](#vet.strings.isProbablyBase64) ⇒
+    * [.isProbablyDataURL(val)](#vet.strings.isProbablyDataURL) ⇒
+    * [.isProbablyEmail(val)](#vet.strings.isProbablyEmail) ⇒
+    * [.isProbablyURL(val)](#vet.strings.isProbablyURL) ⇒
+    * [.isString(val)](#vet.strings.isString) ⇒
+    * [.matches(regex)](#vet.strings.matches) ⇒
 
-<a name="Vet.String.isEmpty"></a>
+<a name="vet.strings.isEmpty"></a>
 
-#### String.isEmpty(val) ⇒
+#### strings.isEmpty(val) ⇒
 Checks to see if a value is an empty string
 
-**Kind**: static method of <code>[String](#Vet.String)</code>  
+**Kind**: static method of [<code>strings</code>](#vet.strings)  
 **Returns**: true if val is an empty string  
 
 | Param | Description |
 | --- | --- |
 | val | the value to check |
 
-<a name="Vet.String.isLength"></a>
+<a name="vet.strings.isLength"></a>
 
-#### String.isLength(len) ⇒
+#### strings.isLength(len) ⇒
 Builds a function to check if a value is a string of length len
 
-**Kind**: static method of <code>[String](#Vet.String)</code>  
+**Kind**: static method of [<code>strings</code>](#vet.strings)  
 **Returns**: a function that takes in a value val, and returns true if val is a string of length len  
 
 | Param | Description |
 | --- | --- |
 | len | the desired length of string |
 
-<a name="Vet.String.isNotEmpty"></a>
+<a name="vet.strings.isNotEmpty"></a>
 
-#### String.isNotEmpty(val) ⇒
+#### strings.isNotEmpty(val) ⇒
 Checks to see if a value is a non-empty string
 
-**Kind**: static method of <code>[String](#Vet.String)</code>  
+**Kind**: static method of [<code>strings</code>](#vet.strings)  
 **Returns**: true if val is a non-empty string  
 
 | Param | Description |
 | --- | --- |
 | val | the value to check |
 
-<a name="Vet.String.isProbablyBase64"></a>
+<a name="vet.strings.isProbablyBase64"></a>
 
-#### String.isProbablyBase64(val) ⇒
+#### strings.isProbablyBase64(val) ⇒
 Checks to see if a value is probably a valid base64 string
 
-**Kind**: static method of <code>[String](#Vet.String)</code>  
+**Kind**: static method of [<code>strings</code>](#vet.strings)  
 **Returns**: true if val is probably a valid base64 string  
 
 | Param | Description |
 | --- | --- |
 | val | the value to check |
 
-<a name="Vet.String.isProbablyDataURL"></a>
+<a name="vet.strings.isProbablyDataURL"></a>
 
-#### String.isProbablyDataURL(val) ⇒
+#### strings.isProbablyDataURL(val) ⇒
 Checks to see if a value is probably a valid data URL
 
-**Kind**: static method of <code>[String](#Vet.String)</code>  
+**Kind**: static method of [<code>strings</code>](#vet.strings)  
 **Returns**: true if val is probably a valid data URL  
 
 | Param | Description |
 | --- | --- |
 | val | the value to check |
 
-<a name="Vet.String.isProbablyEmail"></a>
+<a name="vet.strings.isProbablyEmail"></a>
 
-#### String.isProbablyEmail(val) ⇒
+#### strings.isProbablyEmail(val) ⇒
 Checks to see if a value is probably a valid email
 
-**Kind**: static method of <code>[String](#Vet.String)</code>  
+**Kind**: static method of [<code>strings</code>](#vet.strings)  
 **Returns**: true if val is probably a valid email  
 
 | Param | Description |
 | --- | --- |
 | val | the value to check |
 
-<a name="Vet.String.isProbablyURL"></a>
+<a name="vet.strings.isProbablyURL"></a>
 
-#### String.isProbablyURL(val) ⇒
+#### strings.isProbablyURL(val) ⇒
 Checks to see if a value is probably a valid URL
 
-**Kind**: static method of <code>[String](#Vet.String)</code>  
+**Kind**: static method of [<code>strings</code>](#vet.strings)  
 **Returns**: true if val is probably a valid URL  
 
 | Param | Description |
 | --- | --- |
 | val | the value to check |
 
-<a name="Vet.String.isString"></a>
+<a name="vet.strings.isString"></a>
 
-#### String.isString(val) ⇒
+#### strings.isString(val) ⇒
 Checks to see if a value is a string
 
-**Kind**: static method of <code>[String](#Vet.String)</code>  
+**Kind**: static method of [<code>strings</code>](#vet.strings)  
 **Returns**: true if val is a string  
 
 | Param | Description |
 | --- | --- |
 | val | the value to check |
 
-<a name="Vet.String.matches"></a>
+<a name="vet.strings.matches"></a>
 
-#### String.matches(regex) ⇒
+#### strings.matches(regex) ⇒
 Builds a function that checks to see if a value matches a regular expression
 
-**Kind**: static method of <code>[String](#Vet.String)</code>  
+**Kind**: static method of [<code>strings</code>](#vet.strings)  
 **Returns**: a function that takes in a value val, and returns true if it is a string that matches regex  
 
 | Param | Description |
 | --- | --- |
 | regex | the regular expression to check against |
 
-<a name="Vet.Utils"></a>
+<a name="vet.utils"></a>
 
-### Vet.Utils : <code>object</code>
-**Kind**: static namespace of <code>[Vet](#Vet)</code>  
+### vet.utils : <code>object</code>
+**Kind**: static namespace of [<code>vet</code>](#vet)  
 
-* [.Utils](#Vet.Utils) : <code>object</code>
-    * [.accepts(func, validator, message)](#Vet.Utils.accepts) ⇒
-    * [.assert(validator, message)](#Vet.Utils.assert) ⇒
-    * [.returns(func, validator, message)](#Vet.Utils.returns) ⇒
+* [.utils](#vet.utils) : <code>object</code>
+    * [.accepts(func, validator, message)](#vet.utils.accepts) ⇒
+    * [.assert(validator, message)](#vet.utils.assert) ⇒
+    * [.module.exports(validator, message)](#vet.utils.module.exports) ⇒
+    * [.returns(func, validator, message)](#vet.utils.returns) ⇒
 
-<a name="Vet.Utils.accepts"></a>
+<a name="vet.utils.accepts"></a>
 
-#### Utils.accepts(func, validator, message) ⇒
+#### utils.accepts(func, validator, message) ⇒
 Wraps a function in a validator which checks its arguments, and throws an error if the arguments are bad.
 
-**Kind**: static method of <code>[Utils](#Vet.Utils)</code>  
+**Kind**: static method of [<code>utils</code>](#vet.utils)  
 **Returns**: a wrapped function that throws an error if the arguments do not pass validation  
 
 | Param | Description |
@@ -622,15 +563,14 @@ Wraps a function in a validator which checks its arguments, and throws an error 
 | validator | the validator function.  This gets passed the arguments as an array |
 | message | an optional message string to pass into the error thrown |
 
-<a name="Vet.Utils.assert"></a>
+<a name="vet.utils.assert"></a>
 
-#### Utils.assert(validator, message) ⇒
+#### utils.assert(validator, message) ⇒
 Wraps a validator, and throws an error if it returns false.
 
-This is useful for some libraries (like React) that expect
-assertion-style validation.
+This is useful for some code that expects assertion-style validation.
 
-**Kind**: static method of <code>[Utils](#Vet.Utils)</code>  
+**Kind**: static method of [<code>utils</code>](#vet.utils)  
 **Returns**: a function that returns null if the arguments pass validation, or throws an error if they do not  
 
 | Param | Description |
@@ -638,12 +578,28 @@ assertion-style validation.
 | validator | the validator to wrap |
 | message | an optional message string to pass into the error |
 
-<a name="Vet.Utils.returns"></a>
+<a name="vet.utils.module.exports"></a>
 
-#### Utils.returns(func, validator, message) ⇒
+#### utils.module.exports(validator, message) ⇒
+A utility function for building a react-compatible assertion from a Vet validator
+
+This is useful for some libraries (like React) that expect
+assertion-style validation.
+
+**Kind**: static method of [<code>utils</code>](#vet.utils)  
+**Returns**: a function that returns null if the arguments pass validation, or throws an error if they do not  
+
+| Param | Description |
+| --- | --- |
+| validator | the validator to wrap |
+| message | an optional message string to pass into the error |
+
+<a name="vet.utils.returns"></a>
+
+#### utils.returns(func, validator, message) ⇒
 Wraps a function in a validator which checks its return value, and throws an error if the return value is bad.
 
-**Kind**: static method of <code>[Utils](#Vet.Utils)</code>  
+**Kind**: static method of [<code>utils</code>](#vet.utils)  
 **Returns**: a wrapped function that throws an error if the return value doed not pass validation  
 
 | Param | Description |
@@ -652,168 +608,168 @@ Wraps a function in a validator which checks its return value, and throws an err
 | validator | the validator function.  This gets passed the return value |
 | message | an optional message string to pass into the error thrown |
 
-<a name="Vet.equals"></a>
+<a name="vet.equals"></a>
 
-### Vet.equals(eq) ⇒
+### vet.equals(eq) ⇒
 Builds an curried equal function
 
-**Kind**: static method of <code>[Vet](#Vet)</code>  
+**Kind**: static method of [<code>vet</code>](#vet)  
 **Returns**: a function that takes in one parameter val, and returns true if val === eq  
 
 | Param | Description |
 | --- | --- |
 | eq | value to check equality against |
 
-<a name="Vet.exists"></a>
+<a name="vet.exists"></a>
 
-### Vet.exists(val) ⇒
+### vet.exists(val) ⇒
 Alias for isNotNullOrUndefined
 
-**Kind**: static method of <code>[Vet](#Vet)</code>  
+**Kind**: static method of [<code>vet</code>](#vet)  
 **Returns**: true if val is not null or undefined  
 
 | Param | Description |
 | --- | --- |
 | val | value to check |
 
-<a name="Vet.isOneOf"></a>
+<a name="vet.isOneOf"></a>
 
-### Vet.isOneOf(...eq) ⇒
+### vet.isOneOf(...eq) ⇒
 Constructs a function that checks equality against any number of arguments
 
-**Kind**: static method of <code>[Vet](#Vet)</code>  
+**Kind**: static method of [<code>vet</code>](#vet)  
 **Returns**: a function that takes in a parameter val, and returns true if val is NOT equal to any of the options in ...eq  
 
 | Param | Type | Description |
 | --- | --- | --- |
 | ...eq | <code>\*</code> | values to check equality against |
 
-<a name="Vet.isNotNull"></a>
+<a name="vet.isNotNull"></a>
 
-### Vet.isNotNull(val) ⇒
+### vet.isNotNull(val) ⇒
 A function to check for nulls
 
-**Kind**: static method of <code>[Vet](#Vet)</code>  
+**Kind**: static method of [<code>vet</code>](#vet)  
 **Returns**: true if val is strictly not equal to null  
 
 | Param | Description |
 | --- | --- |
 | val | a value to check against null |
 
-<a name="Vet.isNotNullOrUndefined"></a>
+<a name="vet.isNotNullOrUndefined"></a>
 
-### Vet.isNotNullOrUndefined(val) ⇒
+### vet.isNotNullOrUndefined(val) ⇒
 A function to check for null or undefined
 
-**Kind**: static method of <code>[Vet](#Vet)</code>  
+**Kind**: static method of [<code>vet</code>](#vet)  
 **Returns**: true if val is loosely not null (strictly not null or undefined)  
 
 | Param | Description |
 | --- | --- |
 | val | a value to check against null and undefined |
 
-<a name="Vet.isNotUndefined"></a>
+<a name="vet.isNotUndefined"></a>
 
-### Vet.isNotUndefined(val) ⇒
+### vet.isNotUndefined(val) ⇒
 A function to check for undefined
 
-**Kind**: static method of <code>[Vet](#Vet)</code>  
+**Kind**: static method of [<code>vet</code>](#vet)  
 **Returns**: true if val is strictly not undefined  
 
 | Param | Description |
 | --- | --- |
 | val | a value to check |
 
-<a name="Vet.isNull"></a>
+<a name="vet.isNull"></a>
 
-### Vet.isNull(val) ⇒
+### vet.isNull(val) ⇒
 A function to check for null
 
-**Kind**: static method of <code>[Vet](#Vet)</code>  
+**Kind**: static method of [<code>vet</code>](#vet)  
 **Returns**: true if val is strictly null  
 
 | Param | Description |
 | --- | --- |
 | val | a value to check |
 
-<a name="Vet.isNullOrUndefined"></a>
+<a name="vet.isNullOrUndefined"></a>
 
-### Vet.isNullOrUndefined(val) ⇒
+### vet.isNullOrUndefined(val) ⇒
 A function to check for null or undefined
 
-**Kind**: static method of <code>[Vet](#Vet)</code>  
+**Kind**: static method of [<code>vet</code>](#vet)  
 **Returns**: true if val is loosely null (strictly null or undefined)  
 
 | Param | Description |
 | --- | --- |
 | val | a value to check |
 
-<a name="Vet.isOneOf"></a>
+<a name="vet.isOneOf"></a>
 
-### Vet.isOneOf(...eq) ⇒
+### vet.isOneOf(...eq) ⇒
 Constructs a function that checks equality against any number of arguments
 
-**Kind**: static method of <code>[Vet](#Vet)</code>  
+**Kind**: static method of [<code>vet</code>](#vet)  
 **Returns**: a function that takes in a parameter val, and returns true if val is equal to any of the options in ...eq  
 
 | Param | Type | Description |
 | --- | --- | --- |
 | ...eq | <code>\*</code> | values to check equality against |
 
-<a name="Vet.isUndefined"></a>
+<a name="vet.isUndefined"></a>
 
-### Vet.isUndefined(val) ⇒
+### vet.isUndefined(val) ⇒
 A function to check for undefined
 
-**Kind**: static method of <code>[Vet](#Vet)</code>  
+**Kind**: static method of [<code>vet</code>](#vet)  
 **Returns**: true if val is strictly undefined  
 
 | Param | Description |
 | --- | --- |
 | val | a value to check |
 
-<a name="Vet.matchesAllOf"></a>
+<a name="vet.matchesAllOf"></a>
 
-### Vet.matchesAllOf(...validators) ⇒
+### vet.matchesAllOf(...validators) ⇒
 A function builder to check a value against multiple validator functions
 
-**Kind**: static method of <code>[Vet](#Vet)</code>  
+**Kind**: static method of [<code>vet</code>](#vet)  
 **Returns**: a function that takes in a value, and returns true if ALL of the validator functions return true  
 
 | Param | Type | Description |
 | --- | --- | --- |
 | ...validators | <code>function</code> | any number of validator functions |
 
-<a name="Vet.matchesNoneOf"></a>
+<a name="vet.matchesNoneOf"></a>
 
-### Vet.matchesNoneOf(...validators) ⇒
+### vet.matchesNoneOf(...validators) ⇒
 A function builder to check a value against multiple validator functions
 
-**Kind**: static method of <code>[Vet](#Vet)</code>  
+**Kind**: static method of [<code>vet</code>](#vet)  
 **Returns**: a function that takes in a value, and returns true if NONE of the validator functions return true  
 
 | Param | Type | Description |
 | --- | --- | --- |
 | ...validators | <code>function</code> | any number of validator functions |
 
-<a name="Vet.matchesOneOf"></a>
+<a name="vet.matchesOneOf"></a>
 
-### Vet.matchesOneOf(...validators) ⇒
+### vet.matchesOneOf(...validators) ⇒
 A function builder to check a value against multiple validator functions
 
-**Kind**: static method of <code>[Vet](#Vet)</code>  
+**Kind**: static method of [<code>vet</code>](#vet)  
 **Returns**: a function that takes in a value, and returns true if ANY of the validator functions return true  
 
 | Param | Type | Description |
 | --- | --- | --- |
 | ...validators | <code>function</code> | any number of validator functions |
 
-<a name="Vet.optional"></a>
+<a name="vet.optional"></a>
 
-### Vet.optional(validator) ⇒
+### vet.optional(validator) ⇒
 A function builder to optionally check a value
 
-**Kind**: static method of <code>[Vet](#Vet)</code>  
+**Kind**: static method of [<code>vet</code>](#vet)  
 **Returns**: a function that takes in a value, and returns true if the value does not exist, or the validator returns true  
 
 | Param | Description |

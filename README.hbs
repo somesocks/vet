@@ -1,4 +1,34 @@
 # vet
-A 10kB Javascript library for data validation.
+-A tiny JS library for data validation!
+
+-50 different validation helpers!
+
+# New!
+
+- Now with smaller build!
+
+- Import individual validators!
+```
+  const isString = require('vet').strings.isString;
+	const isString2 = require('vet/dist/strings/isStirng');
+```
+
+- Now with assertReact, for compatibility!
+```
+	const vet = require('vet');
+	const { optional, isString, matchesOneOf } = vet;
+	const { isArrayOf } = vet.arrays;
+
+	Thing = (props) => { ... };
+
+	Thing.propTypes = {
+		vals: assertReact(matchesOneOf(isString, isArrayOf(isString))), // fancy!
+	}
+
+```
+
+- Relicensed under MIT license!
+
+# API
 
 {{>main}}

@@ -1,6 +1,6 @@
 /* eslint-env mocha */
 
-const Vet = require('../../dist');
+const Vet = require('../../dist/vet');
 const { isString } = Vet;
 const { matches } = Vet.Object;
 const { accepts } = Vet.Utils;
@@ -29,7 +29,7 @@ describe('Utils.accepts', () => {
 		} catch (e) {
 			return true;
 		}
-	}
+	};
 
 	const NOP = () => {};
 

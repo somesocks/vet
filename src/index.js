@@ -1,18 +1,47 @@
-/** @namespace Vet */
-
+/** @namespace vet */
 
 const Vet = Object.assign(
 	{},
 	require('./base'),
 	{
-		Boolean: require('./boolean'),
-		Number: require('./number'),
-		String: require('./string'),
-		Function: require('./function'),
-		Array: require('./array'),
-		Object: require('./object'),
-		Date: require('./date'),
+
+		Boolean: require('./booleans'),
+		boolean: require('./booleans'),
+		Booleans: require('./booleans'),
+		booleans: require('./booleans'),
+
+		Number: require('./numbers'),
+		number: require('./numbers'),
+		Numbers: require('./numbers'),
+		numbers: require('./numbers'),
+
+		String: require('./strings'),
+		string: require('./strings'),
+		Strings: require('./strings'),
+		strings: require('./strings'),
+
+		Function: require('./functions'),
+		function: require('./functions'),
+		Functions: require('./functions'),
+		functions: require('./functions'),
+
+		Array: require('./arrays'),
+		array: require('./arrays'),
+		Arrays: require('./arrays'),
+		arrays: require('./arrays'),
+
+		Object: require('./objects'),
+		object: require('./objects'),
+		Objects: require('./objects'),
+		objects: require('./objects'),
+
+		Date: require('./dates'),
+		date: require('./dates'),
+		Dates: require('./dates'),
+		dates: require('./dates'),
+
 		Utils: require('./utils'),
+		utils: require('./utils'),
 	}
 );
 

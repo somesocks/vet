@@ -1,6 +1,6 @@
 /* eslint-env mocha */
 
-const Vet = require('../../dist');
+const Vet = require('../../dist/vet');
 const { optional } = Vet;
 
 const TESTS = [
