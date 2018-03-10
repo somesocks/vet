@@ -781,4 +781,3 @@ A function builder to optionally check a value
 | Param | Description |
 | --- | --- |
 | validator | a validator function |
-
