@@ -12,24 +12,24 @@
 
   const isString = require('vet').strings.isString;
 
-	const isString2 = require('vet/dist/strings/isStirng');
+  const isString2 = require('vet/dist/strings/isString');
 
 ```
 
 - Now with assertReact, for compatibility!
 ```
 
-	const vet = require('vet');
+  const vet = require('vet');
 
-	const { optional, isString, matchesOneOf } = vet;
+  const { optional, isString, matchesOneOf } = vet;
 
-	const { isArrayOf } = vet.arrays;
+  const { isArrayOf } = vet.arrays;
 
-	Thing = (props) => { ... };
+  Thing = (props) => { ... };
 
-	Thing.propTypes = {
-		vals: assertReact(matchesOneOf(isString, isArrayOf(isString))), // fancy!
-	}
+  Thing.propTypes = {
+    vals: assertReact(matchesOneOf(isString, isArrayOf(isString))), // fancy!
+  }
 
 ```
 
