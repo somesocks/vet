@@ -5,6 +5,7 @@
 * let isNoneOf = require('vet/isNoneOf');
 *
 * let check = isNoneOf(1, 2, 3);
+*
 * check(1); // returns false
 *
 * check(4); // returns true

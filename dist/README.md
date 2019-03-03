@@ -772,6 +772,7 @@ Alias for isNotNullOrUndefined
 let isNoneOf = require('vet/isNoneOf');
 
 let check = isNoneOf(1, 2, 3);
+
 check(1); // returns false
 
 check(4); // returns true
@@ -791,6 +792,16 @@ Constructs a function that checks equality against any number of arguments
 <a name="vet.isNotNull"></a>
 
 ### vet.isNotNull(val) ⇒
+```javascript
+
+let isNotNull = require('vet/isNotNull');
+
+isNotNull(null); // returns false
+
+isNotNull(undefined); // returns true
+isNotNull({}); // returns true
+
+```
 A function to check for nulls
 
 **Kind**: static method of [<code>vet</code>](#vet)  
@@ -805,6 +816,16 @@ A function to check for nulls
 <a name="vet.isNotNullOrUndefined"></a>
 
 ### vet.isNotNullOrUndefined(val) ⇒
+```javascript
+
+let isNotNullOrUndefined = require('vet/isNotNullOrUndefined');
+
+isNotNullOrUndefined(null); // returns false
+isNotNullOrUndefined(undefined); // returns false
+
+isNotNullOrUndefined({}); // returns true
+
+```
 A function to check for null or undefined
 
 **Kind**: static method of [<code>vet</code>](#vet)  
@@ -819,6 +840,16 @@ A function to check for null or undefined
 <a name="vet.isNotUndefined"></a>
 
 ### vet.isNotUndefined(val) ⇒
+```javascript
+
+let isNotUndefined = require('vet/isNotUndefined');
+
+isNotUndefined(undefined); // returns false
+
+isNotUndefined(null); // returns true
+isNotUndefined({}); // returns true
+
+```
 A function to check for undefined
 
 **Kind**: static method of [<code>vet</code>](#vet)  
@@ -833,6 +864,16 @@ A function to check for undefined
 <a name="vet.isNull"></a>
 
 ### vet.isNull(val) ⇒
+```javascript
+
+let isNull = require('vet/isNull');
+
+isNull(undefined); // returns false
+isNull({}); // returns false
+
+isNull(null); // returns true
+
+```
 A function to check for null
 
 **Kind**: static method of [<code>vet</code>](#vet)  
@@ -847,6 +888,16 @@ A function to check for null
 <a name="vet.isNullOrUndefined"></a>
 
 ### vet.isNullOrUndefined(val) ⇒
+```javascript
+
+let isNullOrUndefined = require('vet/isNullOrUndefined');
+
+isNullOrUndefined({}); // returns false
+
+isNullOrUndefined(undefined); // returns true
+isNullOrUndefined(null); // returns true
+
+```
 A function to check for null or undefined
 
 **Kind**: static method of [<code>vet</code>](#vet)  
@@ -861,6 +912,17 @@ A function to check for null or undefined
 <a name="vet.isOneOf"></a>
 
 ### vet.isOneOf(...eq) ⇒
+```javascript
+
+let isOneOf = require('vet/isOneOf');
+
+let check = isOneOf(1, 2, 3);
+
+check(4); // returns false
+
+check(1); // returns true
+
+```
 Constructs a function that checks equality against any number of arguments
 
 **Kind**: static method of [<code>vet</code>](#vet)  
@@ -875,6 +937,16 @@ Constructs a function that checks equality against any number of arguments
 <a name="vet.isUndefined"></a>
 
 ### vet.isUndefined(val) ⇒
+```javascript
+
+let isUndefined = require('vet/isUndefined');
+
+isUndefined({}); // returns false
+isUndefined(null); // returns false
+
+isUndefined(undefined); // returns true
+
+```
 A function to check for undefined
 
 **Kind**: static method of [<code>vet</code>](#vet)  
@@ -889,6 +961,22 @@ A function to check for undefined
 <a name="vet.matchesAllOf"></a>
 
 ### vet.matchesAllOf(...validators) ⇒
+```javascript
+
+let matchesAllOf = require('vet/matchesAllOf');
+let isNumber = require('vet/numbers/isNumber');
+
+let isPositive = matchesAllOf(
+  isNumber,
+  (val) => val > 0
+);
+
+isPositive(null); // returns false
+isPositive(-1); // returns false
+
+isPositive(1); // returns true
+
+```
 A function builder to check a value against multiple validator functions
 
 **Kind**: static method of [<code>vet</code>](#vet)  
@@ -903,6 +991,23 @@ A function builder to check a value against multiple validator functions
 <a name="vet.matchesNoneOf"></a>
 
 ### vet.matchesNoneOf(...validators) ⇒
+```javascript
+
+let matchesNoneOf = require('vet/matchesNoneOf');
+let isNumber = require('vet/numbers/isNumber');
+let isString = require('vet/strings/isString');
+
+let isNotNumberOrString = matchesNoneOf(
+  isNumber,
+  isString,
+);
+
+isNotNumberOrString(1); // returns false
+isNotNumberOrString('1'); // returns false
+
+isNotNumberOrString(null); // returns true
+
+```
 A function builder to check a value against multiple validator functions
 
 **Kind**: static method of [<code>vet</code>](#vet)  
@@ -917,6 +1022,23 @@ A function builder to check a value against multiple validator functions
 <a name="vet.matchesOneOf"></a>
 
 ### vet.matchesOneOf(...validators) ⇒
+```javascript
+
+let matchesOneOf = require('vet/matchesOneOf');
+let isNumber = require('vet/numbers/isNumber');
+let isString = require('vet/strings/isString');
+
+let isNumberOrString = matchesNoneOf(
+  isNumber,
+  isString,
+);
+
+isNumberOrString(null); // returns false
+
+isNumberOrString(1); // returns true
+isNumberOrString('1'); // returns true
+
+```
 A function builder to check a value against multiple validator functions
 
 **Kind**: static method of [<code>vet</code>](#vet)  
@@ -931,6 +1053,20 @@ A function builder to check a value against multiple validator functions
 <a name="vet.optional"></a>
 
 ### vet.optional(validator) ⇒
+```javascript
+
+let optional = require('vet/optional');
+let isNumber = require('vet/numbers/isNumber');
+
+let isMaybeNumber = optional(isNumber);
+
+isMaybeNumber(null); // returns false
+isMaybeNumber("1"); // returns false
+
+isMaybeNumber(1); // returns true
+isMaybeNumber(undefined); // returns true
+
+```
 A function builder to optionally check a value
 
 **Kind**: static method of [<code>vet</code>](#vet)  

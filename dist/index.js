@@ -1,8 +1,6 @@
 /** @namespace vet */
 
-const Vet = Object.assign(
-	{},
-	{
+const Vet = {
 		equals: require('./equals'),
 		exists: require('./exists'),
 		isNoneOf: require('./isNoneOf'),
@@ -17,8 +15,6 @@ const Vet = Object.assign(
 		matchesNoneOf: require('./matchesNoneOf'),
 		matchesOneOf: require('./matchesOneOf'),
 		optional: require('./optional'),
-	},
-	{
 
 		Boolean: require('./booleans'),
 		boolean: require('./booleans'),
@@ -57,8 +53,8 @@ const Vet = Object.assign(
 
 		Utils: require('./utils'),
 		utils: require('./utils'),
-	}
-);
+
+};
 
 /**
 * alias for Vet.Array.isArray
@@ -95,44 +91,5 @@ Vet.isString = Vet.String.isString;
 */
 Vet.assert = Vet.Utils.assert;
 
-/**
-* alias for Vet.Array
-*/
-Vet.array = Vet.Array;
-
-/**
-* alias for Vet.Boolean
-*/
-Vet.boolean = Vet.Boolean;
-
-/**
-* alias for Vet.Function
-*/
-Vet.function = Vet.Function;
-
-/**
-* alias for Vet.Number
-*/
-Vet.number = Vet.Number;
-
-/**
-* alias for Vet.Object
-*/
-Vet.object = Vet.Object;
-
-/**
-* alias for Vet.String
-*/
-Vet.string = Vet.String;
-
-/**
-* alias for Vet.Date
-*/
-Vet.date = Vet.Date;
-
-/**
-* alias for Vet.Utils
-*/
-Vet.utils = Vet.Utils;
 
 module.exports = Vet;
