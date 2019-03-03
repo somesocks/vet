@@ -67,6 +67,9 @@ A collection of data validation tools.
     * [.matchesOneOf(...validators)](#vet.matchesOneOf) ⇒
     * [.optional(validator)](#vet.optional) ⇒
 
+
+* * *
+
 <a name="vet.arrays"></a>
 
 ### vet.arrays : <code>object</code>
@@ -76,6 +79,9 @@ A collection of data validation tools.
     * [.isArray](#vet.arrays.isArray) ⇒
     * [.isArrayOf(val)](#vet.arrays.isArrayOf) ⇒
     * [.isLength(len)](#vet.arrays.isLength) ⇒
+
+
+* * *
 
 <a name="vet.arrays.isArray"></a>
 
@@ -94,10 +100,12 @@ Checks to see if a value is an array
 
 **Kind**: static property of [<code>arrays</code>](#vet.arrays)  
 **Returns**: true if the value is an array  
+**Params**
 
-| Param | Description |
-| --- | --- |
-| val | the value to check |
+- val - the value to check
+
+
+* * *
 
 <a name="vet.arrays.isArrayOf"></a>
 
@@ -121,10 +129,12 @@ Builds an array validator that checks the children of the array
 
 **Kind**: static method of [<code>arrays</code>](#vet.arrays)  
 **Returns**: a function that returns true if the value is an array, and all of the children pass the validator  
+**Params**
 
-| Param | Description |
-| --- | --- |
-| val | the validator function run against the array children |
+- val - the validator function run against the array children
+
+
+* * *
 
 <a name="vet.arrays.isLength"></a>
 
@@ -146,10 +156,12 @@ Builds an array length checker
 
 **Kind**: static method of [<code>arrays</code>](#vet.arrays)  
 **Returns**: a function that returns true if the value is an array of length len  
+**Params**
 
-| Param | Description |
-| --- | --- |
-| len | the length the array shouldbe |
+- len - the length the array shouldbe
+
+
+* * *
 
 <a name="vet.booleans"></a>
 
@@ -163,6 +175,9 @@ Builds an array length checker
     * [.isTrue(val)](#vet.booleans.isTrue) ⇒
     * [.isTruthy(val)](#vet.booleans.isTruthy) ⇒
 
+
+* * *
+
 <a name="vet.booleans.isBoolean"></a>
 
 #### booleans.isBoolean(val) ⇒
@@ -170,10 +185,12 @@ Checks to see if a value is a boolean
 
 **Kind**: static method of [<code>booleans</code>](#vet.booleans)  
 **Returns**: true if the value is a boolean  
+**Params**
 
-| Param | Description |
-| --- | --- |
-| val | the value to check |
+- val - the value to check
+
+
+* * *
 
 <a name="vet.booleans.isFalse"></a>
 
@@ -182,10 +199,12 @@ Checks to see if a value is strictly false
 
 **Kind**: static method of [<code>booleans</code>](#vet.booleans)  
 **Returns**: true if the value is strictly false  
+**Params**
 
-| Param | Description |
-| --- | --- |
-| val | the value to check |
+- val - the value to check
+
+
+* * *
 
 <a name="vet.booleans.isFalsy"></a>
 
@@ -194,10 +213,12 @@ Checks to see if a value is loosely false (falsy)
 
 **Kind**: static method of [<code>booleans</code>](#vet.booleans)  
 **Returns**: true if the value is loosely false  
+**Params**
 
-| Param | Description |
-| --- | --- |
-| val | the value to check |
+- val - the value to check
+
+
+* * *
 
 <a name="vet.booleans.isTrue"></a>
 
@@ -206,10 +227,12 @@ Checks to see if a value is strictly true
 
 **Kind**: static method of [<code>booleans</code>](#vet.booleans)  
 **Returns**: true if the value is strictly true  
+**Params**
 
-| Param | Description |
-| --- | --- |
-| val | the value to check |
+- val - the value to check
+
+
+* * *
 
 <a name="vet.booleans.isTruthy"></a>
 
@@ -218,15 +241,20 @@ Checks to see if a value is loosely true (truthy)
 
 **Kind**: static method of [<code>booleans</code>](#vet.booleans)  
 **Returns**: true if the value loosely true  
+**Params**
 
-| Param | Description |
-| --- | --- |
-| val | the value to check |
+- val - the value to check
+
+
+* * *
 
 <a name="vet.dates"></a>
 
 ### vet.dates : <code>object</code>
 **Kind**: static namespace of [<code>vet</code>](#vet)  
+
+* * *
+
 <a name="vet.dates.isDate"></a>
 
 #### dates.isDate(val) ⇒
@@ -234,15 +262,20 @@ Checks to see if a value is a Date
 
 **Kind**: static method of [<code>dates</code>](#vet.dates)  
 **Returns**: true if the value is a Date  
+**Params**
 
-| Param | Description |
-| --- | --- |
-| val | the value to check |
+- val - the value to check
+
+
+* * *
 
 <a name="vet.functions"></a>
 
 ### vet.functions : <code>object</code>
 **Kind**: static namespace of [<code>vet</code>](#vet)  
+
+* * *
+
 <a name="vet.functions.isFunction"></a>
 
 #### functions.isFunction(val) ⇒
@@ -250,10 +283,12 @@ Checks to see if a value is a function
 
 **Kind**: static method of [<code>functions</code>](#vet.functions)  
 **Returns**: true if the value is a function  
+**Params**
 
-| Param | Description |
-| --- | --- |
-| val | the value to check |
+- val - the value to check
+
+
+* * *
 
 <a name="vet.numbers"></a>
 
@@ -269,6 +304,9 @@ Checks to see if a value is a function
     * [.isPositive(val)](#vet.numbers.isPositive) ⇒
     * [.isZero(val)](#vet.numbers.isZero) ⇒
 
+
+* * *
+
 <a name="vet.numbers.isFinite"></a>
 
 #### numbers.isFinite(val) ⇒
@@ -276,10 +314,12 @@ Checks to see if a value is a finite number
 
 **Kind**: static method of [<code>numbers</code>](#vet.numbers)  
 **Returns**: true if the value is a finite number  
+**Params**
 
-| Param | Description |
-| --- | --- |
-| val | the value to check |
+- val - the value to check
+
+
+* * *
 
 <a name="vet.numbers.isInteger"></a>
 
@@ -288,10 +328,12 @@ Checks to see if a value is an integer
 
 **Kind**: static method of [<code>numbers</code>](#vet.numbers)  
 **Returns**: true if the value is an integer  
+**Params**
 
-| Param | Description |
-| --- | --- |
-| val | the value to check |
+- val - the value to check
+
+
+* * *
 
 <a name="vet.numbers.isNegative"></a>
 
@@ -300,10 +342,12 @@ Checks to see if a value is a negative number
 
 **Kind**: static method of [<code>numbers</code>](#vet.numbers)  
 **Returns**: true if the value is a negative number  
+**Params**
 
-| Param | Description |
-| --- | --- |
-| val | the value to check |
+- val - the value to check
+
+
+* * *
 
 <a name="vet.numbers.isNonZero"></a>
 
@@ -312,10 +356,12 @@ Checks to see if a value is a nonzero number
 
 **Kind**: static method of [<code>numbers</code>](#vet.numbers)  
 **Returns**: true if the value is a nonzero number  
+**Params**
 
-| Param | Description |
-| --- | --- |
-| val | the value to check |
+- val - the value to check
+
+
+* * *
 
 <a name="vet.numbers.isNumber"></a>
 
@@ -324,10 +370,12 @@ Checks to see if a value is a number
 
 **Kind**: static method of [<code>numbers</code>](#vet.numbers)  
 **Returns**: true if the value is a number  
+**Params**
 
-| Param | Description |
-| --- | --- |
-| val | the value to check |
+- val - the value to check
+
+
+* * *
 
 <a name="vet.numbers.isPositive"></a>
 
@@ -336,10 +384,12 @@ Checks to see if a value is a positive number
 
 **Kind**: static method of [<code>numbers</code>](#vet.numbers)  
 **Returns**: true if the value is a positive number  
+**Params**
 
-| Param | Description |
-| --- | --- |
-| val | the value to check |
+- val - the value to check
+
+
+* * *
 
 <a name="vet.numbers.isZero"></a>
 
@@ -348,10 +398,12 @@ Checks to see if a value is zero
 
 **Kind**: static method of [<code>numbers</code>](#vet.numbers)  
 **Returns**: true if the value is zero  
+**Params**
 
-| Param | Description |
-| --- | --- |
-| val | the value to check |
+- val - the value to check
+
+
+* * *
 
 <a name="vet.objects"></a>
 
@@ -364,6 +416,9 @@ Checks to see if a value is zero
     * [.matchesExact(schema)](#vet.objects.matchesExact) ⇒
     * [.matches(schema)](#vet.objects.matches) ⇒
 
+
+* * *
+
 <a name="vet.objects.isObject"></a>
 
 #### objects.isObject(val) ⇒
@@ -371,10 +426,12 @@ Checks to see if a value is an object
 
 **Kind**: static method of [<code>objects</code>](#vet.objects)  
 **Returns**: true if the value is an object  
+**Params**
 
-| Param | Description |
-| --- | --- |
-| val | the value to check |
+- val - the value to check
+
+
+* * *
 
 <a name="vet.objects.isObjectOf"></a>
 
@@ -384,10 +441,12 @@ NOTE: This only checks enumerable properties
 
 **Kind**: static method of [<code>objects</code>](#vet.objects)  
 **Returns**: a function that returns true if the value is an object, and all of the object properties pass the validator  
+**Params**
 
-| Param | Description |
-| --- | --- |
-| validator | the validator function run against the array children |
+- validator - the validator function run against the array children
+
+
+* * *
 
 <a name="vet.objects.matchesExact"></a>
 
@@ -400,10 +459,12 @@ has a corresponding validator in the schema
 
 **Kind**: static method of [<code>objects</code>](#vet.objects)  
 **Returns**: a validator function that takes in a value val, and returns true if val matches the object schema exactly  
+**Params**
 
-| Param | Description |
-| --- | --- |
-| schema | the object schema to check |
+- schema - the object schema to check
+
+
+* * *
 
 <a name="vet.objects.matches"></a>
 
@@ -420,10 +481,12 @@ The schema matching process is this:
 
 **Kind**: static method of [<code>objects</code>](#vet.objects)  
 **Returns**: a validator function that takes in a value val, and returns true if val matches the object schema  
+**Params**
 
-| Param | Description |
-| --- | --- |
-| schema | the object schema to check |
+- schema - the object schema to check
+
+
+* * *
 
 <a name="vet.strings"></a>
 
@@ -441,6 +504,9 @@ The schema matching process is this:
     * [.isString(val)](#vet.strings.isString) ⇒
     * [.matches(regex)](#vet.strings.matches) ⇒
 
+
+* * *
+
 <a name="vet.strings.isEmpty"></a>
 
 #### strings.isEmpty(val) ⇒
@@ -448,10 +514,12 @@ Checks to see if a value is an empty string
 
 **Kind**: static method of [<code>strings</code>](#vet.strings)  
 **Returns**: true if val is an empty string  
+**Params**
 
-| Param | Description |
-| --- | --- |
-| val | the value to check |
+- val - the value to check
+
+
+* * *
 
 <a name="vet.strings.isLength"></a>
 
@@ -460,10 +528,12 @@ Builds a function to check if a value is a string of length len
 
 **Kind**: static method of [<code>strings</code>](#vet.strings)  
 **Returns**: a function that takes in a value val, and returns true if val is a string of length len  
+**Params**
 
-| Param | Description |
-| --- | --- |
-| len | the desired length of string |
+- len - the desired length of string
+
+
+* * *
 
 <a name="vet.strings.isNotEmpty"></a>
 
@@ -472,10 +542,12 @@ Checks to see if a value is a non-empty string
 
 **Kind**: static method of [<code>strings</code>](#vet.strings)  
 **Returns**: true if val is a non-empty string  
+**Params**
 
-| Param | Description |
-| --- | --- |
-| val | the value to check |
+- val - the value to check
+
+
+* * *
 
 <a name="vet.strings.isProbablyBase64"></a>
 
@@ -484,10 +556,12 @@ Checks to see if a value is probably a valid base64 string
 
 **Kind**: static method of [<code>strings</code>](#vet.strings)  
 **Returns**: true if val is probably a valid base64 string  
+**Params**
 
-| Param | Description |
-| --- | --- |
-| val | the value to check |
+- val - the value to check
+
+
+* * *
 
 <a name="vet.strings.isProbablyDataURL"></a>
 
@@ -496,10 +570,12 @@ Checks to see if a value is probably a valid data URL
 
 **Kind**: static method of [<code>strings</code>](#vet.strings)  
 **Returns**: true if val is probably a valid data URL  
+**Params**
 
-| Param | Description |
-| --- | --- |
-| val | the value to check |
+- val - the value to check
+
+
+* * *
 
 <a name="vet.strings.isProbablyEmail"></a>
 
@@ -508,10 +584,12 @@ Checks to see if a value is probably a valid email
 
 **Kind**: static method of [<code>strings</code>](#vet.strings)  
 **Returns**: true if val is probably a valid email  
+**Params**
 
-| Param | Description |
-| --- | --- |
-| val | the value to check |
+- val - the value to check
+
+
+* * *
 
 <a name="vet.strings.isProbablyURL"></a>
 
@@ -520,10 +598,12 @@ Checks to see if a value is probably a valid URL
 
 **Kind**: static method of [<code>strings</code>](#vet.strings)  
 **Returns**: true if val is probably a valid URL  
+**Params**
 
-| Param | Description |
-| --- | --- |
-| val | the value to check |
+- val - the value to check
+
+
+* * *
 
 <a name="vet.strings.isString"></a>
 
@@ -532,10 +612,12 @@ Checks to see if a value is a string
 
 **Kind**: static method of [<code>strings</code>](#vet.strings)  
 **Returns**: true if val is a string  
+**Params**
 
-| Param | Description |
-| --- | --- |
-| val | the value to check |
+- val - the value to check
+
+
+* * *
 
 <a name="vet.strings.matches"></a>
 
@@ -544,10 +626,12 @@ Builds a function that checks to see if a value matches a regular expression
 
 **Kind**: static method of [<code>strings</code>](#vet.strings)  
 **Returns**: a function that takes in a value val, and returns true if it is a string that matches regex  
+**Params**
 
-| Param | Description |
-| --- | --- |
-| regex | the regular expression to check against |
+- regex - the regular expression to check against
+
+
+* * *
 
 <a name="vet.utils"></a>
 
@@ -560,6 +644,9 @@ Builds a function that checks to see if a value matches a regular expression
     * [.module.exports(validator, message)](#vet.utils.module.exports) ⇒
     * [.returns(func, validator, message)](#vet.utils.returns) ⇒
 
+
+* * *
+
 <a name="vet.utils.accepts"></a>
 
 #### utils.accepts(func, validator, message) ⇒
@@ -567,12 +654,14 @@ Wraps a function in a validator which checks its arguments, and throws an error 
 
 **Kind**: static method of [<code>utils</code>](#vet.utils)  
 **Returns**: a wrapped function that throws an error if the arguments do not pass validation  
+**Params**
 
-| Param | Description |
-| --- | --- |
-| func | the function to wrap |
-| validator | the validator function.  This gets passed the arguments as an array |
-| message | an optional message string to pass into the error thrown |
+- func - the function to wrap
+- validator - the validator function.  This gets passed the arguments as an array
+- message - an optional message string to pass into the error thrown
+
+
+* * *
 
 <a name="vet.utils.assert"></a>
 
@@ -583,11 +672,13 @@ This is useful for some code that expects assertion-style validation.
 
 **Kind**: static method of [<code>utils</code>](#vet.utils)  
 **Returns**: a function that returns null if the arguments pass validation, or throws an error if they do not  
+**Params**
 
-| Param | Description |
-| --- | --- |
-| validator | the validator to wrap |
-| message | an optional message string to pass into the error |
+- validator - the validator to wrap
+- message - an optional message string to pass into the error
+
+
+* * *
 
 <a name="vet.utils.module.exports"></a>
 
@@ -599,11 +690,13 @@ assertion-style validation.
 
 **Kind**: static method of [<code>utils</code>](#vet.utils)  
 **Returns**: a function that returns null if the arguments pass validation, or throws an error if they do not  
+**Params**
 
-| Param | Description |
-| --- | --- |
-| validator | the validator to wrap |
-| message | an optional message string to pass into the error |
+- validator - the validator to wrap
+- message - an optional message string to pass into the error
+
+
+* * *
 
 <a name="vet.utils.returns"></a>
 
@@ -612,12 +705,14 @@ Wraps a function in a validator which checks its return value, and throws an err
 
 **Kind**: static method of [<code>utils</code>](#vet.utils)  
 **Returns**: a wrapped function that throws an error if the return value doed not pass validation  
+**Params**
 
-| Param | Description |
-| --- | --- |
-| func | the function to wrap |
-| validator | the validator function.  This gets passed the return value |
-| message | an optional message string to pass into the error thrown |
+- func - the function to wrap
+- validator - the validator function.  This gets passed the return value
+- message - an optional message string to pass into the error thrown
+
+
+* * *
 
 <a name="vet.equals"></a>
 
@@ -638,10 +733,12 @@ Builds an curried equal function
 
 **Kind**: static method of [<code>vet</code>](#vet)  
 **Returns**: a function that takes in one parameter val, and returns true if val === eq  
+**Params**
 
-| Param | Description |
-| --- | --- |
-| eq | value to check equality against |
+- eq - value to check equality against
+
+
+* * *
 
 <a name="vet.exists"></a>
 
@@ -660,10 +757,12 @@ Alias for isNotNullOrUndefined
 
 **Kind**: static method of [<code>vet</code>](#vet)  
 **Returns**: true if val is not null or undefined  
+**Params**
 
-| Param | Description |
-| --- | --- |
-| val | value to check |
+- val - value to check
+
+
+* * *
 
 <a name="vet.isOneOf"></a>
 
@@ -682,10 +781,12 @@ Constructs a function that checks equality against any number of arguments
 
 **Kind**: static method of [<code>vet</code>](#vet)  
 **Returns**: a function that takes in a parameter val, and returns true if val is NOT equal to any of the options in ...eq  
+**Params**
 
-| Param | Type | Description |
-| --- | --- | --- |
-| ...eq | <code>\*</code> | values to check equality against |
+- ...eq <code>\*</code> - values to check equality against
+
+
+* * *
 
 <a name="vet.isNotNull"></a>
 
@@ -694,10 +795,12 @@ A function to check for nulls
 
 **Kind**: static method of [<code>vet</code>](#vet)  
 **Returns**: true if val is strictly not equal to null  
+**Params**
 
-| Param | Description |
-| --- | --- |
-| val | a value to check against null |
+- val - a value to check against null
+
+
+* * *
 
 <a name="vet.isNotNullOrUndefined"></a>
 
@@ -706,10 +809,12 @@ A function to check for null or undefined
 
 **Kind**: static method of [<code>vet</code>](#vet)  
 **Returns**: true if val is loosely not null (strictly not null or undefined)  
+**Params**
 
-| Param | Description |
-| --- | --- |
-| val | a value to check against null and undefined |
+- val - a value to check against null and undefined
+
+
+* * *
 
 <a name="vet.isNotUndefined"></a>
 
@@ -718,10 +823,12 @@ A function to check for undefined
 
 **Kind**: static method of [<code>vet</code>](#vet)  
 **Returns**: true if val is strictly not undefined  
+**Params**
 
-| Param | Description |
-| --- | --- |
-| val | a value to check |
+- val - a value to check
+
+
+* * *
 
 <a name="vet.isNull"></a>
 
@@ -730,10 +837,12 @@ A function to check for null
 
 **Kind**: static method of [<code>vet</code>](#vet)  
 **Returns**: true if val is strictly null  
+**Params**
 
-| Param | Description |
-| --- | --- |
-| val | a value to check |
+- val - a value to check
+
+
+* * *
 
 <a name="vet.isNullOrUndefined"></a>
 
@@ -742,10 +851,12 @@ A function to check for null or undefined
 
 **Kind**: static method of [<code>vet</code>](#vet)  
 **Returns**: true if val is loosely null (strictly null or undefined)  
+**Params**
 
-| Param | Description |
-| --- | --- |
-| val | a value to check |
+- val - a value to check
+
+
+* * *
 
 <a name="vet.isOneOf"></a>
 
@@ -754,10 +865,12 @@ Constructs a function that checks equality against any number of arguments
 
 **Kind**: static method of [<code>vet</code>](#vet)  
 **Returns**: a function that takes in a parameter val, and returns true if val is equal to any of the options in ...eq  
+**Params**
 
-| Param | Type | Description |
-| --- | --- | --- |
-| ...eq | <code>\*</code> | values to check equality against |
+- ...eq <code>\*</code> - values to check equality against
+
+
+* * *
 
 <a name="vet.isUndefined"></a>
 
@@ -766,10 +879,12 @@ A function to check for undefined
 
 **Kind**: static method of [<code>vet</code>](#vet)  
 **Returns**: true if val is strictly undefined  
+**Params**
 
-| Param | Description |
-| --- | --- |
-| val | a value to check |
+- val - a value to check
+
+
+* * *
 
 <a name="vet.matchesAllOf"></a>
 
@@ -778,10 +893,12 @@ A function builder to check a value against multiple validator functions
 
 **Kind**: static method of [<code>vet</code>](#vet)  
 **Returns**: a function that takes in a value, and returns true if ALL of the validator functions return true  
+**Params**
 
-| Param | Type | Description |
-| --- | --- | --- |
-| ...validators | <code>function</code> | any number of validator functions |
+- ...validators <code>function</code> - any number of validator functions
+
+
+* * *
 
 <a name="vet.matchesNoneOf"></a>
 
@@ -790,10 +907,12 @@ A function builder to check a value against multiple validator functions
 
 **Kind**: static method of [<code>vet</code>](#vet)  
 **Returns**: a function that takes in a value, and returns true if NONE of the validator functions return true  
+**Params**
 
-| Param | Type | Description |
-| --- | --- | --- |
-| ...validators | <code>function</code> | any number of validator functions |
+- ...validators <code>function</code> - any number of validator functions
+
+
+* * *
 
 <a name="vet.matchesOneOf"></a>
 
@@ -802,10 +921,12 @@ A function builder to check a value against multiple validator functions
 
 **Kind**: static method of [<code>vet</code>](#vet)  
 **Returns**: a function that takes in a value, and returns true if ANY of the validator functions return true  
+**Params**
 
-| Param | Type | Description |
-| --- | --- | --- |
-| ...validators | <code>function</code> | any number of validator functions |
+- ...validators <code>function</code> - any number of validator functions
+
+
+* * *
 
 <a name="vet.optional"></a>
 
@@ -814,8 +935,10 @@ A function builder to optionally check a value
 
 **Kind**: static method of [<code>vet</code>](#vet)  
 **Returns**: a function that takes in a value, and returns true if the value does not exist, or the validator returns true  
+**Params**
 
-| Param | Description |
-| --- | --- |
-| validator | a validator function |
+- validator - a validator function
+
+
+* * *
 
