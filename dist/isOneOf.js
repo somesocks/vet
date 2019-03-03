@@ -1,1 +1,16 @@
-!function(e,t){if("object"==typeof exports&&"object"==typeof module)module.exports=t();else if("function"==typeof define&&define.amd)define([],t);else{var r=t();for(var n in r)("object"==typeof exports?exports:e)[n]=r[n]}}(this,function(){return function(e){var t={};function r(n){if(t[n])return t[n].exports;var o=t[n]={i:n,l:!1,exports:{}};return e[n].call(o.exports,o,o.exports,r),o.l=!0,o.exports}return r.m=e,r.c=t,r.d=function(e,t,n){r.o(e,t)||Object.defineProperty(e,t,{configurable:!1,enumerable:!0,get:n})},r.r=function(e){Object.defineProperty(e,"__esModule",{value:!0})},r.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return r.d(t,"a",t),t},r.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},r.p="",r(r.s=5)}({5:function(e,t,r){"use strict";e.exports=function(){for(var e=arguments.length,t=Array(e),r=0;r<e;r++)t[r]=arguments[r];return function(e){for(var r=0;r<t.length;r++)if(e===t[r])return!0;return!1}}}})});
+
+/**
+* Constructs a function that checks equality against any number of arguments
+* @param {...*} eq - values to check equality against
+* @returns a function that takes in a parameter val, and returns true if val is equal to any of the options in ...eq
+* @memberof vet
+*/
+const isOneOf = (...eq) => (val) => {
+	for (let i = 0; i < eq.length; i++) {
+		if (val === eq[i]) { return true; }
+	}
+
+	return false;
+};
+
+module.exports = isOneOf;

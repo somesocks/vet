@@ -1,1 +1,29 @@
-!function(e,t){if("object"==typeof exports&&"object"==typeof module)module.exports=t();else if("function"==typeof define&&define.amd)define([],t);else{var r=t();for(var n in r)("object"==typeof exports?exports:e)[n]=r[n]}}(this,function(){return function(e){var t={};function r(n){if(t[n])return t[n].exports;var o=t[n]={i:n,l:!1,exports:{}};return e[n].call(o.exports,o,o.exports,r),o.l=!0,o.exports}return r.m=e,r.c=t,r.d=function(e,t,n){r.o(e,t)||Object.defineProperty(e,t,{configurable:!1,enumerable:!0,get:n})},r.r=function(e){Object.defineProperty(e,"__esModule",{value:!0})},r.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return r.d(t,"a",t),t},r.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},r.p="",r(r.s=1)}([,function(e,t,r){"use strict";e.exports=function(e,t,r){var n;r="function"==typeof(n=r||"Vet.utils.returns error!")?n:function(){return n};return function(){var n=e.apply(void 0,arguments);if(t(n))return n;throw new Error(r(n))}}}])});
+
+const messageBuilder = (log) => (typeof log === 'function' ? log : ((...args) => log));
+
+/**
+* Wraps a function in a validator which checks its return value, and throws an error if the return value is bad.
+*
+* @param func - the function to wrap
+* @param validator - the validator function.  This gets passed the return value
+* @param message - an optional message string to pass into the error thrown
+* @returns a wrapped function that throws an error if the return value doed not pass validation
+* @memberof vet.utils
+*/
+const returns = (func, validator, message) => {
+	message = messageBuilder(message || 'Vet.utils.returns error!');
+
+	const wrapper = (...args) => {
+		const result = func(...args);
+
+		if (validator(result)) {
+			return result;
+		} else {
+			throw new Error(message(result));
+		}
+	};
+
+	return wrapper;
+};
+
+module.exports = returns;

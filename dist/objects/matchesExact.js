@@ -1,1 +1,42 @@
-!function(e,r){if("object"==typeof exports&&"object"==typeof module)module.exports=r();else if("function"==typeof define&&define.amd)define([],r);else{var t=r();for(var n in t)("object"==typeof exports?exports:e)[n]=t[n]}}(this,function(){return function(e){var r={};function t(n){if(r[n])return r[n].exports;var o=r[n]={i:n,l:!1,exports:{}};return e[n].call(o.exports,o,o.exports,t),o.l=!0,o.exports}return t.m=e,t.c=r,t.d=function(e,r,n){t.o(e,r)||Object.defineProperty(e,r,{configurable:!1,enumerable:!0,get:n})},t.r=function(e){Object.defineProperty(e,"__esModule",{value:!0})},t.n=function(e){var r=e&&e.__esModule?function(){return e.default}:function(){return e};return t.d(r,"a",r),r},t.o=function(e,r){return Object.prototype.hasOwnProperty.call(e,r)},t.p="",t(t.s=0)}([function(e,r,t){"use strict";var n=function(e){return null!=e&&Object(e)===e};e.exports=function(e){return function(r){return function e(r,t){if("function"==typeof r)return r(t);if(n(r)){if(!n(t))return!1;for(var o in r)if(!e(r[o],t[o]))return!1;for(var u in t)if(!e(r[u],t[u]))return!1;return!0}return t===r}(e,r)}}}])});
+
+const isFunction = (val) => typeof val === 'function';
+
+const isObject = (val) => (val != null) && (Object(val) === val);
+
+const matchesSchemaExact = (schema, object) => {
+	if (isFunction(schema)) {
+		return schema(object);
+	} else if (isObject(schema)) {
+		if (!isObject(object)) { return false; }
+
+		for (let key in schema) {
+			const s = schema[key];
+			const o = object[key];
+			if (!matchesSchemaExact(s, o)) { return false; }
+		}
+
+		for (let key in object) {
+			const s = schema[key];
+			const o = object[key];
+			if (!matchesSchemaExact(s, o)) { return false; }
+		}
+
+		return true;
+	} else {
+		return object === schema;
+	}
+};
+
+/**
+* Builds a function to check an object against a schema object
+*
+* This function works similarly to Vet.Object.matches,
+* but it also checks to make sure every value in the object to check
+* has a corresponding validator in the schema
+* @param schema - the object schema to check
+* @returns a validator function that takes in a value val, and returns true if val matches the object schema exactly
+* @memberof vet.objects
+*/
+const matchesExact = (schema) => (val) => matchesSchemaExact(schema, val);
+
+module.exports = matchesExact;

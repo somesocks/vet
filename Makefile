@@ -1,19 +1,58 @@
 
+NPM=pnpm
+
 .PHONY: help build test
 
+##
+##
+##	vet
+##		this is the base project makefile
+##
+##
 
+default: help
+
+##	COMMANDS
+##
+
+##		make help - display the help
+##
 help:
-	@echo "Makefile for Vet"
-	@echo "	make build - make a new build"
-	@echo "	make test - run the test cases against the build"
-	@echo " make docs - build the docs"
+	@grep "^##.*" ./Makefile
 
-build:
+
+dist-dir:
 	mkdir -p ./dist
-	NODE_MODULES=. webpack --config=./webpack.js
 
-test: build
-	(export NODE_PATH=./; find ./src -name '*.tests.js' | xargs mocha --timeout 10000 $(ARGS))
+build-src: dist-dir
+	$(NPM) run _task_build_src
 
-docs:
-	(export NODE_PATH=./; find ./src -name '*.js' |sort -t'/' -k2.2 -k2.1 | xargs jsdoc2md --template README.hbs --files ) > README.md
+build-docs:
+	$(NPM) run _task_build_docs
+
+##		make build - make a new build
+##
+build: build-docs build-src
+	cp ./.npmignore ./dist
+	cp ./package.json ./dist
+	cp ./README.md ./dist
+	cp ./LICENSE ./dist
+	cp -r ./dist_v1/ ./dist/dist/
+
+test-cases:
+	$(NPM) run _task_test_cases
+
+##		make test - run the test cases against the build
+##
+test: test-cases
+
+
+##		make package-check - list the files that will be present in the package
+##
+package-check:
+	cd ./dist && $(NPM) publish --dry-run
+
+##		make package-publish - publish the current dist dir
+##
+package-publish:
+	cd ./dist && $(NPM) publish --access=public

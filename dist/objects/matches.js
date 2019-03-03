@@ -1,1 +1,40 @@
-!function(e,t){if("object"==typeof exports&&"object"==typeof module)module.exports=t();else if("function"==typeof define&&define.amd)define([],t);else{var n=t();for(var r in n)("object"==typeof exports?exports:e)[r]=n[r]}}(this,function(){return function(e){var t={};function n(r){if(t[r])return t[r].exports;var o=t[r]={i:r,l:!1,exports:{}};return e[r].call(o.exports,o,o.exports,n),o.l=!0,o.exports}return n.m=e,n.c=t,n.d=function(e,t,r){n.o(e,t)||Object.defineProperty(e,t,{configurable:!1,enumerable:!0,get:r})},n.r=function(e){Object.defineProperty(e,"__esModule",{value:!0})},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,"a",t),t},n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},n.p="",n(n.s=1)}([,function(e,t,n){"use strict";var r=function(e){return null!=e&&Object(e)===e};e.exports=function(e){return function(t){return function e(t,n){if("function"==typeof t)return t(n);if(r(t)){if(!r(n))return!1;for(var o in t)if(!e(t[o],n[o]))return!1;return!0}return n===t}(e,t)}}}])});
+
+const isFunction = (val) => typeof val === 'function';
+
+const isObject = (val) => (val != null) && (Object(val) === val);
+
+const matchesSchema = (schema, object) => {
+	if (isFunction(schema)) {
+		return schema(object);
+	} else if (isObject(schema)) {
+		if (!isObject(object)) { return false; }
+
+		for(let key in schema) {
+			const s = schema[key];
+			const o = object[key];
+			if (!matchesSchema(s, o)) { return false; }
+		}
+
+		return true;
+	} else {
+		return object === schema;
+	}
+};
+
+/**
+* Builds a function to check an object against a schema object
+*
+* A schema object consists of an object with child object, functions, and values
+*
+* The schema matching process is this:
+* 1) For each child in the schema object, match it against the corresponding child in the value to be checked
+* 2) If the schema child is a function, treat it as a validator function
+* 3) If the schema child is an object, recursively call the schema matching
+* 4) If the schema child is anything else, check for strict equality
+* @param schema - the object schema to check
+* @returns a validator function that takes in a value val, and returns true if val matches the object schema
+* @memberof vet.objects
+*/
+const matches = (schema) => (val) => matchesSchema(schema, val);
+
+module.exports = matches;
