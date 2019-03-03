@@ -48,9 +48,9 @@ A collection of data validation tools.
         * [.isString(val)](#vet.strings.isString) ⇒
         * [.matches(regex)](#vet.strings.matches) ⇒
     * [.utils](#vet.utils) : <code>object</code>
+        * [.assertReact](#vet.utils.assertReact) ⇒
         * [.accepts(func, validator, message)](#vet.utils.accepts) ⇒
         * [.assert(validator, message)](#vet.utils.assert) ⇒
-        * [.module.exports(validator, message)](#vet.utils.module.exports) ⇒
         * [.returns(func, validator, message)](#vet.utils.returns) ⇒
     * [.equals(eq)](#vet.equals) ⇒
     * [.exists(val)](#vet.exists) ⇒
@@ -639,10 +639,28 @@ Builds a function that checks to see if a value matches a regular expression
 **Kind**: static namespace of [<code>vet</code>](#vet)  
 
 * [.utils](#vet.utils) : <code>object</code>
+    * [.assertReact](#vet.utils.assertReact) ⇒
     * [.accepts(func, validator, message)](#vet.utils.accepts) ⇒
     * [.assert(validator, message)](#vet.utils.assert) ⇒
-    * [.module.exports(validator, message)](#vet.utils.module.exports) ⇒
     * [.returns(func, validator, message)](#vet.utils.returns) ⇒
+
+
+* * *
+
+<a name="vet.utils.assertReact"></a>
+
+#### utils.assertReact ⇒
+A utility function for building a react-compatible assertion from a Vet validator
+
+This is useful for some libraries (like React) that expect
+assertion-style validation.
+
+**Kind**: static property of [<code>utils</code>](#vet.utils)  
+**Returns**: a function that returns null if the arguments pass validation, or throws an error if they do not  
+**Params**
+
+- validator - the validator to wrap
+- message - an optional message string to pass into the error
 
 
 * * *
@@ -669,24 +687,6 @@ Wraps a function in a validator which checks its arguments, and throws an error 
 Wraps a validator, and throws an error if it returns false.
 
 This is useful for some code that expects assertion-style validation.
-
-**Kind**: static method of [<code>utils</code>](#vet.utils)  
-**Returns**: a function that returns null if the arguments pass validation, or throws an error if they do not  
-**Params**
-
-- validator - the validator to wrap
-- message - an optional message string to pass into the error
-
-
-* * *
-
-<a name="vet.utils.module.exports"></a>
-
-#### utils.module.exports(validator, message) ⇒
-A utility function for building a react-compatible assertion from a Vet validator
-
-This is useful for some libraries (like React) that expect
-assertion-style validation.
 
 **Kind**: static method of [<code>utils</code>](#vet.utils)  
 **Returns**: a function that returns null if the arguments pass validation, or throws an error if they do not  
