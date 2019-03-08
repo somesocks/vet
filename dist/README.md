@@ -25,8 +25,17 @@ A collection of data validation tools.
     * [.functions](#vet.functions) : <code>object</code>
         * [.isFunction(val)](#vet.functions.isFunction) ⇒
     * [.numbers](#vet.numbers) : <code>object</code>
+        * [.isBetween(lower, upper)](#vet.numbers.isBetween) ⇒ <code>function</code>
+            * [.exclusive](#vet.numbers.isBetween.exclusive) ⇒ <code>function</code>
+            * [.inclusive](#vet.numbers.isBetween.inclusive) ⇒ <code>function</code>
         * [.isFinite(val)](#vet.numbers.isFinite) ⇒
+        * [.isGreaterThan(bound)](#vet.numbers.isGreaterThan) ⇒ <code>function</code>
+            * [.exclusive](#vet.numbers.isGreaterThan.exclusive) ⇒ <code>function</code>
+            * [.inclusive](#vet.numbers.isGreaterThan.inclusive) ⇒ <code>function</code>
         * [.isInteger(val)](#vet.numbers.isInteger) ⇒
+        * [.isLessThan(bound)](#vet.numbers.isLessThan) ⇒ <code>function</code>
+            * [.exclusive](#vet.numbers.isLessThan.exclusive) ⇒ <code>function</code>
+            * [.inclusive](#vet.numbers.isLessThan.inclusive) ⇒ <code>function</code>
         * [.isNegative(val)](#vet.numbers.isNegative) ⇒
         * [.isNonZero(val)](#vet.numbers.isNonZero) ⇒
         * [.isNumber(val)](#vet.numbers.isNumber) ⇒
@@ -296,13 +305,68 @@ Checks to see if a value is a function
 **Kind**: static namespace of [<code>vet</code>](#vet)  
 
 * [.numbers](#vet.numbers) : <code>object</code>
+    * [.isBetween(lower, upper)](#vet.numbers.isBetween) ⇒ <code>function</code>
+        * [.exclusive](#vet.numbers.isBetween.exclusive) ⇒ <code>function</code>
+        * [.inclusive](#vet.numbers.isBetween.inclusive) ⇒ <code>function</code>
     * [.isFinite(val)](#vet.numbers.isFinite) ⇒
+    * [.isGreaterThan(bound)](#vet.numbers.isGreaterThan) ⇒ <code>function</code>
+        * [.exclusive](#vet.numbers.isGreaterThan.exclusive) ⇒ <code>function</code>
+        * [.inclusive](#vet.numbers.isGreaterThan.inclusive) ⇒ <code>function</code>
     * [.isInteger(val)](#vet.numbers.isInteger) ⇒
+    * [.isLessThan(bound)](#vet.numbers.isLessThan) ⇒ <code>function</code>
+        * [.exclusive](#vet.numbers.isLessThan.exclusive) ⇒ <code>function</code>
+        * [.inclusive](#vet.numbers.isLessThan.inclusive) ⇒ <code>function</code>
     * [.isNegative(val)](#vet.numbers.isNegative) ⇒
     * [.isNonZero(val)](#vet.numbers.isNonZero) ⇒
     * [.isNumber(val)](#vet.numbers.isNumber) ⇒
     * [.isPositive(val)](#vet.numbers.isPositive) ⇒
     * [.isZero(val)](#vet.numbers.isZero) ⇒
+
+
+* * *
+
+<a name="vet.numbers.isBetween"></a>
+
+#### numbers.isBetween(lower, upper) ⇒ <code>function</code>
+Checks to see if a value is a negative number
+
+**Kind**: static method of [<code>numbers</code>](#vet.numbers)  
+**Returns**: <code>function</code> - - a validator function  
+**Params**
+
+- lower <code>number</code> - the lower boundary value to check against
+- upper <code>number</code> - the upper boundary value to check against
+
+
+* [.isBetween(lower, upper)](#vet.numbers.isBetween) ⇒ <code>function</code>
+    * [.exclusive](#vet.numbers.isBetween.exclusive) ⇒ <code>function</code>
+    * [.inclusive](#vet.numbers.isBetween.inclusive) ⇒ <code>function</code>
+
+
+* * *
+
+<a name="vet.numbers.isBetween.exclusive"></a>
+
+##### isBetween.exclusive ⇒ <code>function</code>
+**Kind**: static property of [<code>isBetween</code>](#vet.numbers.isBetween)  
+**Returns**: <code>function</code> - - a validator function  
+**Params**
+
+- lower <code>number</code> - the lower boundary value to check against
+- upper <code>number</code> - the upper boundary value to check against
+
+
+* * *
+
+<a name="vet.numbers.isBetween.inclusive"></a>
+
+##### isBetween.inclusive ⇒ <code>function</code>
+**Kind**: static property of [<code>isBetween</code>](#vet.numbers.isBetween)  
+**Returns**: <code>function</code> - - a validator function  
+**Params**
+
+- lower <code>number</code> - the lower boundary value to check against
+- upper <code>number</code> - the upper boundary value to check against
 
 
 * * *
@@ -321,6 +385,49 @@ Checks to see if a value is a finite number
 
 * * *
 
+<a name="vet.numbers.isGreaterThan"></a>
+
+#### numbers.isGreaterThan(bound) ⇒ <code>function</code>
+Checks to see if a value is a negative number
+
+**Kind**: static method of [<code>numbers</code>](#vet.numbers)  
+**Returns**: <code>function</code> - - a validator function  
+**Params**
+
+- bound <code>number</code> - the boundary value to check agains
+
+
+* [.isGreaterThan(bound)](#vet.numbers.isGreaterThan) ⇒ <code>function</code>
+    * [.exclusive](#vet.numbers.isGreaterThan.exclusive) ⇒ <code>function</code>
+    * [.inclusive](#vet.numbers.isGreaterThan.inclusive) ⇒ <code>function</code>
+
+
+* * *
+
+<a name="vet.numbers.isGreaterThan.exclusive"></a>
+
+##### isGreaterThan.exclusive ⇒ <code>function</code>
+**Kind**: static property of [<code>isGreaterThan</code>](#vet.numbers.isGreaterThan)  
+**Returns**: <code>function</code> - - a validator function  
+**Params**
+
+- bound <code>number</code> - the boundary value to check against
+
+
+* * *
+
+<a name="vet.numbers.isGreaterThan.inclusive"></a>
+
+##### isGreaterThan.inclusive ⇒ <code>function</code>
+**Kind**: static property of [<code>isGreaterThan</code>](#vet.numbers.isGreaterThan)  
+**Returns**: <code>function</code> - - a validator function  
+**Params**
+
+- bound <code>number</code> - the boundary value to check against
+
+
+* * *
+
 <a name="vet.numbers.isInteger"></a>
 
 #### numbers.isInteger(val) ⇒
@@ -331,6 +438,49 @@ Checks to see if a value is an integer
 **Params**
 
 - val - the value to check
+
+
+* * *
+
+<a name="vet.numbers.isLessThan"></a>
+
+#### numbers.isLessThan(bound) ⇒ <code>function</code>
+Checks to see if a value is a negative number
+
+**Kind**: static method of [<code>numbers</code>](#vet.numbers)  
+**Returns**: <code>function</code> - - a validator function  
+**Params**
+
+- bound <code>number</code> - the boundary value to check agains
+
+
+* [.isLessThan(bound)](#vet.numbers.isLessThan) ⇒ <code>function</code>
+    * [.exclusive](#vet.numbers.isLessThan.exclusive) ⇒ <code>function</code>
+    * [.inclusive](#vet.numbers.isLessThan.inclusive) ⇒ <code>function</code>
+
+
+* * *
+
+<a name="vet.numbers.isLessThan.exclusive"></a>
+
+##### isLessThan.exclusive ⇒ <code>function</code>
+**Kind**: static property of [<code>isLessThan</code>](#vet.numbers.isLessThan)  
+**Returns**: <code>function</code> - - a validator function  
+**Params**
+
+- bound <code>number</code> - the boundary value to check against
+
+
+* * *
+
+<a name="vet.numbers.isLessThan.inclusive"></a>
+
+##### isLessThan.inclusive ⇒ <code>function</code>
+**Kind**: static property of [<code>isLessThan</code>](#vet.numbers.isLessThan)  
+**Returns**: <code>function</code> - - a validator function  
+**Params**
+
+- bound <code>number</code> - the boundary value to check against
 
 
 * * *
