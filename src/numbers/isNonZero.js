@@ -1,5 +1,5 @@
 
-const isNumber = require('./isNumber');
+var isNumber = require('./isNumber');
 
 /**
 * Checks to see if a value is a nonzero number
@@ -7,6 +7,8 @@ const isNumber = require('./isNumber');
 * @returns true if the value is a nonzero number
 * @memberof vet.numbers
 */
-const isNonZero = (val) => isNumber(val) && val !== 0;
+function isNonZero(val) {
+	return isNumber(val) && val !== 0;
+}
 
 module.exports = isNonZero;

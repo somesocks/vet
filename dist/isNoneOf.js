@@ -16,12 +16,21 @@
 * @returns a function that takes in a parameter val, and returns true if val is NOT equal to any of the options in ...eq
 * @memberof vet
 */
-const isOneOf = (...eq) => (val) => {
-	for (let i = 0; i < eq.length; i++) {
-		if (val === eq[i]) { return false; }
+function isNoneOf() {
+	var validators = arguments;
+
+	return function (val) {
+		for (var i = 0; i < validators.length; i++) {
+			var validator = validators[i];
+			var check = typeof validator === 'function' ?
+				validator(val) :
+				(val === validator);
+
+			if (check) { return false; }
+		}
+
+		return true;
 	}
+}
 
-	return true;
-};
-
-module.exports = isOneOf;
+module.exports = isNoneOf;

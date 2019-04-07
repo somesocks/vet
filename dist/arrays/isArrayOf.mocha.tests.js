@@ -29,7 +29,7 @@ const TESTS = [
 ];
 
 
-describe('Array.isArrayOf', () => {
+describe('vet/arrays/isArrayOf', () => {
 
 	const validator = isArrayOf((val) => val != null);
 

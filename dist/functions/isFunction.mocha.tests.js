@@ -18,7 +18,7 @@ const TESTS = [
 ];
 
 
-describe('Function.isFunction', () => {
+describe('vet/functions/isFunction', () => {
 	TESTS.forEach((test) => {
 		it(
 			`(${test.input})-->(${test.expected})`,

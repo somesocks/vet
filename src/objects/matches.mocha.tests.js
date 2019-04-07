@@ -105,7 +105,7 @@ const TESTS = [
 ];
 
 
-describe('Object.matches', () => {
+describe('vet/objects/matches', () => {
 	const validator = matches({
 		name: isString,
 		age: isNumber,

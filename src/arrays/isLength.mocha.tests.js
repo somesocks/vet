@@ -24,7 +24,7 @@ const TESTS = [
 ];
 
 
-describe('Array.isLength', () => {
+describe('vet/arrays/isLength', () => {
 
 	const validator = isLength(2);
 

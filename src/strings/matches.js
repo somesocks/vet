@@ -1,5 +1,5 @@
 
-const isString = (val) => (typeof val === 'string') || (val instanceof String);
+function isString (val) { return (typeof val === 'string') || (val instanceof String); }
 
 /**
 * Builds a function that checks to see if a value matches a regular expression
@@ -7,9 +7,11 @@ const isString = (val) => (typeof val === 'string') || (val instanceof String);
 * @returns a function that takes in a value val, and returns true if it is a string that matches regex
 * @memberof vet.strings
 */
-const matches = (regex) => (val) => {
-	regex.lastIndex = 0;
-	return isString(val) && regex.test(val);
-};
+function matches(regex) {
+	return function(val) {
+		regex.lastIndex = 0;
+		return isString(val) && regex.test(val);
+	};
+}
 
 module.exports = matches;

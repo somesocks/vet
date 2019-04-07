@@ -21,7 +21,7 @@ const TESTS = [
 	{ input: /a/, expected: false },
 ];
 
-describe('String.isProbablyBase64', () => {
+describe('vet/strings/isProbablyBase64', () => {
 	TESTS.forEach((test) => {
 		it(
 			`(${test.input})-->(${test.expected})`,

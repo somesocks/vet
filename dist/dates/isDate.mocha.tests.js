@@ -19,7 +19,7 @@ const TESTS = [
 ];
 
 
-describe('Date.isDate', () => {
+describe('vet/dates/isDate', () => {
 	TESTS.forEach((test) => {
 		it(
 			`(${test.input})-->(${test.expected})`,

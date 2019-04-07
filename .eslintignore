@@ -1,0 +1,4 @@
+
+# testing
+*.mocha.tests.js
+*.snippet.js

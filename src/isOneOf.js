@@ -1,4 +1,6 @@
 
+function isFunction(val) { return typeof val === 'function'; }
+
 /**
 * ```javascript
 *
@@ -16,12 +18,21 @@
 * @returns a function that takes in a parameter val, and returns true if val is equal to any of the options in ...eq
 * @memberof vet
 */
-const isOneOf = (...eq) => (val) => {
-	for (let i = 0; i < eq.length; i++) {
-		if (val === eq[i]) { return true; }
-	}
+function isOneOf () {
+	var validators = arguments;
 
-	return false;
-};
+	return function (val) {
+		for (var i = 0; i < validators.length; i++) {
+			var validator = validators[i];
+			var check = typeof validator === 'function' ?
+				validator(val) :
+				(val === validator);
+
+			if (check) { return true; }
+		}
+
+		return false;
+	}
+}
 
 module.exports = isOneOf;

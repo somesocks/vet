@@ -60,7 +60,7 @@ const TESTS = [
 ];
 
 
-describe('Object.matchesExact', () => {
+describe('vet/objects/matchesExact', () => {
 	const validator = matchesExact({
 		name: isString,
 		age: isNumber,

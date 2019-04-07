@@ -16,6 +16,8 @@
 * @returns a function that takes in one parameter val, and returns true if val === eq
 * @memberof vet
 */
-const equals = (eq) => (val) => val === eq;
+function equals(eq) {
+	return function (val) { return val === eq; };
+}
 
 module.exports = equals;

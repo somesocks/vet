@@ -46,6 +46,8 @@ A collection of data validation tools.
         * [.isObjectOf(validator)](#vet.objects.isObjectOf) ⇒
         * [.matchesExact(schema)](#vet.objects.matchesExact) ⇒
         * [.matches(schema)](#vet.objects.matches) ⇒
+        * [.shape(schema)](#vet.objects.shape) ⇒
+            * [.shape.exact(schema)](#vet.objects.shape.shape.exact) ⇒
     * [.strings](#vet.strings) : <code>object</code>
         * [.isEmpty(val)](#vet.strings.isEmpty) ⇒
         * [.isLength(len)](#vet.strings.isLength) ⇒
@@ -63,7 +65,8 @@ A collection of data validation tools.
         * [.returns(func, validator, message)](#vet.utils.returns) ⇒
     * [.equals(eq)](#vet.equals) ⇒
     * [.exists(val)](#vet.exists) ⇒
-    * [.isOneOf(...eq)](#vet.isOneOf) ⇒
+    * [.isAllOf(...eq)](#vet.isAllOf) ⇒
+    * [.isNoneOf(...eq)](#vet.isNoneOf) ⇒
     * [.isNotNull(val)](#vet.isNotNull) ⇒
     * [.isNotNullOrUndefined(val)](#vet.isNotNullOrUndefined) ⇒
     * [.isNotUndefined(val)](#vet.isNotUndefined) ⇒
@@ -565,6 +568,8 @@ Checks to see if a value is zero
     * [.isObjectOf(validator)](#vet.objects.isObjectOf) ⇒
     * [.matchesExact(schema)](#vet.objects.matchesExact) ⇒
     * [.matches(schema)](#vet.objects.matches) ⇒
+    * [.shape(schema)](#vet.objects.shape) ⇒
+        * [.shape.exact(schema)](#vet.objects.shape.shape.exact) ⇒
 
 
 * * *
@@ -631,6 +636,46 @@ The schema matching process is this:
 
 **Kind**: static method of [<code>objects</code>](#vet.objects)  
 **Returns**: a validator function that takes in a value val, and returns true if val matches the object schema  
+**Params**
+
+- schema - the object schema to check
+
+
+* * *
+
+<a name="vet.objects.shape"></a>
+
+#### objects.shape(schema) ⇒
+Builds a function to check an object against a schema object
+
+A schema object consists of an object with child object, functions, and values
+
+The schema matching process is this:
+1) For each child in the schema object, match it against the corresponding child in the value to be checked
+2) If the schema child is a function, treat it as a validator function
+3) If the schema child is an object, recursively call the schema matching
+4) If the schema child is anything else, check for strict equality
+
+**Kind**: static method of [<code>objects</code>](#vet.objects)  
+**Returns**: a validator function that takes in a value val, and returns true if val matches the object schema  
+**Params**
+
+- schema - the object schema to check
+
+
+* * *
+
+<a name="vet.objects.shape.shape.exact"></a>
+
+##### shape.shape.exact(schema) ⇒
+Builds a function to check an object against a schema object
+
+This function works similarly to Vet.Object.matches,
+but it also checks to make sure every value in the object to check
+has a corresponding validator in the schema
+
+**Kind**: static method of [<code>shape</code>](#vet.objects.shape)  
+**Returns**: a validator function that takes in a value val, and returns true if val matches the object schema exactly  
 **Params**
 
 - schema - the object schema to check
@@ -914,9 +959,36 @@ Alias for isNotNullOrUndefined
 
 * * *
 
-<a name="vet.isOneOf"></a>
+<a name="vet.isAllOf"></a>
 
-### vet.isOneOf(...eq) ⇒
+### vet.isAllOf(...eq) ⇒
+```javascript
+
+let isAllOf = require('vet/isAllOf');
+let isNumber = require('vet/numbers/isNumber');
+let isPositive = require('vet/numbers/isPositive');
+
+let check = isAllOf(isNumber, isPositive);
+
+check(-1); // returns false
+
+check(1); // returns true
+
+```
+Constructs a function that checks equality against any number of arguments
+
+**Kind**: static method of [<code>vet</code>](#vet)  
+**Returns**: a function that takes in a parameter val, and returns true if val is equal to any of the options in ...eq  
+**Params**
+
+- ...eq <code>\*</code> - values to check equality against
+
+
+* * *
+
+<a name="vet.isNoneOf"></a>
+
+### vet.isNoneOf(...eq) ⇒
 ```javascript
 
 let isNoneOf = require('vet/isNoneOf');

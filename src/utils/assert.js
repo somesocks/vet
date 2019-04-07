@@ -1,5 +1,10 @@
 
-const messageBuilder = (log) => (typeof log === 'function' ? log : ((...args) => log));
+function messageBuilder(log) {
+	return typeof log === 'function' ?
+		log :
+		function () { return log; }
+	;
+}
 
 /**
 * Wraps a validator, and throws an error if it returns false.
@@ -10,18 +15,17 @@ const messageBuilder = (log) => (typeof log === 'function' ? log : ((...args) =>
 * @returns a function that returns null if the arguments pass validation, or throws an error if they do not
 * @memberof vet.utils
 */
-const assert = (validator, message) => {
+function assert (validator, message) {
 	message = messageBuilder(message || 'Vet.utils.assert error!');
 
-	const wrapper = (...args) => {
-		if (validator(...args)) {
+	return function() {
+		var args = arguments;
+		if (validator.apply(undefined, args)) {
 			return true;
 		} else {
-			throw new Error(message(...args));
+			throw new Error(message.apply(undefined,args));
 		}
 	};
-
-	return wrapper;
-};
+}
 
 module.exports = assert;

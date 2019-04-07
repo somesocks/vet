@@ -1,11 +1,11 @@
 /* eslint no-self-compare: "off" */
 /* eslint no-bitwise: "off" */
 
-const isNumber = require('./isNumber');
+var isNumber = require('./isNumber');
 
-const isFinite = require('./isFinite');
+var isFinite = require('./isFinite');
 
-const floor = Math.floor;
+var floor = Math.floor;
 
 /**
 * Checks to see if a value is an integer
@@ -13,6 +13,8 @@ const floor = Math.floor;
 * @returns true if the value is an integer
 * @memberof vet.numbers
 */
-const isInteger = (val) => isNumber(val) && isFinite(val) && (floor(val) === val);
+function isInteger(val) {
+	return isNumber(val) && isFinite(val) && (floor(val) === val);
+}
 
 module.exports = isInteger;

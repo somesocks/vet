@@ -29,7 +29,7 @@ const TESTS = [
 ];
 
 
-describe('Number.isBetween', () => {
+describe('vet/numbers/isBetween', () => {
 	TESTS.forEach((test) => {
 		it(
 			`(${test.input})-->(${test.expected})`,

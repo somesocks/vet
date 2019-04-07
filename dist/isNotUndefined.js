@@ -15,6 +15,8 @@
 * @returns true if val is strictly not undefined
 * @memberof vet
 */
-const isNotUndefined = (val) => val !== undefined;
+function isNotUndefined(val) {
+	return val !== undefined;
+}
 
 module.exports = isNotUndefined;

@@ -1,5 +1,5 @@
 
-const assert = require('./assert');
+var assert = require('./assert');
 
 /**
 * A utility function for building a react-compatible assertion from a Vet validator
@@ -12,9 +12,9 @@ const assert = require('./assert');
 * @returns a function that returns null if the arguments pass validation, or throws an error if they do not
 * @memberof vet.utils
 */
-module.exports = (validator, msg) => {
+module.exports = function assertReact(validator, msg) {
 	validator = assert(validator, msg);
-	return (props, propName, componentName) => {
+	return function(props, propName, componentName) {
 		validator(props[propName]);
 	};
 };

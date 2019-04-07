@@ -18,7 +18,7 @@ const TESTS = [
 ];
 
 
-describe('Base.matchesOneOf', () => {
+describe('vet/matchesOneOf', () => {
 
 	const validator = matchesOneOf(
 		(val) => typeof val === 'string' || val instanceof String,

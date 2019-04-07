@@ -5,6 +5,8 @@
 * @returns true if the value loosely true
 * @memberof vet.booleans
 */
-const isTruthy = (val) => !!val;
+function isTruthy(val) {
+	return !!val;
+}
 
 module.exports = isTruthy;

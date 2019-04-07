@@ -16,4 +16,8 @@
 * @returns true if the value is an array
 * @memberof vet.arrays
 */
-module.exports = (val) => Object.prototype.toString.call(val) === '[object Array]';
+module.exports =
+	Array.isArray ||
+	function isArray(val) {
+		return Object.prototype.toString.call(val) === '[object Array]';
+	};

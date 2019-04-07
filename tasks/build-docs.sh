@@ -1,16 +1,35 @@
-SRC_DIR=./src
-README_TEMPLATE=./README.hbs
-README_OUTPUT=./README.md
+# `build-docs` finds all src js files,
+# sorts them for a stable result,
+# and pipes the filenames into jsdoc2md to generate
+# a README.md
+
+# expects to be run from root
+ROOT_DIR=.
+SRC_DIR=$ROOT_DIR/src
+DIST_DIR=$ROOT_DIR/dist
+
+# add local node_modules bin to path
+NODE_BIN=$ROOT_DIR/node_modules/.bin
+PATH=$PATH:$NODE_BIN
 
 ( \
-	export NODE_PATH=./; \
-	find $SRC_DIR -name '*.js' | \
-	sort -t'/' -k2.2 -k2.1 |  \
-	xargs jsdoc2md \
-		--template $README_TEMPLATE \
-		--separators \
-		--param-list-format list \
-		--property-list-format list \
-		--member-index-format list \
-		--files \
-) > $README_OUTPUT
+	find \
+		$SRC_DIR \
+		-name "*.js" \
+	| \
+	sort \
+		--stable \
+		--ignore-case \
+		--field-separator=/ \
+		--key=2.2 \
+		--key=2.1 \
+	| \
+	xargs \
+		jsdoc2md \
+			--separators \
+			--param-list-format list \
+			--property-list-format list \
+			--member-index-format list \
+			--template $ROOT_DIR/README.hbs \
+			--files \
+) > $ROOT_DIR/README.md

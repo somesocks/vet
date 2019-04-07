@@ -30,7 +30,7 @@ const TESTS = [
 ];
 
 
-describe('Object.isObjectOf', () => {
+describe('vet/objects/isObjectOf', () => {
 
 	const validator = isObjectOf((val) => val != null);
 

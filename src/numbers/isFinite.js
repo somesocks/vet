@@ -7,7 +7,7 @@
 * @returns true if the value is a finite number
 * @memberof vet.numbers
 */
-const isFinite = (value) => {
+function isFinite(value) {
 	// 1. If Type(number) is not Number, return false.
 	if (typeof value !== 'number') {
 		return false;
@@ -18,6 +18,6 @@ const isFinite = (value) => {
 	}
 	// 3. Otherwise, return true.
 	return true;
-};
+}
 
 module.exports = isFinite;

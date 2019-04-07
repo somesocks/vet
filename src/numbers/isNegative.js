@@ -1,5 +1,5 @@
 
-const isNumber = require('./isNumber');
+var isNumber = require('./isNumber');
 
 /**
 * Checks to see if a value is a negative number
@@ -7,6 +7,8 @@ const isNumber = require('./isNumber');
 * @returns true if the value is a negative number
 * @memberof vet.numbers
 */
-const isNegative = (val) => isNumber(val) && val < 0;
+function isNegative(val) {
+	return isNumber(val) && val < 0;
+}
 
 module.exports = isNegative;

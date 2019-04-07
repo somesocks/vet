@@ -1,5 +1,5 @@
 
-const isNumber = require('./isNumber');
+var isNumber = require('./isNumber');
 
 /**
 * Checks to see if a value is a negative number
@@ -8,7 +8,11 @@ const isNumber = require('./isNumber');
 * @returns {function} - a validator function
 * @memberof vet.numbers
 */
-const isBetween = (lower, upper) => (val) => isNumber(val) && val > lower && val < upper;
+function isBetween(lower, upper) {
+	return function (val) {
+		return isNumber(val) && val > lower && val < upper;
+	}
+}
 
 /**
 * @name exclusive
@@ -17,7 +21,12 @@ const isBetween = (lower, upper) => (val) => isNumber(val) && val > lower && val
 * @returns {function} - a validator function
 * @memberof vet.numbers.isBetween
 */
-isBetween.exclusive = (lower, upper) => (val) => isNumber(val) && val > lower && val < upper;
+isBetween.exclusive = function exclusive(lower, upper) {
+	return function (val) {
+		return isNumber(val) && val > lower && val < upper;
+	}
+};
+
 
 /**
 * @name inclusive
@@ -26,6 +35,10 @@ isBetween.exclusive = (lower, upper) => (val) => isNumber(val) && val > lower &&
 * @returns {function} - a validator function
 * @memberof vet.numbers.isBetween
 */
-isBetween.inclusive = (lower, upper) => (val) => isNumber(val) && val >= lower && val <= upper;
+isBetween.inclusive = function inclusive(lower, upper) {
+	return function (val) {
+		return isNumber(val) && val >= lower && val <= upper;
+	}
+};
 
 module.exports = isBetween;

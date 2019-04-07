@@ -1,6 +1,10 @@
 
-const isArray = Array.isArray ||
-	((val) => Object.prototype.toString.call(val) === '[object Array]');
+var isArray =
+	Array.isArray ||
+	function isArray(val) {
+		return Object.prototype.toString.call(val) === '[object Array]';
+	};
+
 
 /**
 * ```javascript
@@ -23,14 +27,16 @@ const isArray = Array.isArray ||
 * @returns a function that returns true if the value is an array, and all of the children pass the validator
 * @memberof vet.arrays
 */
-const isArrayOf = (validator) => (arr) => {
-	if (!isArray(arr)) { return false; }
+function isArrayOf(validator) {
+	return function(arr) {
+		if (!isArray(arr)) { return false; }
 
-	for (let i = 0; i < arr.length; i++) {
-		if (!validator(arr[i])) { return false; }
-	}
+		for (var i = 0; i < arr.length; i++) {
+			if (!validator(arr[i])) { return false; }
+		}
 
-	return true;
-};
+		return true;
+	};
+}
 
 module.exports = isArrayOf;

@@ -20,7 +20,7 @@ const TESTS = [
 	{ input: /a/, expected: false },
 ];
 
-describe('String.isLength', () => {
+describe('vet/strings/isLength', () => {
 	const validator = isLength(2);
 
 	TESTS.forEach((test) => {

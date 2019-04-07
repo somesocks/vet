@@ -30,7 +30,7 @@ const TESTS = [
 ];
 
 
-describe('Number.isNegative', () => {
+describe('vet/numbers/isNegative', () => {
 	TESTS.forEach((test) => {
 		it(
 			`(${test.input})-->(${test.expected})`,

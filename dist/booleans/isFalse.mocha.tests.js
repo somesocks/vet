@@ -18,7 +18,7 @@ const TESTS = [
 ];
 
 
-describe('Boolean.isFalse', () => {
+describe('vet/booleans/isFalse', () => {
 	TESTS.forEach((test) => {
 		it(
 			`(${test.input})-->(${test.expected})`,

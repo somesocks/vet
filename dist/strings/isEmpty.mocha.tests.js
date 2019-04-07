@@ -18,7 +18,7 @@ const TESTS = [
 	{ input: /a/, expected: false },
 ];
 
-describe('String.isEmpty', () => {
+describe('vet/strings/isEmpty', () => {
 	TESTS.forEach((test) => {
 		it(
 			`(${test.input})-->(${test.expected})`,

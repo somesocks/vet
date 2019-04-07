@@ -18,7 +18,7 @@ const TESTS = [
 ];
 
 
-describe('Base.optional', () => {
+describe('vet/optional', () => {
 
 	const validator = optional((val) => typeof val === 'string' || val instanceof String);
 

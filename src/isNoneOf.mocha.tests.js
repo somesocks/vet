@@ -18,7 +18,7 @@ const TESTS = [
 ];
 
 
-describe('Base.isNoneOf', () => {
+describe('vet/isNoneOf', () => {
 
 	const validator = isNoneOf(true, '');
 
@@ -30,4 +30,16 @@ describe('Base.isNoneOf', () => {
 			)
 		);
 	});
+
+	const validator2 = isNoneOf((val) => val === true, (val) => val === '');
+
+	TESTS.forEach((test) => {
+		it(
+			`(${test.input})-->(${test.expected})`,
+			(done) => done(
+				validator2(test.input) === test.expected ? null : new Error()
+			)
+		);
+	});
+
 });

@@ -28,7 +28,7 @@ const TESTS = [
 ];
 
 
-describe('Number.isNumber', () => {
+describe('vet/numbers/isNumber', () => {
 	TESTS.forEach((test) => {
 		it(
 			`(${test.input})-->(${test.expected})`,

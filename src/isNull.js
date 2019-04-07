@@ -15,6 +15,8 @@
 * @returns true if val is strictly null
 * @memberof vet
 */
-const isNull = (val) => val === null;
+function isNull(val) {
+	return val === null;
+}
 
 module.exports = isNull;

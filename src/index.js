@@ -1,6 +1,6 @@
 /** @namespace vet */
 
-const Vet = {
+var Vet = {
 		equals: require('./equals'),
 		exists: require('./exists'),
 		isNoneOf: require('./isNoneOf'),
@@ -57,37 +57,37 @@ const Vet = {
 };
 
 /**
-* alias for Vet.Array.isArray
+* legacy alias for Vet.Array.isArray
 */
 Vet.isArray = Vet.Array.isArray;
 
 /**
-* alias for Vet.Boolean.isBoolean
+* legacy alias for Vet.Boolean.isBoolean
 */
 Vet.isBoolean = Vet.Boolean.isBoolean;
 
 /**
-* alias for Vet.Function.isFunction
+* legacy alias for Vet.Function.isFunction
 */
 Vet.isFunction = Vet.Function.isFunction;
 
 /**
-* alias for Vet.Number.isNumber
+* legacy alias for Vet.Number.isNumber
 */
 Vet.isNumber = Vet.Number.isNumber;
 
 /**
-* alias for Vet.Object.isObject
+* legacy alias for Vet.Object.isObject
 */
 Vet.isObject = Vet.Object.isObject;
 
 /**
-* alias for Vet.String.isString
+* legacy alias for Vet.String.isString
 */
 Vet.isString = Vet.String.isString;
 
 /**
-* alias for Vet.Utils.assert
+* legacy alias for Vet.Utils.assert
 */
 Vet.assert = Vet.Utils.assert;
 

@@ -5,6 +5,6 @@
 * @returns true if the value is a Date
 * @memberof vet.dates
 */
-const isDate = (val) => val instanceof Date;
+function isDate(val) { return val instanceof Date; }
 
 module.exports = isDate;

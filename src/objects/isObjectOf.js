@@ -1,7 +1,7 @@
 
-const isObject = (val) => (val != null) && (Object(val) === val);
+function isObject(val) { return (val != null) && (Object(val) === val); }
 
-const propertyIsEnumerable = Object.prototype.propertyIsEnumerable;
+var propertyIsEnumerable = Object.prototype.propertyIsEnumerable;
 
 /**
 * Builds an object validator that checks the properties of the object
@@ -10,15 +10,17 @@ const propertyIsEnumerable = Object.prototype.propertyIsEnumerable;
 * @returns a function that returns true if the value is an object, and all of the object properties pass the validator
 * @memberof vet.objects
 */
-const isObjectOf = (validator) => (obj) => {
-	if (!isObject(obj)) { return false; }
-	for (let key in obj) {
-		if (propertyIsEnumerable.call(obj, key)) {
-			const val = obj[key];
-			if (!validator(val, key)) { return false; }
+function isObjectOf(validator) {
+	return function(obj) {
+		if (!isObject(obj)) { return false; }
+		for (var key in obj) {
+			if (propertyIsEnumerable.call(obj, key)) {
+				var val = obj[key];
+				if (!validator(val, key)) { return false; }
+			}
 		}
-	}
-	return true;
-};
+		return true;
+	};
+}
 
 module.exports = isObjectOf;

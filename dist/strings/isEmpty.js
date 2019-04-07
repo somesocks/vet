@@ -5,6 +5,6 @@
 * @returns true if val is an empty string
 * @memberof vet.strings
 */
-const isEmpty = (val) => val === '';
+function isEmpty(val) { return val === ''; }
 
 module.exports = isEmpty;

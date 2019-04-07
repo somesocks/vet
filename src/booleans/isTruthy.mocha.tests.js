@@ -18,7 +18,7 @@ const TESTS = [
 ];
 
 
-describe('Boolean.isTruthy', () => {
+describe('vet/booleans/isTruthy', () => {
 
 	TESTS.forEach((test) => {
 		it(

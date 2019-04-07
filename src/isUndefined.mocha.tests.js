@@ -18,7 +18,7 @@ const TESTS = [
 ];
 
 
-describe('Base.isUndefined', () => {
+describe('vet/isUndefined', () => {
 
 	TESTS.forEach((test) => {
 		it(

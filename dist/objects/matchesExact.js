@@ -1,23 +1,23 @@
 
-const isFunction = (val) => typeof val === 'function';
+function isFunction(val) { return typeof val === 'function'; }
 
-const isObject = (val) => (val != null) && (Object(val) === val);
+function isObject(val) { return (val != null) && (Object(val) === val); }
 
-const matchesSchemaExact = (schema, object) => {
+function matchesSchemaExact (schema, object) {
 	if (isFunction(schema)) {
 		return schema(object);
 	} else if (isObject(schema)) {
 		if (!isObject(object)) { return false; }
 
-		for (let key in schema) {
-			const s = schema[key];
-			const o = object[key];
+		for (var key in schema) {
+			var s = schema[key];
+			var o = object[key];
 			if (!matchesSchemaExact(s, o)) { return false; }
 		}
 
-		for (let key in object) {
-			const s = schema[key];
-			const o = object[key];
+		for (var key in object) {
+			var s = schema[key];
+			var o = object[key];
 			if (!matchesSchemaExact(s, o)) { return false; }
 		}
 
@@ -25,7 +25,7 @@ const matchesSchemaExact = (schema, object) => {
 	} else {
 		return object === schema;
 	}
-};
+}
 
 /**
 * Builds a function to check an object against a schema object
@@ -37,6 +37,8 @@ const matchesSchemaExact = (schema, object) => {
 * @returns a validator function that takes in a value val, and returns true if val matches the object schema exactly
 * @memberof vet.objects
 */
-const matchesExact = (schema) => (val) => matchesSchemaExact(schema, val);
+function matchesExact(schema) {
+	return function(val) { return matchesSchemaExact(schema, val); }
+}
 
 module.exports = matchesExact;

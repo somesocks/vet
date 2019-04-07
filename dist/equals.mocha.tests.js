@@ -18,7 +18,7 @@ const TESTS = [
 ];
 
 
-describe('Base.equals', () => {
+describe('vet/equals', () => {
 	const validator = equals(true);
 
 	TESTS.forEach((test) => {

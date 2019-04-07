@@ -32,7 +32,7 @@ const TESTS = [
 ];
 
 
-describe('Number.isInteger', () => {
+describe('vet/numbers/isInteger', () => {
 	TESTS.forEach((test) => {
 		it(
 			`(${test.input})-->(${test.expected})`,

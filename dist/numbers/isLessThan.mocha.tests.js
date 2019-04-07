@@ -30,7 +30,7 @@ const TESTS = [
 ];
 
 
-describe('Number.isLessThan', () => {
+describe('vet/numbers/isLessThan', () => {
 	TESTS.forEach((test) => {
 		it(
 			`(${test.input})-->(${test.expected})`,

@@ -19,7 +19,7 @@ const TESTS = [
 ];
 
 
-describe('String.matches', () => {
+describe('vet/strings/matches', () => {
 	const validator = matches(/.*/g);
 
 	TESTS.forEach((test) => {

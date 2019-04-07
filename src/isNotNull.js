@@ -15,6 +15,8 @@
 * @returns true if val is strictly not equal to null
 * @memberof vet
 */
-const isNotNull = (val) => val !== null;
+function isNotNull(val) {
+	return val !== null;
+}
 
 module.exports = isNotNull;

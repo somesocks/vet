@@ -5,6 +5,6 @@
 * @returns true if val is a string
 * @memberof vet.strings
 */
-const isString = (val) => (typeof val === 'string') || (val instanceof String);
+function isString (val) { return (typeof val === 'string') || (val instanceof String); }
 
 module.exports = isString;

@@ -5,6 +5,8 @@
 * @returns true if the value is strictly false
 * @memberof vet.booleans
 */
-const isFalse = (val) => val === false;
+function isFalse(val) {
+	return val === false;
+}
 
 module.exports = isFalse;

@@ -22,12 +22,16 @@
 * @returns a function that takes in a value, and returns true if ANY of the validator functions return true
 * @memberof vet
 */
-const matchesOneOf = (...validators) => (val) => {
-	for (let i = 0; i < validators.length; i++) {
-		if (validators[i](val)) { return true; }
-	}
+function matchesOneOf() {
+	var validators = arguments;
 
-	return false;
-};
+	return function (val) {
+		for (var i = 0; i < validators.length; i++) {
+			if (validators[i](val)) { return true; }
+		}
+
+		return false;
+	};
+}
 
 module.exports = matchesOneOf;

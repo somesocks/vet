@@ -1,5 +1,5 @@
 
-const isNumber = require('./isNumber');
+var isNumber = require('./isNumber');
 
 /**
 * Checks to see if a value is a negative number
@@ -7,7 +7,11 @@ const isNumber = require('./isNumber');
 * @returns {function} - a validator function
 * @memberof vet.numbers
 */
-const isGreaterThan = (bound) => (val) => isNumber(val) && val > bound;
+function isGreaterThan(bound) {
+	return function (val) {
+		return isNumber(val) && val > bound;
+	}
+}
 
 /**
 * @name exclusive
@@ -15,7 +19,11 @@ const isGreaterThan = (bound) => (val) => isNumber(val) && val > bound;
 * @returns {function} - a validator function
 * @memberof vet.numbers.isGreaterThan
 */
-isGreaterThan.exclusive = (bound) => (val) => isNumber(val) && val > bound;
+isGreaterThan.exclusive = function exclusive(bound) {
+	return function (val) {
+		return isNumber(val) && val > bound;
+	}
+};
 
 /**
 * @name inclusive
@@ -23,6 +31,10 @@ isGreaterThan.exclusive = (bound) => (val) => isNumber(val) && val > bound;
 * @returns {function} - a validator function
 * @memberof vet.numbers.isGreaterThan
 */
-isGreaterThan.inclusive = (bound) => (val) => isNumber(val) && val >= bound;
+isGreaterThan.inclusive = function inclusive(bound) {
+	return function (val) {
+		return isNumber(val) && val >= bound;
+	}
+};
 
 module.exports = isGreaterThan;

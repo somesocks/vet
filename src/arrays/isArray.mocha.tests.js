@@ -18,7 +18,7 @@ const TESTS = [
 ];
 
 
-describe('Array.isArray', () => {
+describe('vet/arrays/isArray', () => {
 
 	TESTS.forEach((test) => {
 		it(

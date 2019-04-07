@@ -22,12 +22,16 @@
 * @returns a function that takes in a value, and returns true if NONE of the validator functions return true
 * @memberof vet
 */
-const matchesNoneOf = (...validators) => (val) => {
-	for (let i = 0; i < validators.length; i++) {
-		if (validators[i](val)) { return false; }
-	}
+function matchesNoneOf() {
+	var validators = arguments;
 
-	return true;
-};
+	return function(val) {
+		for (var i = 0; i < validators.length; i++) {
+			if (validators[i](val)) { return false; }
+		}
+
+		return true;
+	};
+}
 
 module.exports = matchesNoneOf;

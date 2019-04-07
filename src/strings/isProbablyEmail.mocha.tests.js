@@ -24,9 +24,13 @@ const TESTS = [
 	{ input: 'x@example.com', expected: true },
 	{ input: '"much.more unusual"@example.com', expected: true },
 	{ input: '"very.unusual.@.unusual.com"@example.com', expected: true },
+
+	// eslint-disable-next-line no-useless-escape
 	{ input: '"very.(),:;<>[]\".VERY.\"very@\\ \"very\".unusual"@strange.example.com', expected: true },
 	{ input: 'example-indeed@strange-example.com', expected: true },
 	{ input: '#!$%&\'*+-/=?^_`{}|~@example.org', expected: true },
+
+	// eslint-disable-next-line no-useless-escape
 	{ input: '"()<>[]:,;@\\\"!#$%&\'-/=?^_`{}| ~.a"@example.org', expected: true },
 	{ input: '" "@example.org', expected: true },
 	{ input: 'example@s.solutions', expected: true },
@@ -59,7 +63,7 @@ const TESTS = [
 	{ input: /a/, expected: false },
 ];
 
-describe('String.isProbablyEmail', () => {
+describe('vat/strings/isProbablyEmail', () => {
 	TESTS.forEach((test) => {
 		it(
 			`(${test.input})-->(${test.expected})`,

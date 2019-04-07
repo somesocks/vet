@@ -1,17 +1,17 @@
 
-const isFunction = (val) => typeof val === 'function';
+function isFunction(val) { return typeof val === 'function'; }
 
-const isObject = (val) => (val != null) && (Object(val) === val);
+function isObject(val) { return (val != null) && (Object(val) === val); }
 
-const matchesSchema = (schema, object) => {
+function matchesSchema(schema, object) {
 	if (isFunction(schema)) {
 		return schema(object);
 	} else if (isObject(schema)) {
 		if (!isObject(object)) { return false; }
 
-		for(let key in schema) {
-			const s = schema[key];
-			const o = object[key];
+		for(var key in schema) {
+			var s = schema[key];
+			var o = object[key];
 			if (!matchesSchema(s, o)) { return false; }
 		}
 
@@ -19,7 +19,7 @@ const matchesSchema = (schema, object) => {
 	} else {
 		return object === schema;
 	}
-};
+}
 
 /**
 * Builds a function to check an object against a schema object
@@ -35,6 +35,8 @@ const matchesSchema = (schema, object) => {
 * @returns a validator function that takes in a value val, and returns true if val matches the object schema
 * @memberof vet.objects
 */
-const matches = (schema) => (val) => matchesSchema(schema, val);
+function matches(schema) {
+	return function(val) { return matchesSchema(schema, val); }
+}
 
 module.exports = matches;

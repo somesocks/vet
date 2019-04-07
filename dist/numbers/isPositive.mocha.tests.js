@@ -29,7 +29,7 @@ const TESTS = [
 ];
 
 
-describe('Number.isPositive', () => {
+describe('vet/numbers/isPositive', () => {
 	TESTS.forEach((test) => {
 		it(
 			`(${test.input})-->(${test.expected})`,

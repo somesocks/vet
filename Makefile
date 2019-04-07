@@ -1,7 +1,5 @@
+TASKS=./tasks
 
-NPM=pnpm
-
-.PHONY: help build test
 
 ##
 ##
@@ -21,38 +19,43 @@ help:
 	@grep "^##.*" ./Makefile
 
 
-dist-dir:
-	mkdir -p ./dist
-
-build-src: dist-dir
-	$(NPM) run _task_build_src
-
-build-docs:
-	$(NPM) run _task_build_docs
-
 ##		make build - make a new build
 ##
-build: build-docs build-src
-	cp ./.npmignore ./dist
-	cp ./package.json ./dist
-	cp ./README.md ./dist
-	cp ./LICENSE ./dist
-	cp -r ./dist_v1/ ./dist/dist/
+build: build-src build-docs build-meta
 
-test-cases:
-	$(NPM) run _task_test_cases
+
+build-src:
+	sh $(TASKS)/build-src.sh
+
+build-docs:
+	sh $(TASKS)/build-docs.sh
+
+build-meta: build-src build-docs
+	sh $(TASKS)/build-meta.sh
+
+
 
 ##		make test - run the test cases against the build
 ##
-test: test-cases
+test: test-mocha test-eslint
+
+test-eslint:
+	ESLINT="$(ESLINT)" sh $(TASKS)/test-eslint.sh
+
+test-mocha:
+	MOCHA="$(MOCHA)" sh $(TASKS)/test-mocha.sh
 
 
-##		make package-check - list the files that will be present in the package
+
+##		make package-check - print out a pre-publish package check
 ##
 package-check:
-	cd ./dist && $(NPM) publish --dry-run
+	sh $(TASKS)/package-check.sh
 
-##		make package-publish - publish the current dist dir
+##		make package-publish - publish package on npm
 ##
 package-publish:
-	cd ./dist && $(NPM) publish --access=public
+	sh $(TASKS)/package-publish.sh
+
+##
+##

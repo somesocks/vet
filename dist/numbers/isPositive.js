@@ -1,5 +1,5 @@
 
-const isNumber = require('./isNumber');
+var isNumber = require('./isNumber');
 
 /**
 * Checks to see if a value is a positive number
@@ -7,6 +7,6 @@ const isNumber = require('./isNumber');
 * @returns true if the value is a positive number
 * @memberof vet.numbers
 */
-const isPositive = (val) => isNumber(val) && val > 0;
+function isPositive(val) { return isNumber(val) && val > 0; }
 
 module.exports = isPositive;

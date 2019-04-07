@@ -5,6 +5,6 @@
 * @returns true if the value is an object
 * @memberof vet.objects
 */
-const isObject = (val) => (val != null) && (Object(val) === val);
+function isObject(val) { return (val != null) && (Object(val) === val); }
 
 module.exports = isObject;

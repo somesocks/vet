@@ -15,6 +15,8 @@
 * @returns true if val is not null or undefined
 * @memberof vet
 */
-const exists = (val) => val != null;
+function exists (val) {
+	return val != null;
+}
 
 module.exports = exists;

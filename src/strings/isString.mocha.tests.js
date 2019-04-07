@@ -19,7 +19,7 @@ const TESTS = [
 ];
 
 
-describe('String.isString', () => {
+describe('vet/strings/isString', () => {
 	TESTS.forEach((test) => {
 		it(
 			`(${test.input})-->(${test.expected})`,

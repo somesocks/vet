@@ -24,7 +24,7 @@ const TESTS = [
 	{ input: /a/, expected: false },
 ];
 
-describe('String.isProbablyDataURL', () => {
+describe('vet/strings/isProbablyDataURL', () => {
 	TESTS.forEach((test) => {
 		it(
 			`(${test.input})-->(${test.expected})`,

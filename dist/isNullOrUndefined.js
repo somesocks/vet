@@ -15,6 +15,8 @@
 * @returns true if val is loosely null (strictly null or undefined)
 * @memberof vet
 */
-const isNullOrUndefined = (val) => val == null;
+function isNullOrUndefined(val) {
+	return val == null;
+}
 
 module.exports = isNullOrUndefined;

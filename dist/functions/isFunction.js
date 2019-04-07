@@ -5,6 +5,6 @@
 * @returns true if the value is a function
 * @memberof vet.functions
 */
-const isFunction = (val) => typeof val === 'function';
+function isFunction(val) { return typeof val === 'function'; }
 
 module.exports = isFunction;

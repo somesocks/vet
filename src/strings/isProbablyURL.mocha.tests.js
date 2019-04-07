@@ -22,7 +22,7 @@ const TESTS = [
 	{ input: /a/, expected: false },
 ];
 
-describe('String.isProbablyURL', () => {
+describe('vet/strings/isProbablyURL', () => {
 	TESTS.forEach((test) => {
 		it(
 			`(${test.input})-->(${test.expected})`,

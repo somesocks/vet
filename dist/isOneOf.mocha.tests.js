@@ -18,7 +18,7 @@ const TESTS = [
 ];
 
 
-describe('Base.isOneOf', () => {
+describe('vet/isOneOf', () => {
 
 	const validator = isOneOf(true, '');
 
@@ -30,4 +30,17 @@ describe('Base.isOneOf', () => {
 			)
 		);
 	});
+
+	const validator2 = isOneOf((val) => val === true, (val) => val === '');
+
+	TESTS.forEach((test) => {
+		it(
+			`(${test.input})-->(${test.expected})`,
+			(done) => done(
+				validator2(test.input) === test.expected ? null : new Error()
+			)
+		);
+	});
+
+
 });

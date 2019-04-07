@@ -7,4 +7,5 @@ module.exports = {
 	isObjectOf: require('./isObjectOf'),
 	matches: require('./matches'),
 	matchesExact: require('./matchesExact'),
+	shape: require('./shape'),
 };
