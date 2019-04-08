@@ -4,6 +4,7 @@ var Vet = {
 		equals: require('./equals'),
 		exists: require('./exists'),
 		isNoneOf: require('./isNoneOf'),
+		isNot: require('./isNot'),
 		isNotNull: require('./isNotNull'),
 		isNotNullOrUndefined: require('./isNotNullOrUndefined'),
 		isNotUndefined: require('./isNotUndefined'),

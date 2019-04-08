@@ -67,6 +67,7 @@ A collection of data validation tools.
     * [.exists(val)](#vet.exists) ⇒
     * [.isAllOf(...eq)](#vet.isAllOf) ⇒
     * [.isNoneOf(...eq)](#vet.isNoneOf) ⇒
+    * [.isNot(validator)](#vet.isNot) ⇒
     * [.isNotNull(val)](#vet.isNotNull) ⇒
     * [.isNotNullOrUndefined(val)](#vet.isNotNullOrUndefined) ⇒
     * [.isNotUndefined(val)](#vet.isNotUndefined) ⇒
@@ -1007,6 +1008,32 @@ Constructs a function that checks equality against any number of arguments
 **Params**
 
 - ...eq <code>\*</code> - values to check equality against
+
+
+* * *
+
+<a name="vet.isNot"></a>
+
+### vet.isNot(validator) ⇒
+```javascript
+
+let isNot = require('vet/isNot');
+let isNumber = require('vet/numbers/isNumber');
+
+let check = isNot(isNumber);
+
+check(1); // returns false
+
+check(null); // returns true
+
+```
+a function that inverts the result of a validator
+
+**Kind**: static method of [<code>vet</code>](#vet)  
+**Returns**: a wrapper function that inverts the result of a validator  
+**Params**
+
+- validator <code>function</code> - validator to invert
 
 
 * * *
