@@ -44,10 +44,10 @@ A collection of data validation tools.
     * [.objects](#vet.objects) : <code>object</code>
         * [.isObject(val)](#vet.objects.isObject) ⇒
         * [.isObjectOf(validator)](#vet.objects.isObjectOf) ⇒
+        * [.isShape(schema)](#vet.objects.isShape) ⇒
+            * [.isShape.exact(schema)](#vet.objects.isShape.isShape.exact) ⇒
         * [.matchesExact(schema)](#vet.objects.matchesExact) ⇒
         * [.matches(schema)](#vet.objects.matches) ⇒
-        * [.shape(schema)](#vet.objects.shape) ⇒
-            * [.shape.exact(schema)](#vet.objects.shape.shape.exact) ⇒
     * [.strings](#vet.strings) : <code>object</code>
         * [.isEmpty(val)](#vet.strings.isEmpty) ⇒
         * [.isLength(len)](#vet.strings.isLength) ⇒
@@ -566,10 +566,10 @@ Checks to see if a value is zero
 * [.objects](#vet.objects) : <code>object</code>
     * [.isObject(val)](#vet.objects.isObject) ⇒
     * [.isObjectOf(validator)](#vet.objects.isObjectOf) ⇒
+    * [.isShape(schema)](#vet.objects.isShape) ⇒
+        * [.isShape.exact(schema)](#vet.objects.isShape.isShape.exact) ⇒
     * [.matchesExact(schema)](#vet.objects.matchesExact) ⇒
     * [.matches(schema)](#vet.objects.matches) ⇒
-    * [.shape(schema)](#vet.objects.shape) ⇒
-        * [.shape.exact(schema)](#vet.objects.shape.shape.exact) ⇒
 
 
 * * *
@@ -599,6 +599,46 @@ NOTE: This only checks enumerable properties
 **Params**
 
 - validator - the validator function run against the array children
+
+
+* * *
+
+<a name="vet.objects.isShape"></a>
+
+#### objects.isShape(schema) ⇒
+Builds a function to check an object against a schema object
+
+A schema object consists of an object with child object, functions, and values
+
+The schema matching process is this:
+1) For each child in the schema object, match it against the corresponding child in the value to be checked
+2) If the schema child is a function, treat it as a validator function
+3) If the schema child is an object, recursively call the schema matching
+4) If the schema child is anything else, check for strict equality
+
+**Kind**: static method of [<code>objects</code>](#vet.objects)  
+**Returns**: a validator function that takes in a value val, and returns true if val matches the object schema  
+**Params**
+
+- schema - the object schema to check
+
+
+* * *
+
+<a name="vet.objects.isShape.isShape.exact"></a>
+
+##### isShape.isShape.exact(schema) ⇒
+Builds a function to check an object against a schema object
+
+This function works similarly to `vet/objects/isShape`,
+but it also checks to make sure every value in the object to check
+has a corresponding validator in the schema
+
+**Kind**: static method of [<code>isShape</code>](#vet.objects.isShape)  
+**Returns**: a validator function that takes in a value val, and returns true if val matches the object schema exactly  
+**Params**
+
+- schema - the object schema to check
 
 
 * * *
@@ -636,46 +676,6 @@ The schema matching process is this:
 
 **Kind**: static method of [<code>objects</code>](#vet.objects)  
 **Returns**: a validator function that takes in a value val, and returns true if val matches the object schema  
-**Params**
-
-- schema - the object schema to check
-
-
-* * *
-
-<a name="vet.objects.shape"></a>
-
-#### objects.shape(schema) ⇒
-Builds a function to check an object against a schema object
-
-A schema object consists of an object with child object, functions, and values
-
-The schema matching process is this:
-1) For each child in the schema object, match it against the corresponding child in the value to be checked
-2) If the schema child is a function, treat it as a validator function
-3) If the schema child is an object, recursively call the schema matching
-4) If the schema child is anything else, check for strict equality
-
-**Kind**: static method of [<code>objects</code>](#vet.objects)  
-**Returns**: a validator function that takes in a value val, and returns true if val matches the object schema  
-**Params**
-
-- schema - the object schema to check
-
-
-* * *
-
-<a name="vet.objects.shape.shape.exact"></a>
-
-##### shape.shape.exact(schema) ⇒
-Builds a function to check an object against a schema object
-
-This function works similarly to Vet.Object.matches,
-but it also checks to make sure every value in the object to check
-has a corresponding validator in the schema
-
-**Kind**: static method of [<code>shape</code>](#vet.objects.shape)  
-**Returns**: a validator function that takes in a value val, and returns true if val matches the object schema exactly  
 **Params**
 
 - schema - the object schema to check

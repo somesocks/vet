@@ -2,7 +2,7 @@
 
 const Vet = require('../');
 const { isString, isNumber, isBoolean, optional } = Vet;
-const { shape } = Vet.Object;
+const { isShape } = Vet.Object;
 
 const TESTS = [
 	{
@@ -60,8 +60,8 @@ const TESTS = [
 ];
 
 
-describe('vet/objects/shape.exact', () => {
-	const validator = shape.exact({
+describe('vet/objects/isShape.exact', () => {
+	const validator = isShape.exact({
 		name: isString,
 		age: isNumber,
 		verified: isBoolean,

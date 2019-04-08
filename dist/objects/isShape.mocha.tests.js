@@ -2,7 +2,7 @@
 
 const Vet = require('../');
 const { isString, isNumber, isBoolean, optional } = Vet;
-const { shape } = Vet.Object;
+const { isShape } = Vet.Object;
 
 
 const TESTS = [
@@ -105,8 +105,8 @@ const TESTS = [
 ];
 
 
-describe('vet/objects/shape', () => {
-	const validator = shape({
+describe('vet/objects/isShape', () => {
+	const validator = isShape({
 		name: isString,
 		age: isNumber,
 		verified: isBoolean,
