@@ -20,10 +20,10 @@ function assert (validator, message) {
 
 	return function() {
 		var args = arguments;
-		if (validator.apply(undefined, args)) {
+		if (validator.apply(this, args)) {
 			return true;
 		} else {
-			throw new Error(message.apply(undefined,args));
+			throw new Error(message.apply(this,args));
 		}
 	};
 }

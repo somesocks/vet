@@ -16,6 +16,7 @@ module.exports = {
 		'no-console': [ 'warn' ],
 		'no-else-return': [ 'off' ],
 		'no-empty-function': [ 'warn' ],
+		'no-invalid-this': [ 'warn' ],
 		'no-unused-vars': [ 'warn' ],
 		'no-redeclare': [ 'warn' ],
 		'no-var': [ 'off' ],

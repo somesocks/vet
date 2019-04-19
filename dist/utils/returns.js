@@ -20,12 +20,12 @@ function returns(func, validator, message) {
 
 	return function _returnsInstance() {
 		var args = arguments;
-		var result = func.apply(undefined, arguments);
+		var result = func.apply(this, arguments);
 
 		if (validator(result)) {
 			return result;
 		} else {
-			throw new Error(message(result));
+			throw new Error(message.call(this, result));
 		}
 	};
 }

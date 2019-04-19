@@ -20,10 +20,10 @@ function accepts(func, validator, message) {
 
 	return function wrapper(){
 		var args = arguments;
-		if (validator.apply(undefined, args)) {
-			return func.apply(undefined, args);
+		if (validator.apply(this, args)) {
+			return func.apply(this, args);
 		} else {
-			throw new Error(message.apply(undefined, args));
+			throw new Error(message.apply(this, args));
 		}
 	};
 }
