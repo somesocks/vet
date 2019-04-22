@@ -16,7 +16,7 @@ function messageBuilder(log) {
 * @memberof vet.utils
 */
 function accepts(func, validator, message) {
-	message = messageBuilder(message || 'Vet.utils.accepts error!');
+	message = messageBuilder(message || 'vet/utils/accepts error!');
 
 	return function wrapper(){
 		var args = arguments;

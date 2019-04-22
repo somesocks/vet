@@ -16,7 +16,7 @@ function messageBuilder(log) {
 * @memberof vet.utils
 */
 function returns(func, validator, message) {
-	message = messageBuilder(message || 'Vet.utils.returns error!');
+	message = messageBuilder(message || 'vet/utils/returns error!');
 
 	return function _returnsInstance() {
 		var args = arguments;

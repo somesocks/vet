@@ -40,4 +40,23 @@ describe('vet/utils/assert', () => {
 			)
 		);
 	});
+
+	it('immediate mode test', () => {
+		assert(2 > 1, 'passed');
+	});
+
+	it('immediate mode test 2', () => {
+		let err;
+
+		try {
+			assert(1 > 2, 'one is not greater than 2');
+		} catch (e) {
+			err = e;
+		}
+
+		assert(err != null);
+		assert(err instanceof Error);
+		assert(err.message === 'one is not greater than 2');
+	});
+
 });

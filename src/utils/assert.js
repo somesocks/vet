@@ -6,6 +6,8 @@ function messageBuilder(log) {
 	;
 }
 
+function isFunction(val) { return typeof val === 'function'; }
+
 /**
 * Wraps a validator, and throws an error if it returns false.
 *
@@ -16,16 +18,23 @@ function messageBuilder(log) {
 * @memberof vet.utils
 */
 function assert (validator, message) {
-	message = messageBuilder(message || 'Vet.utils.assert error!');
+	message = messageBuilder(message || 'vet/utils/assert error!');
 
-	return function() {
-		var args = arguments;
-		if (validator.apply(this, args)) {
-			return true;
-		} else {
-			throw new Error(message.apply(this,args));
-		}
-	};
+	if (isFunction(validator)) {
+		return function() {
+			var args = arguments;
+			if (validator.apply(this, args)) {
+				return true;
+			} else {
+				throw new Error(message.apply(this, args));
+			}
+		};
+	} else if (!validator) {
+		throw new Error(message.apply(this));
+	} else {
+		return true;
+	}
+
 }
 
 module.exports = assert;
