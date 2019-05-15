@@ -99,16 +99,6 @@ A collection of data validation tools.
 <a name="vet.arrays.isArray"></a>
 
 #### arrays.isArray ⇒
-```javascript
-
-let isArray = require('vet/arrays/isArray');
-
-isArray(null); // returns false
-isArray({}); // returns false
-
-isArray([]); // returns true
-
-```
 Checks to see if a value is an array
 
 **Kind**: static property of [<code>arrays</code>](#vet.arrays)  
@@ -117,14 +107,31 @@ Checks to see if a value is an array
 
 - val - the value to check
 
+**Example**  
+```javascript
+let isArray = require('vet/arrays/isArray');
+
+isArray(null); // returns false
+isArray({}); // returns false
+
+isArray([]); // returns true
+```
 
 * * *
 
 <a name="vet.arrays.isArrayOf"></a>
 
 #### arrays.isArrayOf(val) ⇒
-```javascript
+Builds an array validator that checks the children of the array
 
+**Kind**: static method of [<code>arrays</code>](#vet.arrays)  
+**Returns**: a function that returns true if the value is an array, and all of the children pass the validator  
+**Params**
+
+- val - the validator function run against the array children
+
+**Example**  
+```javascript
 let isString = require('vet/strings/isString');
 let isArrayOf = require('vet/arrays/isArrayOf');
 
@@ -136,24 +143,23 @@ isStringArray([ 1, 2, 3 ]); // returns false
 
 isStringArray([]); // returns true
 isStringArray([ '1', '2', '3' ]); // returns true
-
 ```
-Builds an array validator that checks the children of the array
-
-**Kind**: static method of [<code>arrays</code>](#vet.arrays)  
-**Returns**: a function that returns true if the value is an array, and all of the children pass the validator  
-**Params**
-
-- val - the validator function run against the array children
-
 
 * * *
 
 <a name="vet.arrays.isLength"></a>
 
 #### arrays.isLength(len) ⇒
-```javascript
+Constructor to build an array length validator
 
+**Kind**: static method of [<code>arrays</code>](#vet.arrays)  
+**Returns**: a function that returns true if the value is an array of length len  
+**Params**
+
+- len - the length the array shouldbe
+
+**Example**  
+```javascript
 let isLength = require('vet/arrays/isLength');
 
 let isLength3 = isLength(3);
@@ -163,16 +169,7 @@ isLength3({}); // returns false
 isLength3([ 1, 2 ]); // returns false
 
 isLength3([ '1', '2', '3' ]); // returns true
-
 ```
-Builds an array length checker
-
-**Kind**: static method of [<code>arrays</code>](#vet.arrays)  
-**Returns**: a function that returns true if the value is an array of length len  
-**Params**
-
-- len - the length the array shouldbe
-
 
 * * *
 
@@ -216,6 +213,15 @@ Checks to see if a value is strictly false
 
 - val - the value to check
 
+**Example**  
+```javascript
+let isFalse = require('vet/booleans/isFalse');
+
+isFalse(null); // returns false
+isFalse(true); // returns false
+
+isFalse(false); // returns true
+```
 
 * * *
 
@@ -230,6 +236,15 @@ Checks to see if a value is loosely false (falsy)
 
 - val - the value to check
 
+**Example**  
+```javascript
+let isFalsy = require('vet/booleans/isFalsy');
+
+isFalse(true); // returns false
+
+isFalsy(null); // returns true
+isFalsy(false); // returns true
+```
 
 * * *
 
@@ -244,6 +259,15 @@ Checks to see if a value is strictly true
 
 - val - the value to check
 
+**Example**  
+```javascript
+let isTrue = require('vet/booleans/isTrue');
+
+isTrue(null); // returns false
+isTrue(false); // returns false
+
+isTrue(true); // returns true
+```
 
 * * *
 
@@ -258,6 +282,16 @@ Checks to see if a value is loosely true (truthy)
 
 - val - the value to check
 
+**Example**  
+```javascript
+let isTruthy = require('vet/booleans/isTruthy');
+
+isTruthy(null); // returns false
+isTruthy(false); // returns false
+
+isTruthy({}); // returns true
+isTruthy(true); // returns true
+```
 
 * * *
 
@@ -279,6 +313,15 @@ Checks to see if a value is a Date
 
 - val - the value to check
 
+**Example**  
+```javascript
+let isDate = require('vet/dates/isDate');
+
+isDate(null); // returns false
+isDate({}); // returns false
+
+isDate(new Date()); // returns true
+```
 
 * * *
 
@@ -300,6 +343,15 @@ Checks to see if a value is a function
 
 - val - the value to check
 
+**Example**  
+```javascript
+let isFunction = require('vet/functions/isFunction');
+
+isFunction(null); // returns false
+isFunction({}); // returns false
+
+isFunction(function (){}); // returns true
+```
 
 * * *
 
@@ -332,7 +384,7 @@ Checks to see if a value is a function
 <a name="vet.numbers.isBetween"></a>
 
 #### numbers.isBetween(lower, upper) ⇒ <code>function</code>
-Checks to see if a value is a negative number
+construct a validator to check if a value is between two numbers
 
 **Kind**: static method of [<code>numbers</code>](#vet.numbers)  
 **Returns**: <code>function</code> - - a validator function  
@@ -392,7 +444,7 @@ Checks to see if a value is a finite number
 <a name="vet.numbers.isGreaterThan"></a>
 
 #### numbers.isGreaterThan(bound) ⇒ <code>function</code>
-Checks to see if a value is a negative number
+construct a validator to check if a value is greater than a number
 
 **Kind**: static method of [<code>numbers</code>](#vet.numbers)  
 **Returns**: <code>function</code> - - a validator function  
@@ -449,7 +501,7 @@ Checks to see if a value is an integer
 <a name="vet.numbers.isLessThan"></a>
 
 #### numbers.isLessThan(bound) ⇒ <code>function</code>
-Checks to see if a value is a negative number
+construct a validator to check if a value is less than a number
 
 **Kind**: static method of [<code>numbers</code>](#vet.numbers)  
 **Returns**: <code>function</code> - - a validator function  
@@ -611,10 +663,14 @@ Builds a function to check an object against a schema object
 
 A schema object consists of an object with child object, functions, and values
 
-The schema matching process is this:
+The schema matching process is as follows:
+
 1) For each child in the schema object, match it against the corresponding child in the value to be checked
+
 2) If the schema child is a function, treat it as a validator function
+
 3) If the schema child is an object, recursively call the schema matching
+
 4) If the schema child is anything else, check for strict equality
 
 **Kind**: static method of [<code>objects</code>](#vet.objects)  
@@ -623,6 +679,28 @@ The schema matching process is this:
 
 - schema - the object schema to check
 
+**Example**  
+```javascript
+let isString = require('vet/strings/isString');
+let isNumber = require('vet/numbers/isNumber');
+let isBoolean = require('vet/booleans/isBoolean');
+let isShape = require('vet/objects/isShape');
+
+let isPerson = isShape({
+  name: isString,
+  age: isNumber,
+  alive: isBoolean,
+});
+
+// returns false
+isPerson({});
+
+// returns false, no 'alive' flag
+isPerson({ name: 'John Doe', age: 12 });
+
+// returns true
+isPerson({ name: 'John Doe', age: 12, alive: true });
+```
 
 * * *
 
@@ -641,6 +719,31 @@ has a corresponding validator in the schema
 
 - schema - the object schema to check
 
+**Example**  
+```javascript
+let isString = require('vet/strings/isString');
+let isNumber = require('vet/numbers/isNumber');
+let isBoolean = require('vet/booleans/isBoolean');
+let isShape = require('vet/objects/isShape');
+
+let isPerson = isShape.exact({
+  name: isString,
+  age: isNumber,
+  alive: isBoolean,
+});
+
+// returns false
+isPerson({});
+
+// returns false, no 'alive' flag
+isPerson({ name: 'John Doe', age: 12 });
+
+// returns false, extra property 'gender'
+isPerson({ name: 'John Doe', age: 12, alive: true, gender: 'm' });
+
+// returns true
+isPerson({ name: 'John Doe', age: 12, alive: true });
+```
 
 * * *
 
@@ -913,18 +1016,6 @@ Wraps a function in a validator which checks its return value, and throws an err
 <a name="vet.equals"></a>
 
 ### vet.equals(eq) ⇒
-```javascript
-
-let equals = require('vet/equals');
-
-let is3 = equals(3);
-
-is3(null); // returns false
-is3({}); // returns false
-
-is3(3); // returns true
-
-```
 Builds an curried equal function
 
 **Kind**: static method of [<code>vet</code>](#vet)  
@@ -933,23 +1024,24 @@ Builds an curried equal function
 
 - eq - value to check equality against
 
+**Example**  
+```javascript
+let equals = require('vet/equals');
+
+let is3 = equals(3);
+
+is3(null); // returns false
+is3({}); // returns false
+
+is3(3); // returns true
+```
 
 * * *
 
 <a name="vet.exists"></a>
 
 ### vet.exists(val) ⇒
-```javascript
-
-let exists = require('vet/exists');
-
-exists(null); // returns false
-exists(undefined); // returns false
-
-exists({}); // returns true
-
-```
-Alias for isNotNullOrUndefined
+Alias for `vet/isNotNullOrUndefined`
 
 **Kind**: static method of [<code>vet</code>](#vet)  
 **Returns**: true if val is not null or undefined  
@@ -957,14 +1049,32 @@ Alias for isNotNullOrUndefined
 
 - val - value to check
 
+**Example**  
+```javascript
+
+let exists = require('vet/exists');
+
+exists(null); // returns false
+exists(undefined); // returns false
+exists({}); // returns true
+
+```
 
 * * *
 
 <a name="vet.isAllOf"></a>
 
 ### vet.isAllOf(...eq) ⇒
-```javascript
+Constructs a function that checks equality against any number of arguments
 
+**Kind**: static method of [<code>vet</code>](#vet)  
+**Returns**: a function that takes in a parameter val, and returns true if val is equal to any of the options in ...eq  
+**Params**
+
+- ...eq <code>\*</code> - values to check equality against
+
+**Example**  
+```javascript
 let isAllOf = require('vet/isAllOf');
 let isNumber = require('vet/numbers/isNumber');
 let isPositive = require('vet/numbers/isPositive');
@@ -974,33 +1084,13 @@ let check = isAllOf(isNumber, isPositive);
 check(-1); // returns false
 
 check(1); // returns true
-
 ```
-Constructs a function that checks equality against any number of arguments
-
-**Kind**: static method of [<code>vet</code>](#vet)  
-**Returns**: a function that takes in a parameter val, and returns true if val is equal to any of the options in ...eq  
-**Params**
-
-- ...eq <code>\*</code> - values to check equality against
-
 
 * * *
 
 <a name="vet.isNoneOf"></a>
 
 ### vet.isNoneOf(...eq) ⇒
-```javascript
-
-let isNoneOf = require('vet/isNoneOf');
-
-let check = isNoneOf(1, 2, 3);
-
-check(1); // returns false
-
-check(4); // returns true
-
-```
 Constructs a function that checks equality against any number of arguments
 
 **Kind**: static method of [<code>vet</code>](#vet)  
@@ -1009,24 +1099,22 @@ Constructs a function that checks equality against any number of arguments
 
 - ...eq <code>\*</code> - values to check equality against
 
+**Example**  
+```javascript
+let isNoneOf = require('vet/isNoneOf');
+
+let check = isNoneOf(1, 2, 3);
+
+check(1); // returns false
+
+check(4); // returns true
+```
 
 * * *
 
 <a name="vet.isNot"></a>
 
 ### vet.isNot(validator) ⇒
-```javascript
-
-let isNot = require('vet/isNot');
-let isNumber = require('vet/numbers/isNumber');
-
-let check = isNot(isNumber);
-
-check(1); // returns false
-
-check(null); // returns true
-
-```
 a function that inverts the result of a validator
 
 **Kind**: static method of [<code>vet</code>](#vet)  
@@ -1035,12 +1123,32 @@ a function that inverts the result of a validator
 
 - validator <code>function</code> - validator to invert
 
+**Example**  
+```javascript
+let isNot = require('vet/isNot');
+let isNumber = require('vet/numbers/isNumber');
+
+let check = isNot(isNumber);
+
+check(1); // returns false
+
+check(null); // returns true
+```
 
 * * *
 
 <a name="vet.isNotNull"></a>
 
 ### vet.isNotNull(val) ⇒
+A function to check for nulls
+
+**Kind**: static method of [<code>vet</code>](#vet)  
+**Returns**: true if val is strictly not equal to null  
+**Params**
+
+- val - a value to check against null
+
+**Example**  
 ```javascript
 
 let isNotNull = require('vet/isNotNull');
@@ -1051,30 +1159,12 @@ isNotNull(undefined); // returns true
 isNotNull({}); // returns true
 
 ```
-A function to check for nulls
-
-**Kind**: static method of [<code>vet</code>](#vet)  
-**Returns**: true if val is strictly not equal to null  
-**Params**
-
-- val - a value to check against null
-
 
 * * *
 
 <a name="vet.isNotNullOrUndefined"></a>
 
 ### vet.isNotNullOrUndefined(val) ⇒
-```javascript
-
-let isNotNullOrUndefined = require('vet/isNotNullOrUndefined');
-
-isNotNullOrUndefined(null); // returns false
-isNotNullOrUndefined(undefined); // returns false
-
-isNotNullOrUndefined({}); // returns true
-
-```
 A function to check for null or undefined
 
 **Kind**: static method of [<code>vet</code>](#vet)  
@@ -1083,22 +1173,21 @@ A function to check for null or undefined
 
 - val - a value to check against null and undefined
 
+**Example**  
+```javascript
+let isNotNullOrUndefined = require('vet/isNotNullOrUndefined');
+
+isNotNullOrUndefined(null); // returns false
+isNotNullOrUndefined(undefined); // returns false
+
+isNotNullOrUndefined({}); // returns true
+```
 
 * * *
 
 <a name="vet.isNotUndefined"></a>
 
 ### vet.isNotUndefined(val) ⇒
-```javascript
-
-let isNotUndefined = require('vet/isNotUndefined');
-
-isNotUndefined(undefined); // returns false
-
-isNotUndefined(null); // returns true
-isNotUndefined({}); // returns true
-
-```
 A function to check for undefined
 
 **Kind**: static method of [<code>vet</code>](#vet)  
@@ -1107,22 +1196,21 @@ A function to check for undefined
 
 - val - a value to check
 
+**Example**  
+```javascript
+let isNotUndefined = require('vet/isNotUndefined');
+
+isNotUndefined(undefined); // returns false
+
+isNotUndefined(null); // returns true
+isNotUndefined({}); // returns true
+```
 
 * * *
 
 <a name="vet.isNull"></a>
 
 ### vet.isNull(val) ⇒
-```javascript
-
-let isNull = require('vet/isNull');
-
-isNull(undefined); // returns false
-isNull({}); // returns false
-
-isNull(null); // returns true
-
-```
 A function to check for null
 
 **Kind**: static method of [<code>vet</code>](#vet)  
@@ -1131,22 +1219,21 @@ A function to check for null
 
 - val - a value to check
 
+**Example**  
+```javascript
+let isNull = require('vet/isNull');
+
+isNull(undefined); // returns false
+isNull({}); // returns false
+
+isNull(null); // returns true
+```
 
 * * *
 
 <a name="vet.isNullOrUndefined"></a>
 
 ### vet.isNullOrUndefined(val) ⇒
-```javascript
-
-let isNullOrUndefined = require('vet/isNullOrUndefined');
-
-isNullOrUndefined({}); // returns false
-
-isNullOrUndefined(undefined); // returns true
-isNullOrUndefined(null); // returns true
-
-```
 A function to check for null or undefined
 
 **Kind**: static method of [<code>vet</code>](#vet)  
@@ -1155,23 +1242,21 @@ A function to check for null or undefined
 
 - val - a value to check
 
+**Example**  
+```javascript
+let isNullOrUndefined = require('vet/isNullOrUndefined');
+
+isNullOrUndefined({}); // returns false
+
+isNullOrUndefined(undefined); // returns true
+isNullOrUndefined(null); // returns true
+```
 
 * * *
 
 <a name="vet.isOneOf"></a>
 
 ### vet.isOneOf(...eq) ⇒
-```javascript
-
-let isOneOf = require('vet/isOneOf');
-
-let check = isOneOf(1, 2, 3);
-
-check(4); // returns false
-
-check(1); // returns true
-
-```
 Constructs a function that checks equality against any number of arguments
 
 **Kind**: static method of [<code>vet</code>](#vet)  
@@ -1180,22 +1265,22 @@ Constructs a function that checks equality against any number of arguments
 
 - ...eq <code>\*</code> - values to check equality against
 
+**Example**  
+```javascript
+let isOneOf = require('vet/isOneOf');
+
+let check = isOneOf(1, 2, 3);
+
+check(4); // returns false
+
+check(1); // returns true
+```
 
 * * *
 
 <a name="vet.isUndefined"></a>
 
 ### vet.isUndefined(val) ⇒
-```javascript
-
-let isUndefined = require('vet/isUndefined');
-
-isUndefined({}); // returns false
-isUndefined(null); // returns false
-
-isUndefined(undefined); // returns true
-
-```
 A function to check for undefined
 
 **Kind**: static method of [<code>vet</code>](#vet)  
@@ -1204,6 +1289,15 @@ A function to check for undefined
 
 - val - a value to check
 
+**Example**  
+```javascript
+let isUndefined = require('vet/isUndefined');
+
+isUndefined({}); // returns false
+isUndefined(null); // returns false
+
+isUndefined(undefined); // returns true
+```
 
 * * *
 
@@ -1302,8 +1396,16 @@ A function builder to check a value against multiple validator functions
 <a name="vet.optional"></a>
 
 ### vet.optional(validator) ⇒
-```javascript
+A function builder to optionally check a value
 
+**Kind**: static method of [<code>vet</code>](#vet)  
+**Returns**: a function that takes in a value, and returns true if the value does not exist, or the validator returns true  
+**Params**
+
+- validator - a validator function
+
+**Example**  
+```javascript
 let optional = require('vet/optional');
 let isNumber = require('vet/numbers/isNumber');
 
@@ -1314,16 +1416,7 @@ isMaybeNumber("1"); // returns false
 
 isMaybeNumber(1); // returns true
 isMaybeNumber(undefined); // returns true
-
 ```
-A function builder to optionally check a value
-
-**Kind**: static method of [<code>vet</code>](#vet)  
-**Returns**: a function that takes in a value, and returns true if the value does not exist, or the validator returns true  
-**Params**
-
-- validator - a validator function
-
 
 * * *
 

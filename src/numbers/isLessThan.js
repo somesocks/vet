@@ -2,7 +2,7 @@
 var isNumber = require('./isNumber');
 
 /**
-* Checks to see if a value is a negative number
+* construct a validator to check if a value is less than a number
 * @param {number} bound - the boundary value to check agains
 * @returns {function} - a validator function
 * @memberof vet.numbers
