@@ -14,6 +14,6 @@ type message = string | ((val : any) => string);
 * @returns a function that returns null if the arguments pass validation, or throws an error if they do not
 * @memberof vet.utils
 */
-declare function assert(val : validator | assertion, message? : message): assertion;
+declare function assert(val : validator | boolean, message? : message): assertion;
 
 export default assert;
