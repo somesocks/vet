@@ -18,8 +18,9 @@
 */
 function isNot(validator) {
 
-	return function (val) {
-		return !validator(val);
+	return function (_1) {
+		var args = arguments;
+		return !validator.apply(this, args);
 	}
 }
 

@@ -22,6 +22,7 @@ A collection of data validation tools.
         * [.isTruthy(val)](#vet.booleans.isTruthy) ⇒
     * [.dates](#vet.dates) : <code>object</code>
         * [.isDate(val)](#vet.dates.isDate) ⇒
+        * [.isValidDate(val)](#vet.dates.isValidDate) ⇒
     * [.functions](#vet.functions) : <code>object</code>
         * [.isFunction(val)](#vet.functions.isFunction) ⇒
     * [.numbers](#vet.numbers) : <code>object</code>
@@ -300,6 +301,11 @@ isTruthy(true); // returns true
 ### vet.dates : <code>object</code>
 **Kind**: static namespace of [<code>vet</code>](#vet)  
 
+* [.dates](#vet.dates) : <code>object</code>
+    * [.isDate(val)](#vet.dates.isDate) ⇒
+    * [.isValidDate(val)](#vet.dates.isValidDate) ⇒
+
+
 * * *
 
 <a name="vet.dates.isDate"></a>
@@ -321,6 +327,30 @@ isDate(null); // returns false
 isDate({}); // returns false
 
 isDate(new Date()); // returns true
+```
+
+* * *
+
+<a name="vet.dates.isValidDate"></a>
+
+#### dates.isValidDate(val) ⇒
+Checks to see if a value is a valid Date object
+
+**Kind**: static method of [<code>dates</code>](#vet.dates)  
+**Returns**: true if the value is a valid Date object  
+**Params**
+
+- val - the value to check
+
+**Example**  
+```javascript
+let isValidDate = require('vet/dates/isValidDate');
+
+isValidDate(null); // returns false
+isValidDate({}); // returns false
+isValidDate(new Date(NaN)); // returns false
+
+isValidDate(new Date()); // returns true
 ```
 
 * * *
