@@ -1,4 +1,8 @@
-
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+var assert_1 = __importDefault(require("../utils/assert"));
 /**
 * Checks to see if a value is loosely true (truthy)
 * @param val - the value to check
@@ -6,7 +10,7 @@
 * @memberof vet.booleans
 * @example
 * ```javascript
-* let isTruthy = require('vet/booleans/isTruthy');
+* let isTruthy from 'vet/booleans/isTruthy');
 *
 * isTruthy(null); // returns false
 * isTruthy(false); // returns false
@@ -15,8 +19,8 @@
 * isTruthy(true); // returns true
 * ```
 */
-function isTruthy(val) {
-	return !!val;
-}
-
+var isTruthy = function isTruthy(val) {
+    return !!val;
+};
+isTruthy.assert = assert_1.default(isTruthy);
 module.exports = isTruthy;

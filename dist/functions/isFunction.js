@@ -1,4 +1,8 @@
-
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+var assert_1 = __importDefault(require("../utils/assert"));
 /**
 * Checks to see if a value is a function
 * @param val - the value to check
@@ -6,7 +10,7 @@
 * @memberof vet.functions
 * @example
 * ```javascript
-* let isFunction = require('vet/functions/isFunction');
+* let isFunction from 'vet/functions/isFunction');
 *
 * isFunction(null); // returns false
 * isFunction({}); // returns false
@@ -14,6 +18,6 @@
 * isFunction(function (){}); // returns true
 * ```
 */
-function isFunction(val) { return typeof val === 'function'; }
-
+var isFunction = function isFunction(val) { return typeof val === 'function'; };
+isFunction.assert = assert_1.default(isFunction);
 module.exports = isFunction;

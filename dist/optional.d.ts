@@ -1,6 +1,5 @@
-
-type validator = ( val : any ) => boolean;
-
+import Validator from './types/Validator';
+import ExtendedValidator from './types/ExtendedValidator';
 /**
 * A function builder to optionally check a value
 * @param validator - a validator function
@@ -8,8 +7,8 @@ type validator = ( val : any ) => boolean;
 * @memberof vet
 * @example
 * ```javascript
-* let optional = require('vet/optional');
-* let isNumber = require('vet/numbers/isNumber');
+* let optional from 'vet/optional');
+* let isNumber from 'vet/numbers/isNumber');
 *
 * let isMaybeNumber = optional(isNumber);
 *
@@ -20,6 +19,5 @@ type validator = ( val : any ) => boolean;
 * isMaybeNumber(undefined); // returns true
 * ```
 */
-declare function optional(val : validator): validator;
-
-export default optional;
+declare function optional(validator: Validator): ExtendedValidator;
+export = optional;

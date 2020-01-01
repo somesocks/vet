@@ -1,6 +1,9 @@
-
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+var assert_1 = __importDefault(require("./utils/assert"));
 function isFunction(val) { return typeof val === 'function'; }
-
 /**
 * Constructs a function that checks equality against any number of arguments
 * @param {...*} eq - values to check equality against
@@ -8,7 +11,7 @@ function isFunction(val) { return typeof val === 'function'; }
 * @memberof vet
 * @example
 * ```javascript
-* let isOneOf = require('vet/isOneOf');
+* let isOneOf from 'vet/isOneOf');
 *
 * let check = isOneOf(1, 2, 3);
 *
@@ -17,21 +20,25 @@ function isFunction(val) { return typeof val === 'function'; }
 * check(1); // returns true
 * ```
 */
-function isOneOf () {
-	var validators = arguments;
-
-	return function (val) {
-		for (var i = 0; i < validators.length; i++) {
-			var validator = validators[i];
-			var check = typeof validator === 'function' ?
-				validator(val) :
-				(val === validator);
-
-			if (check) { return true; }
-		}
-
-		return false;
-	}
+function isOneOf() {
+    var args = [];
+    for (var _i = 0; _i < arguments.length; _i++) {
+        args[_i] = arguments[_i];
+    }
+    var validators = arguments;
+    var res = function (val) {
+        for (var i = 0; i < validators.length; i++) {
+            var validator = validators[i];
+            var check = typeof validator === 'function' ?
+                validator(val) :
+                (val === validator);
+            if (check) {
+                return true;
+            }
+        }
+        return false;
+    };
+    res.assert = assert_1.default(res);
+    return res;
 }
-
 module.exports = isOneOf;

@@ -1,6 +1,9 @@
-
-function isString (val) { return (typeof val === 'string') || (val instanceof String); }
-
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+var assert_1 = __importDefault(require("../utils/assert"));
+var isString_1 = __importDefault(require("./isString"));
 /**
 * Builds a function that checks to see if a value matches a regular expression
 * @param regex - the regular expression to check against
@@ -8,10 +11,11 @@ function isString (val) { return (typeof val === 'string') || (val instanceof St
 * @memberof vet.strings
 */
 function matches(regex) {
-	return function(val) {
-		regex.lastIndex = 0;
-		return isString(val) && regex.test(val);
-	};
+    var res = function (val) {
+        regex.lastIndex = 0;
+        return isString_1.default(val) && regex.test(val);
+    };
+    res.assert = assert_1.default(res);
+    return res;
 }
-
 module.exports = matches;

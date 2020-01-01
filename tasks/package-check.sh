@@ -9,7 +9,7 @@ DIST_DIR=$ROOT_DIR/dist
 NODE_BIN=$ROOT_DIR/node_modules/.bin
 PATH=$PATH:$NODE_BIN
 
-NPM=pnpm
+NPM=npm
 
 
 cd $DIST_DIR && $NPM publish --dry-run

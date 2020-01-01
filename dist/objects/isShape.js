@@ -1,50 +1,59 @@
-
-function isFunction(val) { return typeof val === 'function'; }
-
-function isObject(val) { return (val != null) && (Object(val) === val); }
-
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+var assert_1 = __importDefault(require("../utils/assert"));
+var isFunction_1 = __importDefault(require("../functions/isFunction"));
+var isObject_1 = __importDefault(require("./isObject"));
 function _isShape(schema, object) {
-	if (isFunction(schema)) {
-		return schema(object);
-	} else if (isObject(schema)) {
-		if (!isObject(object)) { return false; }
-
-		for(var key in schema) {
-			var s = schema[key];
-			var o = object[key];
-			if (!_isShape(s, o)) { return false; }
-		}
-
-		return true;
-	} else {
-		return object === schema;
-	}
+    if (isFunction_1.default(schema)) {
+        return schema(object);
+    }
+    else if (isObject_1.default(schema)) {
+        if (!isObject_1.default(object)) {
+            return false;
+        }
+        for (var key in schema) {
+            var s = schema[key];
+            var o = object[key];
+            if (!_isShape(s, o)) {
+                return false;
+            }
+        }
+        return true;
+    }
+    else {
+        return object === schema;
+    }
 }
-
-function _isShapeExact (schema, object) {
-	if (isFunction(schema)) {
-		return schema(object);
-	} else if (isObject(schema)) {
-		if (!isObject(object)) { return false; }
-
-		for (var key in schema) {
-			var s = schema[key];
-			var o = object[key];
-			if (!_isShapeExact(s, o)) { return false; }
-		}
-
-		for (var key in object) {
-			var s = schema[key];
-			var o = object[key];
-			if (!_isShapeExact(s, o)) { return false; }
-		}
-
-		return true;
-	} else {
-		return object === schema;
-	}
+function _isShapeExact(schema, object) {
+    if (isFunction_1.default(schema)) {
+        return schema(object);
+    }
+    else if (isObject_1.default(schema)) {
+        if (!isObject_1.default(object)) {
+            return false;
+        }
+        for (var key in schema) {
+            var s = schema[key];
+            var o = object[key];
+            if (!_isShapeExact(s, o)) {
+                return false;
+            }
+        }
+        for (var key in object) {
+            var s = schema[key];
+            var o = object[key];
+            if (!_isShapeExact(s, o)) {
+                return false;
+            }
+        }
+        return true;
+    }
+    else {
+        return object === schema;
+    }
 }
-
 /**
 * Builds a function to check an object against a schema object
 *
@@ -65,10 +74,10 @@ function _isShapeExact (schema, object) {
 * @memberof vet.objects
 * @example
 * ```javascript
-* let isString = require('vet/strings/isString');
-* let isNumber = require('vet/numbers/isNumber');
-* let isBoolean = require('vet/booleans/isBoolean');
-* let isShape = require('vet/objects/isShape');
+* let isString from 'vet/strings/isString');
+* let isNumber from 'vet/numbers/isNumber');
+* let isBoolean from 'vet/booleans/isBoolean');
+* let isShape from 'vet/objects/isShape');
 *
 * let isPerson = isShape({
 *   name: isString,
@@ -87,9 +96,10 @@ function _isShapeExact (schema, object) {
 * ```
 */
 function isShape(schema) {
-	return _isShape.bind(undefined, schema);
+    var res = _isShape.bind(undefined, schema);
+    res.assert = assert_1.default(res);
+    return res;
 }
-
 /**
 * Builds a function to check an object against a schema object
 *
@@ -101,10 +111,10 @@ function isShape(schema) {
 * @memberof vet.objects.isShape
 * @example
 * ```javascript
-* let isString = require('vet/strings/isString');
-* let isNumber = require('vet/numbers/isNumber');
-* let isBoolean = require('vet/booleans/isBoolean');
-* let isShape = require('vet/objects/isShape');
+* let isString from 'vet/strings/isString');
+* let isNumber from 'vet/numbers/isNumber');
+* let isBoolean from 'vet/booleans/isBoolean');
+* let isShape from 'vet/objects/isShape');
 *
 * let isPerson = isShape.exact({
 *   name: isString,
@@ -126,7 +136,8 @@ function isShape(schema) {
 * ```
 */
 isShape.exact = function isShapeExact(schema) {
-	return _isShapeExact.bind(undefined, schema);
-}
-
+    var res = _isShapeExact.bind(undefined, schema);
+    res.assert = assert_1.default(res);
+    return res;
+};
 module.exports = isShape;

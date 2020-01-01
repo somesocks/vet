@@ -47,8 +47,6 @@ A collection of data validation tools.
         * [.isObjectOf(validator)](#vet.objects.isObjectOf) ⇒
         * [.isShape(schema)](#vet.objects.isShape) ⇒
             * [.isShape.exact(schema)](#vet.objects.isShape.isShape.exact) ⇒
-        * [.matchesExact(schema)](#vet.objects.matchesExact) ⇒
-        * [.matches(schema)](#vet.objects.matches) ⇒
     * [.strings](#vet.strings) : <code>object</code>
         * [.isEmpty(val)](#vet.strings.isEmpty) ⇒
         * [.isLength(len)](#vet.strings.isLength) ⇒
@@ -60,7 +58,6 @@ A collection of data validation tools.
         * [.isString(val)](#vet.strings.isString) ⇒
         * [.matches(regex)](#vet.strings.matches) ⇒
     * [.utils](#vet.utils) : <code>object</code>
-        * [.assertReact](#vet.utils.assertReact) ⇒
         * [.accepts(func, validator, message)](#vet.utils.accepts) ⇒
         * [.assert(validator, message)](#vet.utils.assert) ⇒
         * [.returns(func, validator, message)](#vet.utils.returns) ⇒
@@ -76,9 +73,6 @@ A collection of data validation tools.
     * [.isNullOrUndefined(val)](#vet.isNullOrUndefined) ⇒
     * [.isOneOf(...eq)](#vet.isOneOf) ⇒
     * [.isUndefined(val)](#vet.isUndefined) ⇒
-    * [.matchesAllOf(...validators)](#vet.matchesAllOf) ⇒
-    * [.matchesNoneOf(...validators)](#vet.matchesNoneOf) ⇒
-    * [.matchesOneOf(...validators)](#vet.matchesOneOf) ⇒
     * [.optional(validator)](#vet.optional) ⇒
 
 
@@ -110,7 +104,7 @@ Checks to see if a value is an array
 
 **Example**  
 ```javascript
-let isArray = require('vet/arrays/isArray');
+let isArray from 'vet/arrays/isArray');
 
 isArray(null); // returns false
 isArray({}); // returns false
@@ -133,8 +127,8 @@ Builds an array validator that checks the children of the array
 
 **Example**  
 ```javascript
-let isString = require('vet/strings/isString');
-let isArrayOf = require('vet/arrays/isArrayOf');
+let isString from 'vet/strings/isString');
+let isArrayOf from 'vet/arrays/isArrayOf');
 
 let isStringArray = isArrayOf(isString);
 
@@ -161,7 +155,7 @@ Constructor to build an array length validator
 
 **Example**  
 ```javascript
-let isLength = require('vet/arrays/isLength');
+let isLength from 'vet/arrays/isLength');
 
 let isLength3 = isLength(3);
 
@@ -216,7 +210,7 @@ Checks to see if a value is strictly false
 
 **Example**  
 ```javascript
-let isFalse = require('vet/booleans/isFalse');
+let isFalse from 'vet/booleans/isFalse');
 
 isFalse(null); // returns false
 isFalse(true); // returns false
@@ -239,7 +233,7 @@ Checks to see if a value is loosely false (falsy)
 
 **Example**  
 ```javascript
-let isFalsy = require('vet/booleans/isFalsy');
+let isFalsy from 'vet/booleans/isFalsy');
 
 isFalse(true); // returns false
 
@@ -262,7 +256,7 @@ Checks to see if a value is strictly true
 
 **Example**  
 ```javascript
-let isTrue = require('vet/booleans/isTrue');
+let isTrue from 'vet/booleans/isTrue');
 
 isTrue(null); // returns false
 isTrue(false); // returns false
@@ -285,7 +279,7 @@ Checks to see if a value is loosely true (truthy)
 
 **Example**  
 ```javascript
-let isTruthy = require('vet/booleans/isTruthy');
+let isTruthy from 'vet/booleans/isTruthy');
 
 isTruthy(null); // returns false
 isTruthy(false); // returns false
@@ -321,7 +315,7 @@ Checks to see if a value is a Date
 
 **Example**  
 ```javascript
-let isDate = require('vet/dates/isDate');
+let isDate from 'vet/dates/isDate');
 
 isDate(null); // returns false
 isDate({}); // returns false
@@ -344,7 +338,7 @@ Checks to see if a value is a valid Date object
 
 **Example**  
 ```javascript
-let isValidDate = require('vet/dates/isValidDate');
+let isValidDate from 'vet/dates/isValidDate');
 
 isValidDate(null); // returns false
 isValidDate({}); // returns false
@@ -375,7 +369,7 @@ Checks to see if a value is a function
 
 **Example**  
 ```javascript
-let isFunction = require('vet/functions/isFunction');
+let isFunction from 'vet/functions/isFunction');
 
 isFunction(null); // returns false
 isFunction({}); // returns false
@@ -651,8 +645,6 @@ Checks to see if a value is zero
     * [.isObjectOf(validator)](#vet.objects.isObjectOf) ⇒
     * [.isShape(schema)](#vet.objects.isShape) ⇒
         * [.isShape.exact(schema)](#vet.objects.isShape.isShape.exact) ⇒
-    * [.matchesExact(schema)](#vet.objects.matchesExact) ⇒
-    * [.matches(schema)](#vet.objects.matches) ⇒
 
 
 * * *
@@ -711,10 +703,10 @@ The schema matching process is as follows:
 
 **Example**  
 ```javascript
-let isString = require('vet/strings/isString');
-let isNumber = require('vet/numbers/isNumber');
-let isBoolean = require('vet/booleans/isBoolean');
-let isShape = require('vet/objects/isShape');
+let isString from 'vet/strings/isString');
+let isNumber from 'vet/numbers/isNumber');
+let isBoolean from 'vet/booleans/isBoolean');
+let isShape from 'vet/objects/isShape');
 
 let isPerson = isShape({
   name: isString,
@@ -751,10 +743,10 @@ has a corresponding validator in the schema
 
 **Example**  
 ```javascript
-let isString = require('vet/strings/isString');
-let isNumber = require('vet/numbers/isNumber');
-let isBoolean = require('vet/booleans/isBoolean');
-let isShape = require('vet/objects/isShape');
+let isString from 'vet/strings/isString');
+let isNumber from 'vet/numbers/isNumber');
+let isBoolean from 'vet/booleans/isBoolean');
+let isShape from 'vet/objects/isShape');
 
 let isPerson = isShape.exact({
   name: isString,
@@ -774,46 +766,6 @@ isPerson({ name: 'John Doe', age: 12, alive: true, gender: 'm' });
 // returns true
 isPerson({ name: 'John Doe', age: 12, alive: true });
 ```
-
-* * *
-
-<a name="vet.objects.matchesExact"></a>
-
-#### objects.matchesExact(schema) ⇒
-Builds a function to check an object against a schema object
-
-This function works similarly to Vet.Object.matches,
-but it also checks to make sure every value in the object to check
-has a corresponding validator in the schema
-
-**Kind**: static method of [<code>objects</code>](#vet.objects)  
-**Returns**: a validator function that takes in a value val, and returns true if val matches the object schema exactly  
-**Params**
-
-- schema - the object schema to check
-
-
-* * *
-
-<a name="vet.objects.matches"></a>
-
-#### objects.matches(schema) ⇒
-Builds a function to check an object against a schema object
-
-A schema object consists of an object with child object, functions, and values
-
-The schema matching process is this:
-1) For each child in the schema object, match it against the corresponding child in the value to be checked
-2) If the schema child is a function, treat it as a validator function
-3) If the schema child is an object, recursively call the schema matching
-4) If the schema child is anything else, check for strict equality
-
-**Kind**: static method of [<code>objects</code>](#vet.objects)  
-**Returns**: a validator function that takes in a value val, and returns true if val matches the object schema  
-**Params**
-
-- schema - the object schema to check
-
 
 * * *
 
@@ -968,28 +920,9 @@ Builds a function that checks to see if a value matches a regular expression
 **Kind**: static namespace of [<code>vet</code>](#vet)  
 
 * [.utils](#vet.utils) : <code>object</code>
-    * [.assertReact](#vet.utils.assertReact) ⇒
     * [.accepts(func, validator, message)](#vet.utils.accepts) ⇒
     * [.assert(validator, message)](#vet.utils.assert) ⇒
     * [.returns(func, validator, message)](#vet.utils.returns) ⇒
-
-
-* * *
-
-<a name="vet.utils.assertReact"></a>
-
-#### utils.assertReact ⇒
-A utility function for building a react-compatible assertion from a Vet validator
-
-This is useful for some libraries (like React) that expect
-assertion-style validation.
-
-**Kind**: static property of [<code>utils</code>](#vet.utils)  
-**Returns**: a function that returns null if the arguments pass validation, or throws an error if they do not  
-**Params**
-
-- validator - the validator to wrap
-- message - an optional message string to pass into the error
 
 
 * * *
@@ -1056,7 +989,7 @@ Builds an curried equal function
 
 **Example**  
 ```javascript
-let equals = require('vet/equals');
+let equals from 'vet/equals');
 
 let is3 = equals(3);
 
@@ -1082,7 +1015,7 @@ Alias for `vet/isNotNullOrUndefined`
 **Example**  
 ```javascript
 
-let exists = require('vet/exists');
+let exists from 'vet/exists');
 
 exists(null); // returns false
 exists(undefined); // returns false
@@ -1105,9 +1038,9 @@ Constructs a function that checks equality against any number of arguments
 
 **Example**  
 ```javascript
-let isAllOf = require('vet/isAllOf');
-let isNumber = require('vet/numbers/isNumber');
-let isPositive = require('vet/numbers/isPositive');
+let isAllOf from 'vet/isAllOf');
+let isNumber from 'vet/numbers/isNumber');
+let isPositive from 'vet/numbers/isPositive');
 
 let check = isAllOf(isNumber, isPositive);
 
@@ -1131,7 +1064,7 @@ Constructs a function that checks equality against any number of arguments
 
 **Example**  
 ```javascript
-let isNoneOf = require('vet/isNoneOf');
+let isNoneOf from 'vet/isNoneOf');
 
 let check = isNoneOf(1, 2, 3);
 
@@ -1155,8 +1088,8 @@ a function that inverts the result of a validator
 
 **Example**  
 ```javascript
-let isNot = require('vet/isNot');
-let isNumber = require('vet/numbers/isNumber');
+let isNot from 'vet/isNot');
+let isNumber from 'vet/numbers/isNumber');
 
 let check = isNot(isNumber);
 
@@ -1181,7 +1114,7 @@ A function to check for nulls
 **Example**  
 ```javascript
 
-let isNotNull = require('vet/isNotNull');
+let isNotNull from 'vet/isNotNull');
 
 isNotNull(null); // returns false
 
@@ -1205,7 +1138,7 @@ A function to check for null or undefined
 
 **Example**  
 ```javascript
-let isNotNullOrUndefined = require('vet/isNotNullOrUndefined');
+let isNotNullOrUndefined from 'vet/isNotNullOrUndefined');
 
 isNotNullOrUndefined(null); // returns false
 isNotNullOrUndefined(undefined); // returns false
@@ -1228,7 +1161,7 @@ A function to check for undefined
 
 **Example**  
 ```javascript
-let isNotUndefined = require('vet/isNotUndefined');
+let isNotUndefined from 'vet/isNotUndefined');
 
 isNotUndefined(undefined); // returns false
 
@@ -1251,7 +1184,7 @@ A function to check for null
 
 **Example**  
 ```javascript
-let isNull = require('vet/isNull');
+let isNull from 'vet/isNull');
 
 isNull(undefined); // returns false
 isNull({}); // returns false
@@ -1274,7 +1207,7 @@ A function to check for null or undefined
 
 **Example**  
 ```javascript
-let isNullOrUndefined = require('vet/isNullOrUndefined');
+let isNullOrUndefined from 'vet/isNullOrUndefined');
 
 isNullOrUndefined({}); // returns false
 
@@ -1297,7 +1230,7 @@ Constructs a function that checks equality against any number of arguments
 
 **Example**  
 ```javascript
-let isOneOf = require('vet/isOneOf');
+let isOneOf from 'vet/isOneOf');
 
 let check = isOneOf(1, 2, 3);
 
@@ -1321,105 +1254,13 @@ A function to check for undefined
 
 **Example**  
 ```javascript
-let isUndefined = require('vet/isUndefined');
+let isUndefined from 'vet/isUndefined');
 
 isUndefined({}); // returns false
 isUndefined(null); // returns false
 
 isUndefined(undefined); // returns true
 ```
-
-* * *
-
-<a name="vet.matchesAllOf"></a>
-
-### vet.matchesAllOf(...validators) ⇒
-```javascript
-
-let matchesAllOf = require('vet/matchesAllOf');
-let isNumber = require('vet/numbers/isNumber');
-
-let isPositive = matchesAllOf(
-  isNumber,
-  (val) => val > 0
-);
-
-isPositive(null); // returns false
-isPositive(-1); // returns false
-
-isPositive(1); // returns true
-
-```
-A function builder to check a value against multiple validator functions
-
-**Kind**: static method of [<code>vet</code>](#vet)  
-**Returns**: a function that takes in a value, and returns true if ALL of the validator functions return true  
-**Params**
-
-- ...validators <code>function</code> - any number of validator functions
-
-
-* * *
-
-<a name="vet.matchesNoneOf"></a>
-
-### vet.matchesNoneOf(...validators) ⇒
-```javascript
-
-let matchesNoneOf = require('vet/matchesNoneOf');
-let isNumber = require('vet/numbers/isNumber');
-let isString = require('vet/strings/isString');
-
-let isNotNumberOrString = matchesNoneOf(
-  isNumber,
-  isString,
-);
-
-isNotNumberOrString(1); // returns false
-isNotNumberOrString('1'); // returns false
-
-isNotNumberOrString(null); // returns true
-
-```
-A function builder to check a value against multiple validator functions
-
-**Kind**: static method of [<code>vet</code>](#vet)  
-**Returns**: a function that takes in a value, and returns true if NONE of the validator functions return true  
-**Params**
-
-- ...validators <code>function</code> - any number of validator functions
-
-
-* * *
-
-<a name="vet.matchesOneOf"></a>
-
-### vet.matchesOneOf(...validators) ⇒
-```javascript
-
-let matchesOneOf = require('vet/matchesOneOf');
-let isNumber = require('vet/numbers/isNumber');
-let isString = require('vet/strings/isString');
-
-let isNumberOrString = matchesNoneOf(
-  isNumber,
-  isString,
-);
-
-isNumberOrString(null); // returns false
-
-isNumberOrString(1); // returns true
-isNumberOrString('1'); // returns true
-
-```
-A function builder to check a value against multiple validator functions
-
-**Kind**: static method of [<code>vet</code>](#vet)  
-**Returns**: a function that takes in a value, and returns true if ANY of the validator functions return true  
-**Params**
-
-- ...validators <code>function</code> - any number of validator functions
-
 
 * * *
 
@@ -1436,8 +1277,8 @@ A function builder to optionally check a value
 
 **Example**  
 ```javascript
-let optional = require('vet/optional');
-let isNumber = require('vet/numbers/isNumber');
+let optional from 'vet/optional');
+let isNumber from 'vet/numbers/isNumber');
 
 let isMaybeNumber = optional(isNumber);
 

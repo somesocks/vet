@@ -1,3 +1,8 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+var assert_1 = __importDefault(require("./utils/assert"));
 /**
 * Builds an curried equal function
 * @param eq - value to check equality against
@@ -5,7 +10,7 @@
 * @memberof vet
 * @example
 * ```javascript
-* let equals = require('vet/equals');
+* let equals from 'vet/equals');
 *
 * let is3 = equals(3);
 *
@@ -16,7 +21,8 @@
 * ```
 */
 function equals(eq) {
-	return function (val) { return val === eq; };
+    var validator = function (val) { return val === eq; };
+    validator.assert = assert_1.default(validator);
+    return validator;
 }
-
 module.exports = equals;

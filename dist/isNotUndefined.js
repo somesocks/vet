@@ -1,4 +1,8 @@
-
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+var assert_1 = __importDefault(require("./utils/assert"));
 /**
 * A function to check for undefined
 * @param val - a value to check
@@ -6,7 +10,7 @@
 * @memberof vet
 * @example
 * ```javascript
-* let isNotUndefined = require('vet/isNotUndefined');
+* let isNotUndefined from 'vet/isNotUndefined');
 *
 * isNotUndefined(undefined); // returns false
 *
@@ -14,8 +18,8 @@
 * isNotUndefined({}); // returns true
 * ```
 */
-function isNotUndefined(val) {
-	return val !== undefined;
-}
-
+var isNotUndefined = function isNotUndefined(val) {
+    return val !== undefined;
+};
+isNotUndefined.assert = assert_1.default(isNotUndefined);
 module.exports = isNotUndefined;

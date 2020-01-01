@@ -4,4 +4,4 @@ import assertReact from './assertReact';
 
 let assertIsString = assertReact(isString);
 
-assertIsString('abc');
+assertIsString({}, 'abc', '');

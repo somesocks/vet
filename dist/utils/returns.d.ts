@@ -1,10 +1,4 @@
-
-type validator = (val : any) => boolean;
-
-type message = string | ((val : any) => string);
-
-type func = (...vals: any[]) => any;
-
+import Validator from '../types/Validator';
 /**
 * Wraps a function in a validator which checks its return value, and throws an error if the return value is bad.
 *
@@ -14,6 +8,5 @@ type func = (...vals: any[]) => any;
 * @returns a wrapped function that throws an error if the return value doed not pass validation
 * @memberof vet.utils
 */
-declare function returns(source : func, validator: validator, log? : message): func;
-
-export default returns;
+declare function returns(func: any, validator: Validator, message?: any): (this: any, ...args: any[]) => any;
+export = returns;

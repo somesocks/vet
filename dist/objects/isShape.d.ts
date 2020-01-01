@@ -1,6 +1,4 @@
-
-type validator = ( val : any ) => boolean;
-
+import ExtendedValidator from '../types/ExtendedValidator';
 /**
 * Builds a function to check an object against a schema object
 *
@@ -21,10 +19,10 @@ type validator = ( val : any ) => boolean;
 * @memberof vet.objects
 * @example
 * ```javascript
-* let isString = require('vet/strings/isString');
-* let isNumber = require('vet/numbers/isNumber');
-* let isBoolean = require('vet/booleans/isBoolean');
-* let isShape = require('vet/objects/isShape');
+* let isString from 'vet/strings/isString');
+* let isNumber from 'vet/numbers/isNumber');
+* let isBoolean from 'vet/booleans/isBoolean');
+* let isShape from 'vet/objects/isShape');
 *
 * let isPerson = isShape({
 *   name: isString,
@@ -42,47 +40,8 @@ type validator = ( val : any ) => boolean;
 * isPerson({ name: 'John Doe', age: 12, alive: true });
 * ```
 */
-declare function isShape(val : object): validator;
-
+declare function isShape(schema: any): ExtendedValidator;
 declare namespace isShape {
-
-	/**
-	* Builds a function to check an object against a schema object
-	*
-	* This function works similarly to `vet/objects/isShape`,
-	* but it also checks to make sure every value in the object to check
-	* has a corresponding validator in the schema
-	* @param schema - the object schema to check
-	* @returns a validator function that takes in a value val, and returns true if val matches the object schema exactly
-	* @memberof vet.objects.isShape
-	* @example
-	* ```javascript
-	* let isString = require('vet/strings/isString');
-	* let isNumber = require('vet/numbers/isNumber');
-	* let isBoolean = require('vet/booleans/isBoolean');
-	* let isShape = require('vet/objects/isShape');
-	*
-	* let isPerson = isShape.exact({
-	*   name: isString,
-	*   age: isNumber,
-	*   alive: isBoolean,
-	* });
-	*
-	* // returns false
-	* isPerson({});
-	*
-	* // returns false, no 'alive' flag
-	* isPerson({ name: 'John Doe', age: 12 });
-	*
-	* // returns false, extra property 'gender'
-	* isPerson({ name: 'John Doe', age: 12, alive: true, gender: 'm' });
-	*
-	* // returns true
-	* isPerson({ name: 'John Doe', age: 12, alive: true });
-	* ```
-	*/
-	function exact(val : object): validator;
-
+    var exact: (schema: any) => ExtendedValidator;
 }
-
-export default isShape;
+export = isShape;

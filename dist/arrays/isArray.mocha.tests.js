@@ -1,31 +1,23 @@
-/* eslint-env mocha */
-
-const Vet = require('../');
-const { isArray } = Vet;
-
-const TESTS = [
-	{ input: [], expected: true },
-
-	{ input: 'a string', expected: false },
-	{ input: '', expected: false },
-	{ input: undefined, expected: false },
-	{ input: null, expected: false },
-	{ input: true, expected: false },
-	{ input: false, expected: false },
-	{ input: (() => {}), expected: false },
-	{ input: {}, expected: false },
-	{ input: /a/, expected: false },
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var isArray_1 = __importDefault(require("./isArray"));
+var TESTS = [
+    { input: [], expected: true },
+    { input: 'a string', expected: false },
+    { input: '', expected: false },
+    { input: undefined, expected: false },
+    { input: null, expected: false },
+    { input: true, expected: false },
+    { input: false, expected: false },
+    { input: (function () { }), expected: false },
+    { input: {}, expected: false },
+    { input: /a/, expected: false },
 ];
-
-
-describe('vet/arrays/isArray', () => {
-
-	TESTS.forEach((test) => {
-		it(
-			`(${test.input})-->(${test.expected})`,
-			(done) => done(
-				isArray(test.input) === test.expected ? null : new Error()
-			)
-		);
-	});
+describe('vet/arrays/isArray', function () {
+    TESTS.forEach(function (test) {
+        it("(" + test.input + ")-->(" + test.expected + ")", function (done) { return done(isArray_1.default(test.input) === test.expected ? null : new Error()); });
+    });
 });

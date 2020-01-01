@@ -1,6 +1,5 @@
-
-type validator = ( val : any ) => boolean;
-
+import Validator from '../types/Validator';
+import ExtendedValidator from '../types/ExtendedValidator';
 /**
 * Builds an object validator that checks the properties of the object
 * NOTE: This only checks enumerable properties
@@ -8,6 +7,5 @@ type validator = ( val : any ) => boolean;
 * @returns a function that returns true if the value is an object, and all of the object properties pass the validator
 * @memberof vet.objects
 */
-declare function isObjectOf(val : validator): validator;
-
-export default isObjectOf;
+declare const isObjectOf: (validator: Validator) => ExtendedValidator;
+export = isObjectOf;

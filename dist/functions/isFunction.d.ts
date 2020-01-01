@@ -1,4 +1,4 @@
-
+import ExtendedValidator from '../types/ExtendedValidator';
 /**
 * Checks to see if a value is a function
 * @param val - the value to check
@@ -6,14 +6,13 @@
 * @memberof vet.functions
 * @example
 * ```javascript
-* let isFunction = require('vet/functions/isFunction');
+* let isFunction from 'vet/functions/isFunction');
 *
 * isFunction(null); // returns false
 * isFunction({}); // returns false
 *
-* isFunction(function () {}); // returns true
+* isFunction(function (){}); // returns true
 * ```
 */
-declare	function isFunction(val : any): boolean;
-
-export default isFunction;
+declare const isFunction: ExtendedValidator;
+export = isFunction;

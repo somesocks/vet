@@ -1,8 +1,4 @@
-
-type validator = ( val : any ) => boolean;
-
-type param = validator | any;
-
+import ExtendedValidator from './types/ExtendedValidator';
 /**
 * Constructs a function that checks equality against any number of arguments
 * @param {...*} eq - values to check equality against
@@ -10,7 +6,7 @@ type param = validator | any;
 * @memberof vet
 * @example
 * ```javascript
-* let isNoneOf = require('vet/isNoneOf');
+* let isNoneOf from 'vet/isNoneOf');
 *
 * let check = isNoneOf(1, 2, 3);
 *
@@ -19,6 +15,5 @@ type param = validator | any;
 * check(4); // returns true
 * ```
 */
-declare function isNoneOf(...vals : param[]): validator;
-
-export default isNoneOf;
+declare function isNoneOf(...args: any[]): ExtendedValidator;
+export = isNoneOf;

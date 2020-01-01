@@ -1,9 +1,5 @@
+"use strict";
 /**
 @namespace vet.arrays
 */
-
-module.exports = {
-	isArray: require('./isArray'),
-	isArrayOf: require('./isArrayOf'),
-	isLength: require('./isLength'),
-};
+throw new Error('do not import vet/arrays directly, use single-file imports instead');

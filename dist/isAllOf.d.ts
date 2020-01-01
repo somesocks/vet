@@ -1,8 +1,4 @@
-
-type validator = ( val : any ) => boolean;
-
-type param = validator | any;
-
+import ExtendedValidator from './types/ExtendedValidator';
 /**
 * Constructs a function that checks equality against any number of arguments
 * @param {...*} eq - values to check equality against
@@ -10,9 +6,9 @@ type param = validator | any;
 * @memberof vet
 * @example
 * ```javascript
-* let isAllOf = require('vet/isAllOf');
-* let isNumber = require('vet/numbers/isNumber');
-* let isPositive = require('vet/numbers/isPositive');
+* let isAllOf from 'vet/isAllOf');
+* let isNumber from 'vet/numbers/isNumber');
+* let isPositive from 'vet/numbers/isPositive');
 *
 * let check = isAllOf(isNumber, isPositive);
 *
@@ -21,6 +17,5 @@ type param = validator | any;
 * check(1); // returns true
 * ```
 */
-declare function isAllOf(...vals : param[]): validator;
-
-export default isAllOf;
+declare function isAllOf(...args: any[]): ExtendedValidator;
+export = isAllOf;

@@ -1,4 +1,4 @@
-
+import ExtendedValidator from '../types/ExtendedValidator';
 /**
 * Checks to see if a value is loosely false (falsy)
 * @param val - the value to check
@@ -6,7 +6,7 @@
 * @memberof vet.booleans
 * @example
 * ```javascript
-* let isFalsy = require('vet/booleans/isFalsy');
+* let isFalsy from 'vet/booleans/isFalsy');
 *
 * isFalse(true); // returns false
 *
@@ -14,6 +14,5 @@
 * isFalsy(false); // returns true
 * ```
 */
-declare	function isFalsy(val : any): boolean;
-
-export default isFalsy;
+declare const isFalsy: ExtendedValidator;
+export = isFalsy;

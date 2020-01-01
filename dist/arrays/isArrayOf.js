@@ -1,11 +1,9 @@
-
-var isArray =
-	Array.isArray ||
-	function isArray(val) {
-		return Object.prototype.toString.call(val) === '[object Array]';
-	};
-
-
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+var assert_1 = __importDefault(require("../utils/assert"));
+var isArray_1 = __importDefault(require("./isArray"));
 /**
 * Builds an array validator that checks the children of the array
 * @param val - the validator function run against the array children
@@ -13,8 +11,8 @@ var isArray =
 * @memberof vet.arrays
 * @example
 * ```javascript
-* let isString = require('vet/strings/isString');
-* let isArrayOf = require('vet/arrays/isArrayOf');
+* let isString from 'vet/strings/isString');
+* let isArrayOf from 'vet/arrays/isArrayOf');
 *
 * let isStringArray = isArrayOf(isString);
 *
@@ -27,15 +25,18 @@ var isArray =
 * ```
 */
 function isArrayOf(validator) {
-	return function(arr) {
-		if (!isArray(arr)) { return false; }
-
-		for (var i = 0; i < arr.length; i++) {
-			if (!validator(arr[i])) { return false; }
-		}
-
-		return true;
-	};
+    var res = function (arr) {
+        if (!isArray_1.default(arr)) {
+            return false;
+        }
+        for (var i = 0; i < arr.length; i++) {
+            if (!validator(arr[i])) {
+                return false;
+            }
+        }
+        return true;
+    };
+    res.assert = assert_1.default(res);
+    return res;
 }
-
 module.exports = isArrayOf;

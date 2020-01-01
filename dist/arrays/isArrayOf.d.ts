@@ -1,6 +1,4 @@
-
-type validator = ( val : any ) => boolean;
-
+import ExtendedValidator from '../types/ExtendedValidator';
 /**
 * Builds an array validator that checks the children of the array
 * @param val - the validator function run against the array children
@@ -8,8 +6,8 @@ type validator = ( val : any ) => boolean;
 * @memberof vet.arrays
 * @example
 * ```javascript
-* let isString = require('vet/strings/isString');
-* let isArrayOf = require('vet/arrays/isArrayOf');
+* let isString from 'vet/strings/isString');
+* let isArrayOf from 'vet/arrays/isArrayOf');
 *
 * let isStringArray = isArrayOf(isString);
 *
@@ -21,6 +19,5 @@ type validator = ( val : any ) => boolean;
 * isStringArray([ '1', '2', '3' ]); // returns true
 * ```
 */
-declare function isArrayOf(val : validator): validator;
-
-export default isArrayOf;
+declare function isArrayOf(validator: any): ExtendedValidator;
+export = isArrayOf;

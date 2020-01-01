@@ -2,7 +2,7 @@
 import isString from '../strings/isString';
 import returns from './returns';
 
-let toUpper = (val: string) => val.toUpperCase();
+let toUpper = (val : string) => val.toUpperCase();
 
 let toUpper2 = returns(toUpper, isString);
 

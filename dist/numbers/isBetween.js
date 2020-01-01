@@ -1,6 +1,9 @@
-
-var isNumber = require('./isNumber');
-
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+var assert_1 = __importDefault(require("../utils/assert"));
+var isNumber_1 = __importDefault(require("./isNumber"));
 /**
 * construct a validator to check if a value is between two numbers
 * @param {number} lower - the lower boundary value to check against
@@ -9,11 +12,12 @@ var isNumber = require('./isNumber');
 * @memberof vet.numbers
 */
 function isBetween(lower, upper) {
-	return function (val) {
-		return isNumber(val) && val > lower && val < upper;
-	}
+    var res = function (val) {
+        return isNumber_1.default(val) && val > lower && val < upper;
+    };
+    res.assert = assert_1.default(res);
+    return res;
 }
-
 /**
 * @name exclusive
 * @param {number} lower - the lower boundary value to check against
@@ -22,12 +26,12 @@ function isBetween(lower, upper) {
 * @memberof vet.numbers.isBetween
 */
 isBetween.exclusive = function exclusive(lower, upper) {
-	return function (val) {
-		return isNumber(val) && val > lower && val < upper;
-	}
+    var res = function (val) {
+        return isNumber_1.default(val) && val > lower && val < upper;
+    };
+    res.assert = assert_1.default(res);
+    return res;
 };
-
-
 /**
 * @name inclusive
 * @param {number} lower - the lower boundary value to check against
@@ -36,9 +40,10 @@ isBetween.exclusive = function exclusive(lower, upper) {
 * @memberof vet.numbers.isBetween
 */
 isBetween.inclusive = function inclusive(lower, upper) {
-	return function (val) {
-		return isNumber(val) && val >= lower && val <= upper;
-	}
+    var res = function (val) {
+        return isNumber_1.default(val) && val >= lower && val <= upper;
+    };
+    res.assert = assert_1.default(res);
+    return res;
 };
-
 module.exports = isBetween;

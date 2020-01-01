@@ -1,8 +1,5 @@
+"use strict";
 /**
 * @namespace vet.dates
 */
-
-module.exports = {
-	isDate: require('./isDate'),
-	isValidDate: require('./isValidDate'),
-};
+throw new Error('do not import vet/dates directly, use single-file imports instead');

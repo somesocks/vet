@@ -1,4 +1,4 @@
-
+import ExtendedValidator from './types/ExtendedValidator';
 /**
 * A function to check for null or undefined
 * @param val - a value to check against null and undefined
@@ -6,7 +6,7 @@
 * @memberof vet
 * @example
 * ```javascript
-* let isNotNullOrUndefined = require('vet/isNotNullOrUndefined');
+* let isNotNullOrUndefined from 'vet/isNotNullOrUndefined');
 *
 * isNotNullOrUndefined(null); // returns false
 * isNotNullOrUndefined(undefined); // returns false
@@ -14,6 +14,5 @@
 * isNotNullOrUndefined({}); // returns true
 * ```
 */
-declare function isNotNullOrUndefined(val : any): boolean;
-
-export default isNotNullOrUndefined;
+declare const isNotNullOrUndefined: ExtendedValidator;
+export = isNotNullOrUndefined;

@@ -1,9 +1,5 @@
+"use strict";
 /**
 * @namespace vet.utils
 */
-
-module.exports = {
-	accepts: require('./accepts'),
-	assert: require('./assert'),
-	returns: require('./returns'),
-};
+throw new Error('do not import vet/utils directly, use single-file imports instead');

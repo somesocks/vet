@@ -1,4 +1,4 @@
-
+import ExtendedValidator from './types/ExtendedValidator';
 /**
 * Alias for `vet/isNotNullOrUndefined`
 * @param val - value to check
@@ -7,7 +7,7 @@
 * @example
 * ```javascript
 *
-* let exists = require('vet/exists');
+* let exists from 'vet/exists');
 *
 * exists(null); // returns false
 * exists(undefined); // returns false
@@ -15,6 +15,5 @@
 *
 * ```
 */
-declare function exists(val : any): boolean;
-
-export default exists;
+declare const exists: ExtendedValidator;
+export = exists;

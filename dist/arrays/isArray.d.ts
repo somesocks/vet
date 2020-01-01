@@ -1,4 +1,4 @@
-
+import ExtendedValidator from '../types/ExtendedValidator';
 /**
 * Checks to see if a value is an array
 * @name isArray
@@ -7,7 +7,7 @@
 * @memberof vet.arrays
 * @example
 * ```javascript
-* let isArray = require('vet/arrays/isArray');
+* let isArray from 'vet/arrays/isArray');
 *
 * isArray(null); // returns false
 * isArray({}); // returns false
@@ -15,6 +15,5 @@
 * isArray([]); // returns true
 * ```
 */
-declare function isArray(val : any): boolean;
-
-export default isArray;
+declare const isArray: ExtendedValidator;
+export = isArray;

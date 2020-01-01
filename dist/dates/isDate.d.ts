@@ -1,4 +1,4 @@
-
+import ExtendedValidator from '../types/ExtendedValidator';
 /**
 * Checks to see if a value is a Date
 * @param val - the value to check
@@ -6,7 +6,7 @@
 * @memberof vet.dates
 * @example
 * ```javascript
-* let isDate = require('vet/dates/isDate');
+* let isDate from 'vet/dates/isDate');
 *
 * isDate(null); // returns false
 * isDate({}); // returns false
@@ -14,6 +14,5 @@
 * isDate(new Date()); // returns true
 * ```
 */
-declare	function isDate(val : any): boolean;
-
-export default isDate;
+declare const isDate: ExtendedValidator;
+export = isDate;

@@ -1,4 +1,4 @@
-
+import ExtendedValidator from './types/ExtendedValidator';
 /**
 * A function to check for undefined
 * @param val - a value to check
@@ -6,7 +6,7 @@
 * @memberof vet
 * @example
 * ```javascript
-* let isNotUndefined = require('vet/isNotUndefined');
+* let isNotUndefined from 'vet/isNotUndefined');
 *
 * isNotUndefined(undefined); // returns false
 *
@@ -14,6 +14,5 @@
 * isNotUndefined({}); // returns true
 * ```
 */
-declare function isNotUndefined(val : any): boolean;
-
-export default isNotUndefined;
+declare const isNotUndefined: ExtendedValidator;
+export = isNotUndefined;

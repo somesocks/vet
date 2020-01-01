@@ -1,4 +1,8 @@
-
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+var assert_1 = __importDefault(require("../utils/assert"));
 /**
 * Checks to see if a value is an array
 * @name isArray
@@ -7,7 +11,7 @@
 * @memberof vet.arrays
 * @example
 * ```javascript
-* let isArray = require('vet/arrays/isArray');
+* let isArray from 'vet/arrays/isArray');
 *
 * isArray(null); // returns false
 * isArray({}); // returns false
@@ -15,8 +19,12 @@
 * isArray([]); // returns true
 * ```
 */
-module.exports =
-	Array.isArray ||
-	function isArray(val) {
-		return Object.prototype.toString.call(val) === '[object Array]';
-	};
+var isArray = Array.isArray ?
+    function isArray(val) {
+        return Array.isArray(val);
+    } :
+    function isArray(val) {
+        return Object.prototype.toString.call(val) === '[object Array]';
+    };
+isArray.assert = assert_1.default(isArray);
+module.exports = isArray;

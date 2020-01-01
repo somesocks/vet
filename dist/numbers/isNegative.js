@@ -1,14 +1,17 @@
-
-var isNumber = require('./isNumber');
-
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+var assert_1 = __importDefault(require("../utils/assert"));
+var isNumber_1 = __importDefault(require("./isNumber"));
 /**
 * Checks to see if a value is a negative number
 * @param val - the value to check
 * @returns true if the value is a negative number
 * @memberof vet.numbers
 */
-function isNegative(val) {
-	return isNumber(val) && val < 0;
-}
-
+var isNegative = function isNegative(val) {
+    return isNumber_1.default(val) && val < 0;
+};
+isNegative.assert = assert_1.default(isNegative);
 module.exports = isNegative;

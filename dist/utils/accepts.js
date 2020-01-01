@@ -1,11 +1,9 @@
-
+"use strict";
 function messageBuilder(log) {
-	return typeof log === 'function' ?
-		log :
-		function () { return log; }
-	;
+    return typeof log === 'function' ?
+        log :
+        function () { return log; };
 }
-
 /**
 * Wraps a function in a validator which checks its arguments, and throws an error if the arguments are bad.
 *
@@ -16,16 +14,19 @@ function messageBuilder(log) {
 * @memberof vet.utils
 */
 function accepts(func, validator, message) {
-	message = messageBuilder(message || 'vet/utils/accepts error!');
-
-	return function wrapper(){
-		var args = arguments;
-		if (validator.apply(this, args)) {
-			return func.apply(this, args);
-		} else {
-			throw new Error(message.apply(this, args));
-		}
-	};
+    message = messageBuilder(message || 'vet/utils/accepts error!');
+    return function wrapper() {
+        var args = [];
+        for (var _i = 0; _i < arguments.length; _i++) {
+            args[_i] = arguments[_i];
+        }
+        var _args = arguments;
+        if (validator.apply(this, _args)) {
+            return func.apply(this, _args);
+        }
+        else {
+            throw new Error(message.apply(this, _args));
+        }
+    };
 }
-
 module.exports = accepts;

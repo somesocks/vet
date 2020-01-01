@@ -1,4 +1,4 @@
-
+import ExtendedValidator from '../types/ExtendedValidator';
 /**
 * Checks to see if a value is strictly true
 * @param val - the value to check
@@ -6,7 +6,7 @@
 * @memberof vet.booleans
 * @example
 * ```javascript
-* let isTrue = require('vet/booleans/isTrue');
+* let isTrue from 'vet/booleans/isTrue');
 *
 * isTrue(null); // returns false
 * isTrue(false); // returns false
@@ -14,6 +14,5 @@
 * isTrue(true); // returns true
 * ```
 */
-declare function isTrue(val : any): boolean;
-
-export default isTrue;
+declare const isTrue: ExtendedValidator;
+export = isTrue;

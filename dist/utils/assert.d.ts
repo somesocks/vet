@@ -1,10 +1,3 @@
-
-type validator = (val : any) => boolean;
-
-type assertion = (val : any) => any;
-
-type message = string | ((val : any) => string);
-
 /**
 * Wraps a validator, and throws an error if it returns false.
 *
@@ -14,6 +7,5 @@ type message = string | ((val : any) => string);
 * @returns a function that returns null if the arguments pass validation, or throws an error if they do not
 * @memberof vet.utils
 */
-declare function assert(val : validator | boolean, message? : message): assertion;
-
-export default assert;
+declare function assert(this: any, validator: any, message?: any): any;
+export = assert;

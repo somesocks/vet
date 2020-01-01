@@ -1,6 +1,4 @@
-
-type validator = ( val : any ) => boolean;
-
+import ExtendedValidator from './types/ExtendedValidator';
 /**
 * Builds an curried equal function
 * @param eq - value to check equality against
@@ -8,7 +6,7 @@ type validator = ( val : any ) => boolean;
 * @memberof vet
 * @example
 * ```javascript
-* let equals = require('vet/equals');
+* let equals from 'vet/equals');
 *
 * let is3 = equals(3);
 *
@@ -18,6 +16,5 @@ type validator = ( val : any ) => boolean;
 * is3(3); // returns true
 * ```
 */
-declare function equals(val : any): validator;
-
-export default equals;
+declare function equals(eq: any): ExtendedValidator;
+export = equals;

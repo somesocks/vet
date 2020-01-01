@@ -1,6 +1,5 @@
-
-type validator = ( val : any ) => boolean;
-
+import Validator from './types/Validator';
+import ExtendedValidator from './types/ExtendedValidator';
 /**
 * a function that inverts the result of a validator
 * @param {function} validator - validator to invert
@@ -8,8 +7,8 @@ type validator = ( val : any ) => boolean;
 * @memberof vet
 * @example
 * ```javascript
-* let isNot = require('vet/isNot');
-* let isNumber = require('vet/numbers/isNumber');
+* let isNot from 'vet/isNot');
+* let isNumber from 'vet/numbers/isNumber');
 *
 * let check = isNot(isNumber);
 *
@@ -18,6 +17,5 @@ type validator = ( val : any ) => boolean;
 * check(null); // returns true
 * ```
 */
-declare function isNot(val : validator): validator;
-
-export default isNot;
+declare function isNot(validator: Validator): ExtendedValidator;
+export = isNot;

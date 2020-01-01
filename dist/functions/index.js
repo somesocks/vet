@@ -1,7 +1,5 @@
+"use strict";
 /**
 * @namespace vet.functions
 */
-
-module.exports = {
-	isFunction: require('./isFunction'),
-};
+throw new Error('do not import vet/functions directly, use single-file imports instead');

@@ -1,6 +1,4 @@
-
-type validator = ( val : any ) => boolean;
-
+import ExtendedValidator from '../types/ExtendedValidator';
 /**
 * Constructor to build an array length validator
 * @param len - the length the array shouldbe
@@ -8,7 +6,7 @@ type validator = ( val : any ) => boolean;
 * @memberof vet.arrays
 * @example
 * ```javascript
-* let isLength = require('vet/arrays/isLength');
+* let isLength from 'vet/arrays/isLength');
 *
 * let isLength3 = isLength(3);
 *
@@ -19,6 +17,5 @@ type validator = ( val : any ) => boolean;
 * isLength3([ '1', '2', '3' ]); // returns true
 * ```
 */
-declare function isLength(val : number): validator;
-
-export default isLength;
+declare function isLength(len: any): ExtendedValidator;
+export = isLength;

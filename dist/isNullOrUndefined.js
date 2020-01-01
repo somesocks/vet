@@ -1,4 +1,8 @@
-
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+var assert_1 = __importDefault(require("./utils/assert"));
 /**
 * A function to check for null or undefined
 * @param val - a value to check
@@ -6,7 +10,7 @@
 * @memberof vet
 * @example
 * ```javascript
-* let isNullOrUndefined = require('vet/isNullOrUndefined');
+* let isNullOrUndefined from 'vet/isNullOrUndefined');
 *
 * isNullOrUndefined({}); // returns false
 *
@@ -14,8 +18,8 @@
 * isNullOrUndefined(null); // returns true
 * ```
 */
-function isNullOrUndefined(val) {
-	return val == null;
-}
-
+var isNullOrUndefined = function isNullOrUndefined(val) {
+    return val == null;
+};
+isNullOrUndefined.assert = assert_1.default(isNullOrUndefined);
 module.exports = isNullOrUndefined;

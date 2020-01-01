@@ -1,10 +1,9 @@
-
-var isArray =
-	Array.isArray ||
-	function isArray(val) {
-		return Object.prototype.toString.call(val) === '[object Array]';
-	};
-
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+var assert_1 = __importDefault(require("../utils/assert"));
+var isArray_1 = __importDefault(require("./isArray"));
 /**
 * Constructor to build an array length validator
 * @param len - the length the array shouldbe
@@ -12,7 +11,7 @@ var isArray =
 * @memberof vet.arrays
 * @example
 * ```javascript
-* let isLength = require('vet/arrays/isLength');
+* let isLength from 'vet/arrays/isLength');
 *
 * let isLength3 = isLength(3);
 *
@@ -24,9 +23,10 @@ var isArray =
 * ```
 */
 function isLength(len) {
-	return function (val) {
-		return isArray(val) && val.length === len;
-	};
+    var res = function (val) {
+        return isArray_1.default(val) && val.length === len;
+    };
+    res.assert = assert_1.default(res);
+    return res;
 }
-
 module.exports = isLength;

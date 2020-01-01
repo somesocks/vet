@@ -1,4 +1,8 @@
-
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+var assert_1 = __importDefault(require("./utils/assert"));
 /**
 * A function builder to optionally check a value
 * @param validator - a validator function
@@ -6,8 +10,8 @@
 * @memberof vet
 * @example
 * ```javascript
-* let optional = require('vet/optional');
-* let isNumber = require('vet/numbers/isNumber');
+* let optional from 'vet/optional');
+* let isNumber from 'vet/numbers/isNumber');
 *
 * let isMaybeNumber = optional(isNumber);
 *
@@ -19,9 +23,10 @@
 * ```
 */
 function optional(validator) {
-	return function (val) {
-		return val == null || validator(val);
-	}
+    var res = function (val) {
+        return val == null || validator(val);
+    };
+    res.assert = assert_1.default(res);
+    return res;
 }
-
 module.exports = optional;

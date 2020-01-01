@@ -1,4 +1,8 @@
-
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+var assert_1 = __importDefault(require("../utils/assert"));
 /**
 * Checks to see if a value is a valid Date object
 * @param val - the value to check
@@ -6,7 +10,7 @@
 * @memberof vet.dates
 * @example
 * ```javascript
-* let isValidDate = require('vet/dates/isValidDate');
+* let isValidDate from 'vet/dates/isValidDate');
 *
 * isValidDate(null); // returns false
 * isValidDate({}); // returns false
@@ -15,8 +19,8 @@
 * isValidDate(new Date()); // returns true
 * ```
 */
-function isValidDate(val) {
-	return (val instanceof Date) && (!isNaN(val.getTime()));
-}
-
+var isValidDate = function isValidDate(val) {
+    return (val instanceof Date) && (!isNaN(val.getTime()));
+};
+isValidDate.assert = assert_1.default(isValidDate);
 module.exports = isValidDate;

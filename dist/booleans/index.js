@@ -1,11 +1,5 @@
+"use strict";
 /**
 * @namespace vet.booleans
 */
-
-module.exports = {
-	isBoolean: require('./isBoolean'),
-	isFalse: require('./isFalse'),
-	isFalsy: require('./isFalsy'),
-	isTrue: require('./isTrue'),
-	isTruthy: require('./isTruthy'),
-};
+throw new Error('do not import vet/booleans directly, use single-file imports instead');

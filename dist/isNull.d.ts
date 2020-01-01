@@ -1,4 +1,4 @@
-
+import ExtendedValidator from './types/ExtendedValidator';
 /**
 * A function to check for null
 * @param val - a value to check
@@ -6,7 +6,7 @@
 * @memberof vet
 * @example
 * ```javascript
-* let isNull = require('vet/isNull');
+* let isNull from 'vet/isNull');
 *
 * isNull(undefined); // returns false
 * isNull({}); // returns false
@@ -14,6 +14,5 @@
 * isNull(null); // returns true
 * ```
 */
-declare function isNull(val : any): boolean;
-
-export default isNull;
+declare const isNull: ExtendedValidator;
+export = isNull;

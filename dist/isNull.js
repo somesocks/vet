@@ -1,4 +1,8 @@
-
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+var assert_1 = __importDefault(require("./utils/assert"));
 /**
 * A function to check for null
 * @param val - a value to check
@@ -6,7 +10,7 @@
 * @memberof vet
 * @example
 * ```javascript
-* let isNull = require('vet/isNull');
+* let isNull from 'vet/isNull');
 *
 * isNull(undefined); // returns false
 * isNull({}); // returns false
@@ -14,8 +18,8 @@
 * isNull(null); // returns true
 * ```
 */
-function isNull(val) {
-	return val === null;
-}
-
+var isNull = function isNull(val) {
+    return val === null;
+};
+isNull.assert = assert_1.default(isNull);
 module.exports = isNull;
