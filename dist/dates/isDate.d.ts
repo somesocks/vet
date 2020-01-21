@@ -14,5 +14,5 @@ import ExtendedValidator from '../types/ExtendedValidator';
 * isDate(new Date()); // returns true
 * ```
 */
-declare const isDate: ExtendedValidator<Date>;
+declare const isDate: ExtendedValidator;
 export = isDate;

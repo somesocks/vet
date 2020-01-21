@@ -5,5 +5,5 @@ import ExtendedValidator from '../types/ExtendedValidator';
 * @returns true if val is probably a valid URL
 * @memberof vet.strings
 */
-declare const isProbablyURL: ExtendedValidator<string>;
+declare const isProbablyURL: ExtendedValidator;
 export = isProbablyURL;

@@ -16,10 +16,10 @@ const REGEX = /^https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-
 * @returns true if val is probably a valid URL
 * @memberof vet.strings
 */
-const isProbablyURL : ExtendedValidator<string> = function isProbablyURL(val) {
+const isProbablyURL : ExtendedValidator = function isProbablyURL(val) {
 	REGEX.lastIndex = 0;
 	return isString(val) && REGEX.test(val);
-} as ExtendedValidator<string>;
+} as ExtendedValidator;
 
 isProbablyURL.assert = assert(isProbablyURL);
 

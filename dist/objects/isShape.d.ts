@@ -40,8 +40,8 @@ import ExtendedValidator from '../types/ExtendedValidator';
 * isPerson({ name: 'John Doe', age: 12, alive: true });
 * ```
 */
-declare function isShape(schema: any): ExtendedValidator<object>;
+declare function isShape(schema: any): ExtendedValidator;
 declare namespace isShape {
-    var exact: (schema: any) => ExtendedValidator<object>;
+    var exact: (schema: any) => ExtendedValidator;
 }
 export = isShape;

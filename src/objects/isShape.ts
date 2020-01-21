@@ -93,8 +93,8 @@ function _isShapeExact (schema, object) {
 * isPerson({ name: 'John Doe', age: 12, alive: true });
 * ```
 */
-function isShape(schema) : ExtendedValidator<object> {
-	const res = _isShape.bind(undefined, schema) as ExtendedValidator<object>;
+function isShape(schema) : ExtendedValidator {
+	const res = _isShape.bind(undefined, schema) as ExtendedValidator;
 	res.assert = assert(res);
 	return res;
 }
@@ -134,8 +134,8 @@ function isShape(schema) : ExtendedValidator<object> {
 * isPerson({ name: 'John Doe', age: 12, alive: true });
 * ```
 */
-isShape.exact = function isShapeExact(schema) : ExtendedValidator<object> {
-	const res = _isShapeExact.bind(undefined, schema) as ExtendedValidator<object>;
+isShape.exact = function isShapeExact(schema) : ExtendedValidator {
+	const res = _isShapeExact.bind(undefined, schema) as ExtendedValidator;
 	res.assert = assert(res);
 	return res;
 }

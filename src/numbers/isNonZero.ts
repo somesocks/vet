@@ -13,9 +13,9 @@ import isNumber from './isNumber';
 * @returns true if the value is a nonzero number
 * @memberof vet.numbers
 */
-const isNonZero : ExtendedValidator<number> = function isNonZero(val) {
+const isNonZero : ExtendedValidator = function isNonZero(val) {
 	return isNumber(val) && val !== 0;
-} as ExtendedValidator<number>;
+} as ExtendedValidator;
 
 isNonZero.assert = assert(isNonZero);
 

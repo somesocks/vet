@@ -2,10 +2,10 @@
 import Assertion from './Assertion';
 import Validator from './Validator';
 
-type ExtendedValidator<T = any> =
-	Validator<T> &
+type ExtendedValidator =
+	Validator &
 	{
-		assert : Assertion<T>,
+		assert : Assertion,
 	};
 
 export default ExtendedValidator;

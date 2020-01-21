@@ -13,11 +13,11 @@ import isString from './isString';
 * @returns a function that takes in a value val, and returns true if it is a string that matches regex
 * @memberof vet.strings
 */
-function matches(regex) : ExtendedValidator<string> {
+function matches(regex) : ExtendedValidator {
 	const res = function(val) {
 		regex.lastIndex = 0;
 		return isString(val) && regex.test(val);
-	} as ExtendedValidator<string>;
+	} as ExtendedValidator;
 
 	res.assert = assert(res);
 

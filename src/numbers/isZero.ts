@@ -13,8 +13,8 @@ import isNumber from './isNumber';
 * @returns true if the value is zero
 * @memberof vet.numbers
 */
-const isZero : ExtendedValidator<number> =
-	function isZero(val) { return isNumber(val) && val === 0; } as ExtendedValidator<number>;
+const isZero : ExtendedValidator =
+	function isZero(val) { return isNumber(val) && val === 0; } as ExtendedValidator;
 
 isZero.assert = assert(isZero);
 

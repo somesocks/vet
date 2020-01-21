@@ -13,10 +13,10 @@ import isNumber from './isNumber';
 * @returns {function} - a validator function
 * @memberof vet.numbers
 */
-function isGreaterThan(bound : number) : ExtendedValidator<number> {
-	const res : ExtendedValidator<number> = function (val) {
+function isGreaterThan(bound : number) : ExtendedValidator {
+	const res : ExtendedValidator = function (val) {
 		return isNumber(val) && val > bound;
-	} as ExtendedValidator<number>;
+	} as ExtendedValidator;
 
 	res.assert = assert(res);
 
@@ -29,10 +29,10 @@ function isGreaterThan(bound : number) : ExtendedValidator<number> {
 * @returns {function} - a validator function
 * @memberof vet.numbers.isGreaterThan
 */
-isGreaterThan.exclusive = function exclusive(bound : number) : ExtendedValidator<number> {
-	const res : ExtendedValidator<number> = function (val) {
+isGreaterThan.exclusive = function exclusive(bound : number) : ExtendedValidator {
+	const res : ExtendedValidator = function (val) {
 		return isNumber(val) && val > bound;
-	} as ExtendedValidator<number>;
+	} as ExtendedValidator;
 
 	res.assert = assert(res);
 
@@ -45,10 +45,10 @@ isGreaterThan.exclusive = function exclusive(bound : number) : ExtendedValidator
 * @returns {function} - a validator function
 * @memberof vet.numbers.isGreaterThan
 */
-isGreaterThan.inclusive = function inclusive(bound : number) : ExtendedValidator<number> {
-	const res : ExtendedValidator<number> = function (val) {
+isGreaterThan.inclusive = function inclusive(bound : number) : ExtendedValidator {
+	const res : ExtendedValidator = function (val) {
 		return isNumber(val) && val >= bound;
-	} as ExtendedValidator<number>;
+	} as ExtendedValidator;
 
 	res.assert = assert(res);
 

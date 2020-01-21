@@ -24,9 +24,9 @@ import assert from './utils/assert';
 *
 * ```
 */
-const isAny : ExtendedValidator<any> = function isAny(val) {
+const isAny : ExtendedValidator = function isAny(val) {
 	return true;
-} as ExtendedValidator<any>;
+} as ExtendedValidator;
 
 isAny.assert = assert(isAny);
 

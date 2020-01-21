@@ -17,5 +17,5 @@ import ExtendedValidator from './types/ExtendedValidator';
 *
 * ```
 */
-declare const isAny: ExtendedValidator<any>;
+declare const isAny: ExtendedValidator;
 export = isAny;

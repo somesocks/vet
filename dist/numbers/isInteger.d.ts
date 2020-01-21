@@ -5,5 +5,5 @@ import ExtendedValidator from '../types/ExtendedValidator';
 * @returns true if the value is an integer
 * @memberof vet.numbers
 */
-declare const isInteger: ExtendedValidator<number>;
+declare const isInteger: ExtendedValidator;
 export = isInteger;

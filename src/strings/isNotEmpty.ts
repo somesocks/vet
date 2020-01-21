@@ -13,8 +13,8 @@ import isString from './isString';
 * @returns true if val is a non-empty string
 * @memberof vet.strings
 */
-const isNotEmpty : ExtendedValidator<string> =
-	function isNotEmpty(val) { return isString(val) && val !== ''; } as ExtendedValidator<string>;
+const isNotEmpty : ExtendedValidator =
+	function isNotEmpty(val) { return isString(val) && val !== ''; } as ExtendedValidator;
 
 isNotEmpty.assert = assert(isNotEmpty);
 

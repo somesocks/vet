@@ -20,8 +20,8 @@ import assert from '../utils/assert';
 * isFunction(function (){}); // returns true
 * ```
 */
-const isFunction : ExtendedValidator<Function> =
-	function isFunction(val) { return typeof val === 'function'; } as ExtendedValidator<Function>;
+const isFunction : ExtendedValidator =
+	function isFunction(val) { return typeof val === 'function'; } as ExtendedValidator;
 
 isFunction.assert = assert(isFunction);
 

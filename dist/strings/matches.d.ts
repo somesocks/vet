@@ -5,5 +5,5 @@ import ExtendedValidator from '../types/ExtendedValidator';
 * @returns a function that takes in a value val, and returns true if it is a string that matches regex
 * @memberof vet.strings
 */
-declare function matches(regex: any): ExtendedValidator<string>;
+declare function matches(regex: any): ExtendedValidator;
 export = matches;

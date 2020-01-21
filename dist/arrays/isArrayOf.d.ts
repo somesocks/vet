@@ -19,5 +19,5 @@ import ExtendedValidator from '../types/ExtendedValidator';
 * isStringArray([ '1', '2', '3' ]); // returns true
 * ```
 */
-declare function isArrayOf(validator: any): ExtendedValidator<Array<any>>;
+declare function isArrayOf(validator: any): ExtendedValidator;
 export = isArrayOf;

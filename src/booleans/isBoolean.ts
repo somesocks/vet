@@ -11,10 +11,10 @@ import assert from '../utils/assert';
 * @returns true if the value is a boolean
 * @memberof vet.booleans
 */
-const isBoolean : ExtendedValidator<boolean> = function isBoolean (val) {
+const isBoolean : ExtendedValidator = function isBoolean (val) {
 	// return val === true || val === false;
 	return (typeof (val) === 'boolean') || (val instanceof Boolean);
-} as ExtendedValidator<boolean>;
+} as ExtendedValidator;
 
 isBoolean.assert = assert(isBoolean);
 

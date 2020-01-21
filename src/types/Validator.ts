@@ -1,6 +1,6 @@
 
-type Validator<T = any> = {
-	(this : any, arg ?: T | any, ...rest : any[]) : boolean,
+type Validator = {
+	(this : any, ...args : any[]) : boolean,
 }
 
 export default Validator;

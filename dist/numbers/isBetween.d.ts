@@ -6,9 +6,9 @@ import ExtendedValidator from '../types/ExtendedValidator';
 * @returns {function} - a validator function
 * @memberof vet.numbers
 */
-declare function isBetween(lower: number, upper: number): ExtendedValidator<number>;
+declare function isBetween(lower: number, upper: number): ExtendedValidator;
 declare namespace isBetween {
-    var exclusive: (lower: number, upper: number) => ExtendedValidator<number>;
-    var inclusive: (lower: number, upper: number) => ExtendedValidator<number>;
+    var exclusive: (lower: number, upper: number) => ExtendedValidator;
+    var inclusive: (lower: number, upper: number) => ExtendedValidator;
 }
 export = isBetween;

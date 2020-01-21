@@ -5,5 +5,5 @@ import ExtendedValidator from '../types/ExtendedValidator';
 * @returns a function that takes in a value val, and returns true if val is a string of length len
 * @memberof vet.strings
 */
-declare function isLength(len: any): ExtendedValidator<string>;
+declare function isLength(len: any): ExtendedValidator;
 export = isLength;

@@ -7,5 +7,5 @@ import ExtendedValidator from '../types/ExtendedValidator';
 * @returns a function that returns true if the value is an object, and all of the object properties pass the validator
 * @memberof vet.objects
 */
-declare const isObjectOf: (validator: Validator<any>) => ExtendedValidator<object>;
+declare const isObjectOf: (validator: Validator) => ExtendedValidator;
 export = isObjectOf;

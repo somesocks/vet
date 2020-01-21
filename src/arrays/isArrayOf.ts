@@ -27,8 +27,8 @@ import isArray from './isArray';
 * isStringArray([ '1', '2', '3' ]); // returns true
 * ```
 */
-function isArrayOf(validator) : ExtendedValidator<Array<any>> {
-	const res : ExtendedValidator<Array<any>> = function(arr) {
+function isArrayOf(validator) : ExtendedValidator {
+	const res : ExtendedValidator = function(arr) {
 		if (!isArray(arr)) { return false; }
 
 		for (let i = 0; i < arr.length; i++) {
@@ -36,7 +36,7 @@ function isArrayOf(validator) : ExtendedValidator<Array<any>> {
 		}
 
 		return true;
-	} as ExtendedValidator<Array<any>>;
+	} as ExtendedValidator;
 
 	res.assert = assert(res);
 

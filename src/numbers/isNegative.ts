@@ -13,9 +13,9 @@ import isNumber from './isNumber';
 * @returns true if the value is a negative number
 * @memberof vet.numbers
 */
-const isNegative : ExtendedValidator<number> = function isNegative(val) {
+const isNegative : ExtendedValidator = function isNegative(val) {
 	return isNumber(val) && val < 0;
-} as ExtendedValidator<number>;
+} as ExtendedValidator;
 
 isNegative.assert = assert(isNegative);
 

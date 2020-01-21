@@ -16,10 +16,10 @@ const REGEX = /^\s*data:([a-z]+\/[a-z0-9-+.]+(;[a-z-]+=[a-z0-9-]+)?)?(;base64)?,
 * @returns true if val is probably a valid data URL
 * @memberof vet.strings
 */
-const isProbablyDataURL : ExtendedValidator<string> = function isProbablyDataURL(val) {
+const isProbablyDataURL : ExtendedValidator = function isProbablyDataURL(val) {
 	REGEX.lastIndex = 0;
 	return isString(val) && REGEX.test(val);
-} as ExtendedValidator<string>;
+} as ExtendedValidator;
 
 isProbablyDataURL.assert = assert(isProbablyDataURL);
 

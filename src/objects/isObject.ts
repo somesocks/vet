@@ -11,8 +11,8 @@ import assert from '../utils/assert';
 * @returns true if the value is an object
 * @memberof vet.objects
 */
-const isObject : ExtendedValidator<object> =
-	function isObject(val) { return (val != null) && (Object(val) === val); } as ExtendedValidator<object>;
+const isObject : ExtendedValidator =
+	function isObject(val) { return (val != null) && (Object(val) === val); } as ExtendedValidator;
 
 isObject.assert = assert(isObject);
 
