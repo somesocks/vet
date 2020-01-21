@@ -64,6 +64,7 @@ A collection of data validation tools.
     * [.equals(eq)](#vet.equals) ⇒
     * [.exists(val)](#vet.exists) ⇒
     * [.isAllOf(...eq)](#vet.isAllOf) ⇒
+    * [.isAny(val)](#vet.isAny) ⇒
     * [.isNoneOf(...eq)](#vet.isNoneOf) ⇒
     * [.isNot(validator)](#vet.isNot) ⇒
     * [.isNotNull(val)](#vet.isNotNull) ⇒
@@ -1047,6 +1048,32 @@ let check = isAllOf(isNumber, isPositive);
 check(-1); // returns false
 
 check(1); // returns true
+```
+
+* * *
+
+<a name="vet.isAny"></a>
+
+### vet.isAny(val) ⇒
+A default validator, that always returns true.
+This can be useful to spec out parameters that you don't wish to validate,
+but need to document for future work.
+
+**Kind**: static method of [<code>vet</code>](#vet)  
+**Returns**: true  
+**Params**
+
+- val - a value to check
+
+**Example**  
+```javascript
+
+import isAny from 'vet/isAny';
+
+isAny(null); // returns true
+isAny(undefined); // returns true
+isAny({}); // returns true
+
 ```
 
 * * *

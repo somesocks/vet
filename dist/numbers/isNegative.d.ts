@@ -5,5 +5,5 @@ import ExtendedValidator from '../types/ExtendedValidator';
 * @returns true if the value is a negative number
 * @memberof vet.numbers
 */
-declare const isNegative: ExtendedValidator;
+declare const isNegative: ExtendedValidator<number>;
 export = isNegative;

@@ -5,5 +5,5 @@ import ExtendedValidator from '../types/ExtendedValidator';
 * @returns true if the value is a boolean
 * @memberof vet.booleans
 */
-declare const isBoolean: ExtendedValidator;
+declare const isBoolean: ExtendedValidator<boolean>;
 export = isBoolean;

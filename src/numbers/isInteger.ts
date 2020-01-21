@@ -19,9 +19,9 @@ const floor = function (val) { return Math.floor(val); };
 * @returns true if the value is an integer
 * @memberof vet.numbers
 */
-const isInteger : ExtendedValidator = function isInteger(val) {
+const isInteger : ExtendedValidator<number> = function isInteger(val) {
 	return isNumber(val) && isFinite(val) && (floor(val) === val);
-} as ExtendedValidator;
+} as ExtendedValidator<number>;
 
 isInteger.assert = assert(isInteger);
 

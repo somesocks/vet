@@ -5,9 +5,9 @@ import ExtendedValidator from '../types/ExtendedValidator';
 * @returns {function} - a validator function
 * @memberof vet.numbers
 */
-declare function isLessThan(bound: number): ExtendedValidator;
+declare function isLessThan(bound: number): ExtendedValidator<number>;
 declare namespace isLessThan {
-    var exclusive: (bound: number) => ExtendedValidator;
-    var inclusive: (bound: number) => ExtendedValidator;
+    var exclusive: (bound: number) => ExtendedValidator<number>;
+    var inclusive: (bound: number) => ExtendedValidator<number>;
 }
 export = isLessThan;

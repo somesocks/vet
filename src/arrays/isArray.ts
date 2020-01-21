@@ -21,13 +21,13 @@ import assert from '../utils/assert';
 * isArray([]); // returns true
 * ```
 */
-const isArray : ExtendedValidator = Array.isArray ?
+const isArray : ExtendedValidator<Array<any>> = Array.isArray ?
 	function isArray(val) {
 		return Array.isArray(val);
-	} as ExtendedValidator :
+	} as ExtendedValidator<Array<any>> :
 	function isArray(val) {
 		return Object.prototype.toString.call(val) === '[object Array]';
-	} as ExtendedValidator;
+	} as ExtendedValidator<Array<any>>;
 
 isArray.assert = assert(isArray);
 

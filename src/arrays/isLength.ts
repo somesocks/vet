@@ -25,10 +25,10 @@ import isArray from './isArray';
 * isLength3([ '1', '2', '3' ]); // returns true
 * ```
 */
-function isLength(len) : ExtendedValidator {
+function isLength(len) : ExtendedValidator<Array<any>> {
 	const res : ExtendedValidator = function (val) {
 		return isArray(val) && val.length === len;
-	} as ExtendedValidator;
+	} as ExtendedValidator<Array<any>>;
 
 	res.assert = assert(res);
 

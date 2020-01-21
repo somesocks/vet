@@ -5,5 +5,5 @@ import ExtendedValidator from '../types/ExtendedValidator';
 * @returns true if the value is an object
 * @memberof vet.objects
 */
-declare const isObject: ExtendedValidator;
+declare const isObject: ExtendedValidator<object>;
 export = isObject;

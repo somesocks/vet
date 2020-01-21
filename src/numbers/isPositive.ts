@@ -13,8 +13,8 @@ import isNumber from './isNumber';
 * @returns true if the value is a positive number
 * @memberof vet.numbers
 */
-const isPositive : ExtendedValidator =
-	function isPositive(val) { return isNumber(val) && val > 0; } as ExtendedValidator;
+const isPositive : ExtendedValidator<number> =
+	function isPositive(val) { return isNumber(val) && val > 0; } as ExtendedValidator<number>;
 
 isPositive.assert = assert(isPositive);
 

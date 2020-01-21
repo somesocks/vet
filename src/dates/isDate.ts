@@ -20,7 +20,7 @@ import assert from '../utils/assert';
 * isDate(new Date()); // returns true
 * ```
 */
-const isDate : ExtendedValidator = function isDate(val) { return val instanceof Date; } as ExtendedValidator;
+const isDate : ExtendedValidator<Date> = function isDate(val) { return val instanceof Date; } as ExtendedValidator<Date>;
 
 isDate.assert = assert(isDate);
 

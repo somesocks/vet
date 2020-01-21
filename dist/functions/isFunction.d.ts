@@ -14,5 +14,5 @@ import ExtendedValidator from '../types/ExtendedValidator';
 * isFunction(function (){}); // returns true
 * ```
 */
-declare const isFunction: ExtendedValidator;
+declare const isFunction: ExtendedValidator<Function>;
 export = isFunction;

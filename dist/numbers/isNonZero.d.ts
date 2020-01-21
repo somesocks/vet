@@ -5,5 +5,5 @@ import ExtendedValidator from '../types/ExtendedValidator';
 * @returns true if the value is a nonzero number
 * @memberof vet.numbers
 */
-declare const isNonZero: ExtendedValidator;
+declare const isNonZero: ExtendedValidator<number>;
 export = isNonZero;

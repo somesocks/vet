@@ -17,7 +17,7 @@ const propertyIsEnumerable = Object.prototype.propertyIsEnumerable;
 * @returns a function that returns true if the value is an object, and all of the object properties pass the validator
 * @memberof vet.objects
 */
-const isObjectOf = function isObjectOf(validator : Validator) : ExtendedValidator {
+const isObjectOf = function isObjectOf(validator : Validator) : ExtendedValidator<object> {
 	const res = function(obj) {
 		if (!isObject(obj)) { return false; }
 		for (let key in obj) {
@@ -27,7 +27,7 @@ const isObjectOf = function isObjectOf(validator : Validator) : ExtendedValidato
 			}
 		}
 		return true;
-	} as ExtendedValidator;
+	} as ExtendedValidator<object>;
 
 	res.assert = assert(res);
 

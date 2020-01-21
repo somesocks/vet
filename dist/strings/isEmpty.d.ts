@@ -5,5 +5,5 @@ import ExtendedValidator from '../types/ExtendedValidator';
 * @returns true if val is an empty string
 * @memberof vet.strings
 */
-declare const isEmpty: ExtendedValidator;
+declare const isEmpty: ExtendedValidator<string>;
 export = isEmpty;

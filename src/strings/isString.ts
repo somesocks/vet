@@ -11,9 +11,9 @@ import assert from '../utils/assert';
 * @returns true if val is a string
 * @memberof vet.strings
 */
-const isString : ExtendedValidator = function isString (val) {
+const isString : ExtendedValidator<string> = function isString (val) {
 	return (typeof val === 'string') || (val instanceof String);
-} as ExtendedValidator;
+} as ExtendedValidator<string>;
 
 isString.assert = assert(isString);
 
