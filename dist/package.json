@@ -1,6 +1,6 @@
 {
   "name": "vet",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "description": "A Javascript library for data validation",
   "main": "index.js",
   "scripts": {},
