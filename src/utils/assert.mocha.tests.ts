@@ -26,6 +26,7 @@ describe('vet/utils/assert', () => {
 			validator(...args);
 			return false;
 		} catch (e) {
+			console.log('assert error', e);
 			return true;
 		}
 	};

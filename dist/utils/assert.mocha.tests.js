@@ -29,6 +29,7 @@ describe('vet/utils/assert', function () {
             return false;
         }
         catch (e) {
+            console.log('assert error', e);
             return true;
         }
     }; };

@@ -1,11 +1,16 @@
 
 import Assertion from '../types/Assertion';
 
-function messageBuilder(log) {
-	return typeof log === 'function' ?
-		log :
-		function () { return log; }
-	;
+function messageBuilder(this : any, validator, message ?: any) {
+	if (typeof message === 'function') {
+		return message;
+	} else if (typeof message === 'string') {
+		return	function () { return message; };
+	} else if (typeof validator === 'function') {
+		return function (val) { return '(vet/utils/assert) value (' + val  + ') failed on function ' + validator.name; };
+	} else {
+		return function () { return '(vet/utils/assert) value failed'; };
+	}
 }
 
 function isFunction(val) { return typeof val === 'function'; }
@@ -20,9 +25,8 @@ function isFunction(val) { return typeof val === 'function'; }
 * @memberof vet.utils
 */
 function assert (this : any, validator, message ?: any) : any {
-	message = messageBuilder(message || 'vet/utils/assert error!');
-
 	if (isFunction(validator)) {
+		message = messageBuilder.apply(this, arguments as any);
 		return function(this : any, ...args : any[]) {
 			const _args = arguments;
 			if (validator.apply(this, _args)) {
@@ -32,6 +36,7 @@ function assert (this : any, validator, message ?: any) : any {
 			}
 		};
 	} else if (!validator) {
+		message = messageBuilder.apply(this, arguments as any);
 		throw new Error(message.apply(this));
 	} else {
 		return true;

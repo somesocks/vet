@@ -1,8 +1,17 @@
 "use strict";
-function messageBuilder(log) {
-    return typeof log === 'function' ?
-        log :
-        function () { return log; };
+function messageBuilder(validator, message) {
+    if (typeof message === 'function') {
+        return message;
+    }
+    else if (typeof message === 'string') {
+        return function () { return message; };
+    }
+    else if (typeof validator === 'function') {
+        return function (val) { return '(vet/utils/assert) value (' + val + ') failed on function ' + validator.name; };
+    }
+    else {
+        return function () { return '(vet/utils/assert) value failed'; };
+    }
 }
 function isFunction(val) { return typeof val === 'function'; }
 /**
@@ -15,8 +24,8 @@ function isFunction(val) { return typeof val === 'function'; }
 * @memberof vet.utils
 */
 function assert(validator, message) {
-    message = messageBuilder(message || 'vet/utils/assert error!');
     if (isFunction(validator)) {
+        message = messageBuilder.apply(this, arguments);
         return function () {
             var args = [];
             for (var _i = 0; _i < arguments.length; _i++) {
@@ -32,6 +41,7 @@ function assert(validator, message) {
         };
     }
     else if (!validator) {
+        message = messageBuilder.apply(this, arguments);
         throw new Error(message.apply(this));
     }
     else {
