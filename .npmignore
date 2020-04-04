@@ -1,5 +1,8 @@
 
 # testing
+
 *.mocha.tests.js
+*.mocha.tests.d.ts
+
 *.snippet.js
-*.snippet.ts
+*.snippet.d.ts
