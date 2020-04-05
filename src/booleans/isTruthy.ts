@@ -26,5 +26,6 @@ const isTruthy : ExtendedValidator = function isTruthy(val) {
 } as ExtendedValidator;
 
 isTruthy.assert = assert(isTruthy);
+isTruthy.schema = 'isTruthy';
 
 export = isTruthy;

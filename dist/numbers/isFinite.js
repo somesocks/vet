@@ -23,4 +23,5 @@ var isFinite = function isFinite(value) {
     return true;
 };
 isFinite.assert = assert_1.default(isFinite);
+isFinite.schema = 'isFinite';
 module.exports = isFinite;

@@ -13,4 +13,5 @@ var isString = function isString(val) {
     return (typeof val === 'string') || (val instanceof String);
 };
 isString.assert = assert_1.default(isString);
+isString.schema = 'isString';
 module.exports = isString;

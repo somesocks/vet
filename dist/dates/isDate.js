@@ -20,4 +20,5 @@ var assert_1 = __importDefault(require("../utils/assert"));
 */
 var isDate = function isDate(val) { return val instanceof Date; };
 isDate.assert = assert_1.default(isDate);
+isDate.schema = 'isDate';
 module.exports = isDate;

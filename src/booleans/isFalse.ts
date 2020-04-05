@@ -25,5 +25,6 @@ const isFalse : ExtendedValidator = function isFalse(val) {
 } as ExtendedValidator;
 
 isFalse.assert = assert(isFalse);
+isFalse.schema = 'isFalse';
 
 export = isFalse;

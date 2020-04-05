@@ -18,5 +18,6 @@ const isNegative : ExtendedValidator = function isNegative(val) {
 } as ExtendedValidator;
 
 isNegative.assert = assert(isNegative);
+isNegative.schema = 'isNegative';
 
 export = isNegative;

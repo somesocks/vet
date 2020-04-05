@@ -14,4 +14,5 @@ var isBoolean = function isBoolean(val) {
     return (typeof (val) === 'boolean') || (val instanceof Boolean);
 };
 isBoolean.assert = assert_1.default(isBoolean);
+isBoolean.schema = 'isBoolean';
 module.exports = isBoolean;

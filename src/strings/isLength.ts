@@ -20,6 +20,7 @@ function isLength(len) : ExtendedValidator {
 	} as ExtendedValidator;
 
 	res.assert = assert(res);
+	res.schema = 'isStringOfLength(' + len + ')';
 
 	return res;
 }

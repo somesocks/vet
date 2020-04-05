@@ -23,4 +23,5 @@ var isValidDate = function isValidDate(val) {
     return (val instanceof Date) && (!isNaN(val.getTime()));
 };
 isValidDate.assert = assert_1.default(isValidDate);
+isValidDate.schema = 'isValidDate';
 module.exports = isValidDate;

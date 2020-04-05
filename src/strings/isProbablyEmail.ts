@@ -22,5 +22,6 @@ const isProbablyEmail : ExtendedValidator = function isProbablyEmail(val) {
 } as ExtendedValidator;
 
 isProbablyEmail.assert = assert(isProbablyEmail);
+isProbablyEmail.schema = 'isProbablyEmail';
 
 export = isProbablyEmail;

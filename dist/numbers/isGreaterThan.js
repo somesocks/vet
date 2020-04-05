@@ -15,6 +15,7 @@ function isGreaterThan(bound) {
         return isNumber_1.default(val) && val > bound;
     };
     res.assert = assert_1.default(res);
+    res.schema = 'isNumberGreaterThan(' + bound + ')';
     return res;
 }
 /**
@@ -28,6 +29,7 @@ isGreaterThan.exclusive = function exclusive(bound) {
         return isNumber_1.default(val) && val > bound;
     };
     res.assert = assert_1.default(res);
+    res.schema = 'isNumberGreaterThan.exclusive(' + bound + ')';
     return res;
 };
 /**
@@ -41,6 +43,7 @@ isGreaterThan.inclusive = function inclusive(bound) {
         return isNumber_1.default(val) && val >= bound;
     };
     res.assert = assert_1.default(res);
+    res.schema = 'isNumberGreaterThan.inclusive(' + bound + ')';
     return res;
 };
 module.exports = isGreaterThan;

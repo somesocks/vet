@@ -12,4 +12,5 @@ var isNumber_1 = __importDefault(require("./isNumber"));
 */
 var isPositive = function isPositive(val) { return isNumber_1.default(val) && val > 0; };
 isPositive.assert = assert_1.default(isPositive);
+isPositive.schema = 'isPositive';
 module.exports = isPositive;

@@ -1,4 +1,8 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+var schema_1 = __importDefault(require("./schema"));
 function messageBuilder(validator, message) {
     if (typeof message === 'function') {
         return message;
@@ -6,11 +10,8 @@ function messageBuilder(validator, message) {
     else if (typeof message === 'string') {
         return function () { return message; };
     }
-    else if (typeof validator === 'function') {
-        return function (val) { return '(vet/utils/assert) value (' + val + ') failed on function ' + validator.name; };
-    }
     else {
-        return function () { return '(vet/utils/assert) value failed'; };
+        return function (val) { return '(vet/utils/assert) value with schema `' + schema_1.default(val) + '` fails check against `' + schema_1.default(validator) + '`'; };
     }
 }
 function isFunction(val) { return typeof val === 'function'; }

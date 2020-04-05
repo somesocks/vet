@@ -16,4 +16,5 @@ var isProbablyDataURL = function isProbablyDataURL(val) {
     return isString_1.default(val) && REGEX.test(val);
 };
 isProbablyDataURL.assert = assert_1.default(isProbablyDataURL);
+isProbablyDataURL.schema = 'isProbablyDataURL';
 module.exports = isProbablyDataURL;

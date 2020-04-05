@@ -4,6 +4,7 @@ import Validator from './types/Validator';
 import ExtendedValidator from './types/ExtendedValidator';
 
 import assert from './utils/assert';
+import schema from './utils/schema';
 
 
 function isFunction(val) { return typeof val === 'function'; }
@@ -42,7 +43,15 @@ function isOneOf (...args : any[]) : ExtendedValidator {
 
 	res.assert = assert(res);
 
+	let s = 'isOneOf(';
+	for (let i = 0; i < validators.length; i++) {
+		s += schema(validators[i]) + ', ';
+	}
+	s += ')';
+	res.schema = s;
+
 	return res;
 }
+
 
 export = isOneOf;

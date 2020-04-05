@@ -28,5 +28,6 @@ const isNotNull : ExtendedValidator = function isNotNull(val) {
 } as ExtendedValidator;
 
 isNotNull.assert = assert(isNotNull);
+isNotNull.schema = 'isNotNull';
 
 export = isNotNull;

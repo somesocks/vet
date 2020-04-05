@@ -3,6 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 var assert_1 = __importDefault(require("./utils/assert"));
+var schema_1 = __importDefault(require("./utils/schema"));
 /**
 * Constructs a function that checks equality against any number of arguments
 * @param {...*} eq - values to check equality against
@@ -38,6 +39,12 @@ function isNoneOf() {
         return true;
     };
     res.assert = assert_1.default(res);
+    var s = 'isNoneOf(';
+    for (var i = 0; i < validators.length; i++) {
+        s += schema_1.default(validators[i]) + ', ';
+    }
+    s += ')';
+    res.schema = s;
     return res;
 }
 module.exports = isNoneOf;

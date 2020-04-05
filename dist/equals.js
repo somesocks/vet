@@ -3,6 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 var assert_1 = __importDefault(require("./utils/assert"));
+var schema_1 = __importDefault(require("./utils/schema"));
 /**
 * Builds an curried equal function
 * @param eq - value to check equality against
@@ -23,6 +24,7 @@ var assert_1 = __importDefault(require("./utils/assert"));
 function equals(eq) {
     var validator = function (val) { return val === eq; };
     validator.assert = assert_1.default(validator);
+    validator.schema = 'equals(' + schema_1.default(eq) + ')';
     return validator;
 }
 module.exports = equals;

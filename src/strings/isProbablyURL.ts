@@ -22,5 +22,6 @@ const isProbablyURL : ExtendedValidator = function isProbablyURL(val) {
 } as ExtendedValidator;
 
 isProbablyURL.assert = assert(isProbablyURL);
+isProbablyURL.schema = 'isProbablyURL';
 
 export = isProbablyURL;

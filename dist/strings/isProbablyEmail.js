@@ -17,4 +17,5 @@ var isProbablyEmail = function isProbablyEmail(val) {
     return isString_1.default(val) && REGEX.test(val);
 };
 isProbablyEmail.assert = assert_1.default(isProbablyEmail);
+isProbablyEmail.schema = 'isProbablyEmail';
 module.exports = isProbablyEmail;

@@ -24,5 +24,6 @@ const isInteger : ExtendedValidator = function isInteger(val) {
 } as ExtendedValidator;
 
 isInteger.assert = assert(isInteger);
+isInteger.schema = 'isInteger';
 
 export = isInteger;

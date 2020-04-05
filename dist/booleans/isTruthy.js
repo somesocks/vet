@@ -23,4 +23,5 @@ var isTruthy = function isTruthy(val) {
     return !!val;
 };
 isTruthy.assert = assert_1.default(isTruthy);
+isTruthy.schema = 'isTruthy';
 module.exports = isTruthy;

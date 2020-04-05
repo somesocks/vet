@@ -16,6 +16,7 @@ function isBetween(lower, upper) {
         return isNumber_1.default(val) && val > lower && val < upper;
     };
     res.assert = assert_1.default(res);
+    res.schema = 'isNumberBetween(' + lower + ',' + upper + ')';
     return res;
 }
 /**
@@ -30,6 +31,7 @@ isBetween.exclusive = function exclusive(lower, upper) {
         return isNumber_1.default(val) && val > lower && val < upper;
     };
     res.assert = assert_1.default(res);
+    res.schema = 'isNumberBetween.exclusive(' + lower + ',' + upper + ')';
     return res;
 };
 /**
@@ -44,6 +46,7 @@ isBetween.inclusive = function inclusive(lower, upper) {
         return isNumber_1.default(val) && val >= lower && val <= upper;
     };
     res.assert = assert_1.default(res);
+    res.schema = 'isNumberBetween.inclusive(' + lower + ',' + upper + ')';
     return res;
 };
 module.exports = isBetween;

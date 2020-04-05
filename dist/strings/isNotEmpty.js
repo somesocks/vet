@@ -12,4 +12,5 @@ var isString_1 = __importDefault(require("./isString"));
 */
 var isNotEmpty = function isNotEmpty(val) { return isString_1.default(val) && val !== ''; };
 isNotEmpty.assert = assert_1.default(isNotEmpty);
+isNotEmpty.schema = 'isNotEmptyString';
 module.exports = isNotEmpty;

@@ -89,6 +89,34 @@ var TESTS = [
     { input: false, expected: false },
     { input: true, expected: false },
 ];
+var FAIL = [
+    {
+        input: {
+            name: 'Test User',
+            age: 10,
+        },
+        expected: false,
+    },
+    {
+        input: {
+            name: 1,
+            age: 10,
+            verified: true,
+        },
+        expected: false,
+    },
+    { input: '', expected: false },
+    { input: 'a string', expected: false },
+    { input: {}, expected: false },
+    { input: [], expected: false },
+    { input: function () { }, expected: false },
+    { input: /a/, expected: false },
+    { input: undefined, expected: false },
+    { input: null, expected: false },
+    { input: 0, expected: false },
+    { input: false, expected: false },
+    { input: true, expected: false },
+];
 describe('vet/objects/isShape', function () {
     var validator = isShape_1.default({
         name: isString_1.default,
@@ -96,7 +124,26 @@ describe('vet/objects/isShape', function () {
         verified: isBoolean_1.default,
         optional: optional_1.default(isBoolean_1.default),
     });
+    // console.log('validator schema', validator.schema);
     TESTS.forEach(function (test) {
         it("(" + test.input + ")-->(" + test.expected + ")", function (done) { return done(validator(test.input) === test.expected ? null : new Error()); });
+    });
+    var threwError = function (validator) { return function () {
+        var args = [];
+        for (var _i = 0; _i < arguments.length; _i++) {
+            args[_i] = arguments[_i];
+        }
+        try {
+            validator.apply(void 0, args);
+            return false;
+        }
+        catch (e) {
+            console.log('assert error', e);
+            return true;
+        }
+    }; };
+    var validator2 = threwError(validator.assert);
+    FAIL.forEach(function (test) {
+        it("assert (" + test.input + ") should fail", function (done) { return done(validator2(test.input) ? null : new Error()); });
     });
 });

@@ -23,4 +23,5 @@ var exists = function exists(val) {
     return val != null;
 };
 exists.assert = assert_1.default(exists);
+exists.schema = 'exists';
 module.exports = exists;

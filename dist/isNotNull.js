@@ -24,4 +24,5 @@ var isNotNull = function isNotNull(val) {
     return val !== null;
 };
 isNotNull.assert = assert_1.default(isNotNull);
+isNotNull.schema = 'isNotNull';
 module.exports = isNotNull;

@@ -3,6 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 var assert_1 = __importDefault(require("./utils/assert"));
+var schema_1 = __importDefault(require("./utils/schema"));
 /**
 * a function that inverts the result of a validator
 * @param {function} validator - validator to invert
@@ -30,6 +31,7 @@ function isNot(validator) {
         return !validator.apply(this, args2);
     };
     res.assert = assert_1.default(res);
+    res.schema = 'isNot(' + schema_1.default(validator) + ')';
     return res;
 }
 module.exports = isNot;

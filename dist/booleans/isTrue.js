@@ -22,4 +22,5 @@ var isTrue = function isTrue(val) {
     return val === true;
 };
 isTrue.assert = assert_1.default(isTrue);
+isTrue.schema = 'isTrue';
 module.exports = isTrue;

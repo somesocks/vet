@@ -4,6 +4,7 @@ import Validator from './types/Validator';
 import ExtendedValidator from './types/ExtendedValidator';
 
 import assert from './utils/assert';
+import schema from './utils/schema';
 
 /**
 * Constructs a function that checks equality against any number of arguments
@@ -38,6 +39,13 @@ function isNoneOf(...args : any[]) : ExtendedValidator {
 	} as ExtendedValidator;
 
 	res.assert = assert(res);
+
+	let s = 'isNoneOf(';
+	for (let i = 0; i < validators.length; i++) {
+		s += schema(validators[i]) + ', ';
+	}
+	s += ')';
+	res.schema = s;
 
 	return res;
 }

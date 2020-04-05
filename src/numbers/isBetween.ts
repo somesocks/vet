@@ -20,6 +20,7 @@ function isBetween(lower : number, upper : number) : ExtendedValidator {
 	} as ExtendedValidator;
 
 	res.assert = assert(res);
+	res.schema = 'isNumberBetween(' + lower + ',' + upper + ')';
 
 	return res;
 }
@@ -37,6 +38,7 @@ isBetween.exclusive = function exclusive(lower : number, upper : number) : Exten
 	} as ExtendedValidator;
 
 	res.assert = assert(res);
+	res.schema = 'isNumberBetween.exclusive(' + lower + ',' + upper + ')';
 
 	return res;
 };
@@ -55,6 +57,7 @@ isBetween.inclusive = function inclusive(lower : number, upper : number) : Exten
 	} as ExtendedValidator;
 
 	res.assert = assert(res);
+	res.schema = 'isNumberBetween.inclusive(' + lower + ',' + upper + ')';
 
 	return res;
 };

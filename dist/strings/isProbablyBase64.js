@@ -16,4 +16,5 @@ var isProbablyBase64 = function isProbablyBase64(val) {
     return isString_1.default(val) && REGEX.test(val);
 };
 isProbablyBase64.assert = assert_1.default(isProbablyBase64);
+isProbablyBase64.schema = 'isProbablyBase64';
 module.exports = isProbablyBase64;

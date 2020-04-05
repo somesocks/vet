@@ -22,4 +22,5 @@ var isNull = function isNull(val) {
     return val === null;
 };
 isNull.assert = assert_1.default(isNull);
+isNull.schema = 'isNull';
 module.exports = isNull;

@@ -26,5 +26,6 @@ const isFinite : ExtendedValidator = function isFinite(value) {
 } as ExtendedValidator;
 
 isFinite.assert = assert(isFinite);
+isFinite.schema = 'isFinite';
 
 export = isFinite;

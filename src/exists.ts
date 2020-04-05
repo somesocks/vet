@@ -26,5 +26,6 @@ const exists : ExtendedValidator = function exists (val) {
 } as ExtendedValidator;
 
 exists.assert = assert(exists);
+exists.schema = 'exists';
 
 export = exists;

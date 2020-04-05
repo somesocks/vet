@@ -12,4 +12,5 @@ var isNumber_1 = __importDefault(require("./isNumber"));
 */
 var isZero = function isZero(val) { return isNumber_1.default(val) && val === 0; };
 isZero.assert = assert_1.default(isZero);
+isZero.schema = 'isZero';
 module.exports = isZero;

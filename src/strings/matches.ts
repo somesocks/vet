@@ -20,6 +20,7 @@ function matches(regex) : ExtendedValidator {
 	} as ExtendedValidator;
 
 	res.assert = assert(res);
+	res.schema = 'matches(' + regex + ')';
 
 	return res;
 }

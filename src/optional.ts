@@ -4,6 +4,7 @@ import Validator from './types/Validator';
 import ExtendedValidator from './types/ExtendedValidator';
 
 import assert from './utils/assert';
+import schema from './utils/schema';
 
 /**
 * A function builder to optionally check a value
@@ -30,6 +31,7 @@ function optional(validator : Validator) : ExtendedValidator {
 	} as ExtendedValidator;
 
 	res.assert = assert(res);
+	res.schema = 'optional(' + schema(validator) + ')';
 
 	return res;
 }

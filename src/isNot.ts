@@ -4,6 +4,7 @@ import Validator from './types/Validator';
 import ExtendedValidator from './types/ExtendedValidator';
 
 import assert from './utils/assert';
+import schema from './utils/schema';
 
 /**
 * a function that inverts the result of a validator
@@ -29,6 +30,7 @@ function isNot(validator : Validator) : ExtendedValidator {
 	} as ExtendedValidator;
 
 	res.assert = assert(res);
+	res.schema = 'isNot(' + schema(validator) + ')';
 
 	return res;
 }

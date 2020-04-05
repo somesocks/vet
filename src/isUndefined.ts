@@ -25,5 +25,6 @@ const isUndefined : ExtendedValidator = function isUndefined(val) {
 } as ExtendedValidator;
 
 isUndefined.assert = assert(isUndefined);
+isUndefined.schema = 'isUndefined';
 
 export = isUndefined;

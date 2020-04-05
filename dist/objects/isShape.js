@@ -3,6 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 var assert_1 = __importDefault(require("../utils/assert"));
+var schema_1 = __importDefault(require("../utils/schema"));
 var isFunction_1 = __importDefault(require("../functions/isFunction"));
 var isObject_1 = __importDefault(require("./isObject"));
 function _isShape(schema, object) {
@@ -98,6 +99,7 @@ function _isShapeExact(schema, object) {
 function isShape(schema) {
     var res = _isShape.bind(undefined, schema);
     res.assert = assert_1.default(res);
+    res.schema = 'isShape(' + schema_1.default(schema) + ')';
     return res;
 }
 /**
@@ -138,6 +140,7 @@ function isShape(schema) {
 isShape.exact = function isShapeExact(schema) {
     var res = _isShapeExact.bind(undefined, schema);
     res.assert = assert_1.default(res);
+    res.schema = 'isShape.exact(' + schema_1.default(schema) + ')';
     return res;
 };
 module.exports = isShape;

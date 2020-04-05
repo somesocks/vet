@@ -23,5 +23,6 @@ import assert from '../utils/assert';
 const isDate : ExtendedValidator = function isDate(val) { return val instanceof Date; } as ExtendedValidator;
 
 isDate.assert = assert(isDate);
+isDate.schema = 'isDate';
 
 export = isDate;

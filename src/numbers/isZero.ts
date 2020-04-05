@@ -17,5 +17,6 @@ const isZero : ExtendedValidator =
 	function isZero(val) { return isNumber(val) && val === 0; } as ExtendedValidator;
 
 isZero.assert = assert(isZero);
+isZero.schema = 'isZero';
 
 export = isZero;

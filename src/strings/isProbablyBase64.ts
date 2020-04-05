@@ -23,5 +23,6 @@ const isProbablyBase64 : ExtendedValidator = function isProbablyBase64(val) {
 } as ExtendedValidator;
 
 isProbablyBase64.assert = assert(isProbablyBase64);
+isProbablyBase64.schema = 'isProbablyBase64';
 
 export = isProbablyBase64;

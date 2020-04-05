@@ -25,5 +25,6 @@ const isNotNullOrUndefined : ExtendedValidator = function isNotNullOrUndefined(v
 } as ExtendedValidator;
 
 isNotNullOrUndefined.assert = assert(isNotNullOrUndefined);
+isNotNullOrUndefined.schema = 'isNotNullOrUndefined';
 
 export = isNotNullOrUndefined;

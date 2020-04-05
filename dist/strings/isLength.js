@@ -15,6 +15,7 @@ function isLength(len) {
         return isString_1.default(val) && val.length === len;
     };
     res.assert = assert_1.default(res);
+    res.schema = 'isStringOfLength(' + len + ')';
     return res;
 }
 module.exports = isLength;

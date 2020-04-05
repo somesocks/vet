@@ -5,6 +5,7 @@ import Validator from '../types/Validator';
 import ExtendedValidator from '../types/ExtendedValidator';
 
 import assert from '../utils/assert';
+import schemaString from '../utils/schema';
 
 import isFunction from '../functions/isFunction';
 
@@ -96,6 +97,7 @@ function _isShapeExact (schema, object) {
 function isShape(schema) : ExtendedValidator {
 	const res = _isShape.bind(undefined, schema) as ExtendedValidator;
 	res.assert = assert(res);
+	res.schema = 'isShape('+ schemaString(schema) + ')';
 	return res;
 }
 
@@ -137,6 +139,7 @@ function isShape(schema) : ExtendedValidator {
 isShape.exact = function isShapeExact(schema) : ExtendedValidator {
 	const res = _isShapeExact.bind(undefined, schema) as ExtendedValidator;
 	res.assert = assert(res);
+	res.schema = 'isShape.exact('+ schemaString(schema) + ')';
 	return res;
 }
 

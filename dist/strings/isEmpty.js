@@ -11,4 +11,5 @@ var assert_1 = __importDefault(require("../utils/assert"));
 */
 var isEmpty = function isEmpty(val) { return val === ''; };
 isEmpty.assert = assert_1.default(isEmpty);
+isEmpty.schema = 'isEmptyString';
 module.exports = isEmpty;

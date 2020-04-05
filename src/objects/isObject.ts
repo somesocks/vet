@@ -15,5 +15,6 @@ const isObject : ExtendedValidator =
 	function isObject(val) { return (val != null) && (Object(val) === val); } as ExtendedValidator;
 
 isObject.assert = assert(isObject);
+isObject.schema = 'isObject';
 
 export = isObject;

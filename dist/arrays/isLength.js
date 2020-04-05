@@ -27,6 +27,7 @@ function isLength(len) {
         return isArray_1.default(val) && val.length === len;
     };
     res.assert = assert_1.default(res);
+    res.schema = 'isArrayOfLength(' + len + ')';
     return res;
 }
 module.exports = isLength;

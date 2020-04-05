@@ -16,4 +16,5 @@ var isProbablyURL = function isProbablyURL(val) {
     return isString_1.default(val) && REGEX.test(val);
 };
 isProbablyURL.assert = assert_1.default(isProbablyURL);
+isProbablyURL.schema = 'isProbablyURL';
 module.exports = isProbablyURL;

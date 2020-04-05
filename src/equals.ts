@@ -4,6 +4,7 @@ import Validator from './types/Validator';
 import ExtendedValidator from './types/ExtendedValidator';
 
 import assert from './utils/assert';
+import schema from './utils/schema';
 
 /**
 * Builds an curried equal function
@@ -25,6 +26,7 @@ import assert from './utils/assert';
 function equals(eq : any) : ExtendedValidator {
 	const validator : ExtendedValidator = function (val) { return val === eq; } as ExtendedValidator;
 	validator.assert = assert(validator);
+	validator.schema = 'equals(' + schema(eq) + ')';
 	return validator;
 }
 

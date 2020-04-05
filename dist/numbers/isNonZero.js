@@ -14,4 +14,5 @@ var isNonZero = function isNonZero(val) {
     return isNumber_1.default(val) && val !== 0;
 };
 isNonZero.assert = assert_1.default(isNonZero);
+isNonZero.schema = 'isNonZero';
 module.exports = isNonZero;

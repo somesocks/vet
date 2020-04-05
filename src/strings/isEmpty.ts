@@ -15,5 +15,6 @@ const isEmpty : ExtendedValidator =
 	function isEmpty(val) { return val === ''; } as ExtendedValidator;
 
 isEmpty.assert = assert(isEmpty);
+isEmpty.schema = 'isEmptyString';
 
 export = isEmpty;

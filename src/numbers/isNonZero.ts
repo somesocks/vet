@@ -18,5 +18,6 @@ const isNonZero : ExtendedValidator = function isNonZero(val) {
 } as ExtendedValidator;
 
 isNonZero.assert = assert(isNonZero);
+isNonZero.schema = 'isNonZero';
 
 export = isNonZero;

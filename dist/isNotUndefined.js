@@ -22,4 +22,5 @@ var isNotUndefined = function isNotUndefined(val) {
     return val !== undefined;
 };
 isNotUndefined.assert = assert_1.default(isNotUndefined);
+isNotUndefined.schema = 'isNotUndefined';
 module.exports = isNotUndefined;

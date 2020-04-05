@@ -16,5 +16,6 @@ const isNumber : ExtendedValidator = function isNumber(val) {
 } as ExtendedValidator;
 
 isNumber.assert = assert(isNumber);
+isNumber.schema = 'isNumber';
 
 export = isNumber;

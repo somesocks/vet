@@ -29,6 +29,7 @@ const isArray : ExtendedValidator = Array.isArray ?
 		return Object.prototype.toString.call(val) === '[object Array]';
 	} as ExtendedValidator;
 
+isArray.schema = 'isArray';
 isArray.assert = assert(isArray);
 
 export = isArray;

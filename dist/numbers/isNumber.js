@@ -13,4 +13,5 @@ var isNumber = function isNumber(val) {
     return (typeof (val) === 'number') || (val instanceof Number);
 };
 isNumber.assert = assert_1.default(isNumber);
+isNumber.schema = 'isNumber';
 module.exports = isNumber;

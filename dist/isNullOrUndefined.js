@@ -22,4 +22,5 @@ var isNullOrUndefined = function isNullOrUndefined(val) {
     return val == null;
 };
 isNullOrUndefined.assert = assert_1.default(isNullOrUndefined);
+isNullOrUndefined.schema = 'isNullOrUndefined';
 module.exports = isNullOrUndefined;

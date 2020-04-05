@@ -16,6 +16,7 @@ function matches(regex) {
         return isString_1.default(val) && regex.test(val);
     };
     res.assert = assert_1.default(res);
+    res.schema = 'matches(' + regex + ')';
     return res;
 }
 module.exports = matches;

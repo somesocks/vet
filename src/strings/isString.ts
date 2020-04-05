@@ -16,5 +16,6 @@ const isString : ExtendedValidator = function isString (val) {
 } as ExtendedValidator;
 
 isString.assert = assert(isString);
+isString.schema = 'isString';
 
 export = isString;

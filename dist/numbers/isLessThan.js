@@ -15,6 +15,7 @@ function isLessThan(bound) {
         return isNumber_1.default(val) && val < bound;
     };
     res.assert = assert_1.default(res);
+    res.schema = 'isNumberLessThan(' + bound + ')';
     return res;
 }
 /**
@@ -28,6 +29,7 @@ isLessThan.exclusive = function exclusive(bound) {
         return isNumber_1.default(val) && val < bound;
     };
     res.assert = assert_1.default(res);
+    res.schema = 'isNumberLessThan.exclusive(' + bound + ')';
     return res;
 };
 /**
@@ -41,6 +43,7 @@ isLessThan.inclusive = function inclusive(bound) {
         return isNumber_1.default(val) && val <= bound;
     };
     res.assert = assert_1.default(res);
+    res.schema = 'isNumberLessThan.inclusive(' + bound + ')';
     return res;
 };
 module.exports = isLessThan;

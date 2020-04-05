@@ -25,4 +25,5 @@ var isAny = function isAny(val) {
     return true;
 };
 isAny.assert = assert_1.default(isAny);
+isAny.schema = 'isAny';
 module.exports = isAny;

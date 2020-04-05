@@ -4,6 +4,7 @@ import Validator from '../types/Validator';
 import ExtendedValidator from '../types/ExtendedValidator';
 
 import assert from '../utils/assert';
+import schema from '../utils/schema';
 
 import isArray from './isArray';
 
@@ -39,6 +40,7 @@ function isArrayOf(validator) : ExtendedValidator {
 	} as ExtendedValidator;
 
 	res.assert = assert(res);
+	res.schema = 'isArrayOf(' + schema(validator) + ')';
 
 	return res;
 }

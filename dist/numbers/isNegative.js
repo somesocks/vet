@@ -14,4 +14,5 @@ var isNegative = function isNegative(val) {
     return isNumber_1.default(val) && val < 0;
 };
 isNegative.assert = assert_1.default(isNegative);
+isNegative.schema = 'isNegative';
 module.exports = isNegative;

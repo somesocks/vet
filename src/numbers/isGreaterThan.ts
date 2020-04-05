@@ -19,6 +19,7 @@ function isGreaterThan(bound : number) : ExtendedValidator {
 	} as ExtendedValidator;
 
 	res.assert = assert(res);
+	res.schema = 'isNumberGreaterThan(' + bound + ')';
 
 	return res;
 }
@@ -35,6 +36,7 @@ isGreaterThan.exclusive = function exclusive(bound : number) : ExtendedValidator
 	} as ExtendedValidator;
 
 	res.assert = assert(res);
+	res.schema = 'isNumberGreaterThan.exclusive(' + bound + ')';
 
 	return res;
 };
@@ -51,6 +53,7 @@ isGreaterThan.inclusive = function inclusive(bound : number) : ExtendedValidator
 	} as ExtendedValidator;
 
 	res.assert = assert(res);
+	res.schema = 'isNumberGreaterThan.inclusive(' + bound + ')';
 
 	return res;
 };

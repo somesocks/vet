@@ -26,5 +26,6 @@ const isValidDate : ExtendedValidator = function isValidDate(val) {
 } as ExtendedValidator;
 
 isValidDate.assert = assert(isValidDate);
+isValidDate.schema = 'isValidDate';
 
 export = isValidDate;

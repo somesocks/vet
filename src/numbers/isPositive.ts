@@ -17,5 +17,6 @@ const isPositive : ExtendedValidator =
 	function isPositive(val) { return isNumber(val) && val > 0; } as ExtendedValidator;
 
 isPositive.assert = assert(isPositive);
+isPositive.schema = 'isPositive';
 
 export = isPositive;

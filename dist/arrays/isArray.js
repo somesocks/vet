@@ -26,5 +26,6 @@ var isArray = Array.isArray ?
     function isArray(val) {
         return Object.prototype.toString.call(val) === '[object Array]';
     };
+isArray.schema = 'isArray';
 isArray.assert = assert_1.default(isArray);
 module.exports = isArray;

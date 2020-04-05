@@ -24,5 +24,6 @@ const isFunction : ExtendedValidator =
 	function isFunction(val) { return typeof val === 'function'; } as ExtendedValidator;
 
 isFunction.assert = assert(isFunction);
+isFunction.schema = 'isFunction';
 
 export = isFunction;
