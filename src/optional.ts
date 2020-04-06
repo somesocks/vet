@@ -30,7 +30,12 @@ function optional(validator : Validator) : ExtendedValidator {
 		return val == null || validator(val);
 	} as ExtendedValidator;
 
-	res.assert = assert(res);
+	res.assert = function (val) {
+		if (val != null) {
+			assert(validator)(val);
+		}
+	}
+
 	res.schema = 'optional(' + schema(validator) + ')';
 
 	return res;

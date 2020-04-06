@@ -27,7 +27,11 @@ function optional(validator) {
     var res = function (val) {
         return val == null || validator(val);
     };
-    res.assert = assert_1.default(res);
+    res.assert = function (val) {
+        if (val != null) {
+            assert_1.default(validator)(val);
+        }
+    };
     res.schema = 'optional(' + schema_1.default(validator) + ')';
     return res;
 }
