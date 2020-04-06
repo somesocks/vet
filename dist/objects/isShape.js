@@ -27,6 +27,28 @@ function _isShape(schema, object) {
         return object === schema;
     }
 }
+function _assertIsShape(schema, val) {
+    if (isFunction_1.default(schema)) {
+        assert_1.default(schema(val), function () { return 'property with schema (' + schema_1.default(val) + ') does not match (' + schema_1.default(schema) + ')'; });
+    }
+    else if (isObject_1.default(schema)) {
+        assert_1.default(isObject_1.default(val), function () { return 'property with schema (' + schema_1.default(val) + ') does not match (' + schema_1.default(isObject_1.default) + ')'; });
+        for (var key in schema) {
+            var s = schema[key];
+            var o = val[key];
+            try {
+                _assertIsShape(s, o);
+            }
+            catch (e) {
+                e.message = '.' + key + ' ' + e.message;
+                throw e;
+            }
+        }
+    }
+    else {
+        assert_1.default(val === schema, function () { return 'property with schema (' + schema_1.default(val) + ') does not match (' + schema_1.default(schema) + ')'; });
+    }
+}
 function _isShapeExact(schema, object) {
     if (isFunction_1.default(schema)) {
         return schema(object);
@@ -98,7 +120,7 @@ function _isShapeExact(schema, object) {
 */
 function isShape(schema) {
     var res = _isShape.bind(undefined, schema);
-    res.assert = assert_1.default(res);
+    res.assert = _assertIsShape.bind(undefined, schema);
     res.schema = 'isShape(' + schema_1.default(schema) + ')';
     return res;
 }

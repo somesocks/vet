@@ -29,6 +29,37 @@ function _isShape(schema, object) {
 	}
 }
 
+function _assertIsShape(schema, val) {
+	if (isFunction(schema)) {
+		assert(
+			schema(val),
+			() => 'property with schema (' + schemaString(val) + ') does not match (' + schemaString(schema) + ')'
+		);
+	} else if (isObject(schema)) {
+		assert(
+			isObject(val),
+			() => 'property with schema (' + schemaString(val) + ') does not match (' + schemaString(isObject) + ')'
+		);
+
+		for(const key in schema) {
+			const s = schema[key];
+			const o = val[key];
+			try {
+				_assertIsShape(s, o);
+			} catch (e) {
+				e.message = '.' + key + ' ' + e.message;
+				throw e;
+			}
+		}
+
+	} else {
+		assert(
+			val === schema,
+			() => 'property with schema (' + schemaString(val) + ') does not match (' + schemaString(schema) + ')'
+		);
+	}
+}
+
 function _isShapeExact (schema, object) {
 	if (isFunction(schema)) {
 		return schema(object);
@@ -96,7 +127,7 @@ function _isShapeExact (schema, object) {
 */
 function isShape(schema) : ExtendedValidator {
 	const res = _isShape.bind(undefined, schema) as ExtendedValidator;
-	res.assert = assert(res);
+	res.assert = _assertIsShape.bind(undefined, schema);
 	res.schema = 'isShape('+ schemaString(schema) + ')';
 	return res;
 }
