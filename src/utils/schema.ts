@@ -30,6 +30,18 @@ const schema = (val ?: any, seen ?: any[]) => {
 				}
 				str += ']';
 				return str;
+			} else if (
+				val.__proto__ != null
+				&& (typeof val.__proto__.name === 'string')
+				&& val.__proto__.name !== 'Object'
+			) {
+				return val.__proto__.name + '()';
+			} else if (
+				val.constructor != null
+				&& (typeof val.constructor.name === 'string')
+				&& val.constructor.name !== 'Object'
+			) {
+				return val.constructor.name + '()';
 			} else {
 				seen = seen || []; seen.push(val);
 				let str = '{ ';
