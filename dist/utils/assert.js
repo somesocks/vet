@@ -26,6 +26,10 @@ function isFunction(val) { return typeof val === 'function'; }
 */
 function assert(validator, message) {
     if (isFunction(validator)) {
+        // defer to existing assertion on the validator
+        if (isFunction(validator.assert)) {
+            return validator.assert;
+        }
         message = messageBuilder.apply(this, arguments);
         return function () {
             var args = [];

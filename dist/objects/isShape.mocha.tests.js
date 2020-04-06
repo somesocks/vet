@@ -7,6 +7,7 @@ var isString_1 = __importDefault(require("../strings/isString"));
 var isNumber_1 = __importDefault(require("../numbers/isNumber"));
 var isBoolean_1 = __importDefault(require("../booleans/isBoolean"));
 var optional_1 = __importDefault(require("../optional"));
+var isAllOf_1 = __importDefault(require("../isAllOf"));
 var isShape_1 = __importDefault(require("./isShape"));
 var TESTS = [
     {
@@ -105,6 +106,15 @@ var FAIL = [
         },
         expected: false,
     },
+    {
+        input: {
+            name: 'Test User',
+            age: 9,
+            verified: true,
+            extras: {},
+        },
+        expected: false,
+    },
     { input: '', expected: false },
     { input: 'a string', expected: false },
     { input: {}, expected: false },
@@ -120,9 +130,10 @@ var FAIL = [
 describe('vet/objects/isShape', function () {
     var validator = isShape_1.default({
         name: isString_1.default,
-        age: isNumber_1.default,
+        age: isAllOf_1.default(isNumber_1.default, function isOverNine(val) { return val > 9; }),
         verified: isBoolean_1.default,
         optional: optional_1.default(isBoolean_1.default),
+        optional2: optional_1.default
     });
     // console.log('validator schema', validator.schema);
     TESTS.forEach(function (test) {

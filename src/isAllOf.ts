@@ -42,7 +42,22 @@ function isAllOf (...args : any[]) : ExtendedValidator {
 		return true;
 	} as ExtendedValidator;
 
-	res.assert = assert(res);
+	res.assert = function _assert(val) {
+		for (let i = 0; i < validators.length; i++) {
+			const validator = validators[i];
+			if (typeof validator === 'function') {
+				if (typeof validator.assert === 'function') {
+					validator.assert(val);
+				} else {
+					assert(validator)(val);
+				}
+			} else {
+				assert(val === validator);
+			}
+		}
+
+		return;
+	};
 
 	let s = 'isAllOf(';
 	for (let i = 0; i < validators.length; i++) {

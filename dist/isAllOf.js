@@ -41,7 +41,23 @@ function isAllOf() {
         }
         return true;
     };
-    res.assert = assert_1.default(res);
+    res.assert = function _assert(val) {
+        for (var i = 0; i < validators.length; i++) {
+            var validator = validators[i];
+            if (typeof validator === 'function') {
+                if (typeof validator.assert === 'function') {
+                    validator.assert(val);
+                }
+                else {
+                    assert_1.default(validator)(val);
+                }
+            }
+            else {
+                assert_1.default(val === validator);
+            }
+        }
+        return;
+    };
     var s = 'isAllOf(';
     for (var i = 0; i < validators.length; i++) {
         s += schema_1.default(validators[i]) + ', ';

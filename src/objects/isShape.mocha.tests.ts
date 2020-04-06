@@ -4,6 +4,7 @@ import isString from '../strings/isString';
 import isNumber from '../numbers/isNumber';
 import isBoolean from '../booleans/isBoolean';
 import optional from '../optional';
+import isAllOf from '../isAllOf';
 import isShape from './isShape';
 
 const TESTS = [
@@ -125,6 +126,16 @@ const FAIL = [
 		expected: false,
 	},
 
+	{
+		input: {
+			name: 'Test User',
+			age: 9,
+			verified: true,
+			extras: {},
+		},
+
+		expected: false,
+	},
 
 	{ input: '', expected: false },
 	{ input: 'a string', expected: false },
@@ -142,9 +153,13 @@ const FAIL = [
 describe('vet/objects/isShape', () => {
 	const validator = isShape({
 		name: isString,
-		age: isNumber,
+		age: isAllOf(
+			isNumber,
+			function isOverNine(val) { return val > 9; }
+		),
 		verified: isBoolean,
 		optional: optional(isBoolean),
+		optional2: optional
 	});
 
 	// console.log('validator schema', validator.schema);
