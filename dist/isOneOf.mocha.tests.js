@@ -4,6 +4,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var isOneOf_1 = __importDefault(require("./isOneOf"));
+var isAllOf_1 = __importDefault(require("./isAllOf"));
+var isString_1 = __importDefault(require("./strings/isString"));
+var isNumber_1 = __importDefault(require("./numbers/isNumber"));
+var isShape_1 = __importDefault(require("./objects/isShape"));
 var TESTS = [
     { input: true, expected: true },
     { input: '', expected: true },
@@ -33,3 +37,12 @@ validator.assert(a);
 var b = a;
 b = '';
 b = true;
+var isPersonReference = isOneOf_1.default(isString_1.default, isShape_1.default({ name: isString_1.default }));
+var isPerson = isAllOf_1.default(isPersonReference, isShape_1.default({ age: isNumber_1.default }));
+var c = {};
+if (isPersonReference(c)) {
+    var d = c;
+}
+if (isPerson(c)) {
+    var d = c;
+}

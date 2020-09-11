@@ -1,6 +1,7 @@
 
 
 import isOneOf from './isOneOf';
+import isAllOf from './isAllOf';
 import isString from './strings/isString';
 import isNumber from './numbers/isNumber';
 import isShape from './objects/isShape';
@@ -55,3 +56,14 @@ validator.assert(a);
 let b = a;
 b = '';
 b = true;
+
+let isPersonReference = isOneOf(isString, isShape({ name: isString }));
+let isPerson = isAllOf(isPersonReference, isShape({ age: isNumber }));
+
+let c = {};
+if (isPersonReference(c)) {
+  let d = c;
+}
+if (isPerson(c)) {
+  let d = c;
+}

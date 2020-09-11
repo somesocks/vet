@@ -1,7 +1,15 @@
 import ExtendedValidator from './types/ExtendedValidator';
 import ValidatorType from './types/ValidatorType';
+declare type BoxedValidatorTypes<T extends any[]> = {
+    [P in keyof T]: {
+        _box: ValidatorType<T[P]>;
+    };
+}[Exclude<keyof T, keyof any[]>];
 declare type UnionToIntersection<U> = (U extends any ? (k: U) => void : never) extends ((k: infer I) => void) ? I : never;
-declare type IsAllOfType<T extends any[]> = UnionToIntersection<ValidatorType<T[number]>>;
+declare type UnboxIntersection<T> = T extends {
+    _box: infer U;
+} ? U : never;
+declare type IsAllOfType<T extends any[]> = UnboxIntersection<UnionToIntersection<BoxedValidatorTypes<T>>>;
 declare type IsAllOfValidator<T extends any[]> = ExtendedValidator<IsAllOfType<T>>;
 /**
 * Constructs a function that checks equality against any number of arguments

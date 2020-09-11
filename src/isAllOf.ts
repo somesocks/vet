@@ -10,10 +10,15 @@ import schema from './utils/schema';
 
 function isFunction(val) { return typeof val === 'function'; }
 
-type UnionToIntersection<U> =
-  (U extends any ? (k : U) => void : never) extends ((k : infer I) => void) ? I : never
+type BoxedValidatorTypes<T extends any[]> = {
+  [P in keyof T] : { _box : ValidatorType<T[P]> }
+} [Exclude<keyof T, keyof any[]>];
 
-type IsAllOfType<T extends any[]> = UnionToIntersection<ValidatorType<T[number]>>;
+type UnionToIntersection<U> = (U extends any ? (k : U) => void : never) extends ((k : infer I) => void) ? I : never;
+
+type UnboxIntersection<T> = T extends { _box : infer U } ? U : never;
+
+type IsAllOfType<T extends any[]> = UnboxIntersection<UnionToIntersection<BoxedValidatorTypes<T>>>
 
 type IsAllOfValidator<T extends any[]> = ExtendedValidator<IsAllOfType<T>>;
 
