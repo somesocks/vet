@@ -4,6 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var isObjectOf_1 = __importDefault(require("./isObjectOf"));
+var isNumber_1 = __importDefault(require("../numbers/isNumber"));
 var TESTS = [
     { input: { a: 'a string' }, expected: true },
     { input: { a: '' }, expected: true },
@@ -34,3 +35,9 @@ describe('vet/objects/isObjectOf', function () {
         it("(" + test.input + ")-->(" + test.expected + ")", function (done) { return done(validator(test.input) === test.expected ? null : new Error()); });
     });
 });
+// compile time check for isObjectOf
+var _isObjectOfNumbers = isObjectOf_1.default(isNumber_1.default);
+var isObjectOfNumbers = _isObjectOfNumbers;
+var a = {};
+isObjectOfNumbers.assert(a);
+a.foo = 2;

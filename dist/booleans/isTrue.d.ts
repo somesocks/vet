@@ -14,5 +14,5 @@ import ExtendedValidator from '../types/ExtendedValidator';
 * isTrue(true); // returns true
 * ```
 */
-declare const isTrue: ExtendedValidator;
+declare const isTrue: ExtendedValidator<true>;
 export = isTrue;

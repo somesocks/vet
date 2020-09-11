@@ -2,11 +2,20 @@
 import Assertion from './types/Assertion';
 import Validator from './types/Validator';
 import ExtendedValidator from './types/ExtendedValidator';
+import ValidatorType from './types/ValidatorType';
+
 
 import assert from './utils/assert';
 import schema from './utils/schema';
 
 function isFunction(val) { return typeof val === 'function'; }
+
+type UnionToIntersection<U> =
+  (U extends any ? (k : U) => void : never) extends ((k : infer I) => void) ? I : never
+
+type IsAllOfType<T extends any[]> = UnionToIntersection<ValidatorType<T[number]>>;
+
+type IsAllOfValidator<T extends any[]> = ExtendedValidator<IsAllOfType<T>>;
 
 /**
 * Constructs a function that checks equality against any number of arguments
@@ -26,7 +35,7 @@ function isFunction(val) { return typeof val === 'function'; }
 * check(1); // returns true
 * ```
 */
-function isAllOf (...args : any[]) : ExtendedValidator {
+function isAllOf<T extends any[]>(...args : T) : IsAllOfValidator<T> {
 	const validators = arguments;
 
 	const res : ExtendedValidator = function (val) {

@@ -11,7 +11,7 @@ import assert from '../utils/assert';
 * @returns true if val is an empty string
 * @memberof vet.strings
 */
-const isEmpty : ExtendedValidator =
+const isEmpty : ExtendedValidator<''> =
 	function isEmpty(val) { return val === ''; } as ExtendedValidator;
 
 isEmpty.assert = assert(isEmpty);

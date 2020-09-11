@@ -1,6 +1,7 @@
 
 
 import isObjectOf from './isObjectOf';
+import isNumber from '../numbers/isNumber';
 
 const TESTS = [
 	{ input: { a: 'a string' }, expected: true },
@@ -28,7 +29,6 @@ const TESTS = [
 	{ input: false, expected: false },
 ];
 
-
 describe('vet/objects/isObjectOf', () => {
 
 	const validator = isObjectOf((val) => val != null);
@@ -42,3 +42,11 @@ describe('vet/objects/isObjectOf', () => {
 		);
 	});
 });
+
+
+// compile time check for isObjectOf
+const _isObjectOfNumbers = isObjectOf(isNumber);
+const isObjectOfNumbers : typeof _isObjectOfNumbers = _isObjectOfNumbers;
+let a = {} ;
+isObjectOfNumbers.assert(a);
+a.foo = 2;

@@ -2,11 +2,15 @@
 import Assertion from '../types/Assertion';
 import Validator from '../types/Validator';
 import ExtendedValidator from '../types/ExtendedValidator';
+import ValidatorType from '../types/ValidatorType';
 
 import assert from '../utils/assert';
 import schema from '../utils/schema';
 
 import isArray from './isArray';
+
+// type IsArrayOfType<T> = ;
+type IsArrayOfValidator<T> = ExtendedValidator<ValidatorType<T>[]>;
 
 /**
 * Builds an array validator that checks the children of the array
@@ -28,7 +32,7 @@ import isArray from './isArray';
 * isStringArray([ '1', '2', '3' ]); // returns true
 * ```
 */
-function isArrayOf(validator) : ExtendedValidator {
+function isArrayOf<T extends Function>(validator : T) : IsArrayOfValidator<T> {
 	const res : ExtendedValidator = function(arr) {
 		if (!isArray(arr)) { return false; }
 

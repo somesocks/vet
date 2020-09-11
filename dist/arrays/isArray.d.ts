@@ -15,5 +15,5 @@ import ExtendedValidator from '../types/ExtendedValidator';
 * isArray([]); // returns true
 * ```
 */
-declare const isArray: ExtendedValidator;
+declare const isArray: ExtendedValidator<any[]>;
 export = isArray;

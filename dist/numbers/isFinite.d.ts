@@ -5,5 +5,5 @@ import ExtendedValidator from '../types/ExtendedValidator';
 * @returns true if the value is a finite number
 * @memberof vet.numbers
 */
-declare const isFinite: ExtendedValidator;
+declare const isFinite: ExtendedValidator<number>;
 export = isFinite;

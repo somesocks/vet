@@ -27,3 +27,9 @@ describe('vet/strings/isEmpty', () => {
 		);
 	});
 });
+
+// typescript compile-time check
+let a = "";
+isEmpty.assert(a);
+a = '';
+a = 'foo';

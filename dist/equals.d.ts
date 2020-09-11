@@ -16,5 +16,5 @@ import ExtendedValidator from './types/ExtendedValidator';
 * is3(3); // returns true
 * ```
 */
-declare function equals(eq: any): ExtendedValidator;
+declare function equals<T>(eq: T): ExtendedValidator<T>;
 export = equals;

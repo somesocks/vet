@@ -20,7 +20,7 @@ import assert from './utils/assert';
 * isNullOrUndefined(null); // returns true
 * ```
 */
-const isNullOrUndefined : ExtendedValidator = function isNullOrUndefined(val) {
+const isNullOrUndefined : ExtendedValidator<null | undefined> = function isNullOrUndefined(val) {
 	return val == null;
 } as ExtendedValidator;
 

@@ -8,6 +8,7 @@ var isNumber_1 = __importDefault(require("../numbers/isNumber"));
 var isBoolean_1 = __importDefault(require("../booleans/isBoolean"));
 var optional_1 = __importDefault(require("../optional"));
 var isAllOf_1 = __importDefault(require("../isAllOf"));
+var isOneOf_1 = __importDefault(require("../isOneOf"));
 var isShape_1 = __importDefault(require("./isShape"));
 var TESTS = [
     {
@@ -127,14 +128,15 @@ var FAIL = [
     { input: false, expected: false },
     { input: true, expected: false },
 ];
+var _validator = isShape_1.default({
+    name: isString_1.default,
+    age: isAllOf_1.default(isNumber_1.default, function isOverNine(val) { return val > 9; }),
+    verified: isBoolean_1.default,
+    optional: optional_1.default(isBoolean_1.default),
+    optional2: optional_1.default(isOneOf_1.default(isString_1.default, isNumber_1.default)),
+});
+var validator = _validator;
 describe('vet/objects/isShape', function () {
-    var validator = isShape_1.default({
-        name: isString_1.default,
-        age: isAllOf_1.default(isNumber_1.default, function isOverNine(val) { return val > 9; }),
-        verified: isBoolean_1.default,
-        optional: optional_1.default(isBoolean_1.default),
-        optional2: optional_1.default
-    });
     // console.log('validator schema', validator.schema);
     TESTS.forEach(function (test) {
         it("(" + test.input + ")-->(" + test.expected + ")", function (done) { return done(validator(test.input) === test.expected ? null : new Error()); });
@@ -158,3 +160,23 @@ describe('vet/objects/isShape', function () {
         it("assert (" + test.input + ") should fail", function (done) { return done(validator2(test.input) ? null : new Error()); });
     });
 });
+// compile time check for isShape
+var _isPerson = isShape_1.default({
+    name: isString_1.default,
+    age: isNumber_1.default,
+    contact: {
+        email: isString_1.default,
+        phone: isString_1.default,
+    },
+});
+var isPerson = _isPerson;
+var a = {
+    name: 'bob',
+    age: 20,
+    contact: {
+        email: '',
+        phone: '',
+    },
+};
+isPerson.assert(a);
+a.age = 2;

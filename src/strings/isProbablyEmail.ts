@@ -16,7 +16,7 @@ const REGEX = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\
 * @returns true if val is probably a valid email
 * @memberof vet.strings
 */
-const isProbablyEmail : ExtendedValidator = function isProbablyEmail(val) {
+const isProbablyEmail : ExtendedValidator<string> = function isProbablyEmail(val) {
 	REGEX.lastIndex = 0;
 	return isString(val) && REGEX.test(val);
 } as ExtendedValidator;

@@ -14,7 +14,7 @@ import isString from './isString';
 * @returns a function that takes in a value val, and returns true if val is a string of length len
 * @memberof vet.strings
 */
-function isLength(len) : ExtendedValidator {
+function isLength(len : number) : ExtendedValidator<string> {
 	const res = function(val) {
 		return isString(val) && val.length === len;
 	} as ExtendedValidator;

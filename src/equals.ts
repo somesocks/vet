@@ -23,7 +23,7 @@ import schema from './utils/schema';
 * is3(3); // returns true
 * ```
 */
-function equals(eq : any) : ExtendedValidator {
+function equals<T>(eq : T) : ExtendedValidator<T> {
 	const validator : ExtendedValidator = function (val) { return val === eq; } as ExtendedValidator;
 	validator.assert = assert(validator);
 	validator.schema = 'equals(' + schema(eq) + ')';

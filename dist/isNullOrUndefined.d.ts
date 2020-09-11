@@ -14,5 +14,5 @@ import ExtendedValidator from './types/ExtendedValidator';
 * isNullOrUndefined(null); // returns true
 * ```
 */
-declare const isNullOrUndefined: ExtendedValidator;
+declare const isNullOrUndefined: ExtendedValidator<null | undefined>;
 export = isNullOrUndefined;

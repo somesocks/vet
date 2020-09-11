@@ -22,3 +22,8 @@ describe('vet/strings/isEmpty', function () {
         it("(" + test.input + ")-->(" + test.expected + ")", function (done) { return done(isEmpty_1.default(test.input) === test.expected ? null : new Error()); });
     });
 });
+// typescript compile-time check
+var a = "";
+isEmpty_1.default.assert(a);
+a = '';
+a = 'foo';

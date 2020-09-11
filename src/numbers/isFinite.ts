@@ -12,7 +12,7 @@ import assert from '../utils/assert';
 * @returns true if the value is a finite number
 * @memberof vet.numbers
 */
-const isFinite : ExtendedValidator = function isFinite(value) {
+const isFinite : ExtendedValidator<number> = function isFinite(value) {
 	// 1. If Type(number) is not Number, return false.
 	if (typeof value !== 'number') {
 		return false;

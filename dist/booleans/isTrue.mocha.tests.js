@@ -21,3 +21,7 @@ describe('vet/booleans/isTrue', function () {
         it("(" + test.input + ")-->(" + test.expected + ")", function (done) { return done(isTrue_1.default(test.input) === test.expected ? null : new Error()); });
     });
 });
+// typescript check
+var a = true;
+isTrue_1.default.assert(a);
+var b = a;

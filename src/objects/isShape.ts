@@ -13,8 +13,10 @@ import isObject from './isObject';
 
 function _isShape(schema, object) {
 	if (isFunction(schema)) {
+    let a = schema;
 		return schema(object);
 	} else if (isObject(schema)) {
+    let a = schema;
 		if (!isObject(object)) { return false; }
 
 		for(const key in schema) {
@@ -84,6 +86,16 @@ function _isShapeExact (schema, object) {
 	}
 }
 
+
+type _schemaExtractor<T> = T extends Validator<infer U> ? U :
+  (T extends Function ? any :
+    ( T extends object ? SchemaValidator<T> : T)
+  );
+
+type SchemaValidator<T extends object> = {
+  [key in keyof T] : _schemaExtractor<T[key]>
+}
+
 /**
 * Builds a function to check an object against a schema object
 *
@@ -125,7 +137,7 @@ function _isShapeExact (schema, object) {
 * isPerson({ name: 'John Doe', age: 12, alive: true });
 * ```
 */
-function isShape(schema) : ExtendedValidator {
+function isShape<V extends object>(schema : V) : ExtendedValidator<SchemaValidator<V>> {
 	const res = _isShape.bind(undefined, schema) as ExtendedValidator;
 	res.assert = _assertIsShape.bind(undefined, schema);
 	res.schema = 'isShape('+ schemaString(schema) + ')';
@@ -167,7 +179,7 @@ function isShape(schema) : ExtendedValidator {
 * isPerson({ name: 'John Doe', age: 12, alive: true });
 * ```
 */
-isShape.exact = function isShapeExact(schema) : ExtendedValidator {
+isShape.exact = function isShapeExact(schema) : ExtendedValidator<SchemaValidator<typeof schema>> {
 	const res = _isShapeExact.bind(undefined, schema) as ExtendedValidator;
 	res.assert = assert(res);
 	res.schema = 'isShape.exact('+ schemaString(schema) + ')';

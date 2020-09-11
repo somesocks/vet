@@ -1,4 +1,4 @@
-declare type Assertion = {
-    (this: any, ...args: any[]): void;
+declare type Assertion<T = any> = {
+    (val: any): asserts val is T;
 };
 export default Assertion;

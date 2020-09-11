@@ -30,8 +30,9 @@ var SHOULD_FAIL = [
     { input: [], expected: false },
     { input: /a/, expected: false },
 ];
+var _validator = optional_1.default(function isString(val) { return typeof val === 'string' || val instanceof String; });
+var validator = _validator;
 describe('vet/optional', function () {
-    var validator = optional_1.default(function isString(val) { return typeof val === 'string' || val instanceof String; });
     TESTS.forEach(function (test) {
         it("(" + test.input + ")-->(" + test.expected + ")", function (done) { return done(validator(test.input) === test.expected ? null : new Error()); });
     });

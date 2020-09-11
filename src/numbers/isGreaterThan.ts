@@ -13,7 +13,7 @@ import isNumber from './isNumber';
 * @returns {function} - a validator function
 * @memberof vet.numbers
 */
-function isGreaterThan(bound : number) : ExtendedValidator {
+function isGreaterThan(bound : number) : ExtendedValidator<number> {
 	const res : ExtendedValidator = function (val) {
 		return isNumber(val) && val > bound;
 	} as ExtendedValidator;
@@ -30,7 +30,7 @@ function isGreaterThan(bound : number) : ExtendedValidator {
 * @returns {function} - a validator function
 * @memberof vet.numbers.isGreaterThan
 */
-isGreaterThan.exclusive = function exclusive(bound : number) : ExtendedValidator {
+isGreaterThan.exclusive = function exclusive(bound : number) : ExtendedValidator<number> {
 	const res : ExtendedValidator = function (val) {
 		return isNumber(val) && val > bound;
 	} as ExtendedValidator;
@@ -47,7 +47,7 @@ isGreaterThan.exclusive = function exclusive(bound : number) : ExtendedValidator
 * @returns {function} - a validator function
 * @memberof vet.numbers.isGreaterThan
 */
-isGreaterThan.inclusive = function inclusive(bound : number) : ExtendedValidator {
+isGreaterThan.inclusive = function inclusive(bound : number) : ExtendedValidator<number> {
 	const res : ExtendedValidator = function (val) {
 		return isNumber(val) && val >= bound;
 	} as ExtendedValidator;

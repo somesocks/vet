@@ -1,4 +1,9 @@
+import Validator from '../types/Validator';
 import ExtendedValidator from '../types/ExtendedValidator';
+declare type _schemaExtractor<T> = T extends Validator<infer U> ? U : (T extends Function ? any : (T extends object ? SchemaValidator<T> : T));
+declare type SchemaValidator<T extends object> = {
+    [key in keyof T]: _schemaExtractor<T[key]>;
+};
 /**
 * Builds a function to check an object against a schema object
 *
@@ -40,8 +45,8 @@ import ExtendedValidator from '../types/ExtendedValidator';
 * isPerson({ name: 'John Doe', age: 12, alive: true });
 * ```
 */
-declare function isShape(schema: any): ExtendedValidator;
+declare function isShape<V extends object>(schema: V): ExtendedValidator<SchemaValidator<V>>;
 declare namespace isShape {
-    var exact: (schema: any) => ExtendedValidator;
+    var exact: (schema: any) => ExtendedValidator<SchemaValidator<any>>;
 }
 export = isShape;

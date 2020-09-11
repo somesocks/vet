@@ -1,4 +1,4 @@
-declare type Validator = {
-    (this: any, ...args: any[]): boolean;
+declare type TypedValidator<T = any> = {
+    (val: any, ...rest: any[]): val is T;
 };
-export default Validator;
+export default TypedValidator;

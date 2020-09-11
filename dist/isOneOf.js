@@ -4,7 +4,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 var assert_1 = __importDefault(require("./utils/assert"));
 var schema_1 = __importDefault(require("./utils/schema"));
-function isFunction(val) { return typeof val === 'function'; }
 /**
 * Constructs a function that checks equality against any number of arguments
 * @param {...*} eq - values to check equality against

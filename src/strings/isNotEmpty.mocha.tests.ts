@@ -27,3 +27,10 @@ describe('vet/strings/isNotEmpty', () => {
 		);
 	});
 });
+
+// typescript compile-time check
+let a = "foo";
+isNotEmpty.assert(a);
+a = '';
+a = 'foo';
+// a = 1;

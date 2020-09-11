@@ -27,3 +27,8 @@ describe('vet/booleans/isTrue', () => {
 		);
 	});
 });
+
+// typescript check
+let a = true;
+isTrue.assert(a);
+let b = a;

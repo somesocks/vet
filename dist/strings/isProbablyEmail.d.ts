@@ -5,5 +5,5 @@ import ExtendedValidator from '../types/ExtendedValidator';
 * @returns true if val is probably a valid email
 * @memberof vet.strings
 */
-declare const isProbablyEmail: ExtendedValidator;
+declare const isProbablyEmail: ExtendedValidator<string>;
 export = isProbablyEmail;

@@ -5,5 +5,5 @@ import ExtendedValidator from '../types/ExtendedValidator';
 * @returns true if val is probably a valid base64 string
 * @memberof vet.strings
 */
-declare const isProbablyBase64: ExtendedValidator;
+declare const isProbablyBase64: ExtendedValidator<string>;
 export = isProbablyBase64;

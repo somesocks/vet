@@ -1,4 +1,6 @@
 import ExtendedValidator from '../types/ExtendedValidator';
+import ValidatorType from '../types/ValidatorType';
+declare type IsArrayOfValidator<T> = ExtendedValidator<ValidatorType<T>[]>;
 /**
 * Builds an array validator that checks the children of the array
 * @param val - the validator function run against the array children
@@ -19,5 +21,5 @@ import ExtendedValidator from '../types/ExtendedValidator';
 * isStringArray([ '1', '2', '3' ]); // returns true
 * ```
 */
-declare function isArrayOf(validator: any): ExtendedValidator;
+declare function isArrayOf<T extends Function>(validator: T): IsArrayOfValidator<T>;
 export = isArrayOf;

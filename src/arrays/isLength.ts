@@ -25,7 +25,7 @@ import isArray from './isArray';
 * isLength3([ '1', '2', '3' ]); // returns true
 * ```
 */
-function isLength(len) : ExtendedValidator {
+function isLength(len) : ExtendedValidator<any[]> {
 	const res : ExtendedValidator = function (val) {
 		return isArray(val) && val.length === len;
 	} as ExtendedValidator;

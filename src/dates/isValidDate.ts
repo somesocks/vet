@@ -21,7 +21,7 @@ import assert from '../utils/assert';
 * isValidDate(new Date()); // returns true
 * ```
 */
-const isValidDate : ExtendedValidator = function isValidDate(val) {
+const isValidDate : ExtendedValidator<Date> = function isValidDate(val) {
 	return (val instanceof Date) && (!isNaN(val.getTime()));
 } as ExtendedValidator;
 

@@ -1,6 +1,7 @@
 
 
 import optional from './optional';
+import { Validator } from './types';
 
 const TESTS = [
 	{ input: 'a string', expected: true },
@@ -32,11 +33,13 @@ const SHOULD_FAIL = [
 	{ input: /a/, expected: false },
 ];
 
-describe('vet/optional', () => {
 
-	const validator = optional(
-		function isString(val) { return typeof val === 'string' || val instanceof String; }
-	);
+const _validator = optional(
+	function isString(val) { return typeof val === 'string' || val instanceof String; } as Validator<string>
+);
+const validator : typeof _validator = _validator;
+
+describe('vet/optional', () => {
 
 	TESTS.forEach((test) => {
 		it(

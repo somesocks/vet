@@ -5,6 +5,7 @@ import isNumber from '../numbers/isNumber';
 import isBoolean from '../booleans/isBoolean';
 import optional from '../optional';
 import isAllOf from '../isAllOf';
+import isOneOf from '../isOneOf';
 import isShape from './isShape';
 
 const TESTS = [
@@ -150,17 +151,20 @@ const FAIL = [
 	{ input: true, expected: false },
 ];
 
+const _validator = isShape({
+  name: isString,
+  age: isAllOf(
+    isNumber,
+    function isOverNine(val) { return val > 9; }
+  ),
+  verified: isBoolean,
+  optional: optional(isBoolean),
+  optional2: optional(isOneOf(isString, isNumber)),
+});
+
+const validator : typeof _validator = _validator;
+
 describe('vet/objects/isShape', () => {
-	const validator = isShape({
-		name: isString,
-		age: isAllOf(
-			isNumber,
-			function isOverNine(val) { return val > 9; }
-		),
-		verified: isBoolean,
-		optional: optional(isBoolean),
-		optional2: optional
-	});
 
 	// console.log('validator schema', validator.schema);
 
@@ -196,3 +200,25 @@ describe('vet/objects/isShape', () => {
 
 
 });
+
+
+// compile time check for isShape
+const _isPerson = isShape({
+  name: isString,
+  age: isNumber,
+  contact: {
+    email: isString,
+    phone: isString,
+  },
+});
+const isPerson : typeof _isPerson = _isPerson;
+let a = {
+  name: 'bob',
+  age: 20,
+  contact: {
+    email: '',
+    phone: '',
+  },
+} ;
+isPerson.assert(a);
+a.age = 2;

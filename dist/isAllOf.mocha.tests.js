@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var isAllOf_1 = __importDefault(require("./isAllOf"));
 var isShape_1 = __importDefault(require("./objects/isShape"));
 var isString_1 = __importDefault(require("./strings/isString"));
+var isNotEmpty_1 = __importDefault(require("./strings/isNotEmpty"));
 var TESTS = [
     { input: 'a string', expected: true },
     { input: true, expected: false },
@@ -29,11 +30,14 @@ var SHOULD_FAIL = [
     { input: undefined, expected: false },
     { input: null, expected: false },
 ];
-var isPerson = isAllOf_1.default(isShape_1.default({
+var _isPerson = isAllOf_1.default(isShape_1.default({
     name: isString_1.default,
 }), isShape_1.default({
     email: isString_1.default,
 }));
+var isPerson = _isPerson;
+var _validator = isAllOf_1.default(isString_1.default, isNotEmpty_1.default);
+var validator = _validator;
 var SHOULD_PASS_2 = [
     { input: { name: 'foo', email: 'foo' }, expected: false },
 ];
@@ -42,7 +46,6 @@ var SHOULD_FAIL_2 = [
     { input: { email: 'bar' }, expected: false },
 ];
 describe('vet/isAllOf', function () {
-    var validator = isAllOf_1.default(function isString(val) { return typeof val === 'string' || val instanceof String; }, function isNonEmptyString(val) { return val.length > 0; });
     TESTS.forEach(function (test) {
         it("(" + test.input + ")-->(" + test.expected + ")", function (done) { return done(validator(test.input) === test.expected ? null : new Error()); });
     });
@@ -85,3 +88,12 @@ describe('vet/isAllOf', function () {
         it("assert (" + test.input + ") should fail", function (done) { return done(threwError(isPerson.assert)(test.input) ? null : new Error()); });
     });
 });
+// typescript check
+var a = {
+    name: 'bob',
+    email: 'bob@',
+};
+isPerson.assert(a);
+var b = a;
+b.name;
+b.email;

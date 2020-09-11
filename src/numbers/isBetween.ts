@@ -14,7 +14,7 @@ import isNumber from './isNumber';
 * @returns {function} - a validator function
 * @memberof vet.numbers
 */
-function isBetween(lower : number, upper : number) : ExtendedValidator {
+function isBetween(lower : number, upper : number) : ExtendedValidator<number> {
 	const res : ExtendedValidator = function (val) {
 		return isNumber(val) && val > lower && val < upper;
 	} as ExtendedValidator;
@@ -32,7 +32,7 @@ function isBetween(lower : number, upper : number) : ExtendedValidator {
 * @returns {function} - a validator function
 * @memberof vet.numbers.isBetween
 */
-isBetween.exclusive = function exclusive(lower : number, upper : number) : ExtendedValidator {
+isBetween.exclusive = function exclusive(lower : number, upper : number) : ExtendedValidator<number> {
 	const res : ExtendedValidator = function (val) {
 		return isNumber(val) && val > lower && val < upper;
 	} as ExtendedValidator;
@@ -51,7 +51,7 @@ isBetween.exclusive = function exclusive(lower : number, upper : number) : Exten
 * @returns {function} - a validator function
 * @memberof vet.numbers.isBetween
 */
-isBetween.inclusive = function inclusive(lower : number, upper : number) : ExtendedValidator {
+isBetween.inclusive = function inclusive(lower : number, upper : number) : ExtendedValidator<number> {
 	const res : ExtendedValidator = function (val) {
 		return isNumber(val) && val >= lower && val <= upper;
 	} as ExtendedValidator;

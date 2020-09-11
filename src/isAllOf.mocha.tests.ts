@@ -4,6 +4,7 @@ import isAllOf from './isAllOf';
 
 import isShape from './objects/isShape';
 import isString from './strings/isString';
+import isNotEmpty from './strings/isNotEmpty';
 
 const TESTS = [
 	{ input: 'a string', expected: true },
@@ -31,14 +32,22 @@ const SHOULD_FAIL = [
 	{ input: null, expected: false },
 ];
 
-const isPerson = isAllOf(
+const _isPerson = isAllOf(
 	isShape({
 		name: isString,
 	}),
 	isShape({
 		email: isString,
 	})
-)
+);
+const isPerson : typeof _isPerson = _isPerson;
+
+
+const _validator = isAllOf(
+  isString,
+  isNotEmpty
+);
+const validator : typeof _validator = _validator;
 
 const SHOULD_PASS_2 = [
 	{ input: { name: 'foo', email: 'foo' }, expected: false },
@@ -51,11 +60,6 @@ const SHOULD_FAIL_2 = [
 
 
 describe('vet/isAllOf', () => {
-
-	const validator = isAllOf(
-		function isString (val) { return typeof val === 'string' || val instanceof String; },
-		function isNonEmptyString (val) { return val.length > 0 }
-	);
 
 	TESTS.forEach((test) => {
 		it(
@@ -116,3 +120,16 @@ describe('vet/isAllOf', () => {
 	});
 
 });
+
+
+// typescript check
+let a = {
+  name: 'bob',
+  email: 'bob@',
+} as any;
+
+isPerson.assert(a);
+
+let b = a;
+b.name;
+b.email;

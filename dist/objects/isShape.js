@@ -8,9 +8,11 @@ var isFunction_1 = __importDefault(require("../functions/isFunction"));
 var isObject_1 = __importDefault(require("./isObject"));
 function _isShape(schema, object) {
     if (isFunction_1.default(schema)) {
+        var a = schema;
         return schema(object);
     }
     else if (isObject_1.default(schema)) {
+        var a = schema;
         if (!isObject_1.default(object)) {
             return false;
         }

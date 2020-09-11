@@ -1,6 +1,12 @@
 
 
 import isOneOf from './isOneOf';
+import isString from './strings/isString';
+import isNumber from './numbers/isNumber';
+import isShape from './objects/isShape';
+import isArrayOf from './arrays/isArrayOf';
+
+import { ValidatorType } from './types';
 
 const TESTS = [
 	{ input: true, expected: true },
@@ -16,10 +22,10 @@ const TESTS = [
 	{ input: null, expected: false },
 ];
 
+const _validator = isOneOf(true, '');
+const validator : typeof _validator = _validator;
 
 describe('vet/isOneOf', () => {
-
-	const validator = isOneOf(true, '');
 
 	TESTS.forEach((test) => {
 		it(
@@ -40,6 +46,12 @@ describe('vet/isOneOf', () => {
 			)
 		);
 	});
-
-
 });
+
+
+// typescript check
+let a = '' as any;
+validator.assert(a);
+let b = a;
+b = '';
+b = true;

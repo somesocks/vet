@@ -25,16 +25,16 @@ import schema from './utils/schema';
 * isMaybeNumber(undefined); // returns true
 * ```
 */
-function optional(validator : Validator) : ExtendedValidator {
-	const res : ExtendedValidator = function (val) {
+function optional<T>(validator : Validator<T>) : ExtendedValidator<T | null | undefined> {
+	const res : ExtendedValidator<T | null | undefined> = function (val) {
 		return val == null || validator(val);
-	} as ExtendedValidator;
+	} as ExtendedValidator<T | null | undefined>;
 
 	res.assert = function (val) {
 		if (val != null) {
 			assert(validator)(val);
 		}
-	}
+	} as Assertion<T | null | undefined>;
 
 	res.schema = 'optional(' + schema(validator) + ')';
 

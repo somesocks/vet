@@ -17,5 +17,5 @@ import ExtendedValidator from '../types/ExtendedValidator';
 * isLength3([ '1', '2', '3' ]); // returns true
 * ```
 */
-declare function isLength(len: any): ExtendedValidator;
+declare function isLength(len: any): ExtendedValidator<any[]>;
 export = isLength;

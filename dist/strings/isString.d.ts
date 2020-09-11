@@ -5,5 +5,5 @@ import ExtendedValidator from '../types/ExtendedValidator';
 * @returns true if val is a string
 * @memberof vet.strings
 */
-declare const isString: ExtendedValidator;
+declare const isString: ExtendedValidator<string>;
 export = isString;

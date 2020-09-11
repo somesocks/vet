@@ -20,7 +20,7 @@ import assert from './utils/assert';
 * isNull(null); // returns true
 * ```
 */
-const isNull : ExtendedValidator = function isNull(val) {
+const isNull : ExtendedValidator<null> = function isNull(val) {
 	return val === null;
 } as ExtendedValidator;
 

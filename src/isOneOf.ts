@@ -2,12 +2,15 @@
 import Assertion from './types/Assertion';
 import Validator from './types/Validator';
 import ExtendedValidator from './types/ExtendedValidator';
+import ValidatorType from './types/ValidatorType';
 
 import assert from './utils/assert';
 import schema from './utils/schema';
 
+type IsOneOfType<T extends any[]> = ValidatorType<T[number]>;
 
-function isFunction(val) { return typeof val === 'function'; }
+type IsOneOfValidator<T extends any[]> = ExtendedValidator<IsOneOfType<T>>;
+
 
 /**
 * Constructs a function that checks equality against any number of arguments
@@ -25,7 +28,7 @@ function isFunction(val) { return typeof val === 'function'; }
 * check(1); // returns true
 * ```
 */
-function isOneOf (...args : any[]) : ExtendedValidator {
+function isOneOf<T extends any[]>(...args : T) : IsOneOfValidator<T> {
 	const validators = arguments;
 
 	const res = function (val) {

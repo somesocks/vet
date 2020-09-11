@@ -20,7 +20,7 @@ import assert from '../utils/assert';
 * isTrue(true); // returns true
 * ```
 */
-const isTrue : ExtendedValidator = function isTrue(val) {
+const isTrue : ExtendedValidator<true> = function isTrue(val) {
 	return val === true;
 } as ExtendedValidator;
 

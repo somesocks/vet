@@ -1,4 +1,8 @@
 import ExtendedValidator from './types/ExtendedValidator';
+import ValidatorType from './types/ValidatorType';
+declare type UnionToIntersection<U> = (U extends any ? (k: U) => void : never) extends ((k: infer I) => void) ? I : never;
+declare type IsAllOfType<T extends any[]> = UnionToIntersection<ValidatorType<T[number]>>;
+declare type IsAllOfValidator<T extends any[]> = ExtendedValidator<IsAllOfType<T>>;
 /**
 * Constructs a function that checks equality against any number of arguments
 * @param {...*} eq - values to check equality against
@@ -17,5 +21,5 @@ import ExtendedValidator from './types/ExtendedValidator';
 * check(1); // returns true
 * ```
 */
-declare function isAllOf(...args: any[]): ExtendedValidator;
+declare function isAllOf<T extends any[]>(...args: T): IsAllOfValidator<T>;
 export = isAllOf;

@@ -16,8 +16,9 @@ var TESTS = [
     { input: undefined, expected: false },
     { input: null, expected: false },
 ];
+var _validator = isOneOf_1.default(true, '');
+var validator = _validator;
 describe('vet/isOneOf', function () {
-    var validator = isOneOf_1.default(true, '');
     TESTS.forEach(function (test) {
         it("(" + test.input + ")-->(" + test.expected + ")", function (done) { return done(validator(test.input) === test.expected ? null : new Error()); });
     });
@@ -26,3 +27,9 @@ describe('vet/isOneOf', function () {
         it("(" + test.input + ")-->(" + test.expected + ")", function (done) { return done(validator2(test.input) === test.expected ? null : new Error()); });
     });
 });
+// typescript check
+var a = '';
+validator.assert(a);
+var b = a;
+b = '';
+b = true;

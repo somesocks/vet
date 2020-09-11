@@ -1,5 +1,7 @@
 
+import { Validator } from '../types';
 
+import isString from '../strings/isString';
 import isArrayOf from './isArrayOf';
 
 const TESTS = [
@@ -30,7 +32,9 @@ const TESTS = [
 
 describe('vet/arrays/isArrayOf', () => {
 
-	const validator = isArrayOf((val) => val != null);
+	const validator = isArrayOf(
+    ((val) => val != null)
+  );
 
 	TESTS.forEach((test) => {
 		it(
@@ -41,3 +45,12 @@ describe('vet/arrays/isArrayOf', () => {
 		);
 	});
 });
+
+
+//typescript checks
+const _isStringArray = isArrayOf(isString);
+const isStringArray : typeof _isStringArray = _isStringArray;
+
+let a = [ 'foo' ];
+isStringArray.assert(a);
+a[0] = 'bar';

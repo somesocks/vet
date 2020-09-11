@@ -21,7 +21,7 @@ import assert from '../utils/assert';
 * isArray([]); // returns true
 * ```
 */
-const isArray : ExtendedValidator = Array.isArray ?
+const isArray : ExtendedValidator<any[]> = Array.isArray ?
 	function isArray(val) {
 		return Array.isArray(val);
 	} as ExtendedValidator :

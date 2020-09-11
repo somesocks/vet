@@ -2,10 +2,10 @@
 import Assertion from './Assertion';
 import Validator from './Validator';
 
-type ExtendedValidator =
-	Validator &
+type ExtendedValidator<T = any> =
+	Validator<T> &
 	{
-		assert : Assertion,
+		assert : Assertion<T>,
 		schema ?: string,
 	};
 
