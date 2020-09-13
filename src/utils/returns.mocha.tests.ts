@@ -1,6 +1,7 @@
 
 
 import isString from '../strings/isString';
+import isNumber from '../numbers/isNumber';
 import isShape from '../objects/isShape';
 import returns from './returns';
 
@@ -45,3 +46,10 @@ describe('vet/utils/returns', () => {
 		);
 	});
 });
+
+
+// typescript check
+let add = (a : number, b : number) => ({ sum: a + b });
+let add2 = returns(add, isShape({ diff: isNumber }));
+let add3 = returns(add, (val) => val > 0);
+// let c = add2(1, 2);

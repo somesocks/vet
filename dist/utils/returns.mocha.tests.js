@@ -4,6 +4,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var isString_1 = __importDefault(require("../strings/isString"));
+var isNumber_1 = __importDefault(require("../numbers/isNumber"));
+var isShape_1 = __importDefault(require("../objects/isShape"));
 var returns_1 = __importDefault(require("./returns"));
 var TESTS = [
     { input: undefined, expected: true },
@@ -39,3 +41,8 @@ describe('vet/utils/returns', function () {
         it("(" + test.input + ")-->(" + test.expected + ")", function (done) { return done(validator(test.input) === test.expected ? null : new Error()); });
     });
 });
+// typescript check
+var add = function (a, b) { return ({ sum: a + b }); };
+var add2 = returns_1.default(add, isShape_1.default({ diff: isNumber_1.default }));
+var add3 = returns_1.default(add, function (val) { return val > 0; });
+// let c = add2(1, 2);

@@ -2,6 +2,7 @@
 import Assertion from '../types/Assertion';
 import Validator from '../types/Validator';
 import ExtendedValidator from '../types/ExtendedValidator';
+import ValidatorType from '../types/ValidatorType';
 
 function messageBuilder(log) {
 	return typeof log === 'function' ?
@@ -9,6 +10,8 @@ function messageBuilder(log) {
 		function () { return log; }
 	;
 }
+
+type GenericFunc = (...args : any) => any;
 
 /**
 * Wraps a function in a validator which checks its return value, and throws an error if the return value is bad.
@@ -19,12 +22,12 @@ function messageBuilder(log) {
 * @returns a wrapped function that throws an error if the return value doed not pass validation
 * @memberof vet.utils
 */
-function returns(func, validator : Validator, message ?: any) {
+function returns<T extends GenericFunc, U extends Function>(func : T, validator : U, message ?: any) : (...args : Parameters<T>) => ( ValidatorType<U> & ReturnType<T> ) {
 	message = messageBuilder(message || 'vet/utils/returns error!');
 
 	return function _returnsInstance(this : any, ...args : any[]) {
 		const _args = arguments;
-		const result = func.apply(this, _args);
+		const result = func.apply(this, _args as any);
 
 		if (validator(result)) {
 			return result;
