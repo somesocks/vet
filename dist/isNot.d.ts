@@ -1,4 +1,3 @@
-import Validator from './types/Validator';
 import ExtendedValidator from './types/ExtendedValidator';
 /**
 * a function that inverts the result of a validator
@@ -17,5 +16,5 @@ import ExtendedValidator from './types/ExtendedValidator';
 * check(null); // returns true
 * ```
 */
-declare function isNot(validator: Validator): ExtendedValidator;
+declare function isNot<T extends Function>(validator: T): ExtendedValidator;
 export = isNot;

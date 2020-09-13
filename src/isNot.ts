@@ -23,7 +23,7 @@ import schema from './utils/schema';
 * check(null); // returns true
 * ```
 */
-function isNot(validator : Validator) : ExtendedValidator {
+function isNot<T extends Function>(validator : T) : ExtendedValidator {
 	const res : ExtendedValidator = function (this : any, ...args : any[]) {
 		const args2 = arguments;
 		return !validator.apply(this, args2 as any);
