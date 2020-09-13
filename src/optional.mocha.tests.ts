@@ -1,6 +1,7 @@
 
 
 import optional from './optional';
+import isString from './strings/isString';
 import { Validator } from './types';
 
 const TESTS = [
@@ -35,7 +36,7 @@ const SHOULD_FAIL = [
 
 
 const _validator = optional(
-	function isString(val) { return typeof val === 'string' || val instanceof String; } as Validator<string>
+	function isString(val) { return typeof val === 'string' || val instanceof String; }
 );
 const validator : typeof _validator = _validator;
 
@@ -89,3 +90,9 @@ describe('vet/optional', () => {
 	});
 
 });
+
+// typescript check
+let a = optional(isString);
+let b = optional(val => val > 0)
+a('foo');
+b('foo');

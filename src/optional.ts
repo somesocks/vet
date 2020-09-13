@@ -2,6 +2,7 @@
 import Assertion from './types/Assertion';
 import Validator from './types/Validator';
 import ExtendedValidator from './types/ExtendedValidator';
+import ValidatorType from './types/ValidatorType';
 
 import assert from './utils/assert';
 import schema from './utils/schema';
@@ -25,10 +26,10 @@ import schema from './utils/schema';
 * isMaybeNumber(undefined); // returns true
 * ```
 */
-function optional<T>(validator : Validator<T>) : ExtendedValidator<T | null | undefined> {
-	const res : ExtendedValidator<T | null | undefined> = function (val) {
+function optional<T extends Function>(validator : T) : ExtendedValidator<ValidatorType<T> | null | undefined> {
+	const res : ExtendedValidator<ValidatorType<T> | null | undefined> = function (val) {
 		return val == null || validator(val);
-	} as ExtendedValidator<T | null | undefined>;
+	} as ExtendedValidator<ValidatorType<T> | null | undefined>;
 
 	res.assert = function (val) {
 		if (val != null) {

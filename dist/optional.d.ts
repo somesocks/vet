@@ -1,5 +1,5 @@
-import Validator from './types/Validator';
 import ExtendedValidator from './types/ExtendedValidator';
+import ValidatorType from './types/ValidatorType';
 /**
 * A function builder to optionally check a value
 * @param validator - a validator function
@@ -19,5 +19,5 @@ import ExtendedValidator from './types/ExtendedValidator';
 * isMaybeNumber(undefined); // returns true
 * ```
 */
-declare function optional<T>(validator: Validator<T>): ExtendedValidator<T | null | undefined>;
+declare function optional<T extends Function>(validator: T): ExtendedValidator<ValidatorType<T> | null | undefined>;
 export = optional;

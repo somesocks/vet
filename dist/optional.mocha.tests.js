@@ -4,6 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var optional_1 = __importDefault(require("./optional"));
+var isString_1 = __importDefault(require("./strings/isString"));
 var TESTS = [
     { input: 'a string', expected: true },
     { input: '', expected: true },
@@ -71,3 +72,8 @@ describe('vet/optional', function () {
         it("assert (" + test.input + ") should fail", function (done) { return done(threwError(validator.assert)(test.input) ? null : new Error()); });
     });
 });
+// typescript check
+var a = optional_1.default(isString_1.default);
+var b = optional_1.default(function (val) { return val > 0; });
+a('foo');
+b('foo');
