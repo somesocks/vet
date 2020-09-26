@@ -10,6 +10,7 @@ var optional_1 = __importDefault(require("../optional"));
 var isAllOf_1 = __importDefault(require("../isAllOf"));
 var isOneOf_1 = __importDefault(require("../isOneOf"));
 var isShape_1 = __importDefault(require("./isShape"));
+var isArrayOf_1 = __importDefault(require("../arrays/isArrayOf"));
 var TESTS = [
     {
         input: {
@@ -180,3 +181,29 @@ var a = {
 };
 isPerson.assert(a);
 a.age = 2;
+/** Trigger a compiler error when a value is _not_ an exact type. */
+var exactType = (function () { });
+var _isA = isShape_1.default({
+    name: isString_1.default,
+    contact: {
+        email: optional_1.default(isString_1.default),
+        phoneNumber: optional_1.default(isString_1.default),
+    },
+});
+exactType({}, {});
+var _isB = isShape_1.default({
+    name: isString_1.default,
+    contact: isShape_1.default({
+        email: optional_1.default(isString_1.default),
+        phoneNumber: optional_1.default(isString_1.default),
+    }),
+});
+exactType({}, {});
+var _isC = isShape_1.default({
+    name: isString_1.default,
+    contact: isArrayOf_1.default(isShape_1.default({
+        email: optional_1.default(isString_1.default),
+        phoneNumber: optional_1.default(isString_1.default),
+    })),
+});
+exactType({}, {});

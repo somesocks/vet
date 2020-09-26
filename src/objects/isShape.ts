@@ -87,14 +87,13 @@ function _isShapeExact (schema, object) {
 }
 
 
-type _schemaExtractor<T> = T extends Validator<infer U> ? U :
-  (T extends Function ? any :
-    ( T extends object ? SchemaValidator<T> : T)
-  );
+type _schema<T> = (T extends Validator ? _validator<T> : (T extends Function ? _function<T> : T extends object ? _object<T> : T ));
 
-type SchemaValidator<T extends object> = {
-  [key in keyof T] : _schemaExtractor<T[key]>
-}
+type _validator<T> = (T extends Validator<infer U> ? U : never);
+
+type _function<T> = (T extends Function ? any : never);
+
+type _object<T> = (T extends object ? { [key in keyof T] : _schema<T[key]> } : never);
 
 /**
 * Builds a function to check an object against a schema object
@@ -137,7 +136,7 @@ type SchemaValidator<T extends object> = {
 * isPerson({ name: 'John Doe', age: 12, alive: true });
 * ```
 */
-function isShape<V extends object>(schema : V) : ExtendedValidator<SchemaValidator<V>> {
+function isShape<V extends object>(schema : V) : ExtendedValidator<_schema<V>> {
 	const res = _isShape.bind(undefined, schema) as ExtendedValidator;
 	res.assert = _assertIsShape.bind(undefined, schema);
 	res.schema = 'isShape('+ schemaString(schema) + ')';
@@ -179,7 +178,7 @@ function isShape<V extends object>(schema : V) : ExtendedValidator<SchemaValidat
 * isPerson({ name: 'John Doe', age: 12, alive: true });
 * ```
 */
-isShape.exact = function isShapeExact(schema) : ExtendedValidator<SchemaValidator<typeof schema>> {
+isShape.exact = function isShapeExact<V extends object>(schema : V) : ExtendedValidator<_schema<V>> {
 	const res = _isShapeExact.bind(undefined, schema) as ExtendedValidator;
 	res.assert = assert(res);
 	res.schema = 'isShape.exact('+ schemaString(schema) + ')';

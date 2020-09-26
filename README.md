@@ -4,6 +4,21 @@ A collection of data validation tools.
 
 # API
 
+## Objects
+
+<dl>
+<dt><a href="#vet">vet</a> : <code>object</code></dt>
+<dd></dd>
+</dl>
+
+## Functions
+
+<dl>
+<dt><a href="#exactType">exactType()</a></dt>
+<dd><p>Trigger a compiler error when a value is <em>not</em> an exact type.</p>
+</dd>
+</dl>
+
 <a name="vet"></a>
 
 ## vet : <code>object</code>
@@ -1315,6 +1330,15 @@ isMaybeNumber("1"); // returns false
 isMaybeNumber(1); // returns true
 isMaybeNumber(undefined); // returns true
 ```
+
+* * *
+
+<a name="exactType"></a>
+
+## exactType()
+Trigger a compiler error when a value is _not_ an exact type.
+
+**Kind**: global function  
 
 * * *
 
