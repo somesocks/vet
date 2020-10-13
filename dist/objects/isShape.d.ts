@@ -50,5 +50,10 @@ declare type _object<T> = (T extends object ? {
 declare function isShape<V extends object>(schema: V): ExtendedValidator<_schema<V>>;
 declare namespace isShape {
     var exact: <V extends object>(schema: V) => ExtendedValidator<_schema<V>>;
+    var partial: <V extends object>(schema: V) => ExtendedValidator<_deepPartial<_schema<V>>>;
 }
+declare type _primitive = null | undefined | string | number | boolean | symbol | bigint;
+declare type _deepPartial<T> = T extends _primitive ? Partial<T> : T extends ((...args: any[]) => unknown) ? T | undefined : T extends any[] ? T | undefined : T extends object ? {
+    [KeyType in keyof T]: _deepPartial<T[KeyType]> | undefined;
+} : unknown;
 export = isShape;

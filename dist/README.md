@@ -17,6 +17,9 @@ A collection of data validation tools.
 <dt><a href="#exactType">exactType()</a></dt>
 <dd><p>Trigger a compiler error when a value is <em>not</em> an exact type.</p>
 </dd>
+<dt><a href="#exactType">exactType()</a></dt>
+<dd><p>Trigger a compiler error when a value is <em>not</em> an exact type.</p>
+</dd>
 </dl>
 
 <a name="vet"></a>
@@ -62,6 +65,7 @@ A collection of data validation tools.
         * [.isObjectOf(validator)](#vet.objects.isObjectOf) ⇒
         * [.isShape(schema)](#vet.objects.isShape) ⇒
             * [.isShape.exact(schema)](#vet.objects.isShape.isShape.exact) ⇒
+            * [.isShape.partial(schema)](#vet.objects.isShape.isShape.partial) ⇒
     * [.strings](#vet.strings) : <code>object</code>
         * [.isEmpty(val)](#vet.strings.isEmpty) ⇒
         * [.isLength(len)](#vet.strings.isLength) ⇒
@@ -661,6 +665,7 @@ Checks to see if a value is zero
     * [.isObjectOf(validator)](#vet.objects.isObjectOf) ⇒
     * [.isShape(schema)](#vet.objects.isShape) ⇒
         * [.isShape.exact(schema)](#vet.objects.isShape.isShape.exact) ⇒
+        * [.isShape.partial(schema)](#vet.objects.isShape.isShape.partial) ⇒
 
 
 * * *
@@ -740,6 +745,11 @@ isPerson({ name: 'John Doe', age: 12 });
 isPerson({ name: 'John Doe', age: 12, alive: true });
 ```
 
+* [.isShape(schema)](#vet.objects.isShape) ⇒
+    * [.isShape.exact(schema)](#vet.objects.isShape.isShape.exact) ⇒
+    * [.isShape.partial(schema)](#vet.objects.isShape.isShape.partial) ⇒
+
+
 * * *
 
 <a name="vet.objects.isShape.isShape.exact"></a>
@@ -781,6 +791,54 @@ isPerson({ name: 'John Doe', age: 12, alive: true, gender: 'm' });
 
 // returns true
 isPerson({ name: 'John Doe', age: 12, alive: true });
+```
+
+* * *
+
+<a name="vet.objects.isShape.isShape.partial"></a>
+
+##### isShape.isShape.partial(schema) ⇒
+Builds a function to check an object against a schema object
+
+This function works similarly to `vet/objects/isShape`,
+but it only checks if the value is a "partial match" to the schema, i.e. properties can be undefined
+
+**Kind**: static method of [<code>isShape</code>](#vet.objects.isShape)  
+**Returns**: a validator function that takes in a value val, and returns true if val matches the object schema exactly  
+**Params**
+
+- schema - the object schema to check
+
+**Example**  
+```javascript
+let isString from 'vet/strings/isString');
+let isNumber from 'vet/numbers/isNumber');
+let isBoolean from 'vet/booleans/isBoolean');
+let isShape from 'vet/objects/isShape');
+
+let isPerson = isShape.pattial({
+  name: isString,
+  age: isNumber,
+  contact: {
+    email: isString,
+    phone: isString,
+  },
+});
+
+// returns true
+isPerson({});
+
+// returns true
+isPerson({ name: 'John Doe', age: 12 });
+
+// returns true, empty contact still passes
+isPerson({ name: 'John Doe', age: 12, contact: { } });
+
+// returns true, partial contact still passes
+isPerson({ name: 'John Doe', age: 12, contact: { phone: '00000000' } });
+
+// returns false, age is not a number
+isPerson({ name: 'John Doe', age: '12' });
 ```
 
 * * *
@@ -1330,6 +1388,15 @@ isMaybeNumber("1"); // returns false
 isMaybeNumber(1); // returns true
 isMaybeNumber(undefined); // returns true
 ```
+
+* * *
+
+<a name="exactType"></a>
+
+## exactType()
+Trigger a compiler error when a value is _not_ an exact type.
+
+**Kind**: global function  
 
 * * *
 

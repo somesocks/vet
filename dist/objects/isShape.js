@@ -6,19 +6,19 @@ var assert_1 = __importDefault(require("../utils/assert"));
 var schema_1 = __importDefault(require("../utils/schema"));
 var isFunction_1 = __importDefault(require("../functions/isFunction"));
 var isObject_1 = __importDefault(require("./isObject"));
-function _isShape(schema, object) {
+function _isShape(schema, value) {
     if (isFunction_1.default(schema)) {
         var a = schema;
-        return schema(object);
+        return schema(value);
     }
     else if (isObject_1.default(schema)) {
         var a = schema;
-        if (!isObject_1.default(object)) {
+        if (!isObject_1.default(value)) {
             return false;
         }
         for (var key in schema) {
             var s = schema[key];
-            var o = object[key];
+            var o = value[key];
             if (!_isShape(s, o)) {
                 return false;
             }
@@ -26,7 +26,7 @@ function _isShape(schema, object) {
         return true;
     }
     else {
-        return object === schema;
+        return value === schema;
     }
 }
 function _assertIsShape(schema, val) {
@@ -51,24 +51,24 @@ function _assertIsShape(schema, val) {
         assert_1.default(val === schema, function () { return 'property with schema (' + schema_1.default(val) + ') does not match (' + schema_1.default(schema) + ')'; });
     }
 }
-function _isShapeExact(schema, object) {
+function _isShapeExact(schema, value) {
     if (isFunction_1.default(schema)) {
-        return schema(object);
+        return schema(value);
     }
     else if (isObject_1.default(schema)) {
-        if (!isObject_1.default(object)) {
+        if (!isObject_1.default(value)) {
             return false;
         }
         for (var key in schema) {
             var s = schema[key];
-            var o = object[key];
+            var o = value[key];
             if (!_isShapeExact(s, o)) {
                 return false;
             }
         }
-        for (var key in object) {
+        for (var key in value) {
             var s = schema[key];
-            var o = object[key];
+            var o = value[key];
             if (!_isShapeExact(s, o)) {
                 return false;
             }
@@ -76,7 +76,7 @@ function _isShapeExact(schema, object) {
         return true;
     }
     else {
-        return object === schema;
+        return value === schema;
     }
 }
 /**
@@ -165,6 +165,79 @@ isShape.exact = function isShapeExact(schema) {
     var res = _isShapeExact.bind(undefined, schema);
     res.assert = assert_1.default(res);
     res.schema = 'isShape.exact(' + schema_1.default(schema) + ')';
+    return res;
+};
+function _isPartialShapeBody(schema, value) {
+    if (value == null) {
+        return true;
+    }
+    if (isFunction_1.default(schema)) {
+        var a = schema;
+        return schema(value);
+    }
+    else if (isObject_1.default(schema)) {
+        var a = schema;
+        if (!isObject_1.default(value)) {
+            return false;
+        }
+        for (var key in schema) {
+            var s = schema[key];
+            var o = value[key];
+            if (!_isPartialShapeBody(s, o)) {
+                return false;
+            }
+        }
+        return true;
+    }
+    else {
+        return value === schema;
+    }
+}
+function _isPartialShapeHead(schema, value) { return value != null && _isPartialShapeBody(schema, value); }
+/**
+* Builds a function to check an object against a schema object
+*
+* This function works similarly to `vet/objects/isShape`,
+* but it only checks if the value is a "partial match" to the schema, i.e. properties can be undefined
+* @param schema - the object schema to check
+* @returns a validator function that takes in a value val, and returns true if val matches the object schema exactly
+* @memberof vet.objects.isShape
+* @example
+* ```javascript
+* let isString from 'vet/strings/isString');
+* let isNumber from 'vet/numbers/isNumber');
+* let isBoolean from 'vet/booleans/isBoolean');
+* let isShape from 'vet/objects/isShape');
+*
+* let isPerson = isShape.pattial({
+*   name: isString,
+*   age: isNumber,
+*   contact: {
+*     email: isString,
+*     phone: isString,
+*   },
+* });
+*
+* // returns true
+* isPerson({});
+*
+* // returns true
+* isPerson({ name: 'John Doe', age: 12 });
+*
+* // returns true, empty contact still passes
+* isPerson({ name: 'John Doe', age: 12, contact: { } });
+*
+* // returns true, partial contact still passes
+* isPerson({ name: 'John Doe', age: 12, contact: { phone: '00000000' } });
+*
+* // returns false, age is not a number
+* isPerson({ name: 'John Doe', age: '12' });
+* ```
+*/
+isShape.partial = function isPartialShape(schema) {
+    var res = _isPartialShapeHead.bind(undefined, schema);
+    res.assert = assert_1.default(res);
+    res.schema = 'isShape.partial(' + schema_1.default(schema) + ')';
     return res;
 };
 module.exports = isShape;

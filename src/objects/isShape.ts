@@ -2,6 +2,7 @@
 
 import Assertion from '../types/Assertion';
 import Validator from '../types/Validator';
+
 import ExtendedValidator from '../types/ExtendedValidator';
 
 import assert from '../utils/assert';
@@ -11,23 +12,23 @@ import isFunction from '../functions/isFunction';
 
 import isObject from './isObject';
 
-function _isShape(schema, object) {
+function _isShape(schema, value) {
 	if (isFunction(schema)) {
     let a = schema;
-		return schema(object);
+		return schema(value);
 	} else if (isObject(schema)) {
     let a = schema;
-		if (!isObject(object)) { return false; }
+		if (!isObject(value)) { return false; }
 
 		for(const key in schema) {
 			const s = schema[key];
-			const o = object[key];
+			const o = value[key];
 			if (!_isShape(s, o)) { return false; }
 		}
 
 		return true;
 	} else {
-		return object === schema;
+		return value === schema;
 	}
 }
 
@@ -62,30 +63,29 @@ function _assertIsShape(schema, val) {
 	}
 }
 
-function _isShapeExact (schema, object) {
+function _isShapeExact (schema, value) {
 	if (isFunction(schema)) {
-		return schema(object);
+		return schema(value);
 	} else if (isObject(schema)) {
-		if (!isObject(object)) { return false; }
+		if (!isObject(value)) { return false; }
 
 		for (const key in schema) {
 			const s = schema[key];
-			const o = object[key];
+			const o = value[key];
 			if (!_isShapeExact(s, o)) { return false; }
 		}
 
-		for (const key in object) {
+		for (const key in value) {
 			const s = schema[key];
-			const o = object[key];
+			const o = value[key];
 			if (!_isShapeExact(s, o)) { return false; }
 		}
 
 		return true;
 	} else {
-		return object === schema;
+		return value === schema;
 	}
 }
-
 
 type _schema<T> = (T extends Validator ? _validator<T> : (T extends Function ? _function<T> : T extends object ? _object<T> : T ));
 
@@ -184,5 +184,117 @@ isShape.exact = function isShapeExact<V extends object>(schema : V) : ExtendedVa
 	res.schema = 'isShape.exact('+ schemaString(schema) + ')';
 	return res;
 }
+
+
+
+
+
+
+
+
+function _isPartialShapeBody(schema, value) {
+  if (value == null) {
+    return true;
+  } if (isFunction(schema)) {
+    let a = schema;
+		return schema(value);
+	} else if (isObject(schema)) {
+    let a = schema;
+		if (!isObject(value)) { return false; }
+
+		for(const key in schema) {
+			const s = schema[key];
+			const o = value[key];
+			if (!_isPartialShapeBody(s, o)) { return false; }
+		}
+
+		return true;
+	} else {
+		return value === schema;
+	}
+}
+
+function _isPartialShapeHead(schema, value) { return value != null && _isPartialShapeBody(schema, value); }
+
+
+type _primitive =
+	| null
+	| undefined
+	| string
+	| number
+	| boolean
+	| symbol
+	| bigint;
+
+type _deepPartial<T> = T extends _primitive
+	? Partial<T>
+	: T extends ((...args : any[]) => unknown)
+	? T | undefined
+  : T extends any[]
+	? T | undefined
+	: T extends object
+	? { [KeyType in keyof T] : _deepPartial<T[KeyType]> | undefined }
+	: unknown;
+
+
+  /**
+  * Builds a function to check an object against a schema object
+  *
+  * This function works similarly to `vet/objects/isShape`,
+  * but it only checks if the value is a "partial match" to the schema, i.e. properties can be undefined
+  * @param schema - the object schema to check
+  * @returns a validator function that takes in a value val, and returns true if val matches the object schema exactly
+  * @memberof vet.objects.isShape
+  * @example
+  * ```javascript
+  * let isString from 'vet/strings/isString');
+  * let isNumber from 'vet/numbers/isNumber');
+  * let isBoolean from 'vet/booleans/isBoolean');
+  * let isShape from 'vet/objects/isShape');
+  *
+  * let isPerson = isShape.pattial({
+  *   name: isString,
+  *   age: isNumber,
+  *   contact: {
+  *     email: isString,
+  *     phone: isString,
+  *   },
+  * });
+  *
+  * // returns true
+  * isPerson({});
+  *
+  * // returns true
+  * isPerson({ name: 'John Doe', age: 12 });
+  *
+  * // returns true, empty contact still passes
+  * isPerson({ name: 'John Doe', age: 12, contact: { } });
+  *
+  * // returns true, partial contact still passes
+  * isPerson({ name: 'John Doe', age: 12, contact: { phone: '00000000' } });
+  *
+  * // returns false, age is not a number
+  * isPerson({ name: 'John Doe', age: '12' });
+  * ```
+  */
+isShape.partial = function isPartialShape<V extends object>(schema : V) : ExtendedValidator<_deepPartial<_schema<V>>> {
+	const res = _isPartialShapeHead.bind(undefined, schema) as ExtendedValidator;
+	res.assert = assert(res);
+	res.schema = 'isShape.partial('+ schemaString(schema) + ')';
+	return res;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 export = isShape;
