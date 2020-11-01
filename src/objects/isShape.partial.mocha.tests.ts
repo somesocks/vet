@@ -8,6 +8,8 @@ import isAllOf from '../isAllOf';
 import isOneOf from '../isOneOf';
 import isShape from './isShape';
 import isArrayOf from '../arrays/isArrayOf';
+import isDate from '../dates/isDate';
+
 
 import ValidatorType from '../types/ValidatorType';
 
@@ -299,3 +301,18 @@ const _isC = isShape.partial({
 type _typeC2 = ValidatorType<typeof _isC>;
 
 exactType({} as _typeC, {} as _typeC2);
+
+
+type _typeD = {
+  name : string | undefined,
+  DOB : Date | undefined,
+};
+
+const _isD = isShape.partial({
+	name : isString,
+  DOB : isDate,
+});
+
+type _typeD2 = ValidatorType<typeof _isD>;
+
+exactType({} as _typeD, {} as _typeD2);

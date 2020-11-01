@@ -303,7 +303,7 @@ const _isC = isShape({
 			email: optional(isString),
 			phoneNumber: optional(isString),
 		}),
-	),	
+	),
 });
 
 type _typeC2 = ValidatorType<typeof _isC>;

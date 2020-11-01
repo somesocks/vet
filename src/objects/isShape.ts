@@ -217,23 +217,22 @@ function _isPartialShapeBody(schema, value) {
 function _isPartialShapeHead(schema, value) { return value != null && _isPartialShapeBody(schema, value); }
 
 
-type _primitive =
+type _basic =
 	| null
 	| undefined
 	| string
 	| number
 	| boolean
 	| symbol
-	| bigint;
+	| bigint
+  | Date
+  | ((...args : any[]) => unknown)
+  | any[]
+;
 
-type _deepPartial<T> = T extends _primitive
-	? Partial<T>
-	: T extends ((...args : any[]) => unknown)
-	? T | undefined
-  : T extends any[]
-	? T | undefined
-	: T extends object
-	? { [KeyType in keyof T] : _deepPartial<T[KeyType]> | undefined }
+type _deepPartial<T> =
+  T extends _basic ? T
+	: T extends object ? { [KeyType in keyof T] : _deepPartial<T[KeyType]> | undefined }
 	: unknown;
 
 

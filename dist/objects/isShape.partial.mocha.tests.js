@@ -11,6 +11,7 @@ var isAllOf_1 = __importDefault(require("../isAllOf"));
 var isOneOf_1 = __importDefault(require("../isOneOf"));
 var isShape_1 = __importDefault(require("./isShape"));
 var isArrayOf_1 = __importDefault(require("../arrays/isArrayOf"));
+var isDate_1 = __importDefault(require("../dates/isDate"));
 var TESTS = [
     {
         input: {
@@ -194,5 +195,10 @@ var _isC = isShape_1.default.partial({
         email: optional_1.default(isString_1.default),
         phoneNumber: optional_1.default(isString_1.default),
     })),
+});
+exactType({}, {});
+var _isD = isShape_1.default.partial({
+    name: isString_1.default,
+    DOB: isDate_1.default,
 });
 exactType({}, {});
