@@ -2,7 +2,7 @@ import ExtendedValidator from '../types/ExtendedValidator';
 import assert from '../utils/assert';
 
 /**
-* Checks to see if a value is an blob
+* Checks to see if a value is a file
 * @param val - the value to check
 * @returns true if the value is a file
 * @memberof vet.objects
