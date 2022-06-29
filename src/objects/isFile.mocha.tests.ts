@@ -17,12 +17,12 @@ const TESTS = [
 	{ input: true, expected: false },
 ];
 
-describe('vet/objects/isBlob', () => {
+describe('vet/objects/isFile', () => {
 	TESTS.forEach((test) => {
 		it(
 			`(${test.input})-->(${test.expected})`,
 			(done) => done(
-				isBlob(test.input) === test.expected ? null : new Error()
+				isFile(test.input) === test.expected ? null : new Error()
 			)
 		);
 	});
