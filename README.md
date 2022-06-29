@@ -63,6 +63,8 @@ A collection of data validation tools.
     * [.objects](#vet.objects) : <code>object</code>
         * [.isObject(val)](#vet.objects.isObject) ⇒
         * [.isObjectOf(validator)](#vet.objects.isObjectOf) ⇒
+        * [.isBlob(val)](#vet.objects.isBlob) ⇒
+        * [.isFile(val)](#vet.objects.isFile) ⇒
         * [.isShape(schema)](#vet.objects.isShape) ⇒
             * [.isShape.exact(schema)](#vet.objects.isShape.isShape.exact) ⇒
             * [.isShape.partial(schema)](#vet.objects.isShape.isShape.partial) ⇒
@@ -662,7 +664,9 @@ Checks to see if a value is zero
 
 * [.objects](#vet.objects) : <code>object</code>
     * [.isObject(val)](#vet.objects.isObject) ⇒
-    * [.isObjectOf(validator)](#vet.objects.isObjectOf) ⇒
+    * [.isObjectOf(validator)](#vet.objects.isObjectOf)
+    * [.isBlob(val)](#vet.objects.isBlob) ⇒
+    * [.isFile(val)](#vet.objects.isFile) ⇒
     * [.isShape(schema)](#vet.objects.isShape) ⇒
         * [.isShape.exact(schema)](#vet.objects.isShape.isShape.exact) ⇒
         * [.isShape.partial(schema)](#vet.objects.isShape.isShape.partial) ⇒
@@ -699,6 +703,31 @@ NOTE: This only checks enumerable properties
 
 * * *
 
+<a name="vet.objects.isBlob"></a>
+
+#### objects.isBlob(val) ⇒
+Checks to see if a value is a blob
+
+**Kind**: static method of [<code>objects</code>](#vet.objects)  
+**Returns**: true if the value is a blob   
+**Params**
+
+- val - the value to check
+- 
+* * *
+
+<a name="vet.objects.isFile"></a>
+
+#### objects.isFile(val) ⇒
+Checks to see if a value is a file
+
+**Kind**: static method of [<code>objects</code>](#vet.objects)  
+**Returns**: true if the value is a file   
+**Params**
+
+- val - the value to check
+-
+* * *
 <a name="vet.objects.isShape"></a>
 
 #### objects.isShape(schema) ⇒
@@ -1408,4 +1437,3 @@ Trigger a compiler error when a value is _not_ an exact type.
 **Kind**: global function  
 
 * * *
-
