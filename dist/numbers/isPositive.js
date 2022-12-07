@@ -10,7 +10,7 @@ var isNumber_1 = __importDefault(require("./isNumber"));
 * @returns true if the value is a positive number
 * @memberof vet.numbers
 */
-var isPositive = function isPositive(val) { return isNumber_1.default(val) && val > 0; };
-isPositive.assert = assert_1.default(isPositive);
+var isPositive = function isPositive(val) { return (0, isNumber_1.default)(val) && val > 0; };
+isPositive.assert = (0, assert_1.default)(isPositive);
 isPositive.schema = 'isPositive';
 module.exports = isPositive;

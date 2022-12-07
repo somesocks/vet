@@ -13,9 +13,9 @@ var isString_1 = __importDefault(require("./isString"));
 function matches(regex) {
     var res = function (val) {
         regex.lastIndex = 0;
-        return isString_1.default(val) && regex.test(val);
+        return (0, isString_1.default)(val) && regex.test(val);
     };
-    res.assert = assert_1.default(res);
+    res.assert = (0, assert_1.default)(res);
     res.schema = 'matches(' + regex + ')';
     return res;
 }

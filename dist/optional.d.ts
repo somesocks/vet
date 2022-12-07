@@ -19,5 +19,5 @@ import ValidatorType from './types/ValidatorType';
 * isMaybeNumber(undefined); // returns true
 * ```
 */
-declare function optional<T extends Function>(validator: T): ExtendedValidator<ValidatorType<T> | null | undefined>;
+declare function optional<T extends Function>(validator: T): ExtendedValidator<ValidatorType<T> | undefined>;
 export = optional;

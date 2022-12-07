@@ -7,7 +7,7 @@ var isString_1 = __importDefault(require("../strings/isString"));
 var isBoolean_1 = __importDefault(require("../booleans/isBoolean"));
 var isNumber_1 = __importDefault(require("../numbers/isNumber"));
 var isShape_1 = __importDefault(require("./isShape"));
-var isPerson = isShape_1.default({
+var isPerson = (0, isShape_1.default)({
     name: isString_1.default,
     age: isNumber_1.default,
     alive: isBoolean_1.default,

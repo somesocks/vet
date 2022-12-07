@@ -28,6 +28,6 @@ var TESTS = [
 ];
 describe('vet/numbers/isFinite', function () {
     TESTS.forEach(function (test) {
-        it("(" + test.input + ")-->(" + test.expected + ")", function (done) { return done(isFinite_1.default(test.input) === test.expected ? null : new Error()); });
+        it("(".concat(test.input, ")-->(").concat(test.expected, ")"), function (done) { return done((0, isFinite_1.default)(test.input) === test.expected ? null : new Error()); });
     });
 });

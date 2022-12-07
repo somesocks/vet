@@ -25,14 +25,14 @@ var schema_1 = __importDefault(require("./utils/schema"));
 */
 function optional(validator) {
     var res = function (val) {
-        return val == null || validator(val);
+        return val === undefined || validator(val);
     };
     res.assert = function (val) {
-        if (val != null) {
-            assert_1.default(validator)(val);
+        if (val !== undefined) {
+            (0, assert_1.default)(validator)(val);
         }
     };
-    res.schema = 'optional(' + schema_1.default(validator) + ')';
+    res.schema = 'optional(' + (0, schema_1.default)(validator) + ')';
     return res;
 }
 module.exports = optional;

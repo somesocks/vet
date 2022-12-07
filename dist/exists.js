@@ -22,6 +22,6 @@ var assert_1 = __importDefault(require("./utils/assert"));
 var exists = function exists(val) {
     return val != null;
 };
-exists.assert = assert_1.default(exists);
+exists.assert = (0, assert_1.default)(exists);
 exists.schema = 'exists';
 module.exports = exists;

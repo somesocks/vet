@@ -13,8 +13,8 @@ var REGEX = /^\s*data:([a-z]+\/[a-z0-9-+.]+(;[a-z-]+=[a-z0-9-]+)?)?(;base64)?,([
 */
 var isProbablyDataURL = function isProbablyDataURL(val) {
     REGEX.lastIndex = 0;
-    return isString_1.default(val) && REGEX.test(val);
+    return (0, isString_1.default)(val) && REGEX.test(val);
 };
-isProbablyDataURL.assert = assert_1.default(isProbablyDataURL);
+isProbablyDataURL.assert = (0, assert_1.default)(isProbablyDataURL);
 isProbablyDataURL.schema = 'isProbablyDataURL';
 module.exports = isProbablyDataURL;

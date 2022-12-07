@@ -1,5 +1,7 @@
 
 
+import inspect from 'object-inspect';
+
 import isString from '../strings/isString';
 import isNumber from '../numbers/isNumber';
 import isBoolean from '../booleans/isBoolean';
@@ -114,87 +116,46 @@ const TESTS = [
 	{ input: true, expected: false },
 ];
 
-const FAIL = [
-
-	{
-		input: {
-			name: 1,
-			age: 10,
-			verified: true,
-		},
-
-		expected: false,
-	},
-
-	{
-		input: {
-			name: 'Test User',
-			age: 9,
-			verified: true,
-			extras: {},
-		},
-
-		expected: false,
-	},
-
-	{ input: '', expected: false },
-	{ input: 'a string', expected: false },
-	{ input: undefined, expected: false },
-	{ input: null, expected: false },
-	{ input: 0, expected: false },
-	{ input: false, expected: false },
-	{ input: true, expected: false },
-];
-
-const _validator = isShape.partial(
-	{
-		name: isString,
-		age: isAllOf(
-			isNumber,
-			function isOverNine(val) { return val > 9; }
-		),
-		verified: isBoolean,
-		optional: optional(isBoolean),
-		optional2: optional(isOneOf(isString, isNumber)),
-	}
-);
-
-const validator : typeof _validator = _validator;
 
 describe('vet/objects/isShape.partial', () => {
 
-	// console.log('validator schema', validator.schema);
+	const _validator = isShape.partial(
+		{
+			name: isString,
+			age: isAllOf(
+				isNumber,
+				function isOverNine(val) { return val > 9; }
+			),
+			verified: isBoolean,
+			optional: optional(isBoolean),
+			optional2: optional(isOneOf(isString, isNumber)),
+		}
+	);
+	const validator : typeof _validator = _validator;
 
-	TESTS.forEach((test, i) => {
+	TESTS.forEach((test) => {
 		it(
-			`${i}: (${test.input})-->(${test.expected})`,
+			`validator(${inspect(test.input)}) returns ${test.expected}`,
 			(done) => done(
 				validator(test.input) === test.expected ? null : new Error()
 			)
 		);
-	});
 
-	const threwError = (validator) => (...args) => {
-		try {
-			validator(...args);
-			return false;
-		} catch (e) {
-			console.log('assert error', e);
-			return true;
-		}
-	};
-
-	const validator2 = threwError(validator.assert);
-
-	FAIL.forEach((test, i) => {
 		it(
-			`${i}: assert (${test.input}) should fail`,
-			(done) => done(
-				validator2(test.input) ? null : new Error()
-			)
+			`validator.assert(${inspect(test.input)}) should ${test.expected ? 'pass' : 'fail'}`,
+			(done) => {
+				let error = false;
+				try {
+					validator.assert(test.input);
+				} catch (e) {
+					error = true;
+				}
+
+				//no error should be thrown if a expected is expected
+				done(!error == test.expected ? null : new Error());	
+			}
 		);
 	});
-
 
 });
 
@@ -235,10 +196,10 @@ const exactType : <T, U>(
 // compile time type check.
 // recursive objects in schema should flatten out to a simple object schema
 type _typeA = {
-	name : string | undefined,
-	contact : {
-		email : string | undefined | null,
-		phoneNumber : string | undefined | null,
+	name ?: string | undefined,
+	contact ?: {
+		email ?: string | undefined,
+		phoneNumber ?: string | undefined,
 	} | undefined,
 };
 
@@ -258,10 +219,10 @@ exactType({} as _typeA, {} as _typeA2);
 // compile time type check.
 // recursive `isShape` calls should flatten out to a simple object schema
 type _typeB = {
-	name : string | undefined,
-	contact : {
-		email : string | undefined | null,
-		phoneNumber : string | undefined | null,
+	name ?: string | undefined,
+	contact ?: {
+		email ?: string | undefined,
+		phoneNumber ?: string | undefined,
 	} | undefined,
 };
 
@@ -281,10 +242,10 @@ exactType({} as _typeB, {} as _typeB2);
 // compile time type check.
 // isArrayOf `isShape` calls should flatten out to a simple schema
 type _typeC = {
-	name : string | undefined,
-	contact : ({
-		email : string | undefined | null,
-		phoneNumber : string | undefined | null,
+	name ?: string | undefined,
+	contact ?: ({
+		email ?: string | undefined,
+		phoneNumber ?: string | undefined,
 	}[]) | undefined,
 };
 
@@ -304,8 +265,8 @@ exactType({} as _typeC, {} as _typeC2);
 
 
 type _typeD = {
-  name : string | undefined,
-  DOB : Date | undefined,
+  name ?: string | undefined,
+  DOB ?: Date | undefined,
 };
 
 const _isD = isShape.partial({

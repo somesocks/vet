@@ -10,7 +10,7 @@ var isNumber_1 = __importDefault(require("./isNumber"));
 * @returns true if the value is zero
 * @memberof vet.numbers
 */
-var isZero = function isZero(val) { return isNumber_1.default(val) && val === 0; };
-isZero.assert = assert_1.default(isZero);
+var isZero = function isZero(val) { return (0, isNumber_1.default)(val) && val === 0; };
+isZero.assert = (0, assert_1.default)(isZero);
 isZero.schema = 'isZero';
 module.exports = isZero;

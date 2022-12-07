@@ -12,9 +12,9 @@ var isNumber_1 = __importDefault(require("./isNumber"));
 */
 function isGreaterThan(bound) {
     var res = function (val) {
-        return isNumber_1.default(val) && val > bound;
+        return (0, isNumber_1.default)(val) && val > bound;
     };
-    res.assert = assert_1.default(res);
+    res.assert = (0, assert_1.default)(res);
     res.schema = 'isNumberGreaterThan(' + bound + ')';
     return res;
 }
@@ -26,9 +26,9 @@ function isGreaterThan(bound) {
 */
 isGreaterThan.exclusive = function exclusive(bound) {
     var res = function (val) {
-        return isNumber_1.default(val) && val > bound;
+        return (0, isNumber_1.default)(val) && val > bound;
     };
-    res.assert = assert_1.default(res);
+    res.assert = (0, assert_1.default)(res);
     res.schema = 'isNumberGreaterThan.exclusive(' + bound + ')';
     return res;
 };
@@ -40,9 +40,9 @@ isGreaterThan.exclusive = function exclusive(bound) {
 */
 isGreaterThan.inclusive = function inclusive(bound) {
     var res = function (val) {
-        return isNumber_1.default(val) && val >= bound;
+        return (0, isNumber_1.default)(val) && val >= bound;
     };
-    res.assert = assert_1.default(res);
+    res.assert = (0, assert_1.default)(res);
     res.schema = 'isNumberGreaterThan.inclusive(' + bound + ')';
     return res;
 };

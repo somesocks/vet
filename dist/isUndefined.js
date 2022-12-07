@@ -21,6 +21,6 @@ var assert_1 = __importDefault(require("./utils/assert"));
 var isUndefined = function isUndefined(val) {
     return val === undefined;
 };
-isUndefined.assert = assert_1.default(isUndefined);
+isUndefined.assert = (0, assert_1.default)(isUndefined);
 isUndefined.schema = 'isUndefined';
 module.exports = isUndefined;

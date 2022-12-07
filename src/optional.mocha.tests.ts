@@ -8,8 +8,8 @@ const TESTS = [
 	{ input: 'a string', expected: true },
 	{ input: '', expected: true },
 	{ input: undefined, expected: true },
-	{ input: null, expected: true },
-
+	
+	{ input: null, expected: false },
 	{ input: true, expected: false },
 	{ input: false, expected: false },
 	{ input: (() => {}), expected: false },
@@ -22,10 +22,10 @@ const SHOULD_PASS = [
 	{ input: 'a string', expected: true },
 	{ input: '', expected: true },
 	{ input: undefined, expected: true },
-	{ input: null, expected: true },
 ];
 
 const SHOULD_FAIL = [
+	{ input: null, expected: false },
 	{ input: true, expected: false },
 	{ input: false, expected: false },
 	{ input: (() => {}), expected: false },

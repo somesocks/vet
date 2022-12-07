@@ -15,7 +15,7 @@ var propertyIsEnumerable = Object.prototype.propertyIsEnumerable;
 */
 var isObjectOf = function isObjectOf(validator) {
     var res = function (obj) {
-        if (!isObject_1.default(obj)) {
+        if (!(0, isObject_1.default)(obj)) {
             return false;
         }
         for (var key in obj) {
@@ -28,7 +28,7 @@ var isObjectOf = function isObjectOf(validator) {
         }
         return true;
     };
-    res.assert = assert_1.default(res);
+    res.assert = (0, assert_1.default)(res);
     return res;
 };
 module.exports = isObjectOf;

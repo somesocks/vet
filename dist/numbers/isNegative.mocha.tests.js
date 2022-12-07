@@ -28,6 +28,6 @@ var TESTS = [
 ];
 describe('vet/numbers/isNegative', function () {
     TESTS.forEach(function (test) {
-        it("(" + test.input + ")-->(" + test.expected + ")", function (done) { return done(isNegative_1.default(test.input) === test.expected ? null : new Error()); });
+        it("(".concat(test.input, ")-->(").concat(test.expected, ")"), function (done) { return done((0, isNegative_1.default)(test.input) === test.expected ? null : new Error()); });
     });
 });

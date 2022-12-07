@@ -6,7 +6,7 @@ import Validator from '../types/Validator';
 * @param validator - the validator function.  This gets passed the arguments as an array
 * @param message - an optional message string to pass into the error thrown
 * @returns a wrapped function that throws an error if the arguments do not pass validation
-* @memberof vet.utils
+* @memberof vet.functions
 */
 declare function accepts(func: any, validator: Validator, message?: any): (this: any, ...args: any[]) => any;
 export = accepts;

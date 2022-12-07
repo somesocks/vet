@@ -10,7 +10,7 @@ var isString_1 = __importDefault(require("./isString"));
 * @returns true if val is a non-empty string
 * @memberof vet.strings
 */
-var isNotEmpty = function isNotEmpty(val) { return isString_1.default(val) && val !== ''; };
-isNotEmpty.assert = assert_1.default(isNotEmpty);
+var isNotEmpty = function isNotEmpty(val) { return (0, isString_1.default)(val) && val !== ''; };
+isNotEmpty.assert = (0, assert_1.default)(isNotEmpty);
 isNotEmpty.schema = 'isNotEmptyString';
 module.exports = isNotEmpty;

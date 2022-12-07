@@ -28,6 +28,6 @@ var TESTS = [
 ];
 describe('vet/numbers/isLessThan', function () {
     TESTS.forEach(function (test) {
-        it("(" + test.input + ")-->(" + test.expected + ")", function (done) { return done(isLessThan_1.default(0)(test.input) === test.expected ? null : new Error()); });
+        it("(".concat(test.input, ")-->(").concat(test.expected, ")"), function (done) { return done((0, isLessThan_1.default)(0)(test.input) === test.expected ? null : new Error()); });
     });
 });

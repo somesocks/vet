@@ -22,6 +22,6 @@ var isFinite = function isFinite(value) {
     // 3. Otherwise, return true.
     return true;
 };
-isFinite.assert = assert_1.default(isFinite);
+isFinite.assert = (0, assert_1.default)(isFinite);
 isFinite.schema = 'isFinite';
 module.exports = isFinite;

@@ -1,4 +1,5 @@
 
+import inspect from 'object-inspect';
 
 import isNotEmpty from './isNotEmpty';
 
@@ -18,14 +19,34 @@ const TESTS = [
 ];
 
 describe('vet/strings/isNotEmpty', () => {
+
+	const _validator = isNotEmpty;
+	const validator : typeof _validator = _validator;
+
 	TESTS.forEach((test) => {
 		it(
-			`(${test.input})-->(${test.expected})`,
+			`validator(${inspect(test.input)}) returns ${test.expected}`,
 			(done) => done(
-				isNotEmpty(test.input) === test.expected ? null : new Error()
+				validator(test.input) === test.expected ? null : new Error()
 			)
 		);
+
+		it(
+			`validator.assert(${inspect(test.input)}) should ${test.expected ? 'pass' : 'fail'}`,
+			(done) => {
+				let error = false;
+				try {
+					validator.assert(test.input);
+				} catch (e) {
+					error = true;
+				}
+
+				//no error should be thrown if a expected is expected
+				done(!error == test.expected ? null : new Error());	
+			}
+		);
 	});
+
 });
 
 // typescript compile-time check

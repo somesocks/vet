@@ -21,6 +21,6 @@ var assert_1 = __importDefault(require("./utils/assert"));
 var isNull = function isNull(val) {
     return val === null;
 };
-isNull.assert = assert_1.default(isNull);
+isNull.assert = (0, assert_1.default)(isNull);
 isNull.schema = 'isNull';
 module.exports = isNull;

@@ -11,10 +11,10 @@ function messageBuilder(log) {
 * @param validator - the validator function.  This gets passed the arguments as an array
 * @param message - an optional message string to pass into the error thrown
 * @returns a wrapped function that throws an error if the arguments do not pass validation
-* @memberof vet.utils
+* @memberof vet.functions
 */
 function accepts(func, validator, message) {
-    message = messageBuilder(message || 'vet/utils/accepts error!');
+    message = messageBuilder(message || 'vet/functions/accepts error!');
     return function wrapper() {
         var args = [];
         for (var _i = 0; _i < arguments.length; _i++) {

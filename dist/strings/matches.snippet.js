@@ -4,4 +4,4 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var matches_1 = __importDefault(require("./matches"));
-var a = matches_1.default(/.*/)('');
+var a = (0, matches_1.default)(/.*/)('');

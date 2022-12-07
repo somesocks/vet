@@ -27,5 +27,5 @@ var isArray = Array.isArray ?
         return Object.prototype.toString.call(val) === '[object Array]';
     };
 isArray.schema = 'isArray';
-isArray.assert = assert_1.default(isArray);
+isArray.assert = (0, assert_1.default)(isArray);
 module.exports = isArray;

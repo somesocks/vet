@@ -23,8 +23,8 @@ var schema_1 = __importDefault(require("./utils/schema"));
 */
 function equals(eq) {
     var validator = function (val) { return val === eq; };
-    validator.assert = assert_1.default(validator);
-    validator.schema = 'equals(' + schema_1.default(eq) + ')';
+    validator.assert = (0, assert_1.default)(validator);
+    validator.schema = 'equals(' + (0, schema_1.default)(eq) + ')';
     return validator;
 }
 module.exports = equals;

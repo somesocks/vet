@@ -20,7 +20,7 @@ var TESTS = [
     { input: '', expected: false },
     { input: 'a string', expected: false },
 ];
-describe('vet/utils/returns', function () {
+describe('vet/functions/returns', function () {
     var threwError = function (validator) { return function () {
         var args = [];
         for (var _i = 0; _i < arguments.length; _i++) {
@@ -35,14 +35,14 @@ describe('vet/utils/returns', function () {
         }
     }; };
     var PASS = function (a) { return a; };
-    var wrapper = returns_1.default(PASS, isString_1.default);
+    var wrapper = (0, returns_1.default)(PASS, isString_1.default);
     var validator = threwError(wrapper);
     TESTS.forEach(function (test) {
-        it("(" + test.input + ")-->(" + test.expected + ")", function (done) { return done(validator(test.input) === test.expected ? null : new Error()); });
+        it("(".concat(test.input, ")-->(").concat(test.expected, ")"), function (done) { return done(validator(test.input) === test.expected ? null : new Error()); });
     });
 });
 // typescript check
 var add = function (a, b) { return ({ sum: a + b }); };
-var add2 = returns_1.default(add, isShape_1.default({ diff: isNumber_1.default }));
-var add3 = returns_1.default(add, function (val) { return val > 0; });
+var add2 = (0, returns_1.default)(add, (0, isShape_1.default)({ diff: isNumber_1.default }));
+var add3 = (0, returns_1.default)(add, function (val) { return val > 0; });
 // let c = add2(1, 2);

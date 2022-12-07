@@ -11,7 +11,7 @@ function messageBuilder(validator, message) {
         return function () { return message; };
     }
     else {
-        return function (val) { return '(vet/utils/assert) value with schema `' + schema_1.default(val) + '` fails check against `' + schema_1.default(validator) + '`'; };
+        return function (val) { return '(vet/utils/assert) value with schema `' + (0, schema_1.default)(val) + '` fails check against `' + (0, schema_1.default)(validator) + '`'; };
     }
 }
 function isFunction(val) { return typeof val === 'function'; }

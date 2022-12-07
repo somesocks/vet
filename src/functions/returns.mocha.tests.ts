@@ -20,7 +20,7 @@ const TESTS = [
 	{ input: 'a string', expected: false },
 ];
 
-describe('vet/utils/returns', () => {
+describe('vet/functions/returns', () => {
 
 	const threwError = (validator) => (...args) => {
 		try {

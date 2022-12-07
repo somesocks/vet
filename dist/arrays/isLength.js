@@ -24,9 +24,9 @@ var isArray_1 = __importDefault(require("./isArray"));
 */
 function isLength(len) {
     var res = function (val) {
-        return isArray_1.default(val) && val.length === len;
+        return (0, isArray_1.default)(val) && val.length === len;
     };
-    res.assert = assert_1.default(res);
+    res.assert = (0, assert_1.default)(res);
     res.schema = 'isArrayOfLength(' + len + ')';
     return res;
 }

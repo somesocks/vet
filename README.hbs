@@ -2,6 +2,19 @@
 
 A collection of data validation tools.
 
+# major changes in vet 5 
+
+version 5 includes several breaking changes from version 4, mostly designed to improve interoperability with TS
+
+- `optional` no longer accepts `null`, just `undefined`.  This is to bring it inline with TypeScript and many other libraries' interpretation of optional values.
+- `isShape` now converts all `T | undefined` properties to optional properties in the validator schema type.  This eliminates the requirement to explicitly define "optional" properties as `undefined`.
+- `accepts` and `returns` have now been moved from `vet/utils` to `vet/functions`, where they should have been in the first place.
+
+in addition, v5 includes:
+
+- a new `isTuple` utility
+
 # API
 
 {{>main}}
+ 

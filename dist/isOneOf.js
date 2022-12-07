@@ -38,10 +38,10 @@ function isOneOf() {
         }
         return false;
     };
-    res.assert = assert_1.default(res);
+    res.assert = (0, assert_1.default)(res);
     var s = 'isOneOf(';
     for (var i = 0; i < validators.length; i++) {
-        s += schema_1.default(validators[i]) + ', ';
+        s += (0, schema_1.default)(validators[i]) + ', ';
     }
     s += ')';
     res.schema = s;

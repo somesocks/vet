@@ -1,4 +1,5 @@
 
+import inspect from 'object-inspect';
 
 import isProbablyBase64 from './isProbablyBase64';
 
@@ -21,12 +22,32 @@ const TESTS = [
 ];
 
 describe('vet/strings/isProbablyBase64', () => {
+	
+	const _validator = isProbablyBase64;
+	const validator : typeof _validator = _validator;
+
 	TESTS.forEach((test) => {
 		it(
-			`(${test.input})-->(${test.expected})`,
+			`validator(${inspect(test.input)}) returns ${test.expected}`,
 			(done) => done(
-				isProbablyBase64(test.input) === test.expected ? null : new Error()
+				validator(test.input) === test.expected ? null : new Error()
 			)
 		);
+
+		it(
+			`validator.assert(${inspect(test.input)}) should ${test.expected ? 'pass' : 'fail'}`,
+			(done) => {
+				let error = false;
+				try {
+					validator.assert(test.input);
+				} catch (e) {
+					error = true;
+				}
+
+				//no error should be thrown if a expected is expected
+				done(!error == test.expected ? null : new Error());	
+			}
+		);
 	});
+
 });

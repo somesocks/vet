@@ -21,6 +21,6 @@ var assert_1 = __importDefault(require("./utils/assert"));
 var isNotNullOrUndefined = function isNotNullOrUndefined(val) {
     return val != null;
 };
-isNotNullOrUndefined.assert = assert_1.default(isNotNullOrUndefined);
+isNotNullOrUndefined.assert = (0, assert_1.default)(isNotNullOrUndefined);
 isNotNullOrUndefined.schema = 'isNotNullOrUndefined';
 module.exports = isNotNullOrUndefined;

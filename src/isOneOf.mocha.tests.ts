@@ -1,4 +1,5 @@
 
+import inspect from 'object-inspect';
 
 import isOneOf from './isOneOf';
 import isAllOf from './isAllOf';
@@ -23,47 +24,90 @@ const TESTS = [
 	{ input: null, expected: false },
 ];
 
-const _validator = isOneOf(true, '');
-const validator : typeof _validator = _validator;
 
-describe('vet/isOneOf', () => {
+describe('vet/isOneOf 1', () => {
+	const _validator = isOneOf(true, '');
+	const validator : typeof _validator = _validator;
 
 	TESTS.forEach((test) => {
 		it(
-			`(${test.input})-->(${test.expected})`,
+			`validator(${inspect(test.input)}) returns ${test.expected}`,
 			(done) => done(
 				validator(test.input) === test.expected ? null : new Error()
 			)
 		);
+
+		it(
+			`validator.assert(${inspect(test.input)}) should ${test.expected ? 'pass' : 'fail'}`,
+			(done) => {
+				let error = false;
+				try {
+					validator.assert(test.input);
+				} catch (e) {
+					error = true;
+				}
+
+				//no error should be thrown if a expected is expected
+				done(!error == test.expected ? null : new Error());	
+			}
+		);
 	});
 
-	const validator2 = isOneOf((val) => val === true, (val) => val === '');
+
+	const _validator2 = isOneOf((val) => val === true, (val) => val === '');
+	const validator2 : typeof _validator2 = _validator2;
+
+});
+
+describe('vet/isOneOf 2', () => {
+	const _validator = isOneOf((val) => val === true, (val) => val === '');
+	const validator : typeof _validator = _validator;
 
 	TESTS.forEach((test) => {
 		it(
-			`(${test.input})-->(${test.expected})`,
+			`validator(${inspect(test.input)}) returns ${test.expected}`,
 			(done) => done(
-				validator2(test.input) === test.expected ? null : new Error()
+				validator(test.input) === test.expected ? null : new Error()
 			)
 		);
+
+		it(
+			`validator.assert(${inspect(test.input)}) should ${test.expected ? 'pass' : 'fail'}`,
+			(done) => {
+				let error = false;
+				try {
+					validator.assert(test.input);
+				} catch (e) {
+					error = true;
+				}
+
+				//no error should be thrown if a expected is expected
+				done(!error == test.expected ? null : new Error());	
+			}
+		);
 	});
+
 });
 
-
-// typescript check
-let a = '' as any;
-validator.assert(a);
-let b = a;
-b = '';
-b = true;
-
-let isPersonReference = isOneOf(isString, isShape({ name: isString }));
-let isPerson = isAllOf(isPersonReference, isShape({ age: isNumber }));
-
-let c = {};
-if (isPersonReference(c)) {
-  let d = c;
-}
-if (isPerson(c)) {
-  let d = c;
+{
+	const _validator = isOneOf(true, '');
+	const validator : typeof _validator = _validator;
+	
+	// typescript check
+	let a = '' as any;
+	validator.assert(a);
+	let b = a;
+	b = '';
+	b = true;
+	
+	let isPersonReference = isOneOf(isString, isShape({ name: isString }));
+	let isPerson = isAllOf(isPersonReference, isShape({ age: isNumber }));
+	
+	let c = {};
+	if (isPersonReference(c)) {
+		let d = c;
+	}
+	if (isPerson(c)) {
+		let d = c;
+	}
 }

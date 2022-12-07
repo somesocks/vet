@@ -110,8 +110,8 @@ var REGEX = new RegExp("^" +
 */
 var isProbablyURL = function isProbablyURL(val) {
     REGEX.lastIndex = 0;
-    return isString_1.default(val) && REGEX.test(val);
+    return (0, isString_1.default)(val) && REGEX.test(val);
 };
-isProbablyURL.assert = assert_1.default(isProbablyURL);
+isProbablyURL.assert = (0, assert_1.default)(isProbablyURL);
 isProbablyURL.schema = 'isProbablyURL';
 module.exports = isProbablyURL;

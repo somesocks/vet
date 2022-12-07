@@ -10,6 +10,6 @@ var assert_1 = __importDefault(require("../utils/assert"));
 * @memberof vet.objects
 */
 var isObject = function isObject(val) { return (val != null) && (Object(val) === val); };
-isObject.assert = assert_1.default(isObject);
+isObject.assert = (0, assert_1.default)(isObject);
 isObject.schema = 'isObject';
 module.exports = isObject;

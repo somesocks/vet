@@ -24,6 +24,6 @@ var assert_1 = __importDefault(require("./utils/assert"));
 var isAny = function isAny(val) {
     return true;
 };
-isAny.assert = assert_1.default(isAny);
+isAny.assert = (0, assert_1.default)(isAny);
 isAny.schema = 'isAny';
 module.exports = isAny;

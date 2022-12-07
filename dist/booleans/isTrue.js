@@ -21,6 +21,6 @@ var assert_1 = __importDefault(require("../utils/assert"));
 var isTrue = function isTrue(val) {
     return val === true;
 };
-isTrue.assert = assert_1.default(isTrue);
+isTrue.assert = (0, assert_1.default)(isTrue);
 isTrue.schema = 'isTrue';
 module.exports = isTrue;

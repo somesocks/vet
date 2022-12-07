@@ -1,4 +1,5 @@
 
+import inspect from 'object-inspect';
 
 import isString from '../strings/isString';
 import isNumber from '../numbers/isNumber';
@@ -63,18 +64,37 @@ const TESTS = [
 
 
 describe('vet/objects/isShape.exact', () => {
-	const validator = isShape.exact({
+
+	const _validator = isShape.exact({
 		name: isString,
 		age: isNumber,
 		verified: isBoolean,
 	});
 
+	const validator : typeof _validator = _validator;
+
 	TESTS.forEach((test) => {
 		it(
-			`(${test.input})-->(${test.expected})`,
+			`validator(${inspect(test.input)}) returns ${test.expected}`,
 			(done) => done(
 				validator(test.input) === test.expected ? null : new Error()
 			)
 		);
+
+		it(
+			`validator.assert(${inspect(test.input)}) should ${test.expected ? 'pass' : 'fail'}`,
+			(done) => {
+				let error = false;
+				try {
+					validator.assert(test.input);
+				} catch (e) {
+					error = true;
+				}
+
+				//no error should be thrown if a expected is expected
+				done(!error == test.expected ? null : new Error());	
+			}
+		);
 	});
+
 });

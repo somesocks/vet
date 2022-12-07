@@ -7,13 +7,13 @@ var schema_1 = __importDefault(require("../utils/schema"));
 var isFunction_1 = __importDefault(require("../functions/isFunction"));
 var isObject_1 = __importDefault(require("./isObject"));
 function _isShape(schema, value) {
-    if (isFunction_1.default(schema)) {
+    if ((0, isFunction_1.default)(schema)) {
         var a = schema;
         return schema(value);
     }
-    else if (isObject_1.default(schema)) {
+    else if ((0, isObject_1.default)(schema)) {
         var a = schema;
-        if (!isObject_1.default(value)) {
+        if (!(0, isObject_1.default)(value)) {
             return false;
         }
         for (var key in schema) {
@@ -30,11 +30,11 @@ function _isShape(schema, value) {
     }
 }
 function _assertIsShape(schema, val) {
-    if (isFunction_1.default(schema)) {
-        assert_1.default(schema(val), function () { return 'property with schema (' + schema_1.default(val) + ') does not match (' + schema_1.default(schema) + ')'; });
+    if ((0, isFunction_1.default)(schema)) {
+        (0, assert_1.default)(schema(val), function () { return 'property with schema (' + (0, schema_1.default)(val) + ') does not match (' + (0, schema_1.default)(schema) + ')'; });
     }
-    else if (isObject_1.default(schema)) {
-        assert_1.default(isObject_1.default(val), function () { return 'property with schema (' + schema_1.default(val) + ') does not match (' + schema_1.default(isObject_1.default) + ')'; });
+    else if ((0, isObject_1.default)(schema)) {
+        (0, assert_1.default)((0, isObject_1.default)(val), function () { return 'property with schema (' + (0, schema_1.default)(val) + ') does not match (' + (0, schema_1.default)(isObject_1.default) + ')'; });
         for (var key in schema) {
             var s = schema[key];
             var o = val[key];
@@ -48,15 +48,15 @@ function _assertIsShape(schema, val) {
         }
     }
     else {
-        assert_1.default(val === schema, function () { return 'property with schema (' + schema_1.default(val) + ') does not match (' + schema_1.default(schema) + ')'; });
+        (0, assert_1.default)(val === schema, function () { return 'property with schema (' + (0, schema_1.default)(val) + ') does not match (' + (0, schema_1.default)(schema) + ')'; });
     }
 }
 function _isShapeExact(schema, value) {
-    if (isFunction_1.default(schema)) {
+    if ((0, isFunction_1.default)(schema)) {
         return schema(value);
     }
-    else if (isObject_1.default(schema)) {
-        if (!isObject_1.default(value)) {
+    else if ((0, isObject_1.default)(schema)) {
+        if (!(0, isObject_1.default)(value)) {
             return false;
         }
         for (var key in schema) {
@@ -123,7 +123,7 @@ function _isShapeExact(schema, value) {
 function isShape(schema) {
     var res = _isShape.bind(undefined, schema);
     res.assert = _assertIsShape.bind(undefined, schema);
-    res.schema = 'isShape(' + schema_1.default(schema) + ')';
+    res.schema = 'isShape(' + (0, schema_1.default)(schema) + ')';
     return res;
 }
 /**
@@ -163,21 +163,21 @@ function isShape(schema) {
 */
 isShape.exact = function isShapeExact(schema) {
     var res = _isShapeExact.bind(undefined, schema);
-    res.assert = assert_1.default(res);
-    res.schema = 'isShape.exact(' + schema_1.default(schema) + ')';
+    res.assert = (0, assert_1.default)(res);
+    res.schema = 'isShape.exact(' + (0, schema_1.default)(schema) + ')';
     return res;
 };
 function _isPartialShapeBody(schema, value) {
     if (value == null) {
         return true;
     }
-    if (isFunction_1.default(schema)) {
+    if ((0, isFunction_1.default)(schema)) {
         var a = schema;
         return schema(value);
     }
-    else if (isObject_1.default(schema)) {
+    else if ((0, isObject_1.default)(schema)) {
         var a = schema;
-        if (!isObject_1.default(value)) {
+        if (!(0, isObject_1.default)(value)) {
             return false;
         }
         for (var key in schema) {
@@ -236,8 +236,8 @@ function _isPartialShapeHead(schema, value) { return value != null && _isPartial
 */
 isShape.partial = function isPartialShape(schema) {
     var res = _isPartialShapeHead.bind(undefined, schema);
-    res.assert = assert_1.default(res);
-    res.schema = 'isShape.partial(' + schema_1.default(schema) + ')';
+    res.assert = (0, assert_1.default)(res);
+    res.schema = 'isShape.partial(' + (0, schema_1.default)(schema) + ')';
     return res;
 };
 module.exports = isShape;

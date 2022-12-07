@@ -4,4 +4,4 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var isNull_1 = __importDefault(require("./isNull"));
-var a = isNull_1.default(2);
+var a = (0, isNull_1.default)(2);

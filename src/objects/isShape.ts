@@ -49,7 +49,7 @@ function _assertIsShape(schema, val) {
 			const o = val[key];
 			try {
 				_assertIsShape(s, o);
-			} catch (e) {
+			} catch (e : any) {
 				e.message = '.' + key + ' ' + e.message;
 				throw e;
 			}
@@ -87,13 +87,32 @@ function _isShapeExact (schema, value) {
 	}
 }
 
-type _schema<T> = (T extends Validator ? _validator<T> : (T extends Function ? _function<T> : T extends object ? _object<T> : T ));
+type _TSchema<T> = (
+	T extends Validator ? _TValidator<T> :
+		(T extends Function ? _TFunction<T> :
+			T extends object ? _TObject<T> : T ));
 
-type _validator<T> = (T extends Validator<infer U> ? U : never);
+type _TValidator<T> = (T extends Validator<infer U> ? U : never);
 
-type _function<T> = (T extends Function ? any : never);
+type _TFunction<T> = (T extends Function ? any : never);
 
-type _object<T> = (T extends object ? { [key in keyof T] : _schema<T[key]> } : never);
+
+type _TPartialKeys<T extends object> = {
+	[K in keyof T] -?: (T[K] | undefined) extends T[K] ? K : never
+}[keyof T];
+
+type _TRequiredKeys<T extends object> = {
+	[K in keyof T] -?: (T[K] | undefined) extends T[K] ? never : K
+}[keyof T];
+
+type _TFixProps<T extends object> = {
+	[U in keyof ({ [K in _TRequiredKeys<T>] : T[K] } & { [K in _TPartialKeys<T>] ?: T[K] })] : T[U]
+};
+
+type _TObjectFromSchema<T extends object> = { [key in keyof T] : _TSchema<T[key]> };
+
+type _TObject<T> = T extends object ? (_TFixProps<_TObjectFromSchema<T>>) : never; 
+
 
 /**
 * Builds a function to check an object against a schema object
@@ -136,7 +155,7 @@ type _object<T> = (T extends object ? { [key in keyof T] : _schema<T[key]> } : n
 * isPerson({ name: 'John Doe', age: 12, alive: true });
 * ```
 */
-function isShape<V extends object>(schema : V) : ExtendedValidator<_schema<V>> {
+function isShape<V extends object>(schema : V) : ExtendedValidator<_TSchema<V>> {
 	const res = _isShape.bind(undefined, schema) as ExtendedValidator;
 	res.assert = _assertIsShape.bind(undefined, schema);
 	res.schema = 'isShape('+ schemaString(schema) + ')';
@@ -178,7 +197,7 @@ function isShape<V extends object>(schema : V) : ExtendedValidator<_schema<V>> {
 * isPerson({ name: 'John Doe', age: 12, alive: true });
 * ```
 */
-isShape.exact = function isShapeExact<V extends object>(schema : V) : ExtendedValidator<_schema<V>> {
+isShape.exact = function isShapeExact<V extends object>(schema : V) : ExtendedValidator<_TSchema<V>> {
 	const res = _isShapeExact.bind(undefined, schema) as ExtendedValidator;
 	res.assert = assert(res);
 	res.schema = 'isShape.exact('+ schemaString(schema) + ')';
@@ -232,9 +251,8 @@ type _basic =
 
 type _deepPartial<T> =
   T extends _basic ? T
-	: T extends object ? { [KeyType in keyof T] : _deepPartial<T[KeyType]> | undefined }
+	: T extends object ? { [KeyType in keyof T] ?: _deepPartial<T[KeyType]> | undefined }
 	: unknown;
-
 
   /**
   * Builds a function to check an object against a schema object
@@ -276,7 +294,7 @@ type _deepPartial<T> =
   * isPerson({ name: 'John Doe', age: '12' });
   * ```
   */
-isShape.partial = function isPartialShape<V extends object>(schema : V) : ExtendedValidator<_deepPartial<_schema<V>>> {
+isShape.partial = function isPartialShape<V extends object>(schema : V) : ExtendedValidator<_deepPartial<_TSchema<V>>> {
 	const res = _isPartialShapeHead.bind(undefined, schema) as ExtendedValidator;
 	res.assert = assert(res);
 	res.schema = 'isShape.partial('+ schemaString(schema) + ')';

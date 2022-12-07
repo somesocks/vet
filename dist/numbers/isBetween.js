@@ -13,9 +13,9 @@ var isNumber_1 = __importDefault(require("./isNumber"));
 */
 function isBetween(lower, upper) {
     var res = function (val) {
-        return isNumber_1.default(val) && val > lower && val < upper;
+        return (0, isNumber_1.default)(val) && val > lower && val < upper;
     };
-    res.assert = assert_1.default(res);
+    res.assert = (0, assert_1.default)(res);
     res.schema = 'isNumberBetween(' + lower + ',' + upper + ')';
     return res;
 }
@@ -28,9 +28,9 @@ function isBetween(lower, upper) {
 */
 isBetween.exclusive = function exclusive(lower, upper) {
     var res = function (val) {
-        return isNumber_1.default(val) && val > lower && val < upper;
+        return (0, isNumber_1.default)(val) && val > lower && val < upper;
     };
-    res.assert = assert_1.default(res);
+    res.assert = (0, assert_1.default)(res);
     res.schema = 'isNumberBetween.exclusive(' + lower + ',' + upper + ')';
     return res;
 };
@@ -43,9 +43,9 @@ isBetween.exclusive = function exclusive(lower, upper) {
 */
 isBetween.inclusive = function inclusive(lower, upper) {
     var res = function (val) {
-        return isNumber_1.default(val) && val >= lower && val <= upper;
+        return (0, isNumber_1.default)(val) && val >= lower && val <= upper;
     };
-    res.assert = assert_1.default(res);
+    res.assert = (0, assert_1.default)(res);
     res.schema = 'isNumberBetween.inclusive(' + lower + ',' + upper + ')';
     return res;
 };

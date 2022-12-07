@@ -33,23 +33,23 @@ describe('vet/utils/assert', function () {
             return true;
         }
     }; };
-    var validator = threwError(assert_1.default(isString_1.default));
+    var validator = threwError((0, assert_1.default)(isString_1.default));
     TESTS.forEach(function (test) {
-        it("(" + test.input + ")-->(" + test.expected + ")", function (done) { return done(validator(test.input) === test.expected ? null : new Error()); });
+        it("(".concat(test.input, ")-->(").concat(test.expected, ")"), function (done) { return done(validator(test.input) === test.expected ? null : new Error()); });
     });
     it('immediate mode test', function () {
-        assert_1.default(2 > 1, 'passed');
+        (0, assert_1.default)(2 > 1, 'passed');
     });
     it('immediate mode test 2', function () {
         var err;
         try {
-            assert_1.default(1 > 2, 'one is not greater than 2');
+            (0, assert_1.default)(1 > 2, 'one is not greater than 2');
         }
         catch (e) {
             err = e;
         }
-        assert_1.default(err != null);
-        assert_1.default(err instanceof Error);
-        assert_1.default(err.message === 'one is not greater than 2');
+        (0, assert_1.default)(err != null);
+        (0, assert_1.default)(err instanceof Error);
+        (0, assert_1.default)(err.message === 'one is not greater than 2');
     });
 });

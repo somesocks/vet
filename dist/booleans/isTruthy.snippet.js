@@ -5,4 +5,4 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var isTrue_1 = __importDefault(require("./isTrue"));
 var a = "123";
-var b = isTrue_1.default(a);
+var b = (0, isTrue_1.default)(a);

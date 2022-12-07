@@ -19,6 +19,6 @@ var assert_1 = __importDefault(require("../utils/assert"));
 * ```
 */
 var isFunction = function isFunction(val) { return typeof val === 'function'; };
-isFunction.assert = assert_1.default(isFunction);
+isFunction.assert = (0, assert_1.default)(isFunction);
 isFunction.schema = 'isFunction';
 module.exports = isFunction;

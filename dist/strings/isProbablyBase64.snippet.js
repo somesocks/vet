@@ -4,4 +4,4 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var isProbablyBase64_1 = __importDefault(require("./isProbablyBase64"));
-var a = isProbablyBase64_1.default('');
+var a = (0, isProbablyBase64_1.default)('');

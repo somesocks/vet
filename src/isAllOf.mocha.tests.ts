@@ -1,5 +1,7 @@
 
 
+import inspect from 'object-inspect';
+
 import isAllOf from './isAllOf';
 
 import isShape from './objects/isShape';
@@ -20,116 +22,84 @@ const TESTS = [
 	{ input: null, expected: false },
 ];
 
-const SHOULD_FAIL = [
-	{ input: true, expected: false },
-	{ input: '', expected: false },
-	{ input: false, expected: false },
-	{ input: (() => {}), expected: false },
-	{ input: {}, expected: false },
-	{ input: [], expected: false },
-	{ input: /a/, expected: false },
-	{ input: undefined, expected: false },
-	{ input: null, expected: false },
-];
+describe('vet/isAllOf 1', () => {
 
-const _isPerson = isAllOf(
-	isShape({
-		name: isString,
-	}),
-	isShape({
-		email: isString,
-	})
-);
-const isPerson : typeof _isPerson = _isPerson;
-
-
-const _validator = isAllOf(
-  isString,
-  isNotEmpty
-);
-const validator : typeof _validator = _validator;
-
-const SHOULD_PASS_2 = [
-	{ input: { name: 'foo', email: 'foo' }, expected: false },
-];
-
-const SHOULD_FAIL_2 = [
-	{ input: { name: 'foo' }, expected: false },
-	{ input: { email : 'bar' }, expected: false },
-];
-
-
-describe('vet/isAllOf', () => {
-
+	const _validator = isAllOf(
+		isString,
+		isNotEmpty
+	);
+	const validator : typeof _validator = _validator;
+	
 	TESTS.forEach((test) => {
 		it(
-			`(${test.input})-->(${test.expected})`,
+			`validator(${inspect(test.input)}) returns ${test.expected}`,
 			(done) => done(
 				validator(test.input) === test.expected ? null : new Error()
 			)
 		);
-	});
 
-	const threwError = (validator) => (...args) => {
-		try {
-			validator(...args);
-			return false;
-		} catch (e) {
-			console.log('assert error', e);
-			return true;
-		}
-	};
-
-	const threwNoError = (validator) => (...args) => {
-		try {
-			validator(...args);
-			return true;
-		} catch (e) {
-			console.log('assert error', e);
-			return false;
-		}
-	};
-
-	const validator2 = threwError(validator.assert);
-
-	SHOULD_FAIL.forEach((test) => {
 		it(
-			`assert (${test.input}) should fail`,
-			(done) => done(
-				validator2(test.input) ? null : new Error()
-			)
-		);
-	});
+			`validator.assert(${inspect(test.input)}) should ${test.expected ? 'pass' : 'fail'}`,
+			(done) => {
+				let error = false;
+				try {
+					validator.assert(test.input);
+				} catch (e) {
+					error = true;
+				}
 
-	SHOULD_PASS_2.forEach((test) => {
-		it(
-			`assert (${test.input}) should pass`,
-			(done) => done(
-				threwNoError(isPerson.assert)(test.input) ? null : new Error()
-			)
-		);
-	});
-
-	SHOULD_FAIL_2.forEach((test) => {
-		it(
-			`assert (${test.input}) should fail`,
-			(done) => done(
-				threwError(isPerson.assert)(test.input) ? null : new Error()
-			)
+				//no error should be thrown if a expected is expected
+				done(!error == test.expected ? null : new Error());	
+			}
 		);
 	});
 
 });
 
 
-// typescript check
-let a = {
-  name: 'bob',
-  email: 'bob@',
-} as any;
 
-isPerson.assert(a);
 
-let b = a;
-b.name;
-b.email;
+
+const TESTS_2 = [
+	{ input: { name: 'foo', email: 'foo' }, expected: true },
+	{ input: { name: 'foo' }, expected: false },
+	{ input: { email : 'bar' }, expected: false },
+];
+
+describe('vet/isAllOf 2', () => {
+
+	const _validator = isAllOf(
+		isShape({
+			name: isString,
+		}),	
+		isShape({
+			email: isString,
+		})	
+	);	
+	const validator : typeof _validator = _validator;
+		
+	TESTS_2.forEach((test) => {
+		it(
+			`validator(${inspect(test.input)}) returns ${test.expected}`,
+			(done) => done(
+				validator(test.input) === test.expected ? null : new Error()
+			)
+		);
+
+		it(
+			`validator.assert(${inspect(test.input)}) should ${test.expected ? 'pass' : 'fail'}`,
+			(done) => {
+				let error = false;
+				try {
+					validator.assert(test.input);
+				} catch (e) {
+					error = true;
+				}
+
+				//no error should be thrown if a expected is expected
+				done(!error == test.expected ? null : new Error());	
+			}
+		);
+	});
+
+});

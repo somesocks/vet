@@ -1,5 +1,7 @@
 
-import { Validator } from '../types';
+
+import inspect from 'object-inspect';
+
 
 import isString from '../strings/isString';
 import isArrayOf from './isArrayOf';
@@ -32,25 +34,33 @@ const TESTS = [
 
 describe('vet/arrays/isArrayOf', () => {
 
-	const validator = isArrayOf(
+	const _validator = isArrayOf(
     ((val) => val != null)
   );
+	const validator : typeof _validator = _validator;
 
 	TESTS.forEach((test) => {
 		it(
-			`(${test.input})-->(${test.expected})`,
+			`validator(${inspect(test.input)}) returns ${test.expected}`,
 			(done) => done(
 				validator(test.input) === test.expected ? null : new Error()
 			)
 		);
+
+		it(
+			`validator.assert(${inspect(test.input)}) should ${test.expected ? 'pass' : 'fail'}`,
+			(done) => {
+				let error = false;
+				try {
+					validator.assert(test.input);
+				} catch (e) {
+					error = true;
+				}
+
+				//no error should be thrown if a expected is expected
+				done(!error == test.expected ? null : new Error());	
+			}
+		);
 	});
+
 });
-
-
-//typescript checks
-const _isStringArray = isArrayOf(isString);
-const isStringArray : typeof _isStringArray = _isStringArray;
-
-let a = [ 'foo' ];
-isStringArray.assert(a);
-a[0] = 'bar';

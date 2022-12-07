@@ -1,4 +1,3 @@
-declare const _default: (this: any, validator: any, msg?: any) => (props: any, propName: any, componentName: any) => void;
 /**
 * A utility function for building a react-compatible assertion from a Vet validator
 *
@@ -10,4 +9,5 @@ declare const _default: (this: any, validator: any, msg?: any) => (props: any, p
 * @returns a function that returns null if the arguments pass validation, or throws an error if they do not
 * @memberof vet.utils
 */
+declare const _default: (this: any, validator: any, msg?: any) => (props: any, propName: any, componentName: any) => void;
 export = _default;

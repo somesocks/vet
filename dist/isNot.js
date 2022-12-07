@@ -30,8 +30,8 @@ function isNot(validator) {
         var args2 = arguments;
         return !validator.apply(this, args2);
     };
-    res.assert = assert_1.default(res);
-    res.schema = 'isNot(' + schema_1.default(validator) + ')';
+    res.assert = (0, assert_1.default)(res);
+    res.schema = 'isNot(' + (0, schema_1.default)(validator) + ')';
     return res;
 }
 module.exports = isNot;

@@ -10,6 +10,6 @@ var assert_1 = __importDefault(require("../utils/assert"));
 * @memberof vet.strings
 */
 var isEmpty = function isEmpty(val) { return val === ''; };
-isEmpty.assert = assert_1.default(isEmpty);
+isEmpty.assert = (0, assert_1.default)(isEmpty);
 isEmpty.schema = 'isEmptyString';
 module.exports = isEmpty;

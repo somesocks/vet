@@ -4,4 +4,4 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var isUndefined_1 = __importDefault(require("./isUndefined"));
-var a = isUndefined_1.default(2);
+var a = (0, isUndefined_1.default)(2);

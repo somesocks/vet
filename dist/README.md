@@ -2,6 +2,18 @@
 
 A collection of data validation tools.
 
+# major changes in vet 5 
+
+version 5 includes several breaking changes from version 4, mostly designed to improve interoperability with TS
+
+- `optional` no longer accepts `null`, just `undefined`.  This is to bring it inline with TypeScript and many other libraries' interpretation of optional values.
+- `isShape` now converts all `T | undefined` properties to optional properties in the validator schema type.  This eliminates the requirement to explicitly define "optional" properties as `undefined`.
+- `accepts` and `returns` have now been moved from `vet/utils` to `vet/functions`, where they should have been in the first place.
+
+in addition, v5 includes:
+
+- a new `isTuple` utility
+
 # API
 
 ## Objects
@@ -42,7 +54,9 @@ A collection of data validation tools.
         * [.isDate(val)](#vet.dates.isDate) ⇒
         * [.isValidDate(val)](#vet.dates.isValidDate) ⇒
     * [.functions](#vet.functions) : <code>object</code>
+        * [.accepts(func, validator, message)](#vet.functions.accepts) ⇒
         * [.isFunction(val)](#vet.functions.isFunction) ⇒
+        * [.returns(func, validator, message)](#vet.functions.returns) ⇒
     * [.numbers](#vet.numbers) : <code>object</code>
         * [.isBetween(lower, upper)](#vet.numbers.isBetween) ⇒ <code>function</code>
             * [.exclusive](#vet.numbers.isBetween.exclusive) ⇒ <code>function</code>
@@ -61,6 +75,7 @@ A collection of data validation tools.
         * [.isPositive(val)](#vet.numbers.isPositive) ⇒
         * [.isZero(val)](#vet.numbers.isZero) ⇒
     * [.objects](#vet.objects) : <code>object</code>
+        * [.isInstanceOf(con)](#vet.objects.isInstanceOf) ⇒
         * [.isObject(val)](#vet.objects.isObject) ⇒
         * [.isObjectOf(validator)](#vet.objects.isObjectOf) ⇒
         * [.isShape(schema)](#vet.objects.isShape) ⇒
@@ -77,9 +92,7 @@ A collection of data validation tools.
         * [.isString(val)](#vet.strings.isString) ⇒
         * [.matches(regex)](#vet.strings.matches) ⇒
     * [.utils](#vet.utils) : <code>object</code>
-        * [.accepts(func, validator, message)](#vet.utils.accepts) ⇒
         * [.assert(validator, message)](#vet.utils.assert) ⇒
-        * [.returns(func, validator, message)](#vet.utils.returns) ⇒
     * [.equals(eq)](#vet.equals) ⇒
     * [.exists(val)](#vet.exists) ⇒
     * [.isAllOf(...eq)](#vet.isAllOf) ⇒
@@ -374,6 +387,28 @@ isValidDate(new Date()); // returns true
 ### vet.functions : <code>object</code>
 **Kind**: static namespace of [<code>vet</code>](#vet)  
 
+* [.functions](#vet.functions) : <code>object</code>
+    * [.accepts(func, validator, message)](#vet.functions.accepts) ⇒
+    * [.isFunction(val)](#vet.functions.isFunction) ⇒
+    * [.returns(func, validator, message)](#vet.functions.returns) ⇒
+
+
+* * *
+
+<a name="vet.functions.accepts"></a>
+
+#### functions.accepts(func, validator, message) ⇒
+Wraps a function in a validator which checks its arguments, and throws an error if the arguments are bad.
+
+**Kind**: static method of [<code>functions</code>](#vet.functions)  
+**Returns**: a wrapped function that throws an error if the arguments do not pass validation  
+**Params**
+
+- func - the function to wrap
+- validator - the validator function.  This gets passed the arguments as an array
+- message - an optional message string to pass into the error thrown
+
+
 * * *
 
 <a name="vet.functions.isFunction"></a>
@@ -396,6 +431,22 @@ isFunction({}); // returns false
 
 isFunction(function (){}); // returns true
 ```
+
+* * *
+
+<a name="vet.functions.returns"></a>
+
+#### functions.returns(func, validator, message) ⇒
+Wraps a function in a validator which checks its return value, and throws an error if the return value is bad.
+
+**Kind**: static method of [<code>functions</code>](#vet.functions)  
+**Returns**: a wrapped function that throws an error if the return value doed not pass validation  
+**Params**
+
+- func - the function to wrap
+- validator - the validator function.  This gets passed the return value
+- message - an optional message string to pass into the error thrown
+
 
 * * *
 
@@ -661,11 +712,26 @@ Checks to see if a value is zero
 **Kind**: static namespace of [<code>vet</code>](#vet)  
 
 * [.objects](#vet.objects) : <code>object</code>
+    * [.isInstanceOf(con)](#vet.objects.isInstanceOf) ⇒
     * [.isObject(val)](#vet.objects.isObject) ⇒
     * [.isObjectOf(validator)](#vet.objects.isObjectOf) ⇒
     * [.isShape(schema)](#vet.objects.isShape) ⇒
         * [.isShape.exact(schema)](#vet.objects.isShape.isShape.exact) ⇒
         * [.isShape.partial(schema)](#vet.objects.isShape.isShape.partial) ⇒
+
+
+* * *
+
+<a name="vet.objects.isInstanceOf"></a>
+
+#### objects.isInstanceOf(con) ⇒
+Checks to see if a value is an object and inherits a prototype from a constructor function
+
+**Kind**: static method of [<code>objects</code>](#vet.objects)  
+**Returns**: a validator to check if a value inherits that prototype  
+**Params**
+
+- con - the constructor function to check against
 
 
 * * *
@@ -993,28 +1059,6 @@ Builds a function that checks to see if a value matches a regular expression
 ### vet.utils : <code>object</code>
 **Kind**: static namespace of [<code>vet</code>](#vet)  
 
-* [.utils](#vet.utils) : <code>object</code>
-    * [.accepts(func, validator, message)](#vet.utils.accepts) ⇒
-    * [.assert(validator, message)](#vet.utils.assert) ⇒
-    * [.returns(func, validator, message)](#vet.utils.returns) ⇒
-
-
-* * *
-
-<a name="vet.utils.accepts"></a>
-
-#### utils.accepts(func, validator, message) ⇒
-Wraps a function in a validator which checks its arguments, and throws an error if the arguments are bad.
-
-**Kind**: static method of [<code>utils</code>](#vet.utils)  
-**Returns**: a wrapped function that throws an error if the arguments do not pass validation  
-**Params**
-
-- func - the function to wrap
-- validator - the validator function.  This gets passed the arguments as an array
-- message - an optional message string to pass into the error thrown
-
-
 * * *
 
 <a name="vet.utils.assert"></a>
@@ -1030,22 +1074,6 @@ This is useful for some code that expects assertion-style validation.
 
 - validator - the validator to wrap
 - message - an optional message string to pass into the error
-
-
-* * *
-
-<a name="vet.utils.returns"></a>
-
-#### utils.returns(func, validator, message) ⇒
-Wraps a function in a validator which checks its return value, and throws an error if the return value is bad.
-
-**Kind**: static method of [<code>utils</code>](#vet.utils)  
-**Returns**: a wrapped function that throws an error if the return value doed not pass validation  
-**Params**
-
-- func - the function to wrap
-- validator - the validator function.  This gets passed the return value
-- message - an optional message string to pass into the error thrown
 
 
 * * *
@@ -1409,3 +1437,4 @@ Trigger a compiler error when a value is _not_ an exact type.
 
 * * *
 
+ 

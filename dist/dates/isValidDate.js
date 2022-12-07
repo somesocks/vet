@@ -22,6 +22,6 @@ var assert_1 = __importDefault(require("../utils/assert"));
 var isValidDate = function isValidDate(val) {
     return (val instanceof Date) && (!isNaN(val.getTime()));
 };
-isValidDate.assert = assert_1.default(isValidDate);
+isValidDate.assert = (0, assert_1.default)(isValidDate);
 isValidDate.schema = 'isValidDate';
 module.exports = isValidDate;

@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+# set for debugging
+# set -x
+
+#
+# abort on error
+# https://sipb.mit.edu/doc/safe-shell/
+set -euf -o pipefail
+
+if [[ -z ${CI+x} ]]; then
+  NPM="npm" # CI is unset, use regular npm
+else
+  NPM="sudo npm" # CI is set, use sudo
+fi
+
+if ! command -v pnpm &> /dev/null; then
+  echo "[INFO] I need pnpm but it's not installed. Installing...";
+  $NPM install --global --no-package-lock pnpm@7.13.4
+  echo "[INFO] done!";
+fi

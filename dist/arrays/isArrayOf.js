@@ -27,7 +27,7 @@ var isArray_1 = __importDefault(require("./isArray"));
 */
 function isArrayOf(validator) {
     var res = function (arr) {
-        if (!isArray_1.default(arr)) {
+        if (!(0, isArray_1.default)(arr)) {
             return false;
         }
         for (var i = 0; i < arr.length; i++) {
@@ -37,8 +37,8 @@ function isArrayOf(validator) {
         }
         return true;
     };
-    res.assert = assert_1.default(res);
-    res.schema = 'isArrayOf(' + schema_1.default(validator) + ')';
+    res.assert = (0, assert_1.default)(res);
+    res.schema = 'isArrayOf(' + (0, schema_1.default)(validator) + ')';
     return res;
 }
 module.exports = isArrayOf;

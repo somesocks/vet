@@ -11,10 +11,10 @@ function messageBuilder(log) {
 * @param validator - the validator function.  This gets passed the return value
 * @param message - an optional message string to pass into the error thrown
 * @returns a wrapped function that throws an error if the return value doed not pass validation
-* @memberof vet.utils
+* @memberof vet.functions
 */
 function returns(func, validator, message) {
-    message = messageBuilder(message || 'vet/utils/returns error!');
+    message = messageBuilder(message || 'vet/functions/returns error!');
     return function _returnsInstance() {
         var args = [];
         for (var _i = 0; _i < arguments.length; _i++) {

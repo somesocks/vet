@@ -18,7 +18,7 @@ var TESTS = [
     { input: '', expected: false },
     { input: 'a string', expected: false },
 ];
-describe('vet/utils/accepts', function () {
+describe('vet/functions/accepts', function () {
     var threwError = function (validator) { return function () {
         var args = [];
         for (var _i = 0; _i < arguments.length; _i++) {
@@ -33,9 +33,9 @@ describe('vet/utils/accepts', function () {
         }
     }; };
     var NOP = function () { };
-    var wrapper = accepts_1.default(NOP, isString_1.default);
+    var wrapper = (0, accepts_1.default)(NOP, isString_1.default);
     var validator = threwError(wrapper);
     TESTS.forEach(function (test) {
-        it("(" + test.input + ")-->(" + test.expected + ")", function (done) { return done(validator(test.input) === test.expected ? null : new Error()); });
+        it("(".concat(test.input, ")-->(").concat(test.expected, ")"), function (done) { return done(validator(test.input) === test.expected ? null : new Error()); });
     });
 });

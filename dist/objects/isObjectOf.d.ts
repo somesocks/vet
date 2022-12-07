@@ -8,5 +8,5 @@ declare type IsObjectOfValidator<T> = ExtendedValidator<Record<any, ValidatorTyp
 * @returns a function that returns true if the value is an object, and all of the object properties pass the validator
 * @memberof vet.objects
 */
-declare const isObjectOf: <T extends Function>(validator: T) => ExtendedValidator<Record<any, ValidatorType<T>>>;
+declare const isObjectOf: <T extends Function>(validator: T) => IsObjectOfValidator<T>;
 export = isObjectOf;

@@ -12,9 +12,9 @@ var isString_1 = __importDefault(require("./isString"));
 */
 function isLength(len) {
     var res = function (val) {
-        return isString_1.default(val) && val.length === len;
+        return (0, isString_1.default)(val) && val.length === len;
     };
-    res.assert = assert_1.default(res);
+    res.assert = (0, assert_1.default)(res);
     res.schema = 'isStringOfLength(' + len + ')';
     return res;
 }

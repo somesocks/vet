@@ -49,18 +49,18 @@ function isAllOf() {
                     validator.assert(val);
                 }
                 else {
-                    assert_1.default(validator)(val);
+                    (0, assert_1.default)(validator)(val);
                 }
             }
             else {
-                assert_1.default(val === validator);
+                (0, assert_1.default)(val === validator);
             }
         }
         return;
     };
     var s = 'isAllOf(';
     for (var i = 0; i < validators.length; i++) {
-        s += schema_1.default(validators[i]) + ', ';
+        s += (0, schema_1.default)(validators[i]) + ', ';
     }
     s += ')';
     res.schema = s;

@@ -11,8 +11,8 @@ var isNumber_1 = __importDefault(require("./isNumber"));
 * @memberof vet.numbers
 */
 var isNegative = function isNegative(val) {
-    return isNumber_1.default(val) && val < 0;
+    return (0, isNumber_1.default)(val) && val < 0;
 };
-isNegative.assert = assert_1.default(isNegative);
+isNegative.assert = (0, assert_1.default)(isNegative);
 isNegative.schema = 'isNegative';
 module.exports = isNegative;

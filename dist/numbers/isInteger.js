@@ -15,8 +15,8 @@ var floor = function (val) { return Math.floor(val); };
 * @memberof vet.numbers
 */
 var isInteger = function isInteger(val) {
-    return isNumber_1.default(val) && isFinite_1.default(val) && (floor(val) === val);
+    return (0, isNumber_1.default)(val) && (0, isFinite_1.default)(val) && (floor(val) === val);
 };
-isInteger.assert = assert_1.default(isInteger);
+isInteger.assert = (0, assert_1.default)(isInteger);
 isInteger.schema = 'isInteger';
 module.exports = isInteger;

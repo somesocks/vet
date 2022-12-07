@@ -4,4 +4,4 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var isProbablyURL_1 = __importDefault(require("./isProbablyURL"));
-var a = isProbablyURL_1.default('');
+var a = (0, isProbablyURL_1.default)('');

@@ -1,2 +1,2 @@
-declare const schema: (val?: any, seen?: any[] | undefined) => any;
+declare const schema: (val?: any, seen?: any[]) => any;
 export default schema;
