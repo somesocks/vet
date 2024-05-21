@@ -96,23 +96,51 @@ type _TValidator<T> = (T extends Validator<infer U> ? U : never);
 
 type _TFunction<T> = (T extends Function ? any : never);
 
+// the _TObject schema type is an condensed version of the following definitions,
+// because TS appears to have some trouble "inlining" generics after a certain depth,
+// and normalizing the resulting form
 
-type _TPartialKeys<T extends object> = {
-	[K in keyof T] -?: (T[K] | undefined) extends T[K] ? K : never
-}[keyof T];
+// type _TPartialKeys<T extends object> = {
+// 	[K in keyof T] -?: (T[K] | undefined) extends T[K] ? K : never
+// }[keyof T];
 
-type _TRequiredKeys<T extends object> = {
-	[K in keyof T] -?: (T[K] | undefined) extends T[K] ? never : K
-}[keyof T];
+// type _TRequiredKeys<T extends object> = {
+// 	[K in keyof T] -?: (T[K] | undefined) extends T[K] ? never : K
+// }[keyof T];
 
-type _TFixProps<T extends object> = {
-	[U in keyof ({ [K in _TRequiredKeys<T>] : T[K] } & { [K in _TPartialKeys<T>] ?: T[K] })] : T[U]
-};
+// type _TFixProps<T extends object> = {
+// 	[U in keyof ({ [K in _TRequiredKeys<T>] : T[K] } & { [K in _TPartialKeys<T>] ?: T[K] })] : T[U]
+// };
 
-type _TObjectFromSchema<T extends object> = { [key in keyof T] : _TSchema<T[key]> };
+// type _TObjectFromSchema<T extends object> = { [key in keyof T] : _TSchema<T[key]> };
 
-type _TObject<T> = T extends object ? (_TFixProps<_TObjectFromSchema<T>>) : never; 
+// type _TObject<T> = T extends object ? (_TFixProps<_TObjectFromSchema<T>>) : never; 
 
+type _TObject<T> = T extends object
+  ? {
+      [U in keyof ({
+        [K in {
+          [K in keyof { [key in keyof T] : _TSchema<T[key]> }] -?:
+            | { [key in keyof T] : _TSchema<T[key]> }[K]
+            | undefined extends { [key in keyof T] : _TSchema<T[key]> }[K]
+            ? never
+            : K;
+        }[keyof { [key in keyof T] : _TSchema<T[key]> }]] : {
+          [key in keyof T] : _TSchema<T[key]>;
+        }[K];
+      } & {
+        [K in {
+          [K in keyof { [key in keyof T] : _TSchema<T[key]> }] -?:
+            | { [key in keyof T] : _TSchema<T[key]> }[K]
+            | undefined extends { [key in keyof T] : _TSchema<T[key]> }[K]
+            ? K
+            : never;
+        }[keyof { [key in keyof T] : _TSchema<T[key]> }]] ?: {
+          [key in keyof T] : _TSchema<T[key]>;
+        }[K];
+      })] : { [key in keyof T] : _TSchema<T[key]> }[U];
+    }
+  : never;
 
 /**
 * Builds a function to check an object against a schema object

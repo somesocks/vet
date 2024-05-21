@@ -3,23 +3,39 @@ import ExtendedValidator from '../types/ExtendedValidator';
 declare type _TSchema<T> = (T extends Validator ? _TValidator<T> : (T extends Function ? _TFunction<T> : T extends object ? _TObject<T> : T));
 declare type _TValidator<T> = (T extends Validator<infer U> ? U : never);
 declare type _TFunction<T> = (T extends Function ? any : never);
-declare type _TPartialKeys<T extends object> = {
-    [K in keyof T]-?: (T[K] | undefined) extends T[K] ? K : never;
-}[keyof T];
-declare type _TRequiredKeys<T extends object> = {
-    [K in keyof T]-?: (T[K] | undefined) extends T[K] ? never : K;
-}[keyof T];
-declare type _TFixProps<T extends object> = {
+declare type _TObject<T> = T extends object ? {
     [U in keyof ({
-        [K in _TRequiredKeys<T>]: T[K];
+        [K in {
+            [K in keyof {
+                [key in keyof T]: _TSchema<T[key]>;
+            }]-?: {
+                [key in keyof T]: _TSchema<T[key]>;
+            }[K] | undefined extends {
+                [key in keyof T]: _TSchema<T[key]>;
+            }[K] ? never : K;
+        }[keyof {
+            [key in keyof T]: _TSchema<T[key]>;
+        }]]: {
+            [key in keyof T]: _TSchema<T[key]>;
+        }[K];
     } & {
-        [K in _TPartialKeys<T>]?: T[K];
-    })]: T[U];
-};
-declare type _TObjectFromSchema<T extends object> = {
-    [key in keyof T]: _TSchema<T[key]>;
-};
-declare type _TObject<T> = T extends object ? (_TFixProps<_TObjectFromSchema<T>>) : never;
+        [K in {
+            [K in keyof {
+                [key in keyof T]: _TSchema<T[key]>;
+            }]-?: {
+                [key in keyof T]: _TSchema<T[key]>;
+            }[K] | undefined extends {
+                [key in keyof T]: _TSchema<T[key]>;
+            }[K] ? K : never;
+        }[keyof {
+            [key in keyof T]: _TSchema<T[key]>;
+        }]]?: {
+            [key in keyof T]: _TSchema<T[key]>;
+        }[K];
+    })]: {
+        [key in keyof T]: _TSchema<T[key]>;
+    }[U];
+} : never;
 /**
 * Builds a function to check an object against a schema object
 *

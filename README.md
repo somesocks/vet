@@ -10,10 +10,9 @@ version 5 includes several breaking changes from version 4, mostly designed to i
 - `isShape` now converts all `T | undefined` properties to optional properties in the validator schema type.  This eliminates the requirement to explicitly define "optional" properties as `undefined`.
 - `accepts` and `returns` have now been moved from `vet/utils` to `vet/functions`, where they should have been in the first place.
 
-in addition, 5.0.0 includes:
+in addition, v5 includes:
 
-- a new `isInstanceOf` utility
-- more exhaustive test cases
+- a new `isTuple` utility
 
 # API
 
