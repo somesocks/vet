@@ -85,4 +85,4 @@ function isAllOf<T extends any[]>(...args : T) : IsAllOfValidator<T> {
 
 
 
-export = isAllOf;
+export default isAllOf;

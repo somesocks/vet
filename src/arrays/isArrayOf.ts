@@ -49,4 +49,4 @@ function isArrayOf<T extends Function>(validator : T) : IsArrayOfValidator<T> {
 	return res;
 }
 
-export = isArrayOf;
+export default isArrayOf;

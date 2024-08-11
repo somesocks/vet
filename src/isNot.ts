@@ -35,4 +35,4 @@ function isNot<T extends Function>(validator : T) : ExtendedValidator {
 	return res;
 }
 
-export = isNot;
+export default isNot;

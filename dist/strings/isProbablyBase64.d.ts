@@ -6,4 +6,4 @@ import ExtendedValidator from '../types/ExtendedValidator';
 * @memberof vet.strings
 */
 declare const isProbablyBase64: ExtendedValidator<string>;
-export = isProbablyBase64;
+export default isProbablyBase64;

@@ -19,4 +19,4 @@ const isPositive : ExtendedValidator<number> =
 isPositive.assert = assert(isPositive);
 isPositive.schema = 'isPositive';
 
-export = isPositive;
+export default isPositive;

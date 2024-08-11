@@ -18,4 +18,4 @@ const isNumber : ExtendedValidator<number> = function isNumber(val) {
 isNumber.assert = assert(isNumber);
 isNumber.schema = 'isNumber';
 
-export = isNumber;
+export default isNumber;

@@ -32,4 +32,4 @@ const isArray : ExtendedValidator<any[]> = Array.isArray ?
 isArray.schema = 'isArray';
 isArray.assert = assert(isArray);
 
-export = isArray;
+export default isArray;

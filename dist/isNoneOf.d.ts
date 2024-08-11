@@ -16,4 +16,4 @@ import ExtendedValidator from './types/ExtendedValidator';
 * ```
 */
 declare function isNoneOf(...args: any[]): ExtendedValidator;
-export = isNoneOf;
+export default isNoneOf;

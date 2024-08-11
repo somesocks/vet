@@ -17,4 +17,4 @@ const isEmpty : ExtendedValidator<''> =
 isEmpty.assert = assert(isEmpty);
 isEmpty.schema = 'isEmptyString';
 
-export = isEmpty;
+export default isEmpty;

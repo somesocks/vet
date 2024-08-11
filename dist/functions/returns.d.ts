@@ -1,5 +1,5 @@
 import ValidatorType from '../types/ValidatorType';
-declare type GenericFunc = (...args: any) => any;
+type GenericFunc = (...args: any) => any;
 /**
 * Wraps a function in a validator which checks its return value, and throws an error if the return value is bad.
 *
@@ -10,4 +10,4 @@ declare type GenericFunc = (...args: any) => any;
 * @memberof vet.functions
 */
 declare function returns<T extends GenericFunc, U extends Function>(func: T, validator: U, message?: any): (...args: Parameters<T>) => (ValidatorType<U> & ReturnType<T>);
-export = returns;
+export default returns;

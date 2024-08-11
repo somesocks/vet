@@ -1,6 +1,6 @@
 import ExtendedValidator from '../types/ExtendedValidator';
 import { ValidatorType } from '../types';
-declare type IsObjectOfValidator<T> = ExtendedValidator<Record<any, ValidatorType<T>>>;
+type IsObjectOfValidator<T> = ExtendedValidator<Record<any, ValidatorType<T>>>;
 /**
 * Builds an object validator that checks the properties of the object
 * NOTE: This only checks enumerable properties
@@ -9,4 +9,4 @@ declare type IsObjectOfValidator<T> = ExtendedValidator<Record<any, ValidatorTyp
 * @memberof vet.objects
 */
 declare const isObjectOf: <T extends Function>(validator: T) => IsObjectOfValidator<T>;
-export = isObjectOf;
+export default isObjectOf;

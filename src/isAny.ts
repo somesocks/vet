@@ -31,4 +31,4 @@ const isAny : ExtendedValidator = function isAny(val) {
 isAny.assert = assert(isAny);
 isAny.schema = 'isAny';
 
-export = isAny;
+export default isAny;

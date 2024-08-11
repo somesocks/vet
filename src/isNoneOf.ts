@@ -50,4 +50,4 @@ function isNoneOf(...args : any[]) : ExtendedValidator {
 	return res;
 }
 
-export = isNoneOf;
+export default isNoneOf;

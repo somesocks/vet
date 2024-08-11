@@ -2,6 +2,7 @@
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
+Object.defineProperty(exports, "__esModule", { value: true });
 var assert_1 = __importDefault(require("../utils/assert"));
 var isString_1 = __importDefault(require("./isString"));
 // const REGEX = /^https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)$/g;
@@ -114,4 +115,4 @@ var isProbablyURL = function isProbablyURL(val) {
 };
 isProbablyURL.assert = (0, assert_1.default)(isProbablyURL);
 isProbablyURL.schema = 'isProbablyURL';
-module.exports = isProbablyURL;
+exports.default = isProbablyURL;

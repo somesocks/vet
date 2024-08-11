@@ -124,4 +124,4 @@ const isProbablyURL : ExtendedValidator<string> = function isProbablyURL(val) {
 isProbablyURL.assert = assert(isProbablyURL);
 isProbablyURL.schema = 'isProbablyURL';
 
-export = isProbablyURL;
+export default isProbablyURL;

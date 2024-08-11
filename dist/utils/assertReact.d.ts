@@ -9,5 +9,4 @@
 * @returns a function that returns null if the arguments pass validation, or throws an error if they do not
 * @memberof vet.utils
 */
-declare const _default: (this: any, validator: any, msg?: any) => (props: any, propName: any, componentName: any) => void;
-export = _default;
+export default function assertReact(this: any, validator: any, msg?: any): (props: any, propName: any, componentName: any) => void;

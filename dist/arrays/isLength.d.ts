@@ -18,4 +18,4 @@ import ExtendedValidator from '../types/ExtendedValidator';
 * ```
 */
 declare function isLength(len: any): ExtendedValidator<any[]>;
-export = isLength;
+export default isLength;

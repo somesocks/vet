@@ -15,4 +15,4 @@ import ExtendedValidator from '../types/ExtendedValidator';
 * ```
 */
 declare const isFalsy: ExtendedValidator;
-export = isFalsy;
+export default isFalsy;

@@ -16,4 +16,4 @@ import ExtendedValidator from './types/ExtendedValidator';
 * ```
 */
 declare const exists: ExtendedValidator;
-export = exists;
+export default exists;

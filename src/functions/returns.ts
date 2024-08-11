@@ -37,4 +37,4 @@ function returns<T extends GenericFunc, U extends Function>(func : T, validator 
 	};
 }
 
-export = returns;
+export default returns;

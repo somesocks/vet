@@ -2,6 +2,7 @@
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
+Object.defineProperty(exports, "__esModule", { value: true });
 var assert_1 = __importDefault(require("./utils/assert"));
 var schema_1 = __importDefault(require("./utils/schema"));
 /**
@@ -27,4 +28,4 @@ function equals(eq) {
     validator.schema = 'equals(' + (0, schema_1.default)(eq) + ')';
     return validator;
 }
-module.exports = equals;
+exports.default = equals;

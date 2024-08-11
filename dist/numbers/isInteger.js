@@ -4,6 +4,7 @@
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
+Object.defineProperty(exports, "__esModule", { value: true });
 var assert_1 = __importDefault(require("../utils/assert"));
 var isNumber_1 = __importDefault(require("./isNumber"));
 var isFinite_1 = __importDefault(require("./isFinite"));
@@ -19,4 +20,4 @@ var isInteger = function isInteger(val) {
 };
 isInteger.assert = (0, assert_1.default)(isInteger);
 isInteger.schema = 'isInteger';
-module.exports = isInteger;
+exports.default = isInteger;

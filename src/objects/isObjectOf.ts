@@ -37,4 +37,4 @@ const isObjectOf = function isObjectOf<T extends Function>(validator : T) : IsOb
 	return res;
 };
 
-export = isObjectOf;
+export default isObjectOf;

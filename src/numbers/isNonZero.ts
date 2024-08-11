@@ -20,4 +20,4 @@ const isNonZero : ExtendedValidator<number> = function isNonZero(val) {
 isNonZero.assert = assert(isNonZero);
 isNonZero.schema = 'isNonZero';
 
-export = isNonZero;
+export default isNonZero;

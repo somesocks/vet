@@ -15,4 +15,4 @@ import ExtendedValidator from './types/ExtendedValidator';
 * ```
 */
 declare const isUndefined: ExtendedValidator<undefined>;
-export = isUndefined;
+export default isUndefined;

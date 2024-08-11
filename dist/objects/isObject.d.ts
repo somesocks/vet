@@ -6,4 +6,4 @@ import ExtendedValidator from '../types/ExtendedValidator';
 * @memberof vet.objects
 */
 declare const isObject: ExtendedValidator<Record<any, any>>;
-export = isObject;
+export default isObject;

@@ -6,4 +6,4 @@ import ExtendedValidator from '../types/ExtendedValidator';
 * @memberof vet.strings
 */
 declare const isNotEmpty: ExtendedValidator<string>;
-export = isNotEmpty;
+export default isNotEmpty;

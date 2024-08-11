@@ -28,4 +28,4 @@ const isValidDate : ExtendedValidator<Date> = function isValidDate(val) {
 isValidDate.assert = assert(isValidDate);
 isValidDate.schema = 'isValidDate';
 
-export = isValidDate;
+export default isValidDate;

@@ -18,4 +18,4 @@ import ExtendedValidator from './types/ExtendedValidator';
 * ```
 */
 declare const isAny: ExtendedValidator;
-export = isAny;
+export default isAny;

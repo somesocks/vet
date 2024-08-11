@@ -1,9 +1,9 @@
 import Validator from '../types/Validator';
 import ExtendedValidator from '../types/ExtendedValidator';
-declare type _TSchema<T> = (T extends Validator ? _TValidator<T> : (T extends Function ? _TFunction<T> : T extends object ? _TObject<T> : T));
-declare type _TValidator<T> = (T extends Validator<infer U> ? U : never);
-declare type _TFunction<T> = (T extends Function ? any : never);
-declare type _TObject<T> = T extends object ? {
+type _TSchema<T> = (T extends Validator ? _TValidator<T> : (T extends Function ? _TFunction<T> : T extends object ? _TObject<T> : T));
+type _TValidator<T> = (T extends Validator<infer U> ? U : never);
+type _TFunction<T> = (T extends Function ? any : never);
+type _TObject<T> = T extends object ? {
     [U in keyof ({
         [K in {
             [K in keyof {
@@ -82,8 +82,8 @@ declare namespace isShape {
     var exact: <V extends object>(schema: V) => ExtendedValidator<_TSchema<V>>;
     var partial: <V extends object>(schema: V) => ExtendedValidator<_deepPartial<_TSchema<V>>>;
 }
-declare type _basic = null | undefined | string | number | boolean | symbol | bigint | Date | ((...args: any[]) => unknown) | any[];
-declare type _deepPartial<T> = T extends _basic ? T : T extends object ? {
+type _basic = null | undefined | string | number | boolean | symbol | bigint | Date | ((...args: any[]) => unknown) | any[];
+type _deepPartial<T> = T extends _basic ? T : T extends object ? {
     [KeyType in keyof T]?: _deepPartial<T[KeyType]> | undefined;
 } : unknown;
-export = isShape;
+export default isShape;

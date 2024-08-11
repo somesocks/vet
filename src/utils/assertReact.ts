@@ -12,9 +12,9 @@ import assert from './assert';
 * @returns a function that returns null if the arguments pass validation, or throws an error if they do not
 * @memberof vet.utils
 */
-export = function assertReact(this : any, validator, msg ?: any) {
+export default function assertReact(this : any, validator, msg ?: any) {
 	validator = assert(validator, msg);
 	return function(props, propName, componentName) {
 		validator(props[propName]);
 	};
-};
+}

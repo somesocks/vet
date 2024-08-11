@@ -58,4 +58,4 @@ isGreaterThan.inclusive = function inclusive(bound : number) : ExtendedValidator
 	return res;
 };
 
-export = isGreaterThan;
+export default isGreaterThan;

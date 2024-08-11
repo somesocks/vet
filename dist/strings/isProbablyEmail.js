@@ -2,6 +2,7 @@
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
+Object.defineProperty(exports, "__esModule", { value: true });
 var assert_1 = __importDefault(require("../utils/assert"));
 var isString_1 = __importDefault(require("./isString"));
 // eslint-disable-next-line no-useless-escape
@@ -18,4 +19,4 @@ var isProbablyEmail = function isProbablyEmail(val) {
 };
 isProbablyEmail.assert = (0, assert_1.default)(isProbablyEmail);
 isProbablyEmail.schema = 'isProbablyEmail';
-module.exports = isProbablyEmail;
+exports.default = isProbablyEmail;

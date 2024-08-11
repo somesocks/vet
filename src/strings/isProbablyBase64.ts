@@ -25,4 +25,4 @@ const isProbablyBase64 : ExtendedValidator<string> = function isProbablyBase64(v
 isProbablyBase64.assert = assert(isProbablyBase64);
 isProbablyBase64.schema = 'isProbablyBase64';
 
-export = isProbablyBase64;
+export default isProbablyBase64;

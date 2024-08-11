@@ -342,4 +342,4 @@ isShape.partial = function isPartialShape<V extends object>(schema : V) : Extend
 
 
 
-export = isShape;
+export default isShape;

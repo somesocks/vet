@@ -27,4 +27,4 @@ const isNull : ExtendedValidator<null> = function isNull(val) {
 isNull.assert = assert(isNull);
 isNull.schema = 'isNull';
 
-export = isNull;
+export default isNull;

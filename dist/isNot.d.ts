@@ -17,4 +17,4 @@ import ExtendedValidator from './types/ExtendedValidator';
 * ```
 */
 declare function isNot<T extends Function>(validator: T): ExtendedValidator;
-export = isNot;
+export default isNot;

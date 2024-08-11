@@ -17,4 +17,4 @@ import ExtendedValidator from './types/ExtendedValidator';
 * ```
 */
 declare function equals<T>(eq: T): ExtendedValidator<T>;
-export = equals;
+export default equals;

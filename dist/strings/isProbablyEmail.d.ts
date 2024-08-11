@@ -6,4 +6,4 @@ import ExtendedValidator from '../types/ExtendedValidator';
 * @memberof vet.strings
 */
 declare const isProbablyEmail: ExtendedValidator<string>;
-export = isProbablyEmail;
+export default isProbablyEmail;

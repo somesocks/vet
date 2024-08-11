@@ -2,6 +2,7 @@
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
+Object.defineProperty(exports, "__esModule", { value: true });
 var assert_1 = __importDefault(require("../utils/assert"));
 var isString_1 = __importDefault(require("./isString"));
 /**
@@ -13,4 +14,4 @@ var isString_1 = __importDefault(require("./isString"));
 var isNotEmpty = function isNotEmpty(val) { return (0, isString_1.default)(val) && val !== ''; };
 isNotEmpty.assert = (0, assert_1.default)(isNotEmpty);
 isNotEmpty.schema = 'isNotEmptyString';
-module.exports = isNotEmpty;
+exports.default = isNotEmpty;

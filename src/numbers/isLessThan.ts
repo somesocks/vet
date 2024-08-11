@@ -59,4 +59,4 @@ isLessThan.inclusive = function inclusive(bound : number) : ExtendedValidator<nu
 	return res;
 };
 
-export = isLessThan;
+export default isLessThan;

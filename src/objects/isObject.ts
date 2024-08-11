@@ -17,4 +17,4 @@ const isObject : ExtendedValidator<Record<any, any>> =
 isObject.assert = assert(isObject);
 isObject.schema = 'isObject';
 
-export = isObject;
+export default isObject;

@@ -6,4 +6,4 @@ import ExtendedValidator from '../types/ExtendedValidator';
 * @memberof vet.strings
 */
 declare function isLength(len: number): ExtendedValidator<string>;
-export = isLength;
+export default isLength;

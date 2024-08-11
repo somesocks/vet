@@ -28,4 +28,4 @@ const isFinite : ExtendedValidator<number> = function isFinite(value) {
 isFinite.assert = assert(isFinite);
 isFinite.schema = 'isFinite';
 
-export = isFinite;
+export default isFinite;

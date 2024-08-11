@@ -2,6 +2,7 @@
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
+Object.defineProperty(exports, "__esModule", { value: true });
 var schema_1 = __importDefault(require("./schema"));
 function messageBuilder(validator, message) {
     if (typeof message === 'function') {
@@ -53,4 +54,4 @@ function assert(validator, message) {
         return true;
     }
 }
-module.exports = assert;
+exports.default = assert;

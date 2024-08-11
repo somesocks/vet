@@ -47,4 +47,4 @@ function assert (this : any, validator, message ?: any) : any {
 
 }
 
-export = assert;
+export default assert;

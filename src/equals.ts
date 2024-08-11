@@ -30,4 +30,4 @@ function equals<T>(eq : T) : ExtendedValidator<T> {
 	return validator;
 }
 
-export = equals;
+export default equals;

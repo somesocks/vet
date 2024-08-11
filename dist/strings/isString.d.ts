@@ -6,4 +6,4 @@ import ExtendedValidator from '../types/ExtendedValidator';
 * @memberof vet.strings
 */
 declare const isString: ExtendedValidator<string>;
-export = isString;
+export default isString;

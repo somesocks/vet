@@ -1,4 +1,4 @@
-declare type TypedValidator<T = any> = {
+type TypedValidator<T = any> = {
     (val: any, ...rest: any[]): val is T;
 };
 export default TypedValidator;

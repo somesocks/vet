@@ -16,4 +16,4 @@ import ExtendedValidator from '../types/ExtendedValidator';
 * ```
 */
 declare const isTruthy: ExtendedValidator;
-export = isTruthy;
+export default isTruthy;

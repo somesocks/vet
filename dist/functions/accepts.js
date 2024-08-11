@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 function messageBuilder(log) {
     return typeof log === 'function' ?
         log :
@@ -29,4 +30,4 @@ function accepts(func, validator, message) {
         }
     };
 }
-module.exports = accepts;
+exports.default = accepts;

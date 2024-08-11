@@ -16,4 +16,4 @@ import ExtendedValidator from '../types/ExtendedValidator';
 * ```
 */
 declare const isArray: ExtendedValidator<any[]>;
-export = isArray;
+export default isArray;

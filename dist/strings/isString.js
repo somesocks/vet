@@ -2,6 +2,7 @@
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
+Object.defineProperty(exports, "__esModule", { value: true });
 var assert_1 = __importDefault(require("../utils/assert"));
 /**
 * Checks to see if a value is a string
@@ -14,4 +15,4 @@ var isString = function isString(val) {
 };
 isString.assert = (0, assert_1.default)(isString);
 isString.schema = 'isString';
-module.exports = isString;
+exports.default = isString;

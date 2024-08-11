@@ -25,4 +25,4 @@ const isDate : ExtendedValidator<Date> = function isDate(val) { return val insta
 isDate.assert = assert(isDate);
 isDate.schema = 'isDate';
 
-export = isDate;
+export default isDate;

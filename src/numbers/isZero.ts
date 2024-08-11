@@ -19,4 +19,4 @@ const isZero : ExtendedValidator<number> =
 isZero.assert = assert(isZero);
 isZero.schema = 'isZero';
 
-export = isZero;
+export default isZero;

@@ -6,4 +6,4 @@ import ExtendedValidator from '../types/ExtendedValidator';
 * @memberof vet.strings
 */
 declare function matches(regex: any): ExtendedValidator<string>;
-export = matches;
+export default matches;

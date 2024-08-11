@@ -34,4 +34,4 @@ function accepts(func, validator : Validator, message ?: any) {
 	};
 }
 
-export = accepts;
+export default accepts;

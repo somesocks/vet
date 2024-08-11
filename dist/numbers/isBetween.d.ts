@@ -11,4 +11,4 @@ declare namespace isBetween {
     var exclusive: (lower: number, upper: number) => ExtendedValidator<number>;
     var inclusive: (lower: number, upper: number) => ExtendedValidator<number>;
 }
-export = isBetween;
+export default isBetween;

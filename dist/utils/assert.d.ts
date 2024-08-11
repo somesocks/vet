@@ -8,4 +8,4 @@
 * @memberof vet.utils
 */
 declare function assert(this: any, validator: any, message?: any): any;
-export = assert;
+export default assert;

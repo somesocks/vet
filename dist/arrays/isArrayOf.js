@@ -2,6 +2,7 @@
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
+Object.defineProperty(exports, "__esModule", { value: true });
 var assert_1 = __importDefault(require("../utils/assert"));
 var schema_1 = __importDefault(require("../utils/schema"));
 var isArray_1 = __importDefault(require("./isArray"));
@@ -41,4 +42,4 @@ function isArrayOf(validator) {
     res.schema = 'isArrayOf(' + (0, schema_1.default)(validator) + ')';
     return res;
 }
-module.exports = isArrayOf;
+exports.default = isArrayOf;

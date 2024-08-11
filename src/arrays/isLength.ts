@@ -36,4 +36,4 @@ function isLength(len) : ExtendedValidator<any[]> {
 	return res;
 }
 
-export = isLength;
+export default isLength;

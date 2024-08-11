@@ -6,4 +6,4 @@ import ExtendedValidator from '../types/ExtendedValidator';
 * @memberof vet.objects
 */
 declare function isInstanceOf<T extends Function>(con: T): ExtendedValidator<T["prototype"]>;
-export = isInstanceOf;
+export default isInstanceOf;

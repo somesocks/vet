@@ -15,4 +15,4 @@ import ExtendedValidator from '../types/ExtendedValidator';
 * ```
 */
 declare const isFunction: ExtendedValidator<Function>;
-export = isFunction;
+export default isFunction;

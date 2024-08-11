@@ -9,4 +9,4 @@ import Validator from '../types/Validator';
 * @memberof vet.functions
 */
 declare function accepts(func: any, validator: Validator, message?: any): (this: any, ...args: any[]) => any;
-export = accepts;
+export default accepts;

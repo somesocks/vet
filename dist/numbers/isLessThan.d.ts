@@ -10,4 +10,4 @@ declare namespace isLessThan {
     var exclusive: (bound: number) => ExtendedValidator<number>;
     var inclusive: (bound: number) => ExtendedValidator<number>;
 }
-export = isLessThan;
+export default isLessThan;

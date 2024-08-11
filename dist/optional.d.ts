@@ -20,4 +20,4 @@ import ValidatorType from './types/ValidatorType';
 * ```
 */
 declare function optional<T extends Function>(validator: T): ExtendedValidator<ValidatorType<T> | undefined>;
-export = optional;
+export default optional;

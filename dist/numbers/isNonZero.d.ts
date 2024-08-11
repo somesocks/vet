@@ -6,4 +6,4 @@ import ExtendedValidator from '../types/ExtendedValidator';
 * @memberof vet.numbers
 */
 declare const isNonZero: ExtendedValidator<number>;
-export = isNonZero;
+export default isNonZero;

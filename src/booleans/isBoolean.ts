@@ -19,4 +19,4 @@ const isBoolean : ExtendedValidator<boolean> = function isBoolean (val) {
 isBoolean.assert = assert(isBoolean);
 isBoolean.schema = 'isBoolean';
 
-export = isBoolean;
+export default isBoolean;

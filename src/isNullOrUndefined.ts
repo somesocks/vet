@@ -27,4 +27,4 @@ const isNullOrUndefined : ExtendedValidator<null | undefined> = function isNullO
 isNullOrUndefined.assert = assert(isNullOrUndefined);
 isNullOrUndefined.schema = 'isNullOrUndefined';
 
-export = isNullOrUndefined;
+export default isNullOrUndefined;

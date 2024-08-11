@@ -57,4 +57,4 @@ function isOneOf<T extends any[]>(...args : T) : IsOneOfValidator<T> {
 }
 
 
-export = isOneOf;
+export default isOneOf;

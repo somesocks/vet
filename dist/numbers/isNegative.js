@@ -2,6 +2,7 @@
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
+Object.defineProperty(exports, "__esModule", { value: true });
 var assert_1 = __importDefault(require("../utils/assert"));
 var isNumber_1 = __importDefault(require("./isNumber"));
 /**
@@ -15,4 +16,4 @@ var isNegative = function isNegative(val) {
 };
 isNegative.assert = (0, assert_1.default)(isNegative);
 isNegative.schema = 'isNegative';
-module.exports = isNegative;
+exports.default = isNegative;

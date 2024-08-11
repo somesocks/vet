@@ -2,6 +2,7 @@
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
+Object.defineProperty(exports, "__esModule", { value: true });
 var assert_1 = __importDefault(require("../utils/assert"));
 /**
 * Checks to see if a value is a boolean
@@ -15,4 +16,4 @@ var isBoolean = function isBoolean(val) {
 };
 isBoolean.assert = (0, assert_1.default)(isBoolean);
 isBoolean.schema = 'isBoolean';
-module.exports = isBoolean;
+exports.default = isBoolean;

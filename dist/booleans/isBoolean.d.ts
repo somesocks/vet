@@ -6,4 +6,4 @@ import ExtendedValidator from '../types/ExtendedValidator';
 * @memberof vet.booleans
 */
 declare const isBoolean: ExtendedValidator<boolean>;
-export = isBoolean;
+export default isBoolean;

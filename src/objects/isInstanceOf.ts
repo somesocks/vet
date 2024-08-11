@@ -29,4 +29,4 @@ function isInstanceOf<T extends Function>(con : T) {
 	return validator;
 }
 
-export = isInstanceOf;
+export default isInstanceOf;

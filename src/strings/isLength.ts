@@ -25,4 +25,4 @@ function isLength(len : number) : ExtendedValidator<string> {
 	return res;
 }
 
-export = isLength;
+export default isLength;

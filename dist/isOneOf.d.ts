@@ -1,7 +1,7 @@
 import ExtendedValidator from './types/ExtendedValidator';
 import ValidatorType from './types/ValidatorType';
-declare type IsOneOfType<T extends any[]> = ValidatorType<T[number]>;
-declare type IsOneOfValidator<T extends any[]> = ExtendedValidator<IsOneOfType<T>>;
+type IsOneOfType<T extends any[]> = ValidatorType<T[number]>;
+type IsOneOfValidator<T extends any[]> = ExtendedValidator<IsOneOfType<T>>;
 /**
 * Constructs a function that checks equality against any number of arguments
 * @param {...*} eq - values to check equality against
@@ -19,4 +19,4 @@ declare type IsOneOfValidator<T extends any[]> = ExtendedValidator<IsOneOfType<T
 * ```
 */
 declare function isOneOf<T extends any[]>(...args: T): IsOneOfValidator<T>;
-export = isOneOf;
+export default isOneOf;

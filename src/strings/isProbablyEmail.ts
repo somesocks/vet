@@ -24,4 +24,4 @@ const isProbablyEmail : ExtendedValidator<string> = function isProbablyEmail(val
 isProbablyEmail.assert = assert(isProbablyEmail);
 isProbablyEmail.schema = 'isProbablyEmail';
 
-export = isProbablyEmail;
+export default isProbablyEmail;

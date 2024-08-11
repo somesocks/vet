@@ -25,4 +25,4 @@ function matches(regex) : ExtendedValidator<string> {
 	return res;
 }
 
-export = matches;
+export default matches;

@@ -2,6 +2,7 @@
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
+Object.defineProperty(exports, "__esModule", { value: true });
 var assert_1 = __importDefault(require("../utils/assert"));
 var isNumber_1 = __importDefault(require("./isNumber"));
 /**
@@ -49,4 +50,4 @@ isBetween.inclusive = function inclusive(lower, upper) {
     res.schema = 'isNumberBetween.inclusive(' + lower + ',' + upper + ')';
     return res;
 };
-module.exports = isBetween;
+exports.default = isBetween;

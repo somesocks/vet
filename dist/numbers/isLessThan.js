@@ -2,6 +2,7 @@
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
+Object.defineProperty(exports, "__esModule", { value: true });
 var assert_1 = __importDefault(require("../utils/assert"));
 var isNumber_1 = __importDefault(require("./isNumber"));
 /**
@@ -46,4 +47,4 @@ isLessThan.inclusive = function inclusive(bound) {
     res.schema = 'isNumberLessThan.inclusive(' + bound + ')';
     return res;
 };
-module.exports = isLessThan;
+exports.default = isLessThan;

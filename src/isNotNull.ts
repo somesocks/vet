@@ -30,4 +30,4 @@ const isNotNull : ExtendedValidator = function isNotNull(val) {
 isNotNull.assert = assert(isNotNull);
 isNotNull.schema = 'isNotNull';
 
-export = isNotNull;
+export default isNotNull;

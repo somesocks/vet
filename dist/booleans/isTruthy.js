@@ -2,6 +2,7 @@
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
+Object.defineProperty(exports, "__esModule", { value: true });
 var assert_1 = __importDefault(require("../utils/assert"));
 /**
 * Checks to see if a value is loosely true (truthy)
@@ -24,4 +25,4 @@ var isTruthy = function isTruthy(val) {
 };
 isTruthy.assert = (0, assert_1.default)(isTruthy);
 isTruthy.schema = 'isTruthy';
-module.exports = isTruthy;
+exports.default = isTruthy;

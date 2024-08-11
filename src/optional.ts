@@ -43,4 +43,4 @@ function optional<T extends Function>(validator : T) : ExtendedValidator<Validat
 	return res;
 }
 
-export = optional;
+export default optional;

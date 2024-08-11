@@ -20,4 +20,4 @@ const isNegative : ExtendedValidator<number> = function isNegative(val) {
 isNegative.assert = assert(isNegative);
 isNegative.schema = 'isNegative';
 
-export = isNegative;
+export default isNegative;

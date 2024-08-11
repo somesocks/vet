@@ -62,4 +62,4 @@ isBetween.inclusive = function inclusive(lower : number, upper : number) : Exten
 	return res;
 };
 
-export = isBetween;
+export default isBetween;

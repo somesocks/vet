@@ -92,6 +92,7 @@ in addition, v5 includes:
         * [.isString(val)](#vet.strings.isString) ⇒
         * [.matches(regex)](#vet.strings.matches) ⇒
     * [.utils](#vet.utils) : <code>object</code>
+        * [.assertReact](#vet.utils.assertReact) ⇒
         * [.assert(validator, message)](#vet.utils.assert) ⇒
     * [.equals(eq)](#vet.equals) ⇒
     * [.exists(val)](#vet.exists) ⇒
@@ -1058,6 +1059,29 @@ Builds a function that checks to see if a value matches a regular expression
 
 ### vet.utils : <code>object</code>
 **Kind**: static namespace of [<code>vet</code>](#vet)  
+
+* [.utils](#vet.utils) : <code>object</code>
+    * [.assertReact](#vet.utils.assertReact) ⇒
+    * [.assert(validator, message)](#vet.utils.assert) ⇒
+
+
+* * *
+
+<a name="vet.utils.assertReact"></a>
+
+#### utils.assertReact ⇒
+A utility function for building a react-compatible assertion from a Vet validator
+
+This is useful for some libraries (like React) that expect
+assertion-style validation.
+
+**Kind**: static property of [<code>utils</code>](#vet.utils)  
+**Returns**: a function that returns null if the arguments pass validation, or throws an error if they do not  
+**Params**
+
+- validator - the validator to wrap
+- message - an optional message string to pass into the error
+
 
 * * *
 

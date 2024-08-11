@@ -18,4 +18,4 @@ const isString : ExtendedValidator<string> = function isString (val) {
 isString.assert = assert(isString);
 isString.schema = 'isString';
 
-export = isString;
+export default isString;

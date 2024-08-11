@@ -17,4 +17,4 @@ import ExtendedValidator from './types/ExtendedValidator';
 * ```
 */
 declare const isNotNull: ExtendedValidator;
-export = isNotNull;
+export default isNotNull;

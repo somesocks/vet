@@ -6,4 +6,4 @@ import ExtendedValidator from '../types/ExtendedValidator';
 * @memberof vet.numbers
 */
 declare const isInteger: ExtendedValidator<number>;
-export = isInteger;
+export default isInteger;

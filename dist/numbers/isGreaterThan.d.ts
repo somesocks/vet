@@ -10,4 +10,4 @@ declare namespace isGreaterThan {
     var exclusive: (bound: number) => ExtendedValidator<number>;
     var inclusive: (bound: number) => ExtendedValidator<number>;
 }
-export = isGreaterThan;
+export default isGreaterThan;

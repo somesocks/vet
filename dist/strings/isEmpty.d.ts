@@ -6,4 +6,4 @@ import ExtendedValidator from '../types/ExtendedValidator';
 * @memberof vet.strings
 */
 declare const isEmpty: ExtendedValidator<''>;
-export = isEmpty;
+export default isEmpty;

@@ -6,4 +6,4 @@ import ExtendedValidator from '../types/ExtendedValidator';
 * @memberof vet.numbers
 */
 declare const isFinite: ExtendedValidator<number>;
-export = isFinite;
+export default isFinite;

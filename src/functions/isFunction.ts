@@ -26,4 +26,4 @@ const isFunction : ExtendedValidator<Function> =
 isFunction.assert = assert(isFunction);
 isFunction.schema = 'isFunction';
 
-export = isFunction;
+export default isFunction;
