@@ -1,5 +1,5 @@
 
-import isGreaterThan from './isGreaterThan';
+import isGreaterThan from './isGreaterThan.js';
 
 let a = isGreaterThan(0);
 

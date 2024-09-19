@@ -1,6 +1,6 @@
 
 import inspect from 'object-inspect';
-import isString from './isString';
+import isString from './isString.js';
 
 const TESTS = [
 	{ input: '', expected: true },

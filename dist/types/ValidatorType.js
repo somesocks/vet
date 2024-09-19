@@ -1,6 +1,5 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-var a = function (foo) { return foo % 2 === 0; };
-var b;
-var c = function (foo) { return foo % 2 === 0; };
-var d;
+let a = (foo) => foo % 2 === 0;
+let b;
+let c = (foo) => foo % 2 === 0;
+let d;
+export {};

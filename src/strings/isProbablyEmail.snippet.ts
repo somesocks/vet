@@ -1,4 +1,4 @@
 
-import isProbablyEmail from './isProbablyEmail';
+import isProbablyEmail from './isProbablyEmail.js';
 
 let a = isProbablyEmail('');

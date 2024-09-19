@@ -1,22 +1,17 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var assert_1 = __importDefault(require("../utils/assert"));
-var isString_1 = __importDefault(require("./isString"));
+import assert from '../utils/assert.js';
+import isString from './isString.js';
 // eslint-disable-next-line no-useless-escape
-var REGEX = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+const REGEX = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 /**
 * Checks to see if a value is probably a valid email
 * @param val - the value to check
 * @returns true if val is probably a valid email
 * @memberof vet.strings
 */
-var isProbablyEmail = function isProbablyEmail(val) {
+const isProbablyEmail = function isProbablyEmail(val) {
     REGEX.lastIndex = 0;
-    return (0, isString_1.default)(val) && REGEX.test(val);
+    return isString(val) && REGEX.test(val);
 };
-isProbablyEmail.assert = (0, assert_1.default)(isProbablyEmail);
+isProbablyEmail.assert = assert(isProbablyEmail);
 isProbablyEmail.schema = 'isProbablyEmail';
-exports.default = isProbablyEmail;
+export default isProbablyEmail;

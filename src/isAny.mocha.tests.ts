@@ -2,7 +2,7 @@
 
 import inspect from 'object-inspect';
 
-import isAny from './isAny';
+import isAny from './isAny.js';
 
 const TESTS = [
 	{ input: false, expected: true },

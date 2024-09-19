@@ -1,11 +1,11 @@
 
 import inspect from 'object-inspect';
 
-import isString from '../strings/isString';
-import isNumber from '../numbers/isNumber';
-import isBoolean from '../booleans/isBoolean';
-import optional from '../optional';
-import isShape from './isShape';
+import isString from '../strings/isString.js';
+import isNumber from '../numbers/isNumber.js';
+import isBoolean from '../booleans/isBoolean.js';
+import optional from '../optional.js';
+import isShape from './isShape.js';
 
 const TESTS = [
 	{

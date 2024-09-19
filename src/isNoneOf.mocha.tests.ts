@@ -1,7 +1,7 @@
 
 import inspect from 'object-inspect';
 
-import isNoneOf from './isNoneOf';
+import isNoneOf from './isNoneOf.js';
 
 const TESTS = [
 	{ input: false, expected: true },

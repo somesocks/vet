@@ -1,10 +1,5 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var assert_1 = __importDefault(require("../utils/assert"));
-var isString_1 = __importDefault(require("./isString"));
+import assert from '../utils/assert.js';
+import isString from './isString.js';
 // const REGEX = /^https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)$/g;
 // https://gist.github.com/dperini/729294
 //
@@ -64,7 +59,7 @@ var isString_1 = __importDefault(require("./isString"));
 // - Check dot delimited parts length and total length
 // - Made protocol optional, allowed short syntax //
 //
-var REGEX = new RegExp("^" +
+const REGEX = new RegExp("^" +
     // protocol identifier (optional)
     // short syntax // still required
     "(?:(?:(?:https?|ftp):)?\\/\\/)" +
@@ -109,10 +104,10 @@ var REGEX = new RegExp("^" +
 * @returns true if val is probably a valid URL
 * @memberof vet.strings
 */
-var isProbablyURL = function isProbablyURL(val) {
+const isProbablyURL = function isProbablyURL(val) {
     REGEX.lastIndex = 0;
-    return (0, isString_1.default)(val) && REGEX.test(val);
+    return isString(val) && REGEX.test(val);
 };
-isProbablyURL.assert = (0, assert_1.default)(isProbablyURL);
+isProbablyURL.assert = assert(isProbablyURL);
 isProbablyURL.schema = 'isProbablyURL';
-exports.default = isProbablyURL;
+export default isProbablyURL;

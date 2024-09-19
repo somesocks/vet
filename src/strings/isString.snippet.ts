@@ -1,4 +1,4 @@
 
-import isString from './isString';
+import isString from './isString.js';
 
 let a = isString('');

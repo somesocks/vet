@@ -1,7 +1,7 @@
 
 import inspect from 'object-inspect';
 
-import equals from './equals';
+import equals from './equals.js';
 
 const TESTS = [
 	{ input: true, expected: true },

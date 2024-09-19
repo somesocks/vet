@@ -1,4 +1,4 @@
 
-import isNonZero from './isNonZero';
+import isNonZero from './isNonZero.js';
 
 let a = isNonZero(0);

@@ -1,7 +1,7 @@
 
 import inspect from 'object-inspect';
 
-import isEmpty from './isEmpty';
+import isEmpty from './isEmpty.js';
 
 const TESTS = [
 	{ input: '', expected: true },

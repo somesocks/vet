@@ -1,10 +1,8 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 // eslint-disable-next-line
-var isArray = Array.isArray ||
-    (function (val) { return Object.prototype.toString.call(val) === '[object Array]'; });
-var schema = function (val, seen) {
-    var _type = typeof val;
+const isArray = Array.isArray ||
+    ((val) => Object.prototype.toString.call(val) === '[object Array]');
+const schema = (val, seen) => {
+    const _type = typeof val;
     if (seen != null && seen.includes(val)) {
         return '(circular ref.)';
     }
@@ -24,8 +22,8 @@ var schema = function (val, seen) {
             else if (isArray(val)) {
                 seen = seen || [];
                 seen.push(val);
-                var str = '[ ';
-                for (var i = 0; i < val.length; i++) {
+                let str = '[ ';
+                for (let i = 0; i < val.length; i++) {
                     str += schema(val[i], seen) + ', ';
                 }
                 str += ']';
@@ -44,8 +42,8 @@ var schema = function (val, seen) {
             else {
                 seen = seen || [];
                 seen.push(val);
-                var str = '{ ';
-                for (var k in val) {
+                let str = '{ ';
+                for (const k in val) {
                     str += k + ': ' + schema(val[k], seen) + ', ';
                 }
                 str += '}';
@@ -55,4 +53,4 @@ var schema = function (val, seen) {
             return '?';
     }
 };
-exports.default = schema;
+export default schema;

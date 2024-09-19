@@ -1,14 +1,14 @@
 
 import inspect from 'object-inspect';
 
-import isOneOf from './isOneOf';
-import isAllOf from './isAllOf';
-import isString from './strings/isString';
-import isNumber from './numbers/isNumber';
-import isShape from './objects/isShape';
-import isArrayOf from './arrays/isArrayOf';
+import isOneOf from './isOneOf.js';
+import isAllOf from './isAllOf.js';
+import isString from './strings/isString.js';
+import isNumber from './numbers/isNumber.js';
+import isShape from './objects/isShape.js';
+import isArrayOf from './arrays/isArrayOf.js';
 
-import { ValidatorType } from './types';
+import ValidatorType from './types/ValidatorType.js';
 
 const TESTS = [
 	{ input: true, expected: true },

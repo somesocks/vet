@@ -1,17 +1,12 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var assert_1 = __importDefault(require("../utils/assert"));
-var isString_1 = __importDefault(require("./isString"));
+import assert from '../utils/assert.js';
+import isString from './isString.js';
 /**
 * Checks to see if a value is a non-empty string
 * @param val - the value to check
 * @returns true if val is a non-empty string
 * @memberof vet.strings
 */
-var isNotEmpty = function isNotEmpty(val) { return (0, isString_1.default)(val) && val !== ''; };
-isNotEmpty.assert = (0, assert_1.default)(isNotEmpty);
+const isNotEmpty = function isNotEmpty(val) { return isString(val) && val !== ''; };
+isNotEmpty.assert = assert(isNotEmpty);
 isNotEmpty.schema = 'isNotEmptyString';
-exports.default = isNotEmpty;
+export default isNotEmpty;

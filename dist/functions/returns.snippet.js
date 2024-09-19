@@ -1,10 +1,5 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var isString_1 = __importDefault(require("../strings/isString"));
-var returns_1 = __importDefault(require("./returns"));
-var toUpper = function (val) { return val.toUpperCase(); };
-var toUpper2 = (0, returns_1.default)(toUpper, isString_1.default);
-var a = toUpper2('abc');
+import isString from '../strings/isString.js';
+import returns from './returns.js';
+let toUpper = (val) => val.toUpperCase();
+let toUpper2 = returns(toUpper, isString);
+let a = toUpper2('abc');

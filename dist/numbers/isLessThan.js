@@ -1,10 +1,5 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var assert_1 = __importDefault(require("../utils/assert"));
-var isNumber_1 = __importDefault(require("./isNumber"));
+import assert from '../utils/assert.js';
+import isNumber from './isNumber.js';
 /**
 * construct a validator to check if a value is less than a number
 * @param {number} bound - the boundary value to check agains
@@ -12,10 +7,10 @@ var isNumber_1 = __importDefault(require("./isNumber"));
 * @memberof vet.numbers
 */
 function isLessThan(bound) {
-    var res = function (val) {
-        return (0, isNumber_1.default)(val) && val < bound;
+    const res = function (val) {
+        return isNumber(val) && val < bound;
     };
-    res.assert = (0, assert_1.default)(res);
+    res.assert = assert(res);
     res.schema = 'isNumberLessThan(' + bound + ')';
     return res;
 }
@@ -26,10 +21,10 @@ function isLessThan(bound) {
 * @memberof vet.numbers.isLessThan
 */
 isLessThan.exclusive = function exclusive(bound) {
-    var res = function (val) {
-        return (0, isNumber_1.default)(val) && val < bound;
+    const res = function (val) {
+        return isNumber(val) && val < bound;
     };
-    res.assert = (0, assert_1.default)(res);
+    res.assert = assert(res);
     res.schema = 'isNumberLessThan.exclusive(' + bound + ')';
     return res;
 };
@@ -40,11 +35,11 @@ isLessThan.exclusive = function exclusive(bound) {
 * @memberof vet.numbers.isLessThan
 */
 isLessThan.inclusive = function inclusive(bound) {
-    var res = function (val) {
-        return (0, isNumber_1.default)(val) && val <= bound;
+    const res = function (val) {
+        return isNumber(val) && val <= bound;
     };
-    res.assert = (0, assert_1.default)(res);
+    res.assert = assert(res);
     res.schema = 'isNumberLessThan.inclusive(' + bound + ')';
     return res;
 };
-exports.default = isLessThan;
+export default isLessThan;

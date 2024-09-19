@@ -1,4 +1,4 @@
-import ExtendedValidator from '../types/ExtendedValidator';
+import ExtendedValidator from '../types/ExtendedValidator.js';
 /**
 * construct a validator to check if a value is between two numbers
 * @param {number} lower - the lower boundary value to check against

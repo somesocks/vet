@@ -2,8 +2,9 @@
 
 import inspect from 'object-inspect';
 
-import isObjectOf from './isObjectOf';
-import isNumber from '../numbers/isNumber';
+import isObjectOf from './isObjectOf.js';
+import isNumber from '../numbers/isNumber.js';
+import ValidatorType from '../types/ValidatorType.js';
 
 const TESTS = [
 	{ input: { a: 'a string' }, expected: true },
@@ -66,6 +67,7 @@ describe('vet/objects/isObjectOf', () => {
 // compile time check for isObjectOf
 const _isObjectOfNumbers = isObjectOf(isNumber);
 const isObjectOfNumbers : typeof _isObjectOfNumbers = _isObjectOfNumbers;
+type TObjectOfNumbers = ValidatorType<typeof isObjectOfNumbers>;
 let a = {} ;
 isObjectOfNumbers.assert(a);
 a.foo = 2;

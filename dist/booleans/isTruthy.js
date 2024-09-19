@@ -1,9 +1,4 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var assert_1 = __importDefault(require("../utils/assert"));
+import assert from '../utils/assert.js';
 /**
 * Checks to see if a value is loosely true (truthy)
 * @param val - the value to check
@@ -20,9 +15,9 @@ var assert_1 = __importDefault(require("../utils/assert"));
 * isTruthy(true); // returns true
 * ```
 */
-var isTruthy = function isTruthy(val) {
+const isTruthy = function isTruthy(val) {
     return !!val;
 };
-isTruthy.assert = (0, assert_1.default)(isTruthy);
+isTruthy.assert = assert(isTruthy);
 isTruthy.schema = 'isTruthy';
-exports.default = isTruthy;
+export default isTruthy;

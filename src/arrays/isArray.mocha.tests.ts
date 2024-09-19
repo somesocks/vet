@@ -2,7 +2,7 @@
 
 import inspect from 'object-inspect';
 
-import isArray from './isArray';
+import isArray from './isArray.js';
 
 const TESTS = [
 	{ input: [], expected: true },

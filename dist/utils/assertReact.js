@@ -1,10 +1,4 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.default = assertReact;
-var assert_1 = __importDefault(require("./assert"));
+import assert from './assert.js';
 /**
 * A utility function for building a react-compatible assertion from a Vet validator
 *
@@ -16,8 +10,8 @@ var assert_1 = __importDefault(require("./assert"));
 * @returns a function that returns null if the arguments pass validation, or throws an error if they do not
 * @memberof vet.utils
 */
-function assertReact(validator, msg) {
-    validator = (0, assert_1.default)(validator, msg);
+export default function assertReact(validator, msg) {
+    validator = assert(validator, msg);
     return function (props, propName, componentName) {
         validator(props[propName]);
     };

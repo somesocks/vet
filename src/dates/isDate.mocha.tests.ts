@@ -4,7 +4,7 @@
 
 import inspect from 'object-inspect';
 
-import isDate from './isDate';
+import isDate from './isDate.js';
 
 const TESTS = [
 	{ input: new Date(), expected: true },

@@ -1,6 +1,6 @@
 
-import isObjectOf from './isObjectOf';
-import isNumber from '../numbers/isNumber';
+import isObjectOf from './isObjectOf.js';
+import isNumber from '../numbers/isNumber.js';
 
 let a = isObjectOf(isNumber);
 

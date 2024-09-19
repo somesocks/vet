@@ -1,4 +1,4 @@
 
-import isDate from './isDate';
+import isDate from './isDate.js';
 
 let a = isDate(new Date());

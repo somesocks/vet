@@ -4,7 +4,7 @@
 
 import inspect from 'object-inspect';
 
-import isFunction from './isFunction';
+import isFunction from './isFunction.js';
 
 const TESTS = [
 	{ input: () => {}, expected: true },

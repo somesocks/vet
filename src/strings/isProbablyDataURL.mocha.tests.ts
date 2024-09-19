@@ -1,7 +1,7 @@
 
 import inspect from 'object-inspect';
 
-import isProbablyDataURL from './isProbablyDataURL';
+import isProbablyDataURL from './isProbablyDataURL.js';
 
 const TESTS = [
 	{ input: `data:text/plain;charset=utf-8;base64,MTIz`, expected: true },

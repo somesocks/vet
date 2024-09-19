@@ -1,11 +1,6 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var isString_1 = __importDefault(require("../strings/isString"));
-var assert_1 = __importDefault(require("./assert"));
-var TESTS = [
+import isString from '../strings/isString.js';
+import assert from './assert.js';
+const TESTS = [
     { input: undefined, expected: true },
     { input: null, expected: true },
     { input: 0, expected: true },
@@ -13,43 +8,39 @@ var TESTS = [
     { input: true, expected: true },
     { input: {}, expected: true },
     { input: [], expected: true },
-    { input: function () { }, expected: true },
+    { input: () => { }, expected: true },
     { input: /a/, expected: true },
     { input: '', expected: false },
     { input: 'a string', expected: false },
 ];
-describe('vet/utils/assert', function () {
-    var threwError = function (validator) { return function () {
-        var args = [];
-        for (var _i = 0; _i < arguments.length; _i++) {
-            args[_i] = arguments[_i];
-        }
+describe('vet/utils/assert', () => {
+    const threwError = (validator) => (...args) => {
         try {
-            validator.apply(void 0, args);
+            validator(...args);
             return false;
         }
         catch (e) {
             console.log('assert error', e);
             return true;
         }
-    }; };
-    var validator = threwError((0, assert_1.default)(isString_1.default));
-    TESTS.forEach(function (test) {
-        it("(".concat(test.input, ")-->(").concat(test.expected, ")"), function (done) { return done(validator(test.input) === test.expected ? null : new Error()); });
+    };
+    const validator = threwError(assert(isString));
+    TESTS.forEach((test) => {
+        it(`(${test.input})-->(${test.expected})`, (done) => done(validator(test.input) === test.expected ? null : new Error()));
     });
-    it('immediate mode test', function () {
-        (0, assert_1.default)(2 > 1, 'passed');
+    it('immediate mode test', () => {
+        assert(2 > 1, 'passed');
     });
-    it('immediate mode test 2', function () {
-        var err;
+    it('immediate mode test 2', () => {
+        let err;
         try {
-            (0, assert_1.default)(1 > 2, 'one is not greater than 2');
+            assert(1 > 2, 'one is not greater than 2');
         }
         catch (e) {
             err = e;
         }
-        (0, assert_1.default)(err != null);
-        (0, assert_1.default)(err instanceof Error);
-        (0, assert_1.default)(err.message === 'one is not greater than 2');
+        assert(err != null);
+        assert(err instanceof Error);
+        assert(err.message === 'one is not greater than 2');
     });
 });

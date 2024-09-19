@@ -1,4 +1,4 @@
-import ExtendedValidator from './types/ExtendedValidator';
+import ExtendedValidator from './types/ExtendedValidator.js';
 /**
 * Alias for `vet/isNotNullOrUndefined`
 * @param val - value to check

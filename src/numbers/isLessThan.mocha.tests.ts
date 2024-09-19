@@ -1,6 +1,6 @@
 
 
-import isLessThan from './isLessThan';
+import isLessThan from './isLessThan.js';
 
 const TESTS = [
 	{ input: Number.MIN_SAFE_INTEGER, expected: true },

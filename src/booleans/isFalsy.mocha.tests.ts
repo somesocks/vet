@@ -3,7 +3,7 @@
 
 import inspect from 'object-inspect';
 
-import isFalsy from './isFalsy';
+import isFalsy from './isFalsy.js';
 
 const TESTS = [
 	{ input: false, expected: true },

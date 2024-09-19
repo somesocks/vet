@@ -1,4 +1,4 @@
-import ExtendedValidator from '../types/ExtendedValidator';
+import ExtendedValidator from '../types/ExtendedValidator.js';
 /**
 * Constructor to build an array length validator
 * @param len - the length the array shouldbe

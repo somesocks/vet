@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 function messageBuilder(log) {
     return typeof log === 'function' ?
         log :
@@ -16,13 +14,9 @@ function messageBuilder(log) {
 */
 function returns(func, validator, message) {
     message = messageBuilder(message || 'vet/functions/returns error!');
-    return function _returnsInstance() {
-        var args = [];
-        for (var _i = 0; _i < arguments.length; _i++) {
-            args[_i] = arguments[_i];
-        }
-        var _args = arguments;
-        var result = func.apply(this, _args);
+    return function _returnsInstance(...args) {
+        const _args = arguments;
+        const result = func.apply(this, _args);
         if (validator(result)) {
             return result;
         }
@@ -31,4 +25,4 @@ function returns(func, validator, message) {
         }
     };
 }
-exports.default = returns;
+export default returns;

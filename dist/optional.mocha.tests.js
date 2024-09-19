@@ -1,79 +1,66 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var optional_1 = __importDefault(require("./optional"));
-var isString_1 = __importDefault(require("./strings/isString"));
-var TESTS = [
+import optional from './optional.js';
+import isString from './strings/isString.js';
+const TESTS = [
     { input: 'a string', expected: true },
     { input: '', expected: true },
     { input: undefined, expected: true },
     { input: null, expected: false },
     { input: true, expected: false },
     { input: false, expected: false },
-    { input: (function () { }), expected: false },
+    { input: (() => { }), expected: false },
     { input: {}, expected: false },
     { input: [], expected: false },
     { input: /a/, expected: false },
 ];
-var SHOULD_PASS = [
+const SHOULD_PASS = [
     { input: 'a string', expected: true },
     { input: '', expected: true },
     { input: undefined, expected: true },
 ];
-var SHOULD_FAIL = [
+const SHOULD_FAIL = [
     { input: null, expected: false },
     { input: true, expected: false },
     { input: false, expected: false },
-    { input: (function () { }), expected: false },
+    { input: (() => { }), expected: false },
     { input: {}, expected: false },
     { input: [], expected: false },
     { input: /a/, expected: false },
 ];
-var _validator = (0, optional_1.default)(function isString(val) { return typeof val === 'string' || val instanceof String; });
-var validator = _validator;
-describe('vet/optional', function () {
-    TESTS.forEach(function (test) {
-        it("(".concat(test.input, ")-->(").concat(test.expected, ")"), function (done) { return done(validator(test.input) === test.expected ? null : new Error()); });
+const _validator = optional(function isString(val) { return typeof val === 'string' || val instanceof String; });
+const validator = _validator;
+describe('vet/optional', () => {
+    TESTS.forEach((test) => {
+        it(`(${test.input})-->(${test.expected})`, (done) => done(validator(test.input) === test.expected ? null : new Error()));
     });
-    var threwError = function (validator) { return function () {
-        var args = [];
-        for (var _i = 0; _i < arguments.length; _i++) {
-            args[_i] = arguments[_i];
-        }
+    const threwError = (validator) => (...args) => {
         try {
-            validator.apply(void 0, args);
+            validator(...args);
             return false;
         }
         catch (e) {
             console.log('assert error', e);
             return true;
         }
-    }; };
-    var threwNoError = function (validator) { return function () {
-        var args = [];
-        for (var _i = 0; _i < arguments.length; _i++) {
-            args[_i] = arguments[_i];
-        }
+    };
+    const threwNoError = (validator) => (...args) => {
         try {
-            validator.apply(void 0, args);
+            validator(...args);
             return true;
         }
         catch (e) {
             console.log('assert error', e);
             return false;
         }
-    }; };
-    SHOULD_PASS.forEach(function (test) {
-        it("assert (".concat(test.input, ") should pass"), function (done) { return done(threwNoError(validator.assert)(test.input) ? null : new Error()); });
+    };
+    SHOULD_PASS.forEach((test) => {
+        it(`assert (${test.input}) should pass`, (done) => done(threwNoError(validator.assert)(test.input) ? null : new Error()));
     });
-    SHOULD_FAIL.forEach(function (test) {
-        it("assert (".concat(test.input, ") should fail"), function (done) { return done(threwError(validator.assert)(test.input) ? null : new Error()); });
+    SHOULD_FAIL.forEach((test) => {
+        it(`assert (${test.input}) should fail`, (done) => done(threwError(validator.assert)(test.input) ? null : new Error()));
     });
 });
 // typescript check
-var a = (0, optional_1.default)(isString_1.default);
-var b = (0, optional_1.default)(function (val) { return val > 0; });
+let a = optional(isString);
+let b = optional(val => val > 0);
 a('foo');
 b('foo');

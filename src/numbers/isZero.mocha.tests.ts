@@ -1,6 +1,6 @@
 
 
-import isZero from './isZero';
+import isZero from './isZero.js';
 
 const TESTS = [
 	{ input: 0, expected: true },

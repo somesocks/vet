@@ -1,10 +1,5 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var assert_1 = __importDefault(require("./utils/assert"));
-var schema_1 = __importDefault(require("./utils/schema"));
+import assert from './utils/assert.js';
+import schema from './utils/schema.js';
 /**
 * a function that inverts the result of a validator
 * @param {function} validator - validator to invert
@@ -23,16 +18,12 @@ var schema_1 = __importDefault(require("./utils/schema"));
 * ```
 */
 function isNot(validator) {
-    var res = function () {
-        var args = [];
-        for (var _i = 0; _i < arguments.length; _i++) {
-            args[_i] = arguments[_i];
-        }
-        var args2 = arguments;
+    const res = function (...args) {
+        const args2 = arguments;
         return !validator.apply(this, args2);
     };
-    res.assert = (0, assert_1.default)(res);
-    res.schema = 'isNot(' + (0, schema_1.default)(validator) + ')';
+    res.assert = assert(res);
+    res.schema = 'isNot(' + schema(validator) + ')';
     return res;
 }
-exports.default = isNot;
+export default isNot;

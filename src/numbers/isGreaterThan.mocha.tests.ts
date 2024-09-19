@@ -1,6 +1,6 @@
 
 
-import isGreaterThan from './isGreaterThan';
+import isGreaterThan from './isGreaterThan.js';
 
 const TESTS = [
 	{ input: 1, expected: true },

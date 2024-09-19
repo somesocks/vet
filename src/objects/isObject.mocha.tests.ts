@@ -5,7 +5,7 @@
 
 import inspect from 'object-inspect';
 
-import isObject from './isObject';
+import isObject from './isObject.js';
 
 const TESTS = [
 	{ input: {}, expected: true },

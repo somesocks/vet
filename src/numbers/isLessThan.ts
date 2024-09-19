@@ -1,11 +1,11 @@
 
-import Assertion from '../types/Assertion';
-import Validator from '../types/Validator';
-import ExtendedValidator from '../types/ExtendedValidator';
+import Assertion from '../types/Assertion.js';
+import Validator from '../types/Validator.js';
+import ExtendedValidator from '../types/ExtendedValidator.js';
 
-import assert from '../utils/assert';
+import assert from '../utils/assert.js';
 
-import isNumber from './isNumber';
+import isNumber from './isNumber.js';
 
 /**
 * construct a validator to check if a value is less than a number

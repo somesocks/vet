@@ -1,18 +1,13 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var assert_1 = __importDefault(require("../utils/assert"));
+import assert from '../utils/assert.js';
 /**
 * Checks to see if a value is a string
 * @param val - the value to check
 * @returns true if val is a string
 * @memberof vet.strings
 */
-var isString = function isString(val) {
+const isString = function isString(val) {
     return (typeof val === 'string') || (val instanceof String);
 };
-isString.assert = (0, assert_1.default)(isString);
+isString.assert = assert(isString);
 isString.schema = 'isString';
-exports.default = isString;
+export default isString;

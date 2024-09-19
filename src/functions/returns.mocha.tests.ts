@@ -1,9 +1,9 @@
 
 
-import isString from '../strings/isString';
-import isNumber from '../numbers/isNumber';
-import isShape from '../objects/isShape';
-import returns from './returns';
+import isString from '../strings/isString.js';
+import isNumber from '../numbers/isNumber.js';
+import isShape from '../objects/isShape.js';
+import returns from './returns.js';
 
 const TESTS = [
 	{ input: undefined, expected: true },

@@ -1,5 +1,5 @@
 
-import isFalse from './isFalse';
+import isFalse from './isFalse.js';
 
 let a = "123";
 

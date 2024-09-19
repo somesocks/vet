@@ -1,6 +1,6 @@
 
 
-import isFinite from './isFinite';
+import isFinite from './isFinite.js';
 
 
 const TESTS = [

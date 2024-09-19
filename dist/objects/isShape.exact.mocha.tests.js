@@ -1,14 +1,9 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var object_inspect_1 = __importDefault(require("object-inspect"));
-var isString_1 = __importDefault(require("../strings/isString"));
-var isNumber_1 = __importDefault(require("../numbers/isNumber"));
-var isBoolean_1 = __importDefault(require("../booleans/isBoolean"));
-var isShape_1 = __importDefault(require("./isShape"));
-var TESTS = [
+import inspect from 'object-inspect';
+import isString from '../strings/isString.js';
+import isNumber from '../numbers/isNumber.js';
+import isBoolean from '../booleans/isBoolean.js';
+import isShape from './isShape.js';
+const TESTS = [
     {
         input: {
             name: 'Test User',
@@ -45,7 +40,7 @@ var TESTS = [
     { input: 'a string', expected: false },
     { input: {}, expected: false },
     { input: [], expected: false },
-    { input: function () { }, expected: false },
+    { input: () => { }, expected: false },
     { input: /a/, expected: false },
     { input: undefined, expected: false },
     { input: null, expected: false },
@@ -53,17 +48,17 @@ var TESTS = [
     { input: false, expected: false },
     { input: true, expected: false },
 ];
-describe('vet/objects/isShape.exact', function () {
-    var _validator = isShape_1.default.exact({
-        name: isString_1.default,
-        age: isNumber_1.default,
-        verified: isBoolean_1.default,
+describe('vet/objects/isShape.exact', () => {
+    const _validator = isShape.exact({
+        name: isString,
+        age: isNumber,
+        verified: isBoolean,
     });
-    var validator = _validator;
-    TESTS.forEach(function (test) {
-        it("validator(".concat((0, object_inspect_1.default)(test.input), ") returns ").concat(test.expected), function (done) { return done(validator(test.input) === test.expected ? null : new Error()); });
-        it("validator.assert(".concat((0, object_inspect_1.default)(test.input), ") should ").concat(test.expected ? 'pass' : 'fail'), function (done) {
-            var error = false;
+    const validator = _validator;
+    TESTS.forEach((test) => {
+        it(`validator(${inspect(test.input)}) returns ${test.expected}`, (done) => done(validator(test.input) === test.expected ? null : new Error()));
+        it(`validator.assert(${inspect(test.input)}) should ${test.expected ? 'pass' : 'fail'}`, (done) => {
+            let error = false;
             try {
                 validator.assert(test.input);
             }

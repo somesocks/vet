@@ -2,16 +2,16 @@
 
 import inspect from 'object-inspect';
 
-import isString from '../strings/isString';
-import isNumber from '../numbers/isNumber';
-import isBoolean from '../booleans/isBoolean';
-import optional from '../optional';
-import isAllOf from '../isAllOf';
-import isOneOf from '../isOneOf';
-import isShape from './isShape';
-import isArrayOf from '../arrays/isArrayOf';
+import isString from '../strings/isString.js';
+import isNumber from '../numbers/isNumber.js';
+import isBoolean from '../booleans/isBoolean.js';
+import optional from '../optional.js';
+import isAllOf from '../isAllOf.js';
+import isOneOf from '../isOneOf.js';
+import isShape from './isShape.js';
+import isArrayOf from '../arrays/isArrayOf.js';
 
-import ValidatorType from '../types/ValidatorType';
+import ValidatorType from '../types/ValidatorType.js';
 
 const TESTS = [
 	{

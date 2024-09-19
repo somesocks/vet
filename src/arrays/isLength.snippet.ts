@@ -1,5 +1,5 @@
 
-import isLength from './isLength';
+import isLength from './isLength.js';
 
 let v = isLength(3);
 

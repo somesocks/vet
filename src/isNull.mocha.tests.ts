@@ -1,7 +1,7 @@
 
 import inspect from 'object-inspect';
 
-import isNull from './isNull';
+import isNull from './isNull.js';
 
 const TESTS = [
 	{ input: null, expected: true },

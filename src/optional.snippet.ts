@@ -1,7 +1,7 @@
 
-import isNumber from './numbers/isNumber';
+import isNumber from './numbers/isNumber.js';
 
-import optional from './optional';
+import optional from './optional.js';
 
 let isMaybeNumber = optional(isNumber);
 

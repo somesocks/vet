@@ -1,8 +1,9 @@
 
 
-import optional from './optional';
-import isString from './strings/isString';
-import { Validator } from './types';
+import optional from './optional.js';
+import isString from './strings/isString.js';
+
+import Validator from './types/Validator.js';
 
 const TESTS = [
 	{ input: 'a string', expected: true },

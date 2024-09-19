@@ -1,5 +1,5 @@
-import Validator from '../types/Validator';
-import ExtendedValidator from '../types/ExtendedValidator';
+import Validator from '../types/Validator.js';
+import ExtendedValidator from '../types/ExtendedValidator.js';
 type _TSchema<T> = (T extends Validator ? _TValidator<T> : (T extends Function ? _TFunction<T> : T extends object ? _TObject<T> : T));
 type _TValidator<T> = (T extends Validator<infer U> ? U : never);
 type _TFunction<T> = (T extends Function ? any : never);

@@ -1,7 +1,8 @@
 {
   "name": "vet",
-  "version": "6.0.0",
+  "version": "6.0.1",
   "description": "A JS/TS library for data validation",
+  "type": "module",
   "main": "index.js",
   "scripts": {},
   "repository": {
@@ -25,7 +26,7 @@
     "@typescript-eslint/parser": "2.6.1",
     "eslint": "6.6.0",
     "jsdoc-to-markdown": "^4.0.1",
-    "mocha": "10.1.0",
+    "mocha": "10.7.3",
     "object-inspect": "^1.12.2",
     "typescript": "5.5.4"
   }

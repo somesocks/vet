@@ -1,8 +1,8 @@
 
 
-import isString from '../strings/isString';
-import isShape from '../objects/isShape';
-import assert from './assert';
+import isString from '../strings/isString.js';
+import isShape from '../objects/isShape.js';
+import assert from './assert.js';
 
 const TESTS = [
 	{ input: undefined, expected: true },

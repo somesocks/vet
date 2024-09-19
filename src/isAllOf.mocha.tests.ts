@@ -2,11 +2,11 @@
 
 import inspect from 'object-inspect';
 
-import isAllOf from './isAllOf';
+import isAllOf from './isAllOf.js';
 
-import isShape from './objects/isShape';
-import isString from './strings/isString';
-import isNotEmpty from './strings/isNotEmpty';
+import isShape from './objects/isShape.js';
+import isString from './strings/isString.js';
+import isNotEmpty from './strings/isNotEmpty.js';
 
 const TESTS = [
 	{ input: 'a string', expected: true },

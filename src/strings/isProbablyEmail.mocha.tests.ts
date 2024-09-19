@@ -1,7 +1,7 @@
 
 import inspect from 'object-inspect';
 
-import isProbablyEmail from './isProbablyEmail';
+import isProbablyEmail from './isProbablyEmail.js';
 
 const TESTS = [
 	{ input: 'tester@gmail.com', expected: true },

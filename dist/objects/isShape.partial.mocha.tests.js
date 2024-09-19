@@ -1,19 +1,14 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var object_inspect_1 = __importDefault(require("object-inspect"));
-var isString_1 = __importDefault(require("../strings/isString"));
-var isNumber_1 = __importDefault(require("../numbers/isNumber"));
-var isBoolean_1 = __importDefault(require("../booleans/isBoolean"));
-var optional_1 = __importDefault(require("../optional"));
-var isAllOf_1 = __importDefault(require("../isAllOf"));
-var isOneOf_1 = __importDefault(require("../isOneOf"));
-var isShape_1 = __importDefault(require("./isShape"));
-var isArrayOf_1 = __importDefault(require("../arrays/isArrayOf"));
-var isDate_1 = __importDefault(require("../dates/isDate"));
-var TESTS = [
+import inspect from 'object-inspect';
+import isString from '../strings/isString.js';
+import isNumber from '../numbers/isNumber.js';
+import isBoolean from '../booleans/isBoolean.js';
+import optional from '../optional.js';
+import isAllOf from '../isAllOf.js';
+import isOneOf from '../isOneOf.js';
+import isShape from './isShape.js';
+import isArrayOf from '../arrays/isArrayOf.js';
+import isDate from '../dates/isDate.js';
+const TESTS = [
     {
         input: {
             name: 'Test User',
@@ -86,7 +81,7 @@ var TESTS = [
     { input: 'a string', expected: false },
     { input: {}, expected: true },
     { input: [], expected: true },
-    { input: function () { }, expected: true },
+    { input: () => { }, expected: true },
     { input: /a/, expected: true },
     { input: undefined, expected: false },
     { input: null, expected: false },
@@ -94,19 +89,19 @@ var TESTS = [
     { input: false, expected: false },
     { input: true, expected: false },
 ];
-describe('vet/objects/isShape.partial', function () {
-    var _validator = isShape_1.default.partial({
-        name: isString_1.default,
-        age: (0, isAllOf_1.default)(isNumber_1.default, function isOverNine(val) { return val > 9; }),
-        verified: isBoolean_1.default,
-        optional: (0, optional_1.default)(isBoolean_1.default),
-        optional2: (0, optional_1.default)((0, isOneOf_1.default)(isString_1.default, isNumber_1.default)),
+describe('vet/objects/isShape.partial', () => {
+    const _validator = isShape.partial({
+        name: isString,
+        age: isAllOf(isNumber, function isOverNine(val) { return val > 9; }),
+        verified: isBoolean,
+        optional: optional(isBoolean),
+        optional2: optional(isOneOf(isString, isNumber)),
     });
-    var validator = _validator;
-    TESTS.forEach(function (test) {
-        it("validator(".concat((0, object_inspect_1.default)(test.input), ") returns ").concat(test.expected), function (done) { return done(validator(test.input) === test.expected ? null : new Error()); });
-        it("validator.assert(".concat((0, object_inspect_1.default)(test.input), ") should ").concat(test.expected ? 'pass' : 'fail'), function (done) {
-            var error = false;
+    const validator = _validator;
+    TESTS.forEach((test) => {
+        it(`validator(${inspect(test.input)}) returns ${test.expected}`, (done) => done(validator(test.input) === test.expected ? null : new Error()));
+        it(`validator.assert(${inspect(test.input)}) should ${test.expected ? 'pass' : 'fail'}`, (done) => {
+            let error = false;
             try {
                 validator.assert(test.input);
             }
@@ -119,16 +114,16 @@ describe('vet/objects/isShape.partial', function () {
     });
 });
 // compile time check for isShape
-var _isPerson = (0, isShape_1.default)({
-    name: isString_1.default,
-    age: isNumber_1.default,
+const _isPerson = isShape({
+    name: isString,
+    age: isNumber,
     contact: {
-        email: isString_1.default,
-        phone: isString_1.default,
+        email: isString,
+        phone: isString,
     },
 });
-var isPerson = _isPerson;
-var a = {
+const isPerson = _isPerson;
+let a = {
     name: 'bob',
     age: 20,
     contact: {
@@ -139,33 +134,33 @@ var a = {
 isPerson.assert(a);
 a.age = 2;
 /** Trigger a compiler error when a value is _not_ an exact type. */
-var exactType = (function () { });
-var _isA = isShape_1.default.partial({
-    name: isString_1.default,
+const exactType = (() => { });
+const _isA = isShape.partial({
+    name: isString,
     contact: {
-        email: (0, optional_1.default)(isString_1.default),
-        phoneNumber: (0, optional_1.default)(isString_1.default),
+        email: optional(isString),
+        phoneNumber: optional(isString),
     },
 });
 exactType({}, {});
-var _isB = isShape_1.default.partial({
-    name: isString_1.default,
-    contact: (0, isShape_1.default)({
-        email: (0, optional_1.default)(isString_1.default),
-        phoneNumber: (0, optional_1.default)(isString_1.default),
+const _isB = isShape.partial({
+    name: isString,
+    contact: isShape({
+        email: optional(isString),
+        phoneNumber: optional(isString),
     }),
 });
 exactType({}, {});
-var _isC = isShape_1.default.partial({
-    name: isString_1.default,
-    contact: (0, isArrayOf_1.default)((0, isShape_1.default)({
-        email: (0, optional_1.default)(isString_1.default),
-        phoneNumber: (0, optional_1.default)(isString_1.default),
+const _isC = isShape.partial({
+    name: isString,
+    contact: isArrayOf(isShape({
+        email: optional(isString),
+        phoneNumber: optional(isString),
     })),
 });
 exactType({}, {});
-var _isD = isShape_1.default.partial({
-    name: isString_1.default,
-    DOB: isDate_1.default,
+const _isD = isShape.partial({
+    name: isString,
+    DOB: isDate,
 });
 exactType({}, {});

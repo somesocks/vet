@@ -1,5 +1,5 @@
 
-import isArray from './isArray';
+import isArray from './isArray.js';
 
 let a = "123";
 

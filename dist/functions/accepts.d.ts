@@ -1,4 +1,4 @@
-import Validator from '../types/Validator';
+import Validator from '../types/Validator.js';
 /**
 * Wraps a function in a validator which checks its arguments, and throws an error if the arguments are bad.
 *

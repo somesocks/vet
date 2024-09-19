@@ -1,10 +1,5 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var assert_1 = __importDefault(require("./utils/assert"));
-var schema_1 = __importDefault(require("./utils/schema"));
+import assert from './utils/assert.js';
+import schema from './utils/schema.js';
 /**
 * Constructs a function that checks equality against any number of arguments
 * @param {...*} eq - values to check equality against
@@ -21,16 +16,12 @@ var schema_1 = __importDefault(require("./utils/schema"));
 * check(4); // returns true
 * ```
 */
-function isNoneOf() {
-    var args = [];
-    for (var _i = 0; _i < arguments.length; _i++) {
-        args[_i] = arguments[_i];
-    }
-    var validators = arguments;
-    var res = function (val) {
-        for (var i = 0; i < validators.length; i++) {
-            var validator = validators[i];
-            var check = typeof validator === 'function' ?
+function isNoneOf(...args) {
+    const validators = arguments;
+    const res = function (val) {
+        for (let i = 0; i < validators.length; i++) {
+            const validator = validators[i];
+            const check = typeof validator === 'function' ?
                 validator(val) :
                 (val === validator);
             if (check) {
@@ -39,13 +30,13 @@ function isNoneOf() {
         }
         return true;
     };
-    res.assert = (0, assert_1.default)(res);
-    var s = 'isNoneOf(';
-    for (var i = 0; i < validators.length; i++) {
-        s += (0, schema_1.default)(validators[i]) + ', ';
+    res.assert = assert(res);
+    let s = 'isNoneOf(';
+    for (let i = 0; i < validators.length; i++) {
+        s += schema(validators[i]) + ', ';
     }
     s += ')';
     res.schema = s;
     return res;
 }
-exports.default = isNoneOf;
+export default isNoneOf;

@@ -1,5 +1,5 @@
 
-import assert from './assert';
+import assert from './assert.js';
 
 /**
 * A utility function for building a react-compatible assertion from a Vet validator

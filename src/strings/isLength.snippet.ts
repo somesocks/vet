@@ -1,4 +1,4 @@
 
-import isLength from './isLength';
+import isLength from './isLength.js';
 
 let a = isLength(2)('');

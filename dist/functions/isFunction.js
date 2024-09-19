@@ -1,9 +1,4 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var assert_1 = __importDefault(require("../utils/assert"));
+import assert from '../utils/assert.js';
 /**
 * Checks to see if a value is a function
 * @param val - the value to check
@@ -19,7 +14,7 @@ var assert_1 = __importDefault(require("../utils/assert"));
 * isFunction(function (){}); // returns true
 * ```
 */
-var isFunction = function isFunction(val) { return typeof val === 'function'; };
-isFunction.assert = (0, assert_1.default)(isFunction);
+const isFunction = function isFunction(val) { return typeof val === 'function'; };
+isFunction.assert = assert(isFunction);
 isFunction.schema = 'isFunction';
-exports.default = isFunction;
+export default isFunction;

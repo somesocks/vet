@@ -1,5 +1,5 @@
 
-import isTrue from './isTrue';
+import isTrue from './isTrue.js';
 
 let a = "123";
 

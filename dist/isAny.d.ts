@@ -1,4 +1,4 @@
-import ExtendedValidator from './types/ExtendedValidator';
+import ExtendedValidator from './types/ExtendedValidator.js';
 /**
 * A default validator, that always returns true.
 * This can be useful to spec out parameters that you don't wish to validate,

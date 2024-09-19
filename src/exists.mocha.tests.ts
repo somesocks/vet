@@ -1,7 +1,7 @@
 
 import inspect from 'object-inspect';
 
-import exists from './exists';
+import exists from './exists.js';
 
 const TESTS = [
 	{ input: true, expected: true },

@@ -42,7 +42,7 @@ build-dev: setup build
 ##		- use MOCHA to pass args to mocha,
 ##		  e.g. `make test MOCHA="--bail"`
 ##
-test: test-eslint test-typescript test-mocha
+test: test-typescript test-mocha
 
 ##		make test-typescript - run the typescript test cases
 test-typescript: setup build

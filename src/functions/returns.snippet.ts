@@ -1,6 +1,6 @@
 
-import isString from '../strings/isString';
-import returns from './returns';
+import isString from '../strings/isString.js';
+import returns from './returns.js';
 
 let toUpper = (val : string) => val.toUpperCase();
 

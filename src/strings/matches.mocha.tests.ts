@@ -1,6 +1,6 @@
 
 import inspect from 'object-inspect';
-import matches from './matches';
+import matches from './matches.js';
 
 const TESTS = [
 	{ input: '', expected: true },

@@ -1,17 +1,12 @@
-"use strict";
 /* eslint no-self-compare: "off" */
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var assert_1 = __importDefault(require("../utils/assert"));
+import assert from '../utils/assert.js';
 /**
 * Checks to see if a value is a finite number
 * @param val - the value to check
 * @returns true if the value is a finite number
 * @memberof vet.numbers
 */
-var isFinite = function isFinite(value) {
+const isFinite = function isFinite(value) {
     // 1. If Type(number) is not Number, return false.
     if (typeof value !== 'number') {
         return false;
@@ -23,6 +18,6 @@ var isFinite = function isFinite(value) {
     // 3. Otherwise, return true.
     return true;
 };
-isFinite.assert = (0, assert_1.default)(isFinite);
+isFinite.assert = assert(isFinite);
 isFinite.schema = 'isFinite';
-exports.default = isFinite;
+export default isFinite;

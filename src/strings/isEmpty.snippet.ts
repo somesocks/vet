@@ -1,4 +1,4 @@
 
-import isEmpty from './isEmpty';
+import isEmpty from './isEmpty.js';
 
 let a = isEmpty('');

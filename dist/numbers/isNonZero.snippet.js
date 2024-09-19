@@ -1,7 +1,2 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var isNonZero_1 = __importDefault(require("./isNonZero"));
-var a = (0, isNonZero_1.default)(0);
+import isNonZero from './isNonZero.js';
+let a = isNonZero(0);

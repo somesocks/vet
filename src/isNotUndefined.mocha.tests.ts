@@ -1,7 +1,7 @@
 
 import inspect from 'object-inspect';
 
-import isNotUndefined from './isNotUndefined';
+import isNotUndefined from './isNotUndefined.js';
 
 const TESTS = [
 	{ input: false, expected: true },

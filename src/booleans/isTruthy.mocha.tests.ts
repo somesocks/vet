@@ -4,7 +4,7 @@
 
 import inspect from 'object-inspect';
 
-import isTruthy from './isTruthy';
+import isTruthy from './isTruthy.js';
 
 const TESTS = [
 	{ input: true, expected: true },

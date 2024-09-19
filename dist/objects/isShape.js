@@ -1,25 +1,20 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var assert_1 = __importDefault(require("../utils/assert"));
-var schema_1 = __importDefault(require("../utils/schema"));
-var isFunction_1 = __importDefault(require("../functions/isFunction"));
-var isObject_1 = __importDefault(require("./isObject"));
+import assert from '../utils/assert.js';
+import schemaString from '../utils/schema.js';
+import isFunction from '../functions/isFunction.js';
+import isObject from './isObject.js';
 function _isShape(schema, value) {
-    if ((0, isFunction_1.default)(schema)) {
-        var a = schema;
+    if (isFunction(schema)) {
+        let a = schema;
         return schema(value);
     }
-    else if ((0, isObject_1.default)(schema)) {
-        var a = schema;
-        if (!(0, isObject_1.default)(value)) {
+    else if (isObject(schema)) {
+        let a = schema;
+        if (!isObject(value)) {
             return false;
         }
-        for (var key in schema) {
-            var s = schema[key];
-            var o = value[key];
+        for (const key in schema) {
+            const s = schema[key];
+            const o = value[key];
             if (!_isShape(s, o)) {
                 return false;
             }
@@ -31,14 +26,14 @@ function _isShape(schema, value) {
     }
 }
 function _assertIsShape(schema, val) {
-    if ((0, isFunction_1.default)(schema)) {
-        (0, assert_1.default)(schema(val), function () { return 'property with schema (' + (0, schema_1.default)(val) + ') does not match (' + (0, schema_1.default)(schema) + ')'; });
+    if (isFunction(schema)) {
+        assert(schema(val), () => 'property with schema (' + schemaString(val) + ') does not match (' + schemaString(schema) + ')');
     }
-    else if ((0, isObject_1.default)(schema)) {
-        (0, assert_1.default)((0, isObject_1.default)(val), function () { return 'property with schema (' + (0, schema_1.default)(val) + ') does not match (' + (0, schema_1.default)(isObject_1.default) + ')'; });
-        for (var key in schema) {
-            var s = schema[key];
-            var o = val[key];
+    else if (isObject(schema)) {
+        assert(isObject(val), () => 'property with schema (' + schemaString(val) + ') does not match (' + schemaString(isObject) + ')');
+        for (const key in schema) {
+            const s = schema[key];
+            const o = val[key];
             try {
                 _assertIsShape(s, o);
             }
@@ -49,27 +44,27 @@ function _assertIsShape(schema, val) {
         }
     }
     else {
-        (0, assert_1.default)(val === schema, function () { return 'property with schema (' + (0, schema_1.default)(val) + ') does not match (' + (0, schema_1.default)(schema) + ')'; });
+        assert(val === schema, () => 'property with schema (' + schemaString(val) + ') does not match (' + schemaString(schema) + ')');
     }
 }
 function _isShapeExact(schema, value) {
-    if ((0, isFunction_1.default)(schema)) {
+    if (isFunction(schema)) {
         return schema(value);
     }
-    else if ((0, isObject_1.default)(schema)) {
-        if (!(0, isObject_1.default)(value)) {
+    else if (isObject(schema)) {
+        if (!isObject(value)) {
             return false;
         }
-        for (var key in schema) {
-            var s = schema[key];
-            var o = value[key];
+        for (const key in schema) {
+            const s = schema[key];
+            const o = value[key];
             if (!_isShapeExact(s, o)) {
                 return false;
             }
         }
-        for (var key in value) {
-            var s = schema[key];
-            var o = value[key];
+        for (const key in value) {
+            const s = schema[key];
+            const o = value[key];
             if (!_isShapeExact(s, o)) {
                 return false;
             }
@@ -122,9 +117,9 @@ function _isShapeExact(schema, value) {
 * ```
 */
 function isShape(schema) {
-    var res = _isShape.bind(undefined, schema);
+    const res = _isShape.bind(undefined, schema);
     res.assert = _assertIsShape.bind(undefined, schema);
-    res.schema = 'isShape(' + (0, schema_1.default)(schema) + ')';
+    res.schema = 'isShape(' + schemaString(schema) + ')';
     return res;
 }
 /**
@@ -163,27 +158,27 @@ function isShape(schema) {
 * ```
 */
 isShape.exact = function isShapeExact(schema) {
-    var res = _isShapeExact.bind(undefined, schema);
-    res.assert = (0, assert_1.default)(res);
-    res.schema = 'isShape.exact(' + (0, schema_1.default)(schema) + ')';
+    const res = _isShapeExact.bind(undefined, schema);
+    res.assert = assert(res);
+    res.schema = 'isShape.exact(' + schemaString(schema) + ')';
     return res;
 };
 function _isPartialShapeBody(schema, value) {
     if (value == null) {
         return true;
     }
-    if ((0, isFunction_1.default)(schema)) {
-        var a = schema;
+    if (isFunction(schema)) {
+        let a = schema;
         return schema(value);
     }
-    else if ((0, isObject_1.default)(schema)) {
-        var a = schema;
-        if (!(0, isObject_1.default)(value)) {
+    else if (isObject(schema)) {
+        let a = schema;
+        if (!isObject(value)) {
             return false;
         }
-        for (var key in schema) {
-            var s = schema[key];
-            var o = value[key];
+        for (const key in schema) {
+            const s = schema[key];
+            const o = value[key];
             if (!_isPartialShapeBody(s, o)) {
                 return false;
             }
@@ -236,9 +231,9 @@ function _isPartialShapeHead(schema, value) { return value != null && _isPartial
 * ```
 */
 isShape.partial = function isPartialShape(schema) {
-    var res = _isPartialShapeHead.bind(undefined, schema);
-    res.assert = (0, assert_1.default)(res);
-    res.schema = 'isShape.partial(' + (0, schema_1.default)(schema) + ')';
+    const res = _isPartialShapeHead.bind(undefined, schema);
+    res.assert = assert(res);
+    res.schema = 'isShape.partial(' + schemaString(schema) + ')';
     return res;
 };
-exports.default = isShape;
+export default isShape;

@@ -1,8 +1,8 @@
 
-import isNumber from './numbers/isNumber';
-import isString from './strings/isString';
+import isNumber from './numbers/isNumber.js';
+import isString from './strings/isString.js';
 
-import isOneOf from './isOneOf';
+import isOneOf from './isOneOf.js';
 
 let isNumberOrString = isOneOf(isNumber, isString);
 

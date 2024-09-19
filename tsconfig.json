@@ -1,10 +1,10 @@
 {
 	"compilerOptions": {
-		"target": "es5",
-		"module": "commonjs",
+		"target": "es6",
+		"module": "node16",
 		"declaration": true,
 		"outDir": "./dist",
-		"lib": [ "es5" ],
+		"lib": [ "es6" ],
 
 		"strict": true,
 		"noImplicitAny": false,
@@ -16,7 +16,7 @@
 		"noFallthroughCasesInSwitch": true,
 		"noEmitOnError": false,
 
-		"moduleResolution": "node",
+		"moduleResolution": "node16",
 		"baseUrl": "./",
 		"allowSyntheticDefaultImports": true,
 		"esModuleInterop": true,

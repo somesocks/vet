@@ -1,5 +1,5 @@
-import ExtendedValidator from '../types/ExtendedValidator';
-import ValidatorType from '../types/ValidatorType';
+import ExtendedValidator from '../types/ExtendedValidator.js';
+import ValidatorType from '../types/ValidatorType.js';
 type IsArrayOfValidator<T> = ExtendedValidator<ValidatorType<T>[]>;
 /**
 * Builds an array validator that checks the children of the array

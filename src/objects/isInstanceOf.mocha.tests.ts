@@ -5,12 +5,12 @@
 
 import inspect from 'object-inspect';
 
-import isInstanceOf from './isInstanceOf';
+import isInstanceOf from './isInstanceOf.js';
 
 const TESTS = [
 
 	{ input: Promise.resolve(1), expected: true },
-	{ input: Promise.reject(1), expected: true },
+	{ input: Promise.reject(1).catch(() => {}), expected: true },
 	{ input: new Promise(() => null), expected: true },
 
 	{ input: {}, expected: false },

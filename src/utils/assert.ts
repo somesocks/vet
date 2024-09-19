@@ -1,7 +1,7 @@
 
-import Assertion from '../types/Assertion';
+import Assertion from '../types/Assertion.js';
 
-import schema from './schema';
+import schema from './schema.js';
 
 function messageBuilder(this : any, validator, message ?: any) {
 	if (typeof message === 'function') {

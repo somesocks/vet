@@ -1,7 +1,7 @@
 
 import inspect from 'object-inspect';
 
-import isProbablyBase64 from './isProbablyBase64';
+import isProbablyBase64 from './isProbablyBase64.js';
 
 const TESTS = [
 	{ input: 'MQ==', expected: true },

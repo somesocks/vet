@@ -1,6 +1,6 @@
 
-import Validator from './Validator';
-import GenericValidator from './GenericValidator';
+import Validator from './Validator.js';
+import GenericValidator from './GenericValidator.js';
 
 type ValidatorType<T> = T extends Validator<infer U> ? U : (T extends GenericValidator ? unknown : T);
 

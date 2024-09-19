@@ -107,6 +107,7 @@ in addition, v5 includes:
     * [.isNullOrUndefined(val)](#vet.isNullOrUndefined) ⇒
     * [.isOneOf(...eq)](#vet.isOneOf) ⇒
     * [.isUndefined(val)](#vet.isUndefined) ⇒
+    * [.nullable(validator)](#vet.nullable) ⇒
     * [.optional(validator)](#vet.optional) ⇒
 
 
@@ -1412,6 +1413,33 @@ isUndefined({}); // returns false
 isUndefined(null); // returns false
 
 isUndefined(undefined); // returns true
+```
+
+* * *
+
+<a name="vet.nullable"></a>
+
+### vet.nullable(validator) ⇒
+A function builder to check for a value or null
+
+**Kind**: static method of [<code>vet</code>](#vet)  
+**Returns**: a function that takes in a value, and returns true if the value is null, or the wrapped validator returns true  
+**Params**
+
+- validator - a validator function
+
+**Example**  
+```javascript
+let nullable from 'vet/nullable');
+let isNumber from 'vet/numbers/isNumber');
+
+let isMaybeNumber = nullable(isNumber);
+
+isMaybeNumber(undefined); // returns false
+isMaybeNumber("1"); // returns false
+
+isMaybeNumber(1); // returns true
+isMaybeNumber(null); // returns true
 ```
 
 * * *

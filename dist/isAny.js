@@ -1,9 +1,4 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var assert_1 = __importDefault(require("./utils/assert"));
+import assert from './utils/assert.js';
 /**
 * A default validator, that always returns true.
 * This can be useful to spec out parameters that you don't wish to validate,
@@ -22,9 +17,9 @@ var assert_1 = __importDefault(require("./utils/assert"));
 *
 * ```
 */
-var isAny = function isAny(val) {
+const isAny = function isAny(val) {
     return true;
 };
-isAny.assert = (0, assert_1.default)(isAny);
+isAny.assert = assert(isAny);
 isAny.schema = 'isAny';
-exports.default = isAny;
+export default isAny;

@@ -3,8 +3,8 @@
 import inspect from 'object-inspect';
 
 
-import isString from '../strings/isString';
-import isArrayOf from './isArrayOf';
+import isString from '../strings/isString.js';
+import isArrayOf from './isArrayOf.js';
 
 const TESTS = [
 	{ input: [ 'a string' ], expected: true },

@@ -1,16 +1,16 @@
 
 
-import Assertion from '../types/Assertion';
-import Validator from '../types/Validator';
+import Assertion from '../types/Assertion.js';
+import Validator from '../types/Validator.js';
 
-import ExtendedValidator from '../types/ExtendedValidator';
+import ExtendedValidator from '../types/ExtendedValidator.js';
 
-import assert from '../utils/assert';
-import schemaString from '../utils/schema';
+import assert from '../utils/assert.js';
+import schemaString from '../utils/schema.js';
 
-import isFunction from '../functions/isFunction';
+import isFunction from '../functions/isFunction.js';
 
-import isObject from './isObject';
+import isObject from './isObject.js';
 
 function _isShape(schema, value) {
 	if (isFunction(schema)) {

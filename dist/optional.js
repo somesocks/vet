@@ -1,10 +1,5 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var assert_1 = __importDefault(require("./utils/assert"));
-var schema_1 = __importDefault(require("./utils/schema"));
+import assert from './utils/assert.js';
+import schema from './utils/schema.js';
 /**
 * A function builder to optionally check a value
 * @param validator - a validator function
@@ -25,15 +20,15 @@ var schema_1 = __importDefault(require("./utils/schema"));
 * ```
 */
 function optional(validator) {
-    var res = function (val) {
+    const res = function (val) {
         return val === undefined || validator(val);
     };
     res.assert = function (val) {
         if (val !== undefined) {
-            (0, assert_1.default)(validator)(val);
+            assert(validator)(val);
         }
     };
-    res.schema = 'optional(' + (0, schema_1.default)(validator) + ')';
+    res.schema = 'optional(' + schema(validator) + ')';
     return res;
 }
-exports.default = optional;
+export default optional;

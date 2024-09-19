@@ -1,7 +1,7 @@
 
-import isPositive from './numbers/isPositive';
+import isPositive from './numbers/isPositive.js';
 
-import isNot from './isNot';
+import isNot from './isNot.js';
 
 let isNotPositive = isNot(isPositive);
 

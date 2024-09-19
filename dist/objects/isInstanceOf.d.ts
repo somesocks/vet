@@ -1,4 +1,4 @@
-import ExtendedValidator from '../types/ExtendedValidator';
+import ExtendedValidator from '../types/ExtendedValidator.js';
 /**
 * Checks to see if a value is an object and inherits a prototype from a constructor function
 * @param con - the constructor function to check against

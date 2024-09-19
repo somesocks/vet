@@ -1,6 +1,6 @@
 
-import isString from '../strings/isString';
-import assertReact from './assertReact';
+import isString from '../strings/isString.js';
+import assertReact from './assertReact.js';
 
 let assertIsString = assertReact(isString);
 

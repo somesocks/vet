@@ -1,4 +1,4 @@
-import ExtendedValidator from './types/ExtendedValidator';
+import ExtendedValidator from './types/ExtendedValidator.js';
 /**
 * A function to check for nulls
 * @param val - a value to check against null

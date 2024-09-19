@@ -1,8 +1,8 @@
 
-import Assertion from './Assertion';
-import Validator from './Validator';
-import ExtendedValidator from './ExtendedValidator';
-import ValidatorType from './ValidatorType';
+import Assertion from './Assertion.js';
+import Validator from './Validator.js';
+import ExtendedValidator from './ExtendedValidator.js';
+import ValidatorType from './ValidatorType.js';
 
 export {
   Assertion,

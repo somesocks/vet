@@ -1,10 +1,5 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var assert_1 = __importDefault(require("./utils/assert"));
-var schema_1 = __importDefault(require("./utils/schema"));
+import assert from './utils/assert.js';
+import schema from './utils/schema.js';
 /**
 * Builds an curried equal function
 * @param eq - value to check equality against
@@ -23,9 +18,9 @@ var schema_1 = __importDefault(require("./utils/schema"));
 * ```
 */
 function equals(eq) {
-    var validator = function (val) { return val === eq; };
-    validator.assert = (0, assert_1.default)(validator);
-    validator.schema = 'equals(' + (0, schema_1.default)(eq) + ')';
+    const validator = function (val) { return val === eq; };
+    validator.assert = assert(validator);
+    validator.schema = 'equals(' + schema(eq) + ')';
     return validator;
 }
-exports.default = equals;
+export default equals;

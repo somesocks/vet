@@ -1,3 +1,4 @@
 /**
 * @namespace vet.functions
 */
+export {};

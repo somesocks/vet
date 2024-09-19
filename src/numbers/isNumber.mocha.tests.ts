@@ -1,6 +1,6 @@
 
 
-import isNumber from './isNumber';
+import isNumber from './isNumber.js';
 
 const TESTS = [
 	{ input: 0, expected: true },

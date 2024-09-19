@@ -1,12 +1,7 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var isObject_1 = __importDefault(require("./isObject"));
-var assert_1 = __importDefault(require("../utils/assert"));
+import isObject from './isObject.js';
+import assert from '../utils/assert.js';
 // eslint-disable-next-line @typescript-eslint/unbound-method
-var propertyIsEnumerable = Object.prototype.propertyIsEnumerable;
+const propertyIsEnumerable = Object.prototype.propertyIsEnumerable;
 /**
 * Builds an object validator that checks the properties of the object
 * NOTE: This only checks enumerable properties
@@ -14,14 +9,14 @@ var propertyIsEnumerable = Object.prototype.propertyIsEnumerable;
 * @returns a function that returns true if the value is an object, and all of the object properties pass the validator
 * @memberof vet.objects
 */
-var isObjectOf = function isObjectOf(validator) {
-    var res = function (obj) {
-        if (!(0, isObject_1.default)(obj)) {
+const isObjectOf = function isObjectOf(validator) {
+    const res = function (obj) {
+        if (!isObject(obj)) {
             return false;
         }
-        for (var key in obj) {
+        for (let key in obj) {
             if (propertyIsEnumerable.call(obj, key)) {
-                var val = obj[key];
+                let val = obj[key];
                 if (!validator(val, key)) {
                     return false;
                 }
@@ -29,7 +24,7 @@ var isObjectOf = function isObjectOf(validator) {
         }
         return true;
     };
-    res.assert = (0, assert_1.default)(res);
+    res.assert = assert(res);
     return res;
 };
-exports.default = isObjectOf;
+export default isObjectOf;

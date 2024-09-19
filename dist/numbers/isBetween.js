@@ -1,10 +1,5 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var assert_1 = __importDefault(require("../utils/assert"));
-var isNumber_1 = __importDefault(require("./isNumber"));
+import assert from '../utils/assert.js';
+import isNumber from './isNumber.js';
 /**
 * construct a validator to check if a value is between two numbers
 * @param {number} lower - the lower boundary value to check against
@@ -13,10 +8,10 @@ var isNumber_1 = __importDefault(require("./isNumber"));
 * @memberof vet.numbers
 */
 function isBetween(lower, upper) {
-    var res = function (val) {
-        return (0, isNumber_1.default)(val) && val > lower && val < upper;
+    const res = function (val) {
+        return isNumber(val) && val > lower && val < upper;
     };
-    res.assert = (0, assert_1.default)(res);
+    res.assert = assert(res);
     res.schema = 'isNumberBetween(' + lower + ',' + upper + ')';
     return res;
 }
@@ -28,10 +23,10 @@ function isBetween(lower, upper) {
 * @memberof vet.numbers.isBetween
 */
 isBetween.exclusive = function exclusive(lower, upper) {
-    var res = function (val) {
-        return (0, isNumber_1.default)(val) && val > lower && val < upper;
+    const res = function (val) {
+        return isNumber(val) && val > lower && val < upper;
     };
-    res.assert = (0, assert_1.default)(res);
+    res.assert = assert(res);
     res.schema = 'isNumberBetween.exclusive(' + lower + ',' + upper + ')';
     return res;
 };
@@ -43,11 +38,11 @@ isBetween.exclusive = function exclusive(lower, upper) {
 * @memberof vet.numbers.isBetween
 */
 isBetween.inclusive = function inclusive(lower, upper) {
-    var res = function (val) {
-        return (0, isNumber_1.default)(val) && val >= lower && val <= upper;
+    const res = function (val) {
+        return isNumber(val) && val >= lower && val <= upper;
     };
-    res.assert = (0, assert_1.default)(res);
+    res.assert = assert(res);
     res.schema = 'isNumberBetween.inclusive(' + lower + ',' + upper + ')';
     return res;
 };
-exports.default = isBetween;
+export default isBetween;

@@ -1,11 +1,11 @@
 
-import Assertion from '../types/Assertion';
-import Validator from '../types/Validator';
-import ExtendedValidator from '../types/ExtendedValidator';
+import Assertion from '../types/Assertion.js';
+import Validator from '../types/Validator.js';
+import ExtendedValidator from '../types/ExtendedValidator.js';
 
-import assert from '../utils/assert';
+import assert from '../utils/assert.js';
 
-import isString from './isString';
+import isString from './isString.js';
 
 // eslint-disable-next-line no-useless-escape
 const REGEX = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;

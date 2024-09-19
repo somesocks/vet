@@ -1,5 +1,5 @@
 
-import exists from './exists';
+import exists from './exists.js';
 
 let a = "123";
 

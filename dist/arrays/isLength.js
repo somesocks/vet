@@ -1,10 +1,5 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var assert_1 = __importDefault(require("../utils/assert"));
-var isArray_1 = __importDefault(require("./isArray"));
+import assert from '../utils/assert.js';
+import isArray from './isArray.js';
 /**
 * Constructor to build an array length validator
 * @param len - the length the array shouldbe
@@ -24,11 +19,11 @@ var isArray_1 = __importDefault(require("./isArray"));
 * ```
 */
 function isLength(len) {
-    var res = function (val) {
-        return (0, isArray_1.default)(val) && val.length === len;
+    const res = function (val) {
+        return isArray(val) && val.length === len;
     };
-    res.assert = (0, assert_1.default)(res);
+    res.assert = assert(res);
     res.schema = 'isArrayOfLength(' + len + ')';
     return res;
 }
-exports.default = isLength;
+export default isLength;

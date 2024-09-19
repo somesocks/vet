@@ -1,9 +1,4 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var assert_1 = __importDefault(require("./utils/assert"));
+import assert from './utils/assert.js';
 /**
 * A function to check for null or undefined
 * @param val - a value to check
@@ -19,9 +14,9 @@ var assert_1 = __importDefault(require("./utils/assert"));
 * isNullOrUndefined(null); // returns true
 * ```
 */
-var isNullOrUndefined = function isNullOrUndefined(val) {
+const isNullOrUndefined = function isNullOrUndefined(val) {
     return val == null;
 };
-isNullOrUndefined.assert = (0, assert_1.default)(isNullOrUndefined);
+isNullOrUndefined.assert = assert(isNullOrUndefined);
 isNullOrUndefined.schema = 'isNullOrUndefined';
-exports.default = isNullOrUndefined;
+export default isNullOrUndefined;

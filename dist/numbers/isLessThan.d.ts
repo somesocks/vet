@@ -1,4 +1,4 @@
-import ExtendedValidator from '../types/ExtendedValidator';
+import ExtendedValidator from '../types/ExtendedValidator.js';
 /**
 * construct a validator to check if a value is less than a number
 * @param {number} bound - the boundary value to check agains

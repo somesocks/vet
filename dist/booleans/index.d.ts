@@ -1,3 +1,4 @@
 /**
 * @namespace vet.booleans
 */
+export {};

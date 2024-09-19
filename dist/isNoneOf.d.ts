@@ -1,4 +1,4 @@
-import ExtendedValidator from './types/ExtendedValidator';
+import ExtendedValidator from './types/ExtendedValidator.js';
 /**
 * Constructs a function that checks equality against any number of arguments
 * @param {...*} eq - values to check equality against

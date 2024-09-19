@@ -1,5 +1,5 @@
 
-import isBetween from './isBetween';
+import isBetween from './isBetween.js';
 
 let a = isBetween(0, 1);
 

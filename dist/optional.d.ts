@@ -1,5 +1,5 @@
-import ExtendedValidator from './types/ExtendedValidator';
-import ValidatorType from './types/ValidatorType';
+import ExtendedValidator from './types/ExtendedValidator.js';
+import ValidatorType from './types/ValidatorType.js';
 /**
 * A function builder to optionally check a value
 * @param validator - a validator function

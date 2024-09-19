@@ -1,10 +1,5 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var assert_1 = __importDefault(require("../utils/assert"));
-var schema_1 = __importDefault(require("../utils/schema"));
+import assert from '../utils/assert.js';
+import schemaString from '../utils/schema.js';
 /**
 * Checks to see if a value is an object and inherits a prototype from a constructor function
 * @param con - the constructor function to check against
@@ -12,13 +7,13 @@ var schema_1 = __importDefault(require("../utils/schema"));
 * @memberof vet.objects
 */
 function isInstanceOf(con) {
-    var validator = function _instanceOfValidator(val) {
+    const validator = function _instanceOfValidator(val) {
         return ((val != null)
             && (Object(val) === val)
             && (val instanceof con));
     };
-    validator.assert = (0, assert_1.default)(validator);
-    validator.schema = 'isInstanceOf(' + (0, schema_1.default)(con) + ')';
+    validator.assert = assert(validator);
+    validator.schema = 'isInstanceOf(' + schemaString(con) + ')';
     return validator;
 }
-exports.default = isInstanceOf;
+export default isInstanceOf;

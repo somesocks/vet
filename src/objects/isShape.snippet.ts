@@ -1,8 +1,8 @@
 
-import isString from '../strings/isString';
-import isBoolean from '../booleans/isBoolean';
-import isNumber from '../numbers/isNumber';
-import isShape from './isShape';
+import isString from '../strings/isString.js';
+import isBoolean from '../booleans/isBoolean.js';
+import isNumber from '../numbers/isNumber.js';
+import isShape from './isShape.js';
 
 let isPerson = isShape({
 	name: isString,

@@ -1,7 +1,7 @@
 
 import inspect from 'object-inspect';
 
-import isProbablyURL from './isProbablyURL';
+import isProbablyURL from './isProbablyURL.js';
 
 const TESTS = [
 	{ input: 'http://www.test.com', expected: true },

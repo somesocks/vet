@@ -1,9 +1,4 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var assert_1 = __importDefault(require("../utils/assert"));
+import assert from '../utils/assert.js';
 /**
 * Checks to see if a value is a valid Date object
 * @param val - the value to check
@@ -20,9 +15,9 @@ var assert_1 = __importDefault(require("../utils/assert"));
 * isValidDate(new Date()); // returns true
 * ```
 */
-var isValidDate = function isValidDate(val) {
+const isValidDate = function isValidDate(val) {
     return (val instanceof Date) && (!isNaN(val.getTime()));
 };
-isValidDate.assert = (0, assert_1.default)(isValidDate);
+isValidDate.assert = assert(isValidDate);
 isValidDate.schema = 'isValidDate';
-exports.default = isValidDate;
+export default isValidDate;

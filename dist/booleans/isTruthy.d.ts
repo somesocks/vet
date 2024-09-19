@@ -1,4 +1,4 @@
-import ExtendedValidator from '../types/ExtendedValidator';
+import ExtendedValidator from '../types/ExtendedValidator.js';
 /**
 * Checks to see if a value is loosely true (truthy)
 * @param val - the value to check

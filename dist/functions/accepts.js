@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 function messageBuilder(log) {
     return typeof log === 'function' ?
         log :
@@ -16,12 +14,8 @@ function messageBuilder(log) {
 */
 function accepts(func, validator, message) {
     message = messageBuilder(message || 'vet/functions/accepts error!');
-    return function wrapper() {
-        var args = [];
-        for (var _i = 0; _i < arguments.length; _i++) {
-            args[_i] = arguments[_i];
-        }
-        var _args = arguments;
+    return function wrapper(...args) {
+        const _args = arguments;
         if (validator.apply(this, _args)) {
             return func.apply(this, _args);
         }
@@ -30,4 +24,4 @@ function accepts(func, validator, message) {
         }
     };
 }
-exports.default = accepts;
+export default accepts;

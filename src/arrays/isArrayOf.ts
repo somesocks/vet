@@ -1,13 +1,13 @@
 
-import Assertion from '../types/Assertion';
-import Validator from '../types/Validator';
-import ExtendedValidator from '../types/ExtendedValidator';
-import ValidatorType from '../types/ValidatorType';
+import Assertion from '../types/Assertion.js';
+import Validator from '../types/Validator.js';
+import ExtendedValidator from '../types/ExtendedValidator.js';
+import ValidatorType from '../types/ValidatorType.js';
 
-import assert from '../utils/assert';
-import schema from '../utils/schema';
+import assert from '../utils/assert.js';
+import schema from '../utils/schema.js';
 
-import isArray from './isArray';
+import isArray from './isArray.js';
 
 // type IsArrayOfType<T> = ;
 type IsArrayOfValidator<T> = ExtendedValidator<ValidatorType<T>[]>;

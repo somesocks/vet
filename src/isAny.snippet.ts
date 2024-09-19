@@ -1,5 +1,5 @@
 
-import isAny from './isAny';
+import isAny from './isAny.js';
 
 let a = isAny(2);
 

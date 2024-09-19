@@ -1,6 +1,6 @@
 
 
-import isPositive from './isPositive';
+import isPositive from './isPositive.js';
 
 const TESTS = [
 	{ input: 1, expected: true },

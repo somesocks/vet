@@ -1,11 +1,11 @@
 
-import Assertion from '../types/Assertion';
-import Validator from '../types/Validator';
-import ExtendedValidator from '../types/ExtendedValidator';
+import Assertion from '../types/Assertion.js';
+import Validator from '../types/Validator.js';
+import ExtendedValidator from '../types/ExtendedValidator.js';
 
-import assert from '../utils/assert';
+import assert from '../utils/assert.js';
 
-import isString from './isString';
+import isString from './isString.js';
 
 /**
 * Builds a function that checks to see if a value matches a regular expression

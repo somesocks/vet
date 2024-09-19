@@ -1,5 +1,5 @@
-import ExtendedValidator from './types/ExtendedValidator';
-import ValidatorType from './types/ValidatorType';
+import ExtendedValidator from './types/ExtendedValidator.js';
+import ValidatorType from './types/ValidatorType.js';
 type IsOneOfType<T extends any[]> = ValidatorType<T[number]>;
 type IsOneOfValidator<T extends any[]> = ExtendedValidator<IsOneOfType<T>>;
 /**

@@ -1,8 +1,8 @@
 
-import Assertion from '../types/Assertion';
-import Validator from '../types/Validator';
-import ExtendedValidator from '../types/ExtendedValidator';
-import ValidatorType from '../types/ValidatorType';
+import Assertion from '../types/Assertion.js';
+import Validator from '../types/Validator.js';
+import ExtendedValidator from '../types/ExtendedValidator.js';
+import ValidatorType from '../types/ValidatorType.js';
 
 function messageBuilder(log) {
 	return typeof log === 'function' ?

@@ -1,10 +1,5 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var assert_1 = __importDefault(require("../utils/assert"));
-var isString_1 = __importDefault(require("./isString"));
+import assert from '../utils/assert.js';
+import isString from './isString.js';
 /**
 * Builds a function that checks to see if a value matches a regular expression
 * @param regex - the regular expression to check against
@@ -12,12 +7,12 @@ var isString_1 = __importDefault(require("./isString"));
 * @memberof vet.strings
 */
 function matches(regex) {
-    var res = function (val) {
+    const res = function (val) {
         regex.lastIndex = 0;
-        return (0, isString_1.default)(val) && regex.test(val);
+        return isString(val) && regex.test(val);
     };
-    res.assert = (0, assert_1.default)(res);
+    res.assert = assert(res);
     res.schema = 'matches(' + regex + ')';
     return res;
 }
-exports.default = matches;
+export default matches;

@@ -1,6 +1,6 @@
 
 
-import isNegative from './isNegative';
+import isNegative from './isNegative.js';
 
 
 const TESTS = [

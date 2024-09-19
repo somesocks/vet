@@ -10,7 +10,7 @@ in pkgs.mkShell {
 	buildInputs = [
 		pkgs.findutils
 		pkgs.gnumake
-		pkgs.nodejs-18_x
+		pkgs.nodejs_22
 	];
 
 	inherit NPM_CONFIG_PREFIX;

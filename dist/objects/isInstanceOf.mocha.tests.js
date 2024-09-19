@@ -1,17 +1,12 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var object_inspect_1 = __importDefault(require("object-inspect"));
-var isInstanceOf_1 = __importDefault(require("./isInstanceOf"));
-var TESTS = [
+import inspect from 'object-inspect';
+import isInstanceOf from './isInstanceOf.js';
+const TESTS = [
     { input: Promise.resolve(1), expected: true },
-    { input: Promise.reject(1), expected: true },
-    { input: new Promise(function () { return null; }), expected: true },
+    { input: Promise.reject(1).catch(() => { }), expected: true },
+    { input: new Promise(() => null), expected: true },
     { input: {}, expected: false },
     { input: [], expected: false },
-    { input: function () { }, expected: false },
+    { input: () => { }, expected: false },
     { input: /a/, expected: false },
     { input: '', expected: false },
     { input: 'a string', expected: false },
@@ -21,13 +16,13 @@ var TESTS = [
     { input: false, expected: false },
     { input: true, expected: false },
 ];
-describe('vet/objects/isInstanceOf', function () {
-    var _validator = (0, isInstanceOf_1.default)(Promise);
-    var validator = _validator;
-    TESTS.forEach(function (test) {
-        it("validator(".concat((0, object_inspect_1.default)(test.input), ") returns ").concat(test.expected), function (done) { return done(validator(test.input) === test.expected ? null : new Error()); });
-        it("validator.assert(".concat((0, object_inspect_1.default)(test.input), ") should ").concat(test.expected ? 'pass' : 'fail'), function (done) {
-            var error = false;
+describe('vet/objects/isInstanceOf', () => {
+    const _validator = isInstanceOf(Promise);
+    const validator = _validator;
+    TESTS.forEach((test) => {
+        it(`validator(${inspect(test.input)}) returns ${test.expected}`, (done) => done(validator(test.input) === test.expected ? null : new Error()));
+        it(`validator.assert(${inspect(test.input)}) should ${test.expected ? 'pass' : 'fail'}`, (done) => {
+            let error = false;
             try {
                 validator.assert(test.input);
             }
@@ -41,9 +36,9 @@ describe('vet/objects/isInstanceOf', function () {
 });
 // typescript check
 {
-    var _isPromise = (0, isInstanceOf_1.default)(Promise);
-    var isPromise = _isPromise;
-    var a = Promise.resolve(1);
+    const _isPromise = isInstanceOf(Promise);
+    const isPromise = _isPromise;
+    let a = Promise.resolve(1);
     isPromise.assert(a);
-    var b = a;
+    let b = a;
 }

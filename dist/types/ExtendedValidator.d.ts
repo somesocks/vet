@@ -1,5 +1,5 @@
-import Assertion from './Assertion';
-import Validator from './Validator';
+import Assertion from './Assertion.js';
+import Validator from './Validator.js';
 type ExtendedValidator<T = any> = Validator<T> & {
     assert: Assertion<T>;
     schema?: string;

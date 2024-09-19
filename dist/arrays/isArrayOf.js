@@ -1,11 +1,6 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var assert_1 = __importDefault(require("../utils/assert"));
-var schema_1 = __importDefault(require("../utils/schema"));
-var isArray_1 = __importDefault(require("./isArray"));
+import assert from '../utils/assert.js';
+import schema from '../utils/schema.js';
+import isArray from './isArray.js';
 /**
 * Builds an array validator that checks the children of the array
 * @param val - the validator function run against the array children
@@ -27,19 +22,19 @@ var isArray_1 = __importDefault(require("./isArray"));
 * ```
 */
 function isArrayOf(validator) {
-    var res = function (arr) {
-        if (!(0, isArray_1.default)(arr)) {
+    const res = function (arr) {
+        if (!isArray(arr)) {
             return false;
         }
-        for (var i = 0; i < arr.length; i++) {
+        for (let i = 0; i < arr.length; i++) {
             if (!validator(arr[i])) {
                 return false;
             }
         }
         return true;
     };
-    res.assert = (0, assert_1.default)(res);
-    res.schema = 'isArrayOf(' + (0, schema_1.default)(validator) + ')';
+    res.assert = assert(res);
+    res.schema = 'isArrayOf(' + schema(validator) + ')';
     return res;
 }
-exports.default = isArrayOf;
+export default isArrayOf;

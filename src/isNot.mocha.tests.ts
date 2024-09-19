@@ -1,8 +1,8 @@
 
 import inspect from 'object-inspect';
 
-import isNot from './isNot';
-import isNumber from './numbers/isNumber';
+import isNot from './isNot.js';
+import isNumber from './numbers/isNumber.js';
 
 const TESTS = [
 	{ input: '', expected: true },

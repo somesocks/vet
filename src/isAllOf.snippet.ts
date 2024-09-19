@@ -1,8 +1,8 @@
 
-import isInteger from './numbers/isInteger';
-import isPositive from './numbers/isPositive';
+import isInteger from './numbers/isInteger.js';
+import isPositive from './numbers/isPositive.js';
 
-import isAllOf from './isAllOf';
+import isAllOf from './isAllOf.js';
 
 let isPositiveInteger = isAllOf(isPositive, isInteger);
 

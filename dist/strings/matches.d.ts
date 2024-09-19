@@ -1,4 +1,4 @@
-import ExtendedValidator from '../types/ExtendedValidator';
+import ExtendedValidator from '../types/ExtendedValidator.js';
 /**
 * Builds a function that checks to see if a value matches a regular expression
 * @param regex - the regular expression to check against

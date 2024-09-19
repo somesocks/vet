@@ -1,9 +1,4 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var schema_1 = __importDefault(require("./schema"));
+import schema from './schema.js';
 function messageBuilder(validator, message) {
     if (typeof message === 'function') {
         return message;
@@ -12,7 +7,7 @@ function messageBuilder(validator, message) {
         return function () { return message; };
     }
     else {
-        return function (val) { return '(vet/utils/assert) value with schema `' + (0, schema_1.default)(val) + '` fails check against `' + (0, schema_1.default)(validator) + '`'; };
+        return function (val) { return '(vet/utils/assert) value with schema `' + schema(val) + '` fails check against `' + schema(validator) + '`'; };
     }
 }
 function isFunction(val) { return typeof val === 'function'; }
@@ -32,12 +27,8 @@ function assert(validator, message) {
             return validator.assert;
         }
         message = messageBuilder.apply(this, arguments);
-        return function () {
-            var args = [];
-            for (var _i = 0; _i < arguments.length; _i++) {
-                args[_i] = arguments[_i];
-            }
-            var _args = arguments;
+        return function (...args) {
+            const _args = arguments;
             if (validator.apply(this, _args)) {
                 return true;
             }
@@ -54,4 +45,4 @@ function assert(validator, message) {
         return true;
     }
 }
-exports.default = assert;
+export default assert;

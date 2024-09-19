@@ -1,6 +1,6 @@
 
-import isArrayOf from './isArrayOf';
-import isArray from './isArray';
+import isArrayOf from './isArrayOf.js';
+import isArray from './isArray.js';
 
 let a = "123";
 

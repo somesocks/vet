@@ -1,5 +1,5 @@
-import ExtendedValidator from './types/ExtendedValidator';
-import ValidatorType from './types/ValidatorType';
+import ExtendedValidator from './types/ExtendedValidator.js';
+import ValidatorType from './types/ValidatorType.js';
 type BoxedValidatorTypes<T extends any[]> = {
     [P in keyof T]: {
         _box: ValidatorType<T[P]>;

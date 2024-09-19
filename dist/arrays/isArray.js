@@ -1,9 +1,4 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var assert_1 = __importDefault(require("../utils/assert"));
+import assert from '../utils/assert.js';
 /**
 * Checks to see if a value is an array
 * @name isArray
@@ -20,7 +15,7 @@ var assert_1 = __importDefault(require("../utils/assert"));
 * isArray([]); // returns true
 * ```
 */
-var isArray = Array.isArray ?
+const isArray = Array.isArray ?
     function isArray(val) {
         return Array.isArray(val);
     } :
@@ -28,5 +23,5 @@ var isArray = Array.isArray ?
         return Object.prototype.toString.call(val) === '[object Array]';
     };
 isArray.schema = 'isArray';
-isArray.assert = (0, assert_1.default)(isArray);
-exports.default = isArray;
+isArray.assert = assert(isArray);
+export default isArray;

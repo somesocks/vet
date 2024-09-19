@@ -1,11 +1,11 @@
 
 
-import Assertion from '../types/Assertion';
-import Validator from '../types/Validator';
-import ExtendedValidator from '../types/ExtendedValidator';
+import Assertion from '../types/Assertion.js';
+import Validator from '../types/Validator.js';
+import ExtendedValidator from '../types/ExtendedValidator.js';
 
-import assert from '../utils/assert';
-import schemaString from '../utils/schema';
+import assert from '../utils/assert.js';
+import schemaString from '../utils/schema.js';
 
 /**
 * Checks to see if a value is an object and inherits a prototype from a constructor function

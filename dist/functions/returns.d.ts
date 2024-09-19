@@ -1,4 +1,4 @@
-import ValidatorType from '../types/ValidatorType';
+import ValidatorType from '../types/ValidatorType.js';
 type GenericFunc = (...args: any) => any;
 /**
 * Wraps a function in a validator which checks its return value, and throws an error if the return value is bad.

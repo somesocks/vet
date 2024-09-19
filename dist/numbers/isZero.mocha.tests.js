@@ -1,10 +1,5 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var isZero_1 = __importDefault(require("./isZero"));
-var TESTS = [
+import isZero from './isZero.js';
+const TESTS = [
     { input: 0, expected: true },
     { input: 1, expected: false },
     { input: Number.EPSILON, expected: false },
@@ -23,11 +18,11 @@ var TESTS = [
     { input: true, expected: false },
     { input: {}, expected: false },
     { input: [], expected: false },
-    { input: function () { }, expected: false },
+    { input: () => { }, expected: false },
     { input: /a/, expected: false },
 ];
-describe('vet/numbers/isZero', function () {
-    TESTS.forEach(function (test) {
-        it("(".concat(test.input, ")-->(").concat(test.expected, ")"), function (done) { return done((0, isZero_1.default)(test.input) === test.expected ? null : new Error()); });
+describe('vet/numbers/isZero', () => {
+    TESTS.forEach((test) => {
+        it(`(${test.input})-->(${test.expected})`, (done) => done(isZero(test.input) === test.expected ? null : new Error()));
     });
 });

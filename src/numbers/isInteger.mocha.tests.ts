@@ -1,6 +1,6 @@
 
 
-import isInteger from './isInteger';
+import isInteger from './isInteger.js';
 
 const TESTS = [
 	{ input: Number.MIN_SAFE_INTEGER, expected: true },

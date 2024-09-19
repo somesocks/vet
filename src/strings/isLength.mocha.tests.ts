@@ -2,7 +2,7 @@
 
 import inspect from 'object-inspect';
 
-import isLength from './isLength';
+import isLength from './isLength.js';
 
 const TESTS = [
 	{ input: '12', expected: true },
