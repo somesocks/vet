@@ -139,7 +139,7 @@ Checks to see if a value is an array
 
 **Example**  
 ```javascript
-let isArray from 'vet/arrays/isArray');
+import isArray from 'vet/arrays/isArray';
 
 isArray(null); // returns false
 isArray({}); // returns false
@@ -162,8 +162,8 @@ Builds an array validator that checks the children of the array
 
 **Example**  
 ```javascript
-let isString from 'vet/strings/isString');
-let isArrayOf from 'vet/arrays/isArrayOf');
+import isString from 'vet/strings/isString';
+import isArrayOf from 'vet/arrays/isArrayOf';
 
 let isStringArray = isArrayOf(isString);
 
@@ -190,7 +190,7 @@ Constructor to build an array length validator
 
 **Example**  
 ```javascript
-let isLength from 'vet/arrays/isLength');
+import isLength from 'vet/arrays/isLength';
 
 let isLength3 = isLength(3);
 
@@ -245,7 +245,7 @@ Checks to see if a value is strictly false
 
 **Example**  
 ```javascript
-let isFalse from 'vet/booleans/isFalse');
+import isFalse from 'vet/booleans/isFalse';
 
 isFalse(null); // returns false
 isFalse(true); // returns false
@@ -268,7 +268,7 @@ Checks to see if a value is loosely false (falsy)
 
 **Example**  
 ```javascript
-let isFalsy from 'vet/booleans/isFalsy');
+import isFalsy from 'vet/booleans/isFalsy';
 
 isFalse(true); // returns false
 
@@ -291,7 +291,7 @@ Checks to see if a value is strictly true
 
 **Example**  
 ```javascript
-let isTrue from 'vet/booleans/isTrue');
+import isTrue from 'vet/booleans/isTrue';
 
 isTrue(null); // returns false
 isTrue(false); // returns false
@@ -314,7 +314,7 @@ Checks to see if a value is loosely true (truthy)
 
 **Example**  
 ```javascript
-let isTruthy from 'vet/booleans/isTruthy');
+import isTruthy from 'vet/booleans/isTruthy';
 
 isTruthy(null); // returns false
 isTruthy(false); // returns false
@@ -350,7 +350,7 @@ Checks to see if a value is a Date
 
 **Example**  
 ```javascript
-let isDate from 'vet/dates/isDate');
+import isDate from 'vet/dates/isDate';
 
 isDate(null); // returns false
 isDate({}); // returns false
@@ -373,7 +373,7 @@ Checks to see if a value is a valid Date object
 
 **Example**  
 ```javascript
-let isValidDate from 'vet/dates/isValidDate');
+import isValidDate from 'vet/dates/isValidDate';
 
 isValidDate(null); // returns false
 isValidDate({}); // returns false
@@ -426,7 +426,7 @@ Checks to see if a value is a function
 
 **Example**  
 ```javascript
-let isFunction from 'vet/functions/isFunction');
+import isFunction from 'vet/functions/isFunction';
 
 isFunction(null); // returns false
 isFunction({}); // returns false
@@ -792,10 +792,10 @@ The schema matching process is as follows:
 
 **Example**  
 ```javascript
-let isString from 'vet/strings/isString');
-let isNumber from 'vet/numbers/isNumber');
-let isBoolean from 'vet/booleans/isBoolean');
-let isShape from 'vet/objects/isShape');
+import isString from 'vet/strings/isString';
+import isNumber from 'vet/numbers/isNumber';
+import isBoolean from 'vet/booleans/isBoolean';
+import isShape from 'vet/objects/isShape';
 
 let isPerson = isShape({
   name: isString,
@@ -837,10 +837,10 @@ has a corresponding validator in the schema
 
 **Example**  
 ```javascript
-let isString from 'vet/strings/isString');
-let isNumber from 'vet/numbers/isNumber');
-let isBoolean from 'vet/booleans/isBoolean');
-let isShape from 'vet/objects/isShape');
+import isString from 'vet/strings/isString';
+import isNumber from 'vet/numbers/isNumber';
+import isBoolean from 'vet/booleans/isBoolean';
+import isShape from 'vet/objects/isShape';
 
 let isPerson = isShape.exact({
   name: isString,
@@ -879,10 +879,10 @@ but it only checks if the value is a "partial match" to the schema, i.e. propert
 
 **Example**  
 ```javascript
-let isString from 'vet/strings/isString');
-let isNumber from 'vet/numbers/isNumber');
-let isBoolean from 'vet/booleans/isBoolean');
-let isShape from 'vet/objects/isShape');
+import isString from 'vet/strings/isString';
+import isNumber from 'vet/numbers/isNumber';
+import isBoolean from 'vet/booleans/isBoolean';
+import isShape from 'vet/objects/isShape';
 
 let isPerson = isShape.pattial({
   name: isString,
@@ -1116,7 +1116,7 @@ Builds an curried equal function
 
 **Example**  
 ```javascript
-let equals from 'vet/equals');
+import equals from 'vet/equals';
 
 let is3 = equals(3);
 
@@ -1142,7 +1142,7 @@ Alias for `vet/isNotNullOrUndefined`
 **Example**  
 ```javascript
 
-let exists from 'vet/exists');
+import exists from 'vet/exists';
 
 exists(null); // returns false
 exists(undefined); // returns false
@@ -1165,9 +1165,9 @@ Constructs a function that checks equality against any number of arguments
 
 **Example**  
 ```javascript
-let isAllOf from 'vet/isAllOf');
-let isNumber from 'vet/numbers/isNumber');
-let isPositive from 'vet/numbers/isPositive');
+import isAllOf from 'vet/isAllOf';
+import isNumber from 'vet/numbers/isNumber';
+import isPositive from 'vet/numbers/isPositive';
 
 let check = isAllOf(isNumber, isPositive);
 
@@ -1217,7 +1217,7 @@ Constructs a function that checks equality against any number of arguments
 
 **Example**  
 ```javascript
-let isNoneOf from 'vet/isNoneOf');
+import isNoneOf from 'vet/isNoneOf';
 
 let check = isNoneOf(1, 2, 3);
 
@@ -1241,8 +1241,8 @@ a function that inverts the result of a validator
 
 **Example**  
 ```javascript
-let isNot from 'vet/isNot');
-let isNumber from 'vet/numbers/isNumber');
+import isNot from 'vet/isNot';
+import isNumber from 'vet/numbers/isNumber';
 
 let check = isNot(isNumber);
 
@@ -1267,7 +1267,7 @@ A function to check for nulls
 **Example**  
 ```javascript
 
-let isNotNull from 'vet/isNotNull');
+import isNotNull from 'vet/isNotNull';
 
 isNotNull(null); // returns false
 
@@ -1291,7 +1291,7 @@ A function to check for null or undefined
 
 **Example**  
 ```javascript
-let isNotNullOrUndefined from 'vet/isNotNullOrUndefined');
+import isNotNullOrUndefined from 'vet/isNotNullOrUndefined';
 
 isNotNullOrUndefined(null); // returns false
 isNotNullOrUndefined(undefined); // returns false
@@ -1314,7 +1314,7 @@ A function to check for undefined
 
 **Example**  
 ```javascript
-let isNotUndefined from 'vet/isNotUndefined');
+import isNotUndefined from 'vet/isNotUndefined';
 
 isNotUndefined(undefined); // returns false
 
@@ -1337,7 +1337,7 @@ A function to check for null
 
 **Example**  
 ```javascript
-let isNull from 'vet/isNull');
+import isNull from 'vet/isNull';
 
 isNull(undefined); // returns false
 isNull({}); // returns false
@@ -1360,7 +1360,7 @@ A function to check for null or undefined
 
 **Example**  
 ```javascript
-let isNullOrUndefined from 'vet/isNullOrUndefined');
+import isNullOrUndefined from 'vet/isNullOrUndefined';
 
 isNullOrUndefined({}); // returns false
 
@@ -1383,7 +1383,7 @@ Constructs a function that checks equality against any number of arguments
 
 **Example**  
 ```javascript
-let isOneOf from 'vet/isOneOf');
+import isOneOf from 'vet/isOneOf';
 
 let check = isOneOf(1, 2, 3);
 
@@ -1407,7 +1407,7 @@ A function to check for undefined
 
 **Example**  
 ```javascript
-let isUndefined from 'vet/isUndefined');
+import isUndefined from 'vet/isUndefined';
 
 isUndefined({}); // returns false
 isUndefined(null); // returns false
@@ -1430,8 +1430,8 @@ A function builder to check for a value or null
 
 **Example**  
 ```javascript
-let nullable from 'vet/nullable');
-let isNumber from 'vet/numbers/isNumber');
+import nullable from 'vet/nullable';
+import isNumber from 'vet/numbers/isNumber';
 
 let isMaybeNumber = nullable(isNumber);
 
@@ -1457,8 +1457,8 @@ A function builder to optionally check a value
 
 **Example**  
 ```javascript
-let optional from 'vet/optional');
-let isNumber from 'vet/numbers/isNumber');
+import optional from 'vet/optional';
+import isNumber from 'vet/numbers/isNumber';
 
 let isMaybeNumber = optional(isNumber);
 

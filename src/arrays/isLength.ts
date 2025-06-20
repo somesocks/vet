@@ -14,7 +14,7 @@ import isArray from './isArray.js';
 * @memberof vet.arrays
 * @example
 * ```javascript
-* let isLength from 'vet/arrays/isLength');
+* import isLength from 'vet/arrays/isLength';
 *
 * let isLength3 = isLength(3);
 *

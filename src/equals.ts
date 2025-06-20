@@ -13,7 +13,7 @@ import schema from './utils/schema.js';
 * @memberof vet
 * @example
 * ```javascript
-* let equals from 'vet/equals');
+* import equals from 'vet/equals';
 *
 * let is3 = equals(3);
 *

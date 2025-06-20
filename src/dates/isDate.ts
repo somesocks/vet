@@ -12,7 +12,7 @@ import assert from '../utils/assert.js';
 * @memberof vet.dates
 * @example
 * ```javascript
-* let isDate from 'vet/dates/isDate');
+* import isDate from 'vet/dates/isDate';
 *
 * isDate(null); // returns false
 * isDate({}); // returns false

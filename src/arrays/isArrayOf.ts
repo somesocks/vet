@@ -19,8 +19,8 @@ type IsArrayOfValidator<T> = ExtendedValidator<ValidatorType<T>[]>;
 * @memberof vet.arrays
 * @example
 * ```javascript
-* let isString from 'vet/strings/isString');
-* let isArrayOf from 'vet/arrays/isArrayOf');
+* import isString from 'vet/strings/isString';
+* import isArrayOf from 'vet/arrays/isArrayOf';
 *
 * let isStringArray = isArrayOf(isString);
 *

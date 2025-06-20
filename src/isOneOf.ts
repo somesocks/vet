@@ -19,7 +19,7 @@ type IsOneOfValidator<T extends any[]> = ExtendedValidator<IsOneOfType<T>>;
 * @memberof vet
 * @example
 * ```javascript
-* let isOneOf from 'vet/isOneOf');
+* import isOneOf from 'vet/isOneOf';
 *
 * let check = isOneOf(1, 2, 3);
 *

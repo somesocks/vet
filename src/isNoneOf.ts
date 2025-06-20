@@ -13,7 +13,7 @@ import schema from './utils/schema.js';
 * @memberof vet
 * @example
 * ```javascript
-* let isNoneOf from 'vet/isNoneOf');
+* import isNoneOf from 'vet/isNoneOf';
 *
 * let check = isNoneOf(1, 2, 3);
 *

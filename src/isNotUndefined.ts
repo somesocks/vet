@@ -12,7 +12,7 @@ import assert from './utils/assert.js';
 * @memberof vet
 * @example
 * ```javascript
-* let isNotUndefined from 'vet/isNotUndefined');
+* import isNotUndefined from 'vet/isNotUndefined';
 *
 * isNotUndefined(undefined); // returns false
 *

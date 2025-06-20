@@ -14,7 +14,7 @@ import assert from './utils/assert.js';
 * @example
 * ```javascript
 *
-* let isNotNull from 'vet/isNotNull');
+* import isNotNull from 'vet/isNotNull';
 *
 * isNotNull(null); // returns false
 *

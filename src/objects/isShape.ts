@@ -162,10 +162,10 @@ type _TObject<T> = T extends object
 * @memberof vet.objects
 * @example
 * ```javascript
-* let isString from 'vet/strings/isString');
-* let isNumber from 'vet/numbers/isNumber');
-* let isBoolean from 'vet/booleans/isBoolean');
-* let isShape from 'vet/objects/isShape');
+* import isString from 'vet/strings/isString';
+* import isNumber from 'vet/numbers/isNumber';
+* import isBoolean from 'vet/booleans/isBoolean';
+* import isShape from 'vet/objects/isShape';
 *
 * let isPerson = isShape({
 *   name: isString,
@@ -201,10 +201,10 @@ function isShape<V extends object>(schema : V) : ExtendedValidator<_TSchema<V>> 
 * @memberof vet.objects.isShape
 * @example
 * ```javascript
-* let isString from 'vet/strings/isString');
-* let isNumber from 'vet/numbers/isNumber');
-* let isBoolean from 'vet/booleans/isBoolean');
-* let isShape from 'vet/objects/isShape');
+* import isString from 'vet/strings/isString';
+* import isNumber from 'vet/numbers/isNumber';
+* import isBoolean from 'vet/booleans/isBoolean';
+* import isShape from 'vet/objects/isShape';
 *
 * let isPerson = isShape.exact({
 *   name: isString,
@@ -292,10 +292,10 @@ type _deepPartial<T> =
   * @memberof vet.objects.isShape
   * @example
   * ```javascript
-  * let isString from 'vet/strings/isString');
-  * let isNumber from 'vet/numbers/isNumber');
-  * let isBoolean from 'vet/booleans/isBoolean');
-  * let isShape from 'vet/objects/isShape');
+  * import isString from 'vet/strings/isString';
+  * import isNumber from 'vet/numbers/isNumber';
+  * import isBoolean from 'vet/booleans/isBoolean';
+  * import isShape from 'vet/objects/isShape';
   *
   * let isPerson = isShape.pattial({
   *   name: isString,

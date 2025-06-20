@@ -13,7 +13,7 @@ import assert from '../utils/assert.js';
 * @memberof vet.arrays
 * @example
 * ```javascript
-* let isArray from 'vet/arrays/isArray');
+* import isArray from 'vet/arrays/isArray';
 *
 * isArray(null); // returns false
 * isArray({}); // returns false

@@ -13,7 +13,7 @@ import assert from './utils/assert.js';
 * @example
 * ```javascript
 *
-* let exists from 'vet/exists');
+* import exists from 'vet/exists';
 *
 * exists(null); // returns false
 * exists(undefined); // returns false

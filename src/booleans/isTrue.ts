@@ -12,7 +12,7 @@ import assert from '../utils/assert.js';
 * @memberof vet.booleans
 * @example
 * ```javascript
-* let isTrue from 'vet/booleans/isTrue');
+* import isTrue from 'vet/booleans/isTrue';
 *
 * isTrue(null); // returns false
 * isTrue(false); // returns false

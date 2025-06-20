@@ -12,7 +12,7 @@ import assert from '../utils/assert.js';
 * @memberof vet.functions
 * @example
 * ```javascript
-* let isFunction from 'vet/functions/isFunction');
+* import isFunction from 'vet/functions/isFunction';
 *
 * isFunction(null); // returns false
 * isFunction({}); // returns false

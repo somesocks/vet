@@ -29,9 +29,9 @@ type IsAllOfValidator<T extends any[]> = ExtendedValidator<IsAllOfType<T>>;
 * @memberof vet
 * @example
 * ```javascript
-* let isAllOf from 'vet/isAllOf');
-* let isNumber from 'vet/numbers/isNumber');
-* let isPositive from 'vet/numbers/isPositive');
+* import isAllOf from 'vet/isAllOf';
+* import isNumber from 'vet/numbers/isNumber';
+* import isPositive from 'vet/numbers/isPositive';
 *
 * let check = isAllOf(isNumber, isPositive);
 *

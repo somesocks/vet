@@ -12,7 +12,7 @@ import assert from './utils/assert.js';
 * @memberof vet
 * @example
 * ```javascript
-* let isNull from 'vet/isNull');
+* import isNull from 'vet/isNull';
 *
 * isNull(undefined); // returns false
 * isNull({}); // returns false

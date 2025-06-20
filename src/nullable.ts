@@ -14,8 +14,8 @@ import schema from './utils/schema.js';
 * @memberof vet
 * @example
 * ```javascript
-* let nullable from 'vet/nullable');
-* let isNumber from 'vet/numbers/isNumber');
+* import nullable from 'vet/nullable';
+* import isNumber from 'vet/numbers/isNumber';
 *
 * let isMaybeNumber = nullable(isNumber);
 *

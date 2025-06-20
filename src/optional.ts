@@ -14,8 +14,8 @@ import schema from './utils/schema.js';
 * @memberof vet
 * @example
 * ```javascript
-* let optional from 'vet/optional');
-* let isNumber from 'vet/numbers/isNumber');
+* import optional from 'vet/optional';
+* import isNumber from 'vet/numbers/isNumber';
 *
 * let isMaybeNumber = optional(isNumber);
 *

@@ -13,8 +13,8 @@ import schema from './utils/schema.js';
 * @memberof vet
 * @example
 * ```javascript
-* let isNot from 'vet/isNot');
-* let isNumber from 'vet/numbers/isNumber');
+* import isNot from 'vet/isNot';
+* import isNumber from 'vet/numbers/isNumber';
 *
 * let check = isNot(isNumber);
 *
